@@ -1,0 +1,219 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+   >
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/comment_content_bg"
+            android:id="@+id/linearLayout">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp">
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#ff474747"
+                    android:text="3.07.13"
+                    android:id="@+id/date"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#ff474747"
+                    android:text="    00:16"
+                    android:id="@+id/time"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Реквием по бизнесу"
+                    android:textSize="18dp"
+                    android:textColor="#ff181818"
+                    android:id="@+id/name_post"/>
+
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="2dp"
+                    android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
+                    android:textSize="12dp"
+                    android:textColor="#ff474747"
+                    android:id="@+id/post_content"/>
+
+                <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="170dp">
+
+                    <Button
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/heart_button"
+                            android:id="@+id/heart_button"/>
+
+                    <Button
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/star_button"
+                            android:id="@+id/star_button"/>
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/comment_content_bg"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp">
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#ff474747"
+                    android:text="3.07.13"
+                    android:id="@+id/date"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:textColor="#ff474747"
+                    android:text="    00:16"
+                    android:id="@+id/time"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Комментарии"
+                    android:textSize="14dp"
+                    android:textColor="#ff181818"
+                    android:id="@+id/text"/>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <ImageButton
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/comment_avatar_img"
+                        android:id="@+id/avatar"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Андрюша"
+                            android:id="@+id/name_comment_user"
+                            android:textColor="#ff181818"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:layout_gravity="left|center_vertical"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Мое мнение по поводу данной статьи следующее..."
+                            android:textColor="#ff181818"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="10dp"
+                            android:id="@+id/comment_text"
+                            android:layout_gravity="left|center_vertical"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/editText"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="29dp"
+                    android:textColor="#ff181818"
+                    android:textSize="12dp"
+                    android:background="@drawable/comment_input_bg"
+
+                    android:layout_alignParentRight="true"/>
+
+            <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="75dp"
+                    android:layout_height="25dp"
+                    android:text="Отправить"
+                    android:background="@drawable/empty_bg"
+                    android:id="@+id/send_comment"
+                    android:layout_marginLeft="145dp"
+                    android:textSize="12dp"
+                    android:textColor="#fffd8001"
+                    android:layout_alignParentRight="true"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TagilNews</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world"><u>Hello world!</u></string>
+    <string name="favorite">Избранное</string>
+    <string name="title_activity_hello">Hello</string>
+
+</resources>

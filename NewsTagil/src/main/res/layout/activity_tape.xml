@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ECE8E2"
+   >
+
+    <include
+        android:id="@+id/tape_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        layout="@layout/composite_header" />
+
+
+    <ScrollView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/tape_header">
+
+        <include
+                android:id="@+id/tape_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/composite_tape_content" />
+
+
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/tape_first_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        layout="@layout/composite_first_button_nav" />
+
+</RelativeLayout>

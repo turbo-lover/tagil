@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ece8e2"
+   >
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="17:35:28"
+            android:textColor="#ff8100"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/time"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal|top"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/massage_bg"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Иван Бабайлов"
+                android:textColor="#ff474747"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/name_interlocutor"
+                android:layout_gravity="left|center_vertical"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Рвломшв ш мырмм ымшг ыршмгр пм "
+                android:textColor="#ff474747"
+                android:id="@+id/massage"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+</RelativeLayout>

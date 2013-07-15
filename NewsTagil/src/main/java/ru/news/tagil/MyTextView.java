@@ -31,5 +31,4 @@ public class MyTextView extends TextView {
             setTypeface(tf);
         }
     }
-    }
 }

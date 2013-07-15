@@ -13,9 +13,7 @@ import org.json.JSONObject;
 public class JSONWorker {
     //TODO add timeout for http requests
     //private static final int TIMEOUT_MILLISEC = 5000;
-
-    public static JSONObject SendRecieveJson(JSONObject jsonToSend,String uri) throws Exception
-    {
+    public static JSONObject SendRecieveJson(JSONObject jsonToSend,String uri) throws Exception {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(uri);
         httppost.setEntity(new ByteArrayEntity(jsonToSend.toString().getBytes("UTF8")));

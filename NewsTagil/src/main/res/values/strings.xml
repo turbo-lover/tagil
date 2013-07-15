@@ -6,5 +6,10 @@
     <string name="hello_world"><u>Hello world!</u></string>
     <string name="favorite">Избранное</string>
     <string name="title_activity_hello">Hello</string>
+    <string name="ServerAddress">http://192.168.1.110/</string>
+    <string name="loginUrl">login.php</string>
+    <string name="registrationUrl">registration.php</string>
+    <string name="login_error">Логин или пароль указаны неверно</string>
+    <string name="login_fields_empty">Заполните поля</string>
 
 </resources>

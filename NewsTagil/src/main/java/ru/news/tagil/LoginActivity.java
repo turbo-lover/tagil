@@ -69,7 +69,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                sends_data.put("login", login.getText());
                sends_data.put("pass", password.getText());
 
-               worker.execute(sends_data,getResources().getString(R.string.ServerAddress)+getResources().getString(R.string.loginUrl));
+               worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.loginUrl));
                ParsingResponse(worker.get());
            }
            catch (JSONException e) {

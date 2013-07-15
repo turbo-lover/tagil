@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewsTagil/NewsTagil.iml" filepath="$PROJECT_DIR$/NewsTagil/NewsTagil.iml" />
       <module fileurl="file://$PROJECT_DIR$/NewsTagilProject.iml" filepath="$PROJECT_DIR$/NewsTagilProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tagil.iml" filepath="$PROJECT_DIR$/tagil.iml" />
     </modules>
   </component>
 </project>

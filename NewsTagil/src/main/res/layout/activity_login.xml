@@ -10,49 +10,51 @@
     tools:context=".MainActivity" >
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/login"
         android:layout_width="150dp"
         android:layout_height="22dp"
         android:background="@drawable/login_input_bg"
         android:ems="10"
-        android:layout_above="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:inputType="text">
+        android:textColor="#fff"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/pass">
 
     </EditText>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/pass"
         android:layout_width="150dp"
         android:layout_height="22dp"
         android:background="@drawable/login_pass_bg"
         android:ems="10"
+        android:textColor="#fff"
         android:inputType="textPassword"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="164dp"/>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/reg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
         android:background="@drawable/empty_bg"
         android:textSize="14dp"
-        android:text="Зарегистрироваться" />
+        android:textColor="#ff474747"
+        android:text="Зарегистрироваться"
+        android:layout_above="@+id/enter"
+        android:layout_centerHorizontal="true"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/enter"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"
         android:text="Войти"
+        android:textColor="#ff474747"
         android:background="@drawable/empty_bg"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"/>
 
 </RelativeLayout>

@@ -38,10 +38,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private void Initialize_Component() {
         //TODO когда будет готова верстка, заменить айдишники
-        sign_in = (Button) findViewById(R.id.button2);
-        to_registration = (Button) findViewById(R.id.button1);
-        login = (EditText) findViewById(R.id.editText2);
-        password = (EditText) findViewById(R.id.editText1);
+        sign_in = (Button) findViewById(R.id.enter);
+        to_registration = (Button) findViewById(R.id.reg);
+        login = (EditText) findViewById(R.id.login);
+        password = (EditText) findViewById(R.id.pass);
     }
 
 
@@ -50,10 +50,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         switch (view.getId())
         {
             //TODO когда будет готова верстка, заменить айдишники
-            case R.id.button1://registration
+            case R.id.reg://registration
                 Registration();
                 break;
-            case R.id.button2://sign in
+            case R.id.enter://sign in
                 SignIn();
                 break;
         }

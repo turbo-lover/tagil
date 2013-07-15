@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ECE8E2"
@@ -26,7 +26,7 @@
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
-                    android:id="@+id/date"/>
+                    android:id="@+id/composite_tape_content_date"/>
 
             <TextView
                     android:layout_width="fill_parent"
@@ -34,7 +34,7 @@
                     android:textSize="12dp"
                     android:textColor="#ff474747"
                     android:text="    00:16"
-                    android:id="@+id/time"/>
+                    android:id="@+id/composite_tape_content_time"/>
 
         </LinearLayout>
 
@@ -51,7 +51,7 @@
                     android:text="Реквием по бизнесу"
                     android:textSize="18dp"
                     android:textColor="#ff181818"
-                    android:id="@+id/name_post"/>
+                    android:id="@+id/composite_tape_content_name_post"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                     android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
                     android:textSize="12dp"
                     android:textColor="#ff474747"
-                    android:id="@+id/post_content"/>
+                    android:id="@+id/composite_tape_content_post_content"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

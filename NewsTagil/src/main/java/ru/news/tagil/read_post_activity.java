@@ -2,10 +2,6 @@ package ru.news.tagil;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  * Created by Alexander on 15.07.13.
@@ -16,7 +12,7 @@ public class read_post_activity extends Activity {
     protected void onCreate(Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
         setContentView(R.layout.activity_read_post);
-        RelativeLayout rl = (RelativeLayout) findViewById(R.id.read_post_main_layout);
+       // RelativeLayout rl = (RelativeLayout) findViewById(R.id.read_post_main_layout);
         //TODO сначала реализуется получение превью новостей
 
 /*

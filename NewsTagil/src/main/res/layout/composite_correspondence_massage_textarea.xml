@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ece8e2"
@@ -19,7 +19,7 @@
                 android:layout_height="80dp"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/composite_correspondence_massage_text"
                 android:layout_marginTop="2dp"
                 android:textColor="#ff181818"
                 android:textSize="12dp"
@@ -36,7 +36,7 @@
                 android:textSize="13dp"
                 android:textColor="#fffd8001"
                 android:background="@drawable/empty_bg"
-                android:id="@+id/sent_massage_but"
+                android:id="@+id/composite_correspondence_massage_sent_massage_but"
                 android:layout_gravity="right"/>
 
     </LinearLayout>

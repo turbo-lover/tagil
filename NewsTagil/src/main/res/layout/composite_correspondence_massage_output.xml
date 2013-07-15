@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ece8e2"
@@ -13,7 +13,7 @@
             android:text="17:35:28"
             android:textColor="#ff8100"
             android:layout_marginLeft="10dp"
-            android:id="@+id/time"
+            android:id="@+id/composite_correspondence_massage_output_time"
             android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal|top"/>
 
@@ -33,7 +33,7 @@
                 android:text="Иван Бабайлов"
                 android:textColor="#ff474747"
                 android:layout_marginLeft="5dp"
-                android:id="@+id/name_interlocutor"
+                android:id="@+id/composite_correspondence_massage_name_interlocutor"
                 android:layout_gravity="left|center_vertical"/>
 
         <TextView
@@ -42,7 +42,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Рвломшв ш мырмм ымшг ыршмгр пм "
                 android:textColor="#ff474747"
-                android:id="@+id/massage"
+                android:id="@+id/composite_correspondence_massage"
                 android:layout_gravity="left|center_vertical"/>
     </LinearLayout>
 </RelativeLayout>

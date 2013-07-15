@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#fff"
@@ -28,7 +28,7 @@
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
-                    android:id="@+id/date"/>
+                    android:id="@+id/composite_comment_post_date"/>
 
             <TextView
                     android:layout_width="fill_parent"
@@ -36,7 +36,7 @@
                     android:textSize="12dp"
                     android:textColor="#ff474747"
                     android:text="    00:16"
-                    android:id="@+id/time"/>
+                    android:id="@+id/composite_comment_post_time"/>
 
         </LinearLayout>
 
@@ -53,7 +53,7 @@
                     android:text="Реквием по бизнесу"
                     android:textSize="18dp"
                     android:textColor="#ff181818"
-                    android:id="@+id/name_post"/>
+                    android:id="@+id/composite_comment_name_post"/>
 
 
 
@@ -64,7 +64,7 @@
                     android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
                     android:textSize="12dp"
                     android:textColor="#ff474747"
-                    android:id="@+id/post_content"/>
+                    android:id="@+id/composite_comment_content_post"/>
 
                 <LinearLayout
                         android:layout_width="50dp"
@@ -76,14 +76,14 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:background="@drawable/heart_button"
-                            android:id="@+id/heart_button"/>
+                            android:id="@+id/composite_comment_heart_button"/>
 
                     <Button
                             style="?android:attr/buttonStyleSmall"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:background="@drawable/star_button"
-                            android:id="@+id/star_button"/>
+                            android:id="@+id/composite_comment_star_button"/>
 
 
 
@@ -116,7 +116,7 @@
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
-                    android:id="@+id/date"/>
+                    android:id="@+id/composite_comment_comment_date"/>
 
             <TextView
                     android:layout_width="fill_parent"
@@ -124,7 +124,7 @@
                     android:textSize="10dp"
                     android:textColor="#ff474747"
                     android:text="    00:16"
-                    android:id="@+id/time"/>
+                    android:id="@+id/composite_comment_comment_time"/>
         </LinearLayout>
 
 
@@ -164,7 +164,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Андрюша"
-                            android:id="@+id/name_comment_user"
+                            android:id="@+id/composite_comment_name_comment_user"
                             android:textColor="#ff181818"
                             android:layout_marginTop="2dp"
                             android:layout_marginLeft="10dp"
@@ -180,7 +180,7 @@
                             android:layout_marginTop="1dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="10dp"
-                            android:id="@+id/comment_text"
+                            android:id="@+id/composite_comment_comment_text"
                             android:layout_gravity="left|center_vertical"/>
                 </LinearLayout>
             </LinearLayout>
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:ems="10"
-                    android:id="@+id/editText"
+                    android:id="@+id/composite_comment_editText"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="29dp"
                     android:textColor="#ff181818"
@@ -205,7 +205,7 @@
                     android:layout_height="25dp"
                     android:text="Отправить"
                     android:background="@drawable/empty_bg"
-                    android:id="@+id/send_comment"
+                    android:id="@+id/composite_comment_send_comment"
                     android:layout_marginLeft="145dp"
                     android:textSize="12dp"
                     android:textColor="#fffd8001"

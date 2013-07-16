@@ -12,5 +12,8 @@
     <string name="registrationUrl">registration.php</string>
     <string name="login_error">Логин или пароль указаны неверно</string>
     <string name="login_fields_empty">Заполните поля</string>
+    <string name="wrong_mail">Некоректный e-mail</string>
+    <string name="empty_pass">Введите пароль</string>
+    <string name="empty_login">Заполните логин</string>
 
 </resources>

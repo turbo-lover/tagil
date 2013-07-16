@@ -11,11 +11,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        layout="@layout/composite_header" />
+        layout="@layout/composite_header_useful" />
+
+
+    <ScrollView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/tape_header">
+
+
+
+
+
+    </ScrollView>
 
     <include
         android:id="@+id/tape_first_nav"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -24,8 +36,17 @@
     <include
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/composite_comment_content"
+            layout="@layout/composite_useful_content"
             android:layout_below="@+id/tape_header"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/include2"/>
+
+    <include
+            layout="@layout/composite_useful_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/include"
+            android:layout_below="@+id/include2"
             android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -19,9 +19,18 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_hello" >
         </activity>
+
+
+        <activity
+                android:name=".tape_activity"
+                ></activity>
+        <activity
+                android:name=".RegistrationActivity"
+            ></activity>
         <activity
                 android:name=".LoginActivity"
                 android:label="@string/title_activity_hello" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

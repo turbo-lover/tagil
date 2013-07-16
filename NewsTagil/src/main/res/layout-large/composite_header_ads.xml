@@ -13,7 +13,7 @@
             android:background="@drawable/setting_header_bg"
             android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="4dp"
@@ -34,11 +34,12 @@
                     android:id="@+id/header_ads_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Объявления"
+                    android:layout_marginLeft="22dp"
                     android:textSize="22dp"
-                    android:textColor="#4D433A" />
+                    android:text="Объявления"
+                    android:textColor="#4D433A"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/header_ads_back_button"/>
 
             <Button
                     style="?android:attr/buttonStyleSmall"
@@ -46,11 +47,13 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/first_header_button"
-                    android:layout_marginLeft="220dp"
-                    android:id="@+id/header_ads_button_update"/>
+                    android:id="@+id/header_ads_button_update"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"/>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
 

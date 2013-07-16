@@ -106,7 +106,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
             Log.d("PARSING_RESPONsE_EXEP",e.getMessage());
         }
-
     }
 
     private void toNextActivity() {

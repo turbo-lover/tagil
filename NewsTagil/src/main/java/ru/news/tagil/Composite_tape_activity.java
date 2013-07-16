@@ -14,10 +14,10 @@ public class Composite_tape_activity extends RelativeLayout {
         super(context);
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_tape_content,this);
-//        dateTextView = (TextView) findViewById(R.id.date);
-//        timeTextView = (TextView) findViewById(R.id.time);
-//        headerTextView = (TextView) findViewById(R.id.name_post);
-//        textTextView = (TextView) findViewById(R.id.post_content);
+        dateTextView = (TextView) findViewById(R.id.composite_tape_content_date);
+        timeTextView = (TextView) findViewById(R.id.composite_tape_content_time);
+        headerTextView = (TextView) findViewById(R.id.composite_tape_content_name_post);
+        textTextView = (TextView) findViewById(R.id.composite_tape_content_post_content);
         dateTextView.setText(date);
         timeTextView.setText(time);
         headerTextView.setText(header);

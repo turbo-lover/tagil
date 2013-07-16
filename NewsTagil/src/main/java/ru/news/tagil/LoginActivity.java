@@ -20,12 +20,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     EditText login,password;
     Button sign_in,to_registration;
+    My_Preferences_Worker preferences_worker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         Initialize_Component();
         SetEventListeners();
 
@@ -37,11 +37,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void Initialize_Component() {
-        //TODO когда будет готова верстка, заменить айдишники
         sign_in = (Button) findViewById(R.id.enter);
         to_registration = (Button) findViewById(R.id.reg);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.pass);
+        preferences_worker = new My_Preferences_Worker(this);
     }
 
 
@@ -49,7 +49,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId())
         {
-            //TODO когда будет готова верстка, заменить айдишники
             case R.id.reg://registration
                 Registration();
                 break;
@@ -64,11 +63,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
        if( isValidateFieldsOk()) {
            My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
            JSONObject sends_data = new JSONObject();
-
            try {
                sends_data.put("login", login.getText());
                sends_data.put("pass", password.getText());
-
                worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.loginUrl));
                ParsingResponse(worker.get());
            }
@@ -85,19 +82,20 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                Log.d("SIGN_IN_METHOD_Execution",e.getMessage() + "____________" + e.toString());
            }
        } else {
-           Toast.makeText(this, R.string.login_fields_empty,Toast.LENGTH_SHORT).show();
+           Toast.makeText(this,getResources().getString(R.string.login_fields_empty),Toast.LENGTH_SHORT).show();
        }
     }
 
     private void ParsingResponse(JSONObject response) {
         try {
             String status = response.getString("status");
-
             if(status.equals("ok")){
+                preferences_worker.set_login(login.getText().toString());
+                preferences_worker.set_pass(password.getText().toString());
                 toNextActivity();
             }
             if(status.equals("error")){
-                Toast.makeText(this,R.string.login_error,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getResources().getString(R.string.login_error),Toast.LENGTH_SHORT).show();
             }
         }
         catch (JSONException e) {
@@ -112,7 +110,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void toNextActivity() {
-       //TODO захуячить переход на активити на которую мы попадаем после входа
+       Intent intent = new Intent(this,tape_activity.class);
+       startActivity(intent);
     }
 
     private boolean isValidateFieldsOk() {
@@ -123,8 +122,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void Registration() {
-        Intent intent = new Intent();
-
-
+        Intent intent = new Intent(this,RegistrationActivity.class);
+        startActivity(intent);
     }
 }

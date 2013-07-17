@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Alexander on 16.07.13.
@@ -50,12 +54,50 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
 
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
 
-        //TODO закончить регистрацию
+
+        JSONObject jObj = new JSONObject();
+
+        try {
+            jObj.put("login",login.getText());
+            jObj.put("pass",pass.getText());
+            jObj.put("email",mail.getText());
+
+            worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
+
+            jObj = worker.get();
+
+            String status = jObj.getString("status");
+
+            if(status.equals("ok"){
+                ToTapeActivity();
+            }
+            //TODO закончить регистрацию
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ToTapeActivity() {
+
     }
 
     private boolean Validate_Email() {
-        //TODO закончить валидацию мыла
+        //TODO проверить
+        CharSequence target= mail.getText() ;
+        if(android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()) return true;
 
+        login.requestFocusFromTouch();
+        Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
         return false;
     }
 

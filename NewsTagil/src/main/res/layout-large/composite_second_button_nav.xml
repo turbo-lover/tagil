@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="#000"
@@ -16,7 +16,7 @@
             android:id="@+id/like"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@drawable/second_nav_like" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/comment"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@drawable/second_nav_comment" />
 
@@ -32,7 +32,7 @@
             android:id="@+id/elect"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@drawable/second_nav_elect" />
     </LinearLayout>

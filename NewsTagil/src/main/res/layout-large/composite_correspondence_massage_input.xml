@@ -14,7 +14,8 @@
 
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="250dp"
+                android:layout_width="370dp"
+                android:layout_marginRight="15dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/massage_left_bg"
                 android:layout_gravity="center_horizontal|top">

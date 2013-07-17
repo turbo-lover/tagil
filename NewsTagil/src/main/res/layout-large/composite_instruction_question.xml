@@ -15,7 +15,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Вопрос: _________________________________"
             android:id="@+id/header_instruction_question"
-            android:textSize="14dp"
+            android:textSize="22dp"
             android:textColor="#ff474747"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"/>
@@ -26,7 +26,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="   Ответ: _________________________________"
             android:textColor="#ff474747"
-            android:textSize="14dp"
+            android:textSize="22dp"
             android:id="@+id/header_instruction_otvet"
             android:layout_below="@+id/header_instruction_question"
             android:layout_alignParentLeft="true"/>

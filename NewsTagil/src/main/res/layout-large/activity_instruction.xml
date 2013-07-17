@@ -46,7 +46,7 @@
                     layout="@layout/composite_instruction_question"
                     android:id="@+id/include2"
                     android:layout_below="@+id/header_incl"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_alignLeft="@+id/header_incl"/>
 
             <include
                     android:layout_width="wrap_content"

@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             layout="@layout/composite_correspondence_massage_textarea"
-            android:layout_alignBottom="@+id/scrollView"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"/>
 
 </RelativeLayout>

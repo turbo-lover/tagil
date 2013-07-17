@@ -191,6 +191,7 @@
             android:layout_width="140dp"
             android:layout_height="30dp"
             android:text="Сохранить"
+            android:textColor="#fffd8001"
             android:background="@drawable/ads_button_bg"
             android:id="@+id/composite_contact_content_sex_save"
             android:layout_below="@+id/linearLayout5"

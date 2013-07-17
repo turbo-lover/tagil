@@ -18,13 +18,13 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginLeft="15dp"
-                android:layout_width="60dp"
-                android:layout_height="50dp">
+                android:layout_width="100dp"
+                android:layout_height="80dp">
 
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
+                    android:textSize="20dp"
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
@@ -33,7 +33,7 @@
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
+                    android:textSize="20dp"
                     android:textColor="#ff474747"
                     android:text="    00:16"
                     android:id="@+id/composite_comment_post_time"/>
@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="Реквием по бизнесу"
-                    android:textSize="18dp"
+                    android:textSize="24dp"
                     android:textColor="#ff181818"
                     android:id="@+id/composite_comment_name_post"/>
 
@@ -62,32 +62,38 @@
                     android:layout_height="fill_parent"
                     android:layout_marginTop="2dp"
                     android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
-                    android:textSize="12dp"
+                    android:textSize="17dp"
                     android:textColor="#ff474747"
                     android:id="@+id/composite_comment_content_post"/>
 
-                <LinearLayout
-                        android:layout_width="50dp"
+                <RelativeLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="25dp"
-                        android:layout_marginLeft="170dp">
+                        android:layout_marginLeft="0dp">
 
                     <Button
                             style="?android:attr/buttonStyleSmall"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@drawable/heart_button"
-                            android:id="@+id/composite_comment_heart_button"/>
+                            android:id="@+id/composite_comment_heart_button"
+                            android:layout_alignParentTop="true"
+                            android:layout_toLeftOf="@+id/composite_comment_star_button"/>
 
                     <Button
                             style="?android:attr/buttonStyleSmall"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@drawable/star_button"
-                            android:id="@+id/composite_comment_star_button"/>
+                            android:id="@+id/composite_comment_star_button"
+                            android:layout_alignBaseline="@+id/composite_comment_heart_button"
+                            android:layout_alignBottom="@+id/composite_comment_heart_button"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="25dp"/>
 
 
 
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -106,13 +112,13 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_width="60dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp">
 
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="18dp"
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
@@ -121,7 +127,7 @@
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="18dp"
                     android:textColor="#ff474747"
                     android:text="    00:16"
                     android:id="@+id/composite_comment_comment_time"/>
@@ -138,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="Комментарии"
-                    android:textSize="14dp"
+                    android:textSize="19dp"
                     android:textColor="#ff181818"
                     android:id="@+id/text"/>
 
@@ -148,8 +154,8 @@
                     android:layout_height="fill_parent">
 
                 <ImageButton
-                        android:layout_width="23dp"
-                        android:layout_height="23dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/comment_avatar_img"
                         android:id="@+id/avatar"/>
@@ -168,7 +174,7 @@
                             android:textColor="#ff181818"
                             android:layout_marginTop="2dp"
                             android:layout_marginLeft="10dp"
-                            android:textSize="16dp"
+                            android:textSize="20dp"
                             android:layout_gravity="left|center_vertical"/>
 
                     <TextView
@@ -179,19 +185,20 @@
                             android:textColor="#ff181818"
                             android:layout_marginTop="1dp"
                             android:layout_marginLeft="10dp"
-                            android:textSize="10dp"
+                            android:textSize="12dp"
                             android:id="@+id/composite_comment_comment_text"
                             android:layout_gravity="left|center_vertical"/>
                 </LinearLayout>
             </LinearLayout>
 
             <EditText
-                    android:layout_width="220dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
+                    android:minHeight="50dp"
                     android:inputType="textMultiLine"
                     android:ems="10"
                     android:id="@+id/composite_comment_editText"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="29dp"
                     android:textColor="#ff181818"
                     android:textSize="12dp"
@@ -201,13 +208,13 @@
 
             <Button
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="75dp"
-                    android:layout_height="25dp"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
                     android:text="Отправить"
                     android:background="@drawable/empty_bg"
                     android:id="@+id/composite_comment_send_comment"
-                    android:layout_marginLeft="145dp"
-                    android:textSize="12dp"
+                    android:layout_marginLeft="230dp"
+                    android:textSize="16dp"
                     android:textColor="#fffd8001"
                     android:layout_alignParentRight="true"/>
         </LinearLayout>

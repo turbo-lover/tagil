@@ -13,7 +13,7 @@
             android:text="Инструкция"
             android:id="@+id/textView"
             android:textColor="#ff474747"
-            android:textSize="13dp"
+            android:textSize="26dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
@@ -25,7 +25,7 @@
     Пв гпругыр муырмуы ар 9уымтв мтуо моумоуомумвшгрмшгрмшгр шрмшршу  шршшр шыршр шршрсш Р снгцфн ышмгрышгр шырсшыгрм ышрсм ыршры сгсры сы сшгырсш рыяшрышярсмш сшгрсш Рсшршсгррыг нпсыяс шгырсш Ш рсшы ршрышр сшыр сшфТст стысршгыяр ыяшсшыяис ыш сшышср "
             android:id="@+id/textView2"
             android:textColor="#ff474747"
-            android:textSize="11dp"
+            android:textSize="16dp"
             android:layout_below="@+id/textView"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="11dp"

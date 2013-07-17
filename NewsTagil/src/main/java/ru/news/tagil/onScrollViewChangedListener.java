@@ -5,6 +5,6 @@ package ru.news.tagil;
  */
 public interface onScrollViewChangedListener
 {
-    void onScrollChanged(MyScrollView scrollView,
+    void onScrollHitBottom(MyScrollView scrollView,
                          int x, int y, int oldx, int oldy);
 }

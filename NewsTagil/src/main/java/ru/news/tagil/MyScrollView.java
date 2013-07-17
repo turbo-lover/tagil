@@ -1,6 +1,7 @@
 package ru.news.tagil;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ScrollView;
 
@@ -14,6 +15,10 @@ public class MyScrollView extends ScrollView {
         super(context);
     }
 
+    public MyScrollView(Context context,AttributeSet attrs) {
+        super(context,attrs);
+    }
+
     public void setListener(onScrollViewChangedListener outside_listener)
     {
         listener = outside_listener;
@@ -23,8 +28,8 @@ public class MyScrollView extends ScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         View view = getChildAt(getChildCount()-1);
         int diff = (view.getBottom()-(getHeight()+getScrollY())); // Calculate the scroll diff
-        if( diff == 0 ){  // if diff is zero, then the bottom has been reached
-          if(listener!=null) listener.onScrollChanged(this,l,t,oldl,oldt);
+        if( diff <= 0 ){  // if diff is zero, then the bottom has been reached
+          if(listener!=null) listener.onScrollHitBottom(this, l, t, oldl, oldt);
         }
         super.onScrollChanged(l, t, oldl, oldt);
     }

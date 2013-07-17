@@ -23,4 +23,8 @@ public class Composite_tape_activity extends RelativeLayout {
         headerTextView.setText(header);
         textTextView.setText(text);
     }
+
+    public String getTime() {
+        return dateTextView.getText().toString()+" "+timeTextView.getText().toString();
+    }
 }

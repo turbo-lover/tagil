@@ -14,50 +14,27 @@
         layout="@layout/composite_header" />
 
 
-    <ScrollView
-            android:layout_height="285dp"
-            android:layout_width="fill_parent"
+    <ru.news.tagil.MyScrollView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:paddingBottom="10dp"
-            android:layout_below="@id/tape_header">
-        <RelativeLayout
+            android:id="@+id/news_headers_scroller"
+            android:layout_below="@id/tape_header"
+            android:layout_alignBottom="@id/tape_first_nav">
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="330dp"
+                android:layout_height="match_parent"
+                android:id="@+id/content_holder"
                 >
 
-                <include
-                    android:id="@+id/tape_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    layout="@layout/composite_tape_content" />
+        </LinearLayout>
 
-
-
-
-
-                <include
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        layout="@layout/composite_tape_content"
-                        android:layout_below="@+id/tape_content"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/include"/>
-
-                <include
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        layout="@layout/composite_tape_content_with_img"
-                        android:layout_below="@+id/include"
-                        android:layout_centerHorizontal="true"/>
-
-
-        </RelativeLayout>
-
-    </ScrollView>
+    </ru.news.tagil.MyScrollView>
 
     <include
             android:id="@+id/tape_first_nav"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"

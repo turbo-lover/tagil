@@ -109,7 +109,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void toNextActivity() {
-       Intent intent = new Intent(this,tape_activity.class);
+       Intent intent = new Intent(this,TapeActivity.class);
        startActivity(intent);
     }
 

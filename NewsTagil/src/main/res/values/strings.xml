@@ -15,5 +15,6 @@
     <string name="wrong_mail">Некоректный e-mail</string>
     <string name="empty_pass">Введите пароль</string>
     <string name="empty_login">Заполните логин</string>
+    <string name="DeniedRegistration">Такой логин или e-mail уже существует</string>
 
 </resources>

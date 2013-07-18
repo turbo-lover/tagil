@@ -1,24 +1,20 @@
 package ru.news.tagil;
 
 import android.app.Activity;
-import android.content.Context;
-import android.location.GpsStatus;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
  * Created by Alexander on 15.07.13.
  */
-public class tape_activity extends Activity implements onScrollViewChangedListener {
+public class TapeActivity extends Activity implements onScrollViewChangedListener {
     My_Preferences_Worker preferences_worker;
     MyScrollView scroller;
     LinearLayout ll;

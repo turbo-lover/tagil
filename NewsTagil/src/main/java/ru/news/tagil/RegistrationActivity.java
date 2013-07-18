@@ -1,6 +1,7 @@
 package ru.news.tagil;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -63,15 +64,16 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
             jObj.put("email",mail.getText());
 
             worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
-
             jObj = worker.get();
 
             String status = jObj.getString("status");
 
-            if(status.equals("ok"){
-                ToTapeActivity();
+            if(status.equals("ok")) ToTapeActivity();
+
+            if(status.equals("denied")){
+                Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
             }
-            //TODO закончить регистрацию
+
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -88,7 +90,9 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
     }
 
     private void ToTapeActivity() {
-
+        Intent intent = new Intent(this,TapeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
     private boolean Validate_Email() {

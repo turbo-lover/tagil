@@ -2,6 +2,7 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,15 +17,32 @@ public class compositeFirstButton extends LinearLayout
 
     Button tape,dialog,elect,useful,setting;
 
+
     public compositeFirstButton(Context context) {
         super(context);
 
         InitVariable();
+        SetListeners();
 
     }
 
-    private void InitVariable() {
+    private void SetListeners() {
+        tape.setOnClickListener(this);
+        dialog.setOnClickListener(this);
+        elect.setOnClickListener(this);
+        useful.setOnClickListener(this);
+        setting.setOnClickListener(this);
+    }
 
+    private void InitVariable() {
+        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.composite_first_button_nav,this);
+
+        tape    =(Button) findViewById( R.id.first_tape_button);
+        dialog  =(Button) findViewById( R.id.first_dialogs_button);
+        elect   =(Button) findViewById( R.id.first_elect_button);
+        useful  =(Button) findViewById( R.id.first_useful_button);
+        setting =(Button) findViewById( R.id.first_setting_button);
     }
 
 
@@ -40,9 +58,15 @@ public class compositeFirstButton extends LinearLayout
             case R.id.first_elect_button:
                 break;
             case R.id.first_useful_button:
+
                 break;
             case R.id.first_setting_button:
-                Intent intent = new Intent(getContext(), activitySettings.class);
+                try {
+                    Intent intent = new Intent(getContext(), activitySettings.class);
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 break;
         }

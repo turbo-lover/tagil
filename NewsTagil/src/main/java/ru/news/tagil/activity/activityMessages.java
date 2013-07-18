@@ -1,16 +1,16 @@
-package ru.news.tagil;
+package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 
+import ru.news.tagil.R;
+
 /**
  * Created by turbo_lover on 12.07.13.
  */
-public class CorrespondenceActivity extends Activity {
-
+public class activityMessages extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 }

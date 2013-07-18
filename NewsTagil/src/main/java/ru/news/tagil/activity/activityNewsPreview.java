@@ -1,27 +1,30 @@
-package ru.news.tagil;
+package ru.news.tagil.activity;
 //TODO ДОПИСАТЬ ДЕЙСТВИЕ НА РЕФРЕШ
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.location.GpsStatus;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import ru.news.tagil.R;
+import ru.news.tagil.composite.compositeTapePreview;
+import ru.news.tagil.utility.myAsyncTaskWorker;
+import ru.news.tagil.utility.myPreferencesWorker;
+import ru.news.tagil.utility.myScrollView;
+import ru.news.tagil.utility.onScrollViewChangedListener;
+
 /**
  * Created by Alexander on 15.07.13.
  */
-public class TapeActivity extends Activity implements onScrollViewChangedListener,View.OnClickListener {
-    My_Preferences_Worker preferences_worker;
-    MyScrollView scroller;
+public class activityNewsPreview extends Activity implements onScrollViewChangedListener,View.OnClickListener {
+    myPreferencesWorker preferences_worker;
+    myScrollView scroller;
     LinearLayout ll;
     int total_news_count;
     final int GET_NEWS_COUNT = 10; // Количество новостей подгружаемых за раз.
@@ -29,9 +32,9 @@ public class TapeActivity extends Activity implements onScrollViewChangedListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tape);
-        scroller = (MyScrollView) findViewById(R.id.news_headers_scroller);
+        scroller = (myScrollView) findViewById(R.id.news_headers_scroller);
         ll = (LinearLayout) findViewById(R.id.news_headers_content_holder);
-        preferences_worker = new My_Preferences_Worker(this);
+        preferences_worker = new myPreferencesWorker(this);
         total_news_count = 0;
         scroller.setListener(this);
         getNewsHeaders();
@@ -40,7 +43,7 @@ public class TapeActivity extends Activity implements onScrollViewChangedListene
     private void getNewsHeaders() {
         if(ll.getChildCount() == total_news_count && total_news_count != 0) {
             return; }
-        My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
+        myAsyncTaskWorker worker = new myAsyncTaskWorker();
         JSONObject sends_data = new JSONObject();
         try {
             sends_data.put("news_count",GET_NEWS_COUNT);
@@ -49,8 +52,8 @@ public class TapeActivity extends Activity implements onScrollViewChangedListene
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
                 sends_data.put("total_news_count",true);
             } else {
-                Composite_tape_activity c = (Composite_tape_activity) ll.getChildAt(ll.getChildCount() - 1);
-                send_time = c.getTime();
+                compositeTapePreview c = (compositeTapePreview) ll.getChildAt(ll.getChildCount() - 1);
+                send_time = c.getDateTime();
                 sends_data.put("total_news_count",false);
             }
             sends_data.put("time",send_time);
@@ -74,10 +77,10 @@ public class TapeActivity extends Activity implements onScrollViewChangedListene
             for (int i = 0; i < arr.length();i++) {
                 JSONObject obj =  arr.getJSONObject(i);
                 String[] s = obj.getString("pub_time").split(" ");
-                Composite_tape_activity composite_tape_activity = new Composite_tape_activity(this,s[0],
+                compositeTapePreview compositeTapePreview = new compositeTapePreview(this,s[0],
                         s[1],obj.getString("header"),"SOME RANDOM TEXT");
-                composite_tape_activity.setOnClickListener(this);
-                ll.addView(composite_tape_activity);
+                compositeTapePreview.setOnClickListener(this);
+                ll.addView(compositeTapePreview);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -86,15 +89,16 @@ public class TapeActivity extends Activity implements onScrollViewChangedListene
     }
 
     @Override
-    public void onScrollHitBottom(MyScrollView scrollView, int x, int y, int oldx, int oldy) {
+    public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
         getNewsHeaders();
     }
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this,ReadPostActivity.class);
-        Composite_tape_activity c = (Composite_tape_activity) view;
-        i.putExtra("publication_time",c.getTime());
+        Intent i = new Intent(this,activityNewsContent.class);
+        compositeTapePreview c = (compositeTapePreview) view;
+        i.putExtra("time",c.getTime());
+        i.putExtra("date",c.getDate());
         i.putExtra("header",c.getHeader());
         startActivity(i);
     }

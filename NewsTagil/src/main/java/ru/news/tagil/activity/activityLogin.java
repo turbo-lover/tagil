@@ -1,4 +1,4 @@
-package ru.news.tagil;
+package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,14 +13,18 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import ru.news.tagil.R;
+import ru.news.tagil.utility.myAsyncTaskWorker;
+import ru.news.tagil.utility.myPreferencesWorker;
+
 /**
  * Created by turbo_lover on 12.07.13.
  */
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class activityLogin extends Activity implements View.OnClickListener {
 
     EditText login,password;
     Button sign_in,to_registration;
-    My_Preferences_Worker preferences_worker;
+    myPreferencesWorker preferences_worker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         to_registration = (Button) findViewById(R.id.reg);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.pass);
-        preferences_worker = new My_Preferences_Worker(this);
+        preferences_worker = new myPreferencesWorker(this);
     }
 
 
@@ -61,7 +65,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private void SignIn() {
        if( isValidateFieldsOk()) {
-           My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
+           myAsyncTaskWorker worker = new myAsyncTaskWorker();
            JSONObject sends_data = new JSONObject();
            try {
                sends_data.put("login", login.getText());
@@ -109,7 +113,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void toNextActivity() {
-       Intent intent = new Intent(this,TapeActivity.class);
+       Intent intent = new Intent(this,activityNewsPreview.class);
        startActivity(intent);
     }
 
@@ -121,7 +125,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void Registration() {
-        Intent intent = new Intent(this,RegistrationActivity.class);
+        Intent intent = new Intent(this,activityRegistration.class);
         startActivity(intent);
     }
 }

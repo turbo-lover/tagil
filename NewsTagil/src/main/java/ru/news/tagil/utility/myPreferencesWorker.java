@@ -1,21 +1,19 @@
-package ru.news.tagil;
+package ru.news.tagil.utility;
 
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
-
 /**
  * Created by Alexander on 15.07.13.
  */
-public class My_Preferences_Worker
+public class myPreferencesWorker
 {
     final private  String preference_user_login = "login";
     final private String preference_user_pass = "pass";
     final private String preference_location = "tagil_pref";
     private SharedPreferences sPref;
     private Context context;
-
-    public My_Preferences_Worker(Context in) {
+    public myPreferencesWorker(Context in) {
         context = in;
     }
     /* функции установки значений */

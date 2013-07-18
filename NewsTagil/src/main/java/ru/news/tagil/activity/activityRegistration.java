@@ -1,4 +1,4 @@
-package ru.news.tagil;
+package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,10 +12,13 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import ru.news.tagil.R;
+import ru.news.tagil.utility.myAsyncTaskWorker;
+
 /**
  * Created by Alexander on 16.07.13.
  */
-public class RegistrationActivity extends Activity implements View.OnClickListener {
+public class activityRegistration extends Activity implements View.OnClickListener {
 
     Button registration;
     EditText pass,mail,login;
@@ -53,7 +56,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
         if( Validate_Pass()) return;
         if( Validate_Login()) return;
 
-        My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
+        myAsyncTaskWorker worker = new myAsyncTaskWorker();
 
 
         JSONObject jObj = new JSONObject();
@@ -90,7 +93,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
     }
 
     private void ToTapeActivity() {
-        Intent intent = new Intent(this,TapeActivity.class);
+        Intent intent = new Intent(this,activityNewsPreview.class);
         startActivity(intent);
         this.finish();
     }

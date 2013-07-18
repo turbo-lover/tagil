@@ -10,6 +10,7 @@ import android.widget.TextView;
  */
 public class Composite_tape_activity extends RelativeLayout {
     TextView dateTextView,timeTextView,headerTextView,textTextView;
+
     public Composite_tape_activity(Context context,String date,String time,String header,String text) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -26,5 +27,9 @@ public class Composite_tape_activity extends RelativeLayout {
 
     public String getTime() {
         return dateTextView.getText().toString()+" "+timeTextView.getText().toString();
+    }
+
+    public String getHeader() {
+        return headerTextView.getText().toString();
     }
 }

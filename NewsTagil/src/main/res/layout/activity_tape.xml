@@ -24,11 +24,9 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/content_holder"
+                android:id="@+id/news_headers_content_holder"
                 >
-
         </LinearLayout>
-
     </ru.news.tagil.MyScrollView>
 
     <include

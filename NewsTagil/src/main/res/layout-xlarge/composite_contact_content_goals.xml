@@ -1,0 +1,200 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ECE8E2"
+   >
+
+
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="false">
+
+            <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingBottom="30dp">
+
+
+                <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="10dp"
+                        android:background="#ECE8E2"
+                        android:id="@+id/linearLayout22">
+
+                    <ImageView
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ads_button_bg"
+                            android:id="@+id/composite_header_contact_image"
+                            android:layout_gravity="center_horizontal|top"/>
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center_horizontal|top">
+
+                        <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ff474747"
+                                android:textSize="16dp"
+                                android:text="Иван Бубуйло"
+                                android:id="@+id/composite_header_contact_name"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="8dp"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#ff474747"
+                                android:textSize="14dp"
+                                android:text="32 года. Нижний Тагил"
+                                android:id="@+id/composite_header_contact_age_and_city"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Ищу:"
+            android:textColor="#ff474747"
+            android:textSize="16dp"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="111dp"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border_img"
+            android:layout_marginTop="16dp"
+            android:id="@+id/linearLayout">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Семья"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ff474747"
+                android:id="@+id/composite_header_contact_checkbox_family"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:background="@drawable/border_img"
+            android:layout_height="40dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/linearLayout2">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Общение"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ff474747"
+                android:id="@+id/composite_header_contact_checkbox_society"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border_img"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/linearLayout3">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Секс"
+                android:textColor="#ff474747"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/composite_header_contact_checkbox_sex"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border_img"
+            android:layout_below="@+id/linearLayout3"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/linearLayout4">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Совмесный досуг"
+                android:textColor="#ff474747"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/composite_header_contact_checkbox_dosug"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border_img"
+            android:layout_below="@+id/linearLayout4"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/linearLayout5">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Не установлено"
+                android:textColor="#ff474747"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/composite_header_contact_checkbox_nothing"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+
+
+    <Button
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:text="Сохранить"
+            android:textColor="#FD8001"
+            android:background="@drawable/ads_button_bg"
+            android:id="@+id/composite_header_contact_button_save"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"/>
+
+            </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

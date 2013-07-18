@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ECE8E2"
+   >
+
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/nav_buttons">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Создать объявления"
+                android:textColor="#ff474747"
+                android:textSize="16dp"
+                android:layout_weight="1"
+                android:id="@+id/composite_ads_first_tab"
+                android:background="@drawable/border_img"
+                />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="   Мои объявления     "
+                android:textColor="#ff474747"
+                android:textSize="16dp"
+                android:layout_weight="1"
+                android:id="@+id/composite_ads_second_tab"
+                android:background="@drawable/border_img"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_img"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/nav_buttons">
+
+
+        <ImageView
+                android:layout_width="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="150dp"
+                android:background="@drawable/border_img"
+                android:id="@+id/composite_ads_imageView"
+                android:layout_gravity="center"/>
+
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/nav_buttons">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Продам корову"
+                    android:textColor="#ff474747"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/composite_ads_title"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Сергей Смирнов"
+                    android:textColor="#ff474747"
+                    android:textSize="22dp"
+
+                    android:id="@+id/composite_ads_name"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="13.13.13"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#fffd8001"
+                    android:textSize="18dp"
+                    android:id="@+id/composite_ads_date"
+                    android:layout_gravity="left|center_vertical"/>
+
+            <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="170dp"
+                    android:text=""
+                    android:background="@drawable/star_button"
+                    android:id="@+id/composite_ads_favorite"
+                    android:layout_gravity="left|center_vertical"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

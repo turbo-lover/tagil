@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ECE8E2"
+   >
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:background="@drawable/massage_img"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="8dp">
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="13.07.13"
+                        android:textSize="20dp"
+                        android:textColor="#ff474747"
+                        android:id="@+id/useful_data"/>
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="00:17"
+                        android:layout_marginLeft="17dp"
+                        android:textSize="20dp"
+                        android:textColor="#ff474747"
+                        android:id="@+id/useful_data"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center">
+
+
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ff474747"
+                        android:textSize="20dp"
+                        android:text="Реквиум по бизнесу и реквиум по бизнесу"
+                        android:id="@+id/textView"/>
+
+                <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right">
+
+                    <Button
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/like_button"
+                            android:id="@+id/button_like"/>
+
+                    <Button
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:id="@+id/button_star"
+                            android:background="@drawable/star_button"
+                            android:layout_gravity="center_horizontal|top"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

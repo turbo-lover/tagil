@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/first_header_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/composite_header_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="33dp"
+                android:layout_centerVertical="true"
+                android:textSize="33dp"
+                android:text="Главная"
+                android:textColor="#4D433A" />
+
+            <TextView
+                android:id="@+id/composite_header_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="33dp"
+                android:textSize="33dp"
+                android:text="Знакомства"
+                android:textColor="#4D433A"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/composite_header_main"/>
+
+            <TextView
+                android:id="@+id/composite_header_ads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="33dp"
+                android:textSize="33dp"
+                android:text="Объявления"
+                android:textColor="#4D433A"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/composite_header_contact"/>
+
+            <Button
+                android:id="@+id/composite_header_update"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/first_header_button"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="450dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/header_img_cloud"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/first_header_cloud" />
+
+                
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/composite_header_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:text="сейчас:"
+                        android:textColor="#FC8000"
+                        android:textSize="25dp" />
+
+                   <TextView
+                        android:id="@+id/composite_header_tomorrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="0dp"
+                        android:textSize="25dp"
+                        android:textColor="#fff"
+                        android:text="завтра:" />
+                    
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/composite_header_search"
+                    android:layout_width="350dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/first_header_search" >
+
+                    <requestFocus />
+                </EditText>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

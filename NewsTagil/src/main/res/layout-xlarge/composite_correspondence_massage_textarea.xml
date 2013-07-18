@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ece8e2"
+    >
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="115dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/massage_img"
+            android:layout_alignParentLeft="true">
+
+        <EditText
+                android:layout_width="400dp"
+                android:layout_height="80dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/composite_correspondence_massage_text"
+                android:layout_marginTop="2dp"
+                android:textColor="#ff181818"
+                android:textSize="14dp"
+                android:paddingTop="2px"
+                android:background="@drawable/massage_border_bg"
+                android:layout_gravity="center"/>
+
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="95dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="40dp"
+                android:text="Отправить"
+                android:textSize="17dp"
+                android:textColor="#fffd8001"
+                android:background="@drawable/empty_bg"
+                android:id="@+id/composite_correspondence_massage_sent_massage_but"
+                android:layout_gravity="right"/>
+
+    </LinearLayout>
+</RelativeLayout>

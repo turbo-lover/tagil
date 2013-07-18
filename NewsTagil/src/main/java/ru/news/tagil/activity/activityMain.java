@@ -1,15 +1,12 @@
-package ru.news.tagil;
-
+package ru.news.tagil.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
-import android.widget.RelativeLayout;
+import ru.news.tagil.R;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-
+public class activityMain extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +14,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         View rl = findViewById(R.id.main_layout);
         rl.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this,LoginActivity.class);
+        Intent intent = new Intent(this,activityLogin.class);
         startActivity(intent);
     }
 }

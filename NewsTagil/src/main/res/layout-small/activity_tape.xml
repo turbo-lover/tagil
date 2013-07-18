@@ -14,7 +14,7 @@
         layout="@layout/composite_header" />
 
 
-    <ru.news.tagil.MyScrollView
+    <ru.news.tagil.utility.myScrollView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:paddingBottom="10dp"
@@ -30,7 +30,7 @@
 
         </LinearLayout>
 
-    </ru.news.tagil.MyScrollView>
+    </ru.news.tagil.utility.myScrollView>
 
     <include
             android:id="@+id/tape_first_nav"

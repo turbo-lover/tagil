@@ -1,21 +1,20 @@
-package ru.news.tagil;
+package ru.news.tagil.utility;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ScrollView;
-
 /**
  * Created by turbo_lover on 17.07.13.
  */
-public class MyScrollView extends ScrollView {
+public class myScrollView extends ScrollView {
 
     onScrollViewChangedListener listener = null;
-    public MyScrollView(Context context) {
+    public myScrollView(Context context) {
         super(context);
     }
 
-    public MyScrollView(Context context,AttributeSet attrs) {
+    public myScrollView(Context context, AttributeSet attrs) {
         super(context,attrs);
     }
 

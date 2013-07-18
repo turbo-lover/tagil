@@ -12,7 +12,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         layout="@layout/composite_header_second" />
+    <ScrollView
+            android:id="read_post_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/read_header">
 
+    </ScrollView>
     <include
         android:id="@+id/read_second_nav"
         android:layout_width="wrap_content"

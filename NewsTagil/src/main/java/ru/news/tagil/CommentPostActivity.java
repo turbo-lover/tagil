@@ -1,5 +1,6 @@
 package ru.news.tagil;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 

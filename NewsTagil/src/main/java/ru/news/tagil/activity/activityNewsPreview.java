@@ -97,7 +97,7 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
 
     private void addHeaders(JSONObject jo) {
         try{
-            if(jo.getString("status") == "error"){
+            if(jo.getString("status").equals("error")){
                 Toast.makeText(this,jo.getString("errormsg"),Toast.LENGTH_SHORT).show();
                 return;
             }

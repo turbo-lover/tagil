@@ -3,7 +3,6 @@ package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import ru.news.tagil.R;
 
 /**
@@ -13,5 +12,6 @@ public class activityMessages extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_massage_list);
     }
 }

@@ -39,6 +39,8 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
         Initialize_Variable();
         SetCompositeElements();
 
+        //член
+
         // TODO коментируем если нет Либерова :)
         getNewsHeaders();
     }

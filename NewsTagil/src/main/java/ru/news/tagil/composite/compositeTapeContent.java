@@ -26,5 +26,6 @@ public class compositeTapeContent extends RelativeLayout {
         headerTextView.setText(header);
         timeTextView.setText(time);
         dateTextView.setText(date);
+
     }
 }

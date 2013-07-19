@@ -11,7 +11,7 @@ import ru.news.tagil.R;
 public class compositeTapePreview extends RelativeLayout {
     TextView dateTextView,timeTextView,headerTextView;
 
-    public compositeTapePreview(Context context, String date, String time, String header, String text) {
+    public compositeTapePreview(Context context, String date, String time, String header) {
         super(context);
 
         InitializeVariable(date, time, header);
@@ -19,10 +19,10 @@ public class compositeTapePreview extends RelativeLayout {
 
     private void InitializeVariable(String date, String time, String header) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.composite_tape_content,this);
-        dateTextView = (TextView) findViewById(R.id.composite_tape_content_date);
-        timeTextView = (TextView) findViewById(R.id.composite_tape_content_time);
-        headerTextView = (TextView) findViewById(R.id.composite_tape_content_name_post);
+        inflater.inflate(R.layout.composite_tape_preview,this);
+        dateTextView = (TextView) findViewById(R.id.composite_tape_preview_date);
+        timeTextView = (TextView) findViewById(R.id.composite_tape_preview_time);
+        headerTextView = (TextView) findViewById(R.id.composite_tape_preview_name_post);
         dateTextView.setText(date);
         timeTextView.setText(time);
         headerTextView.setText(header);

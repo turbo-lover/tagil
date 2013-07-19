@@ -17,7 +17,7 @@
     <include
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/composite_tape_content_with_img"
+            layout="@layout/composite_tape_content"
             android:layout_below="@+id/include"
             android:layout_centerHorizontal="true"
             android:id="@+id/include2"/>
@@ -25,7 +25,7 @@
     <include
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/composite_tape_content"
+            layout="@layout/composite_tape_preview"
             android:layout_below="@+id/include2"
             android:layout_centerHorizontal="true"/>
 </RelativeLayout>

@@ -16,5 +16,8 @@
     <string name="empty_pass">Введите пароль</string>
     <string name="empty_login">Заполните логин</string>
     <string name="DeniedRegistration">Такой логин или e-mail уже существует</string>
+    <string name="header_main_button">Главная</string>
+    <string name="header_main_contact">Знакомства</string>
+    <string name="ads">Объявления</string>
 
 </resources>

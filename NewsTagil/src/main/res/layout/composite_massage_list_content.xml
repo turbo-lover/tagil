@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#fff"
+    android:background="#0fff"
    >
 
 
@@ -14,17 +13,19 @@
             android:layout_centerHorizontal="true">
 
         <LinearLayout
+                android:id="@+id/message_item_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/border_img">
-
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/message_item_last"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/border_img">
+                android:background="@drawable/border_img"
+                >
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

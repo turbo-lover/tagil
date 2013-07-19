@@ -19,34 +19,37 @@
             android:layout_marginTop="4dp"
             android:orientation="horizontal" >
 
-            <TextView
+            <Button
                 android:id="@+id/composite_header_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_centerVertical="true"
                 android:textSize="21dp"
-                android:text="Главная"
+                android:background="@color/Transparent"
+                android:text="@string/header_main_button"
                 android:textColor="#4D433A" />
 
-            <TextView
+            <Button
                 android:id="@+id/composite_header_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:textSize="21dp"
-                android:text="Знакомства"
+                android:text="@string/header_main_contact"
                 android:textColor="#4D433A"
+                android:background="@color/Transparent"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/composite_header_main"/>
 
-            <TextView
+            <Button
                 android:id="@+id/composite_header_ads"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:textSize="21dp"
-                android:text="Объявления"
+                android:text="@string/ads"
+                android:background="@color/Transparent"
                 android:textColor="#4D433A"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/composite_header_contact"/>

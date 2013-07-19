@@ -8,17 +8,19 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.activityMain" android:label="@string/title_activity_hello" >
+        <activity android:name=".activity.activityMain" android:label="@string/title_activity_hello" />
+
+        <activity android:name=".activity.activityNewsContent" />
+        <activity android:name=".activity.activityNewsPreview">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.activityNewsContent" />
-        <activity android:name=".activity.activityNewsPreview"/>
         <activity android:name=".activity.activityRegistration" />
         <activity android:name=".activity.activityLogin" />
         <activity android:name=".activity.activitySettings" />
+        <activity android:name=".activity.activityUseful" />
 
 
     </application>

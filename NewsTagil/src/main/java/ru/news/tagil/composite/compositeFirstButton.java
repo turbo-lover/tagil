@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import ru.news.tagil.R;
-import ru.news.tagil.activity.activitySettings;
+import ru.news.tagil.activity.*;
 
 /**
  * Created by turbo_lover on 18.07.13.
@@ -52,13 +52,36 @@ public class compositeFirstButton extends LinearLayout
         switch (view.getId())
         {
             case R.id.first_tape_button:
+                try {
+                    Intent intent = new Intent(getContext(), activityNewsPreview.class);
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.first_dialogs_button:
+                try {
+                    Intent intent = new Intent(getContext(), activityMessages.class);
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
-            case R.id.first_elect_button:
+            case R.id.first_elect_button: // избранное
+                try {
+                    Intent intent = new Intent(getContext(), activityFavoriteNews.class);
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.first_useful_button:
-
+                try {
+                    Intent intent = new Intent(getContext(), activityUseful.class);
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.first_setting_button:
                 try {
@@ -67,7 +90,6 @@ public class compositeFirstButton extends LinearLayout
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 break;
         }
     }

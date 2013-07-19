@@ -5,20 +5,46 @@
     android:background="#ECE8E2"
    >
 
-    <include
-        android:id="@+id/tape_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        layout="@layout/composite_massage_header" />
+    <LinearLayout
+            android:id="@+id/message_header"
 
-    <include
-        android:id="@+id/tape_first_nav"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        layout="@layout/composite_first_button_nav" />
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            >
+        <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/composite_massage_header" />
+    </LinearLayout>
+    <ScrollView
+            android:layout_below="@+id/message_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:id="@+id/message_list"
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+            android:id="@+id/message_first_nav"
+
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            >
+        <include
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/composite_first_button_nav" />
+    </LinearLayout>
 
 </RelativeLayout>

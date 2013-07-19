@@ -14,9 +14,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.activityNewsContent" ></activity>
-        <activity android:name=".activity.activityNewsPreview"  ></activity>
-        <activity android:name=".activity.activityRegistration" ></activity>
-        <activity android:name=".activity.activityLogin" android:label="@string/title_activity_hello" ></activity>
+        <activity android:name=".activity.activityNewsContent" />
+        <activity android:name=".activity.activityNewsPreview"/>
+        <activity android:name=".activity.activityRegistration" />
+        <activity android:name=".activity.activityLogin" />
+        <activity android:name=".activity.activitySettings" />
+
+
     </application>
 </manifest>

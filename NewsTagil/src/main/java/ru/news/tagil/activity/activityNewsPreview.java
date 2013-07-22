@@ -1,5 +1,5 @@
 package ru.news.tagil.activity;
-//TODO ДОПИСАТЬ ДЕЙСТВИЕ НА РЕФРЕШ
+//TODO add refresh button action
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,10 +38,6 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
 
         Initialize_Variable();
         SetCompositeElements();
-
-        //член
-
-        // TODO коментируем если нет Либерова :)
         getNewsHeaders();
     }
 

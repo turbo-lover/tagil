@@ -9,6 +9,7 @@
     <string name="serverAddress">http://192.168.1.110/</string>
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
+    <string name="getNewsUrl">get_news.php</string>
     <string name="registrationUrl">registration.php</string>
     <string name="login_error">Логин или пароль указаны неверно</string>
     <string name="login_fields_empty">Заполните поля</string>

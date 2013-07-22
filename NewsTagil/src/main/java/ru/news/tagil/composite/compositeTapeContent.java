@@ -1,6 +1,7 @@
 package ru.news.tagil.composite;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,7 +15,7 @@ import ru.news.tagil.R;
 public class compositeTapeContent extends RelativeLayout {
     TextView headerTextView,timeTextView,dateTextView,contentTextView;
     ImageView img;
-    public compositeTapeContent(Context context,String header,String time,String date) {
+    public compositeTapeContent(Context context,String header,String time,String date,String text,Bitmap bmp) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_tape_content,this);
@@ -22,10 +23,14 @@ public class compositeTapeContent extends RelativeLayout {
         timeTextView = (TextView) findViewById(R.id.composite_tape_content_time);
         dateTextView = (TextView) findViewById(R.id.composite_tape_content_date);
         contentTextView = (TextView) findViewById(R.id.composite_tape_content_post_content);
-       // img = (ImageView) findViewById();
+        img = (ImageView) findViewById(R.id.composite_tape_content_img);
         headerTextView.setText(header);
         timeTextView.setText(time);
         dateTextView.setText(date);
-
+        contentTextView.setText(text);
+        if(bmp != null) {
+            img.setImageBitmap(bmp);
+        } else {
+            img.setMaxHeight(0); }
     }
 }

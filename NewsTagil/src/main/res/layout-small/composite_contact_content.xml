@@ -33,7 +33,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/ads_button_bg"
-                            android:id="@+id/composite_contact_content_ava"
+                            android:id="@+id/composite_contact_content_avatar"
                             android:layout_gravity="center_horizontal|top"/>
 
                     <LinearLayout
@@ -65,6 +65,7 @@
                         <Button
                                 android:layout_width="200dp"
                                 android:layout_height="26dp"
+                                android:textColor="@color/lightGray"
                                 android:textSize="14dp"
                                 android:text="Начать диалог"
                                 android:background="@drawable/ads_button_bg"
@@ -78,7 +79,7 @@
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="25dp"
                         android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
                         android:background="#fffd8001"
@@ -90,7 +91,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Все фотографии"
                             android:layout_marginTop="2dp"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:textColor="#ff474747"
                             android:id="@+id/textView3"
                             android:layout_gravity="center"/>
@@ -202,7 +203,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -216,15 +217,26 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:textColor="#fffd8001"
                             android:text="Ищу:"
                             android:id="@+id/composite_contact_content_seek"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -238,15 +250,26 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Цели знакомства:"
                             android:layout_marginTop="12dp"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_for_znakomstv"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -259,16 +282,27 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Семейное положение:"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_polojenie"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -281,16 +315,27 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Хобби:"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_hobby"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -303,16 +348,27 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Любимая музыка:"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_music"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="40dp"
@@ -325,12 +381,23 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="О себе:"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_about"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="О себе:"
+                            android:textSize="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_about_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
             </RelativeLayout>

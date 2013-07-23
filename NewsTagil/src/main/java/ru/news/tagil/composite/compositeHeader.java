@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ru.news.tagil.R;
 import ru.news.tagil.activity.activityAds;
+import ru.news.tagil.activity.activityContact;
 import ru.news.tagil.activity.activityNewsPreview;
 import ru.news.tagil.utility.onUpdateClickListener;
 

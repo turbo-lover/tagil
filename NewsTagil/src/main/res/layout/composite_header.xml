@@ -13,7 +13,7 @@
         android:background="@drawable/first_header_bg"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
@@ -23,42 +23,46 @@
                 android:id="@+id/composite_header_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
                 android:background="@color/Transparent"
                 android:text="@string/header_main_button"
-                android:textColor="#4D433A" />
+                android:textColor="#4D433A"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"/>
 
             <Button
                 android:id="@+id/composite_header_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12dp"
                 android:background="@color/Transparent"
                 android:text="@string/header_main_contact"
-                android:textColor="#4D433A" />
+                android:textColor="#4D433A"
+                android:layout_alignTop="@+id/composite_header_main"
+                android:layout_toRightOf="@+id/composite_header_main"/>
 
             <Button
                 android:id="@+id/composite_header_ads"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:background="@color/Transparent"
                 android:text="@string/ads"
-                android:textColor="#4D433A" />
+                android:textColor="#4D433A"
+                android:layout_alignTop="@+id/composite_header_contact"
+                android:layout_toRightOf="@+id/composite_header_contact"
+                android:layout_marginLeft="12dp"/>
 
             <Button
                 android:id="@+id/composite_header_update"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="17dp"
-                android:background="@drawable/first_header_button" />
+                android:layout_marginRight="20dp"
+                android:background="@drawable/first_header_button"
+                android:layout_alignTop="@+id/composite_header_ads"
+                android:layout_alignParentRight="true"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="150dp"
@@ -81,32 +85,55 @@
 
                 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="97dp"
                     android:layout_height="30dp"
-                    android:orientation="vertical" >
+                    >
 
                     <TextView
                         android:id="@+id/composite_header_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:text="сейчас:"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/composite_header_now"
                         android:textColor="#FC8000"
-                        android:textSize="10dp" />
+                        android:textSize="10dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"/>
 
-                   <TextView
+                    <TextView
+                            android:id="@+id/composite_header_now_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_alignBaseline="@+id/composite_header_now"
+                            android:layout_alignBottom="@+id/composite_header_now"
+                            android:layout_toRightOf="@+id/composite_header_now"
+                            android:layout_marginLeft="5dp"/>
+
+                    <TextView
                     android:id="@+id/composite_header_tomorrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="0dp"
                     android:textSize="10dp"
                     android:textColor="#fff"
-                    android:text="завтра:" /> 
-                    
-                </LinearLayout>
+                    android:text="завтра:"
+                    android:layout_below="@+id/composite_header_now"
+                    android:layout_alignRight="@+id/composite_header_now"/>
+
+                    <TextView
+                            android:id="@+id/composite_header_tomorrow_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_below="@+id/composite_header_now_content"
+                            android:layout_alignLeft="@+id/composite_header_now_content"
+                            android:layout_marginLeft="5dp"/>
+
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -122,7 +149,6 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/first_header_search" >
 
-                    <requestFocus />
                 </EditText>
 
             </LinearLayout>

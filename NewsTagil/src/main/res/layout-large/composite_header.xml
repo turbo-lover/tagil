@@ -86,34 +86,58 @@
                     android:layout_marginTop="2dp"
                     android:src="@drawable/first_header_cloud" />
 
-                
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
 
-                    <TextView
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+
+                <TextView
                         android:id="@+id/composite_header_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="2dp"
-                        android:text="сейчас:"
+                        android:text="@string/composite_header_now"
                         android:textColor="#FC8000"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"/>
 
+                    <TextView
+                            android:id="@+id/composite_header_now_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/composite_header_now"
+                            android:layout_alignTop="@+id/composite_header_now"
+                            android:layout_alignBottom="@+id/composite_header_now"/>
                    <TextView
                         android:id="@+id/composite_header_tomorrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="0dp"
                         android:textSize="16dp"
                         android:textColor="#fff"
-                        android:text="завтра:" />
+                        android:text="завтра:"
+                        android:maxLines="1"
+                        android:layout_below="@+id/composite_header_now"
+                        android:layout_alignLeft="@+id/composite_header_now"/>
+                    <TextView
+                            android:id="@+id/composite_header_tomorrow_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_alignTop="@+id/composite_header_tomorrow"
+                            android:layout_toRightOf="@+id/composite_header_tomorrow"
+                            android:layout_alignBottom="@+id/composite_header_tomorrow"/>
                     
-                </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -129,7 +153,6 @@
                     android:layout_marginTop="6dp"
                     android:background="@drawable/first_header_search" >
 
-                    <requestFocus />
                 </EditText>
 
             </LinearLayout>

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ECE8E2"
+    android:background="@color/lightGray"
    >
 
 
@@ -23,7 +23,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:paddingBottom="10dp"
-                        android:background="#ECE8E2"
+                        android:background="@color/lightGray"
                         android:id="@+id/linearLayout22">
 
                     <ImageView
@@ -33,7 +33,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/ads_button_bg"
-                            android:id="@+id/composite_contact_content_ava"
+                            android:id="@+id/composite_contact_content_avatar"
                             android:layout_gravity="center_horizontal|top"/>
 
                     <LinearLayout
@@ -202,7 +202,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -220,11 +220,22 @@
                             android:textColor="#fffd8001"
                             android:text="Ищу:"
                             android:id="@+id/composite_contact_content_seek"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12dp"
+                            android:textColor="#fffd8001"
+                            android:text="Ищу:"
+                            android:id="@+id/composite_contact_content_seek_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -242,11 +253,22 @@
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_for_znakomstv"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Цели знакомства:"
+                            android:layout_marginTop="12dp"
+                            android:textSize="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_for_znakomstv_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -264,11 +286,22 @@
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_polojenie"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Семейное положение:"
+                            android:textSize="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_polojenie_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -286,11 +319,22 @@
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_hobby"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Хобби:"
+                            android:textSize="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_hobby_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
@@ -308,11 +352,22 @@
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_music"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Любимая музыка:"
+                            android:textSize="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_music_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="40dp"
@@ -330,7 +385,18 @@
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_about"
-                            android:layout_gravity="left|center_vertical"/>
+                            android:layout_gravity="left"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="О себе:"
+                            android:textSize="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#fffd8001"
+                            android:id="@+id/composite_contact_content_about_content"
+                            android:layout_gravity="left"/>
                 </LinearLayout>
 
             </RelativeLayout>

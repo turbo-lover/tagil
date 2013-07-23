@@ -31,6 +31,6 @@ public class compositeTapeContent extends RelativeLayout {
         if(bmp != null) {
             img.setImageBitmap(bmp);
         } else {
-            img.setMaxHeight(0); }
+            img.setMaxHeight(0); }// wat ? O_o https://si0.twimg.com/profile_images/2727748211/c3d0981ae770f926eedf4eda7505b006.jpeg
     }
 }

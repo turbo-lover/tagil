@@ -20,8 +20,4 @@
             android:id="@+id/include_cont"
             android:layout_below="@+id/include"
             android:layout_alignParentLeft="true"/>
-
-
-
-
 </RelativeLayout>

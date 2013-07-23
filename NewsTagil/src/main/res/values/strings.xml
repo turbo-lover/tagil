@@ -20,5 +20,6 @@
     <string name="header_main_button">Главная</string>
     <string name="header_main_contact">Знакомства</string>
     <string name="ads">Объявления</string>
+    <string name="composite_header_now">сейчас:</string>
 
 </resources>

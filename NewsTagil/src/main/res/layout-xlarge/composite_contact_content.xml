@@ -63,8 +63,8 @@
                                 android:id="@+id/composite_contact_content_info"/>
 
                         <Button
-                                android:layout_width="300dp"
-                                android:layout_height="36dp"
+                                android:layout_width="320dp"
+                                android:layout_height="48dp"
                                 android:textSize="22dp"
                                 android:layout_marginTop="12dp"
                                 android:text="Начать диалог"
@@ -84,7 +84,7 @@
                         android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
                         android:background="#fffd8001"
-                        android:id="@+id/linearLayout2">
+                        android:id="@+id/contact_photo_panel">
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="130dp"
                         android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout2"
+                        android:layout_below="@+id/contact_photo_panel"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/linearLayout3">
 
@@ -116,89 +116,14 @@
 
                 android:layout_alignLeft="@+id/imageView3">
 
-                    <RelativeLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="120dp"
-                            android:paddingTop="10dp">
-
-                    <LinearLayout android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content">
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView2"
-                                android:layout_gravity="left|center_vertical"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView3"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView4"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="120dp"
+                          android:orientation="horizontal"
+                          android:id="@+id/composite_lin_lay_user_images"
+                    >
 
 
-                    </LinearLayout>
-
-                    </RelativeLayout>
+            </LinearLayout>
 
         </HorizontalScrollView>
 
@@ -217,7 +142,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="20dp"
                             android:textColor="#fffd8001"
@@ -228,7 +152,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="20dp"
                             android:textColor="#fffd8001"
@@ -251,7 +174,6 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Цели знакомства:"
-                        android:layout_marginTop="16dp"
                         android:textSize="20dp"
                         android:layout_marginLeft="10dp"
                         android:textColor="#fffd8001"
@@ -262,7 +184,6 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Цели знакомства:"
-                            android:layout_marginTop="16dp"
                             android:textSize="20dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
@@ -285,7 +206,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Семейное положение:"
                             android:textSize="20dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_polojenie"
@@ -296,7 +216,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Семейное положение:"
                             android:textSize="20dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_polojenie_content"
@@ -318,7 +237,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Хобби:"
                             android:textSize="20dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_hobby"
@@ -351,7 +269,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Любимая музыка:"
                             android:textSize="20dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_music"
@@ -362,7 +279,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Любимая музыка:"
                             android:textSize="20dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_music_content"
@@ -384,7 +300,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="О себе:"
                             android:textSize="22dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_about"
@@ -395,7 +310,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="О себе:"
                             android:textSize="22dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_about_content"

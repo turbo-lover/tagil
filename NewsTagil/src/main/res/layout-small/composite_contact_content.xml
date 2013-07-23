@@ -83,7 +83,7 @@
                         android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
                         android:background="#fffd8001"
-                        android:id="@+id/linearLayout2">
+                        android:id="@+id/contact_photo_panel">
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="80dp"
                         android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout2"
+                        android:layout_below="@+id/contact_photo_panel"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/linearLayout3">
 
@@ -114,89 +114,14 @@
                 android:layout_centerVertical="true"
                 android:layout_alignLeft="@+id/imageView3">
 
-                    <RelativeLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="80dp"
-                            android:paddingTop="10dp">
-
-                    <LinearLayout android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content">
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView2"
-                                android:layout_gravity="left|center_vertical"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView3"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView4"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
-
-                        <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/imageView5"
-                                android:layout_gravity="center"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="80dp"
+                          android:orientation="horizontal"
+                          android:id="@+id/composite_lin_lay_user_images"
+                    >
 
 
-                    </LinearLayout>
-
-                    </RelativeLayout>
+            </LinearLayout>
 
         </HorizontalScrollView>
 
@@ -215,7 +140,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
@@ -226,7 +150,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
@@ -249,7 +172,6 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Цели знакомства:"
-                            android:layout_marginTop="12dp"
                             android:textSize="16dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
@@ -259,7 +181,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
@@ -283,7 +204,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Семейное положение:"
                             android:textSize="16dp"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_polojenie"
@@ -292,7 +212,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
@@ -316,7 +235,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Хобби:"
                             android:textSize="16dp"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_hobby"
@@ -325,7 +243,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
@@ -349,7 +266,6 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Любимая музыка:"
                             android:textSize="16dp"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="#fffd8001"
                             android:id="@+id/composite_contact_content_music"
@@ -358,7 +274,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"

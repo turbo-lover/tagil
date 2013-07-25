@@ -24,12 +24,12 @@ import java.util.Calendar;
  * Created by Alexander on 15.07.13.
  */
 public class activityNewsPreview extends Activity implements onScrollViewChangedListener,View.OnClickListener {
-    myPreferencesWorker preferences_worker;
-    myScrollView scroller;
-    compositeFirstButton cfb;
-    LinearLayout ll, navigation_footter;
-    int total_news_count;
-    final int GET_NEWS_COUNT = 10; // Количество новостей подгружаемых за раз.
+    private myPreferencesWorker preferences_worker;
+    private myScrollView scroller;
+    private compositeFirstButton cfb;
+    private LinearLayout ll, navigation_footter;
+    private int total_news_count;
+    private final int GET_NEWS_COUNT = 10; // Количество новостей подгружаемых за раз.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

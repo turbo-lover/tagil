@@ -14,7 +14,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.activityMain" android:label="@string/title_activity_hello" >
+        <activity android:name=".activity.activityMain" >
         </activity>
 
         <activity android:name=".activity.activityNewsContent" />

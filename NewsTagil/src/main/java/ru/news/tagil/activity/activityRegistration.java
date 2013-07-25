@@ -9,11 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-
 import ru.news.tagil.R;
 import ru.news.tagil.utility.myAsyncTaskWorker;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Alexander on 16.07.13.
@@ -34,7 +33,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
 
     private void SetEventListeners() {
         registration.setOnClickListener(this);
-
     }
 
     private void InitializeComponent() {
@@ -42,7 +40,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
         pass = (EditText) findViewById(R.id. reg_pass);
         mail = (EditText) findViewById(R.id. reg_mail);
         login = (EditText) findViewById(R.id. reg_login);
-
     }
 
 
@@ -116,7 +113,7 @@ public class activityRegistration extends Activity implements View.OnClickListen
         if(login.getText().length()>=3) return true;
 
         login.requestFocusFromTouch();
-        Toast.makeText(this, getResources().getText(R.string.empty_login), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -130,7 +127,7 @@ public class activityRegistration extends Activity implements View.OnClickListen
         if(pass.getText().length()!=0) return true;
 
         pass.requestFocusFromTouch();
-        Toast.makeText(this, getResources().getText(R.string.empty_pass), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.empty_pass), Toast.LENGTH_SHORT).show();
         return false;
     }
 }

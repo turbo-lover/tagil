@@ -11,11 +11,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
+import ru.news.tagil.composite.compositeHeader;
 import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 import ru.news.tagil.utility.myScrollView;
 import ru.news.tagil.utility.onScrollViewChangedListener;
+import ru.news.tagil.utility.onUpdateClickListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,11 +25,12 @@ import java.util.Calendar;
 /**
  * Created by Alexander on 15.07.13.
  */
-public class activityNewsPreview extends Activity implements onScrollViewChangedListener,View.OnClickListener {
+public class activityNewsPreview extends Activity implements onScrollViewChangedListener,View.OnClickListener,onUpdateClickListener {
     private myPreferencesWorker preferences_worker;
     private myScrollView scroller;
     private compositeFirstButton cfb;
-    private LinearLayout ll, navigation_footter;
+    private compositeHeader compositeHeader;
+    private LinearLayout ll, navigation_footter,tape_header;
     private int total_news_count;
     private final int GET_NEWS_COUNT = 10; // Количество новостей подгружаемых за раз.
 
@@ -43,22 +46,63 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
     private void SetCompositeElements() {
         try {
             cfb = new compositeFirstButton(this);
+            compositeHeader = new compositeHeader(this,"0","2");  //TODO допилить получение погоды
             navigation_footter.addView(cfb);
+            tape_header.addView(compositeHeader);
+            compositeHeader.SetUpdateListener(this);
         } catch (Exception e) {
             e.printStackTrace(); }
+    }
+
+    private int GetTotalNewsCount() {
+        myAsyncTaskWorker worker = new myAsyncTaskWorker();
+        JSONObject obj_to_send = new JSONObject();
+        int n = 0;
+        try{
+            obj_to_send.put("table_name","news");
+            worker.execute(obj_to_send,getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
+            JSONObject jo = worker.get();
+            return Integer.parseInt(jo.getString("result"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("GET_TOTAL_NEWS_COUNT_Exception", ex.getMessage() + "____________" + ex.toString());
+        }
+        return n;
     }
 
     private void Initialize_Variable() {
         scroller = (myScrollView) findViewById(R.id.news_headers_scroller);
         ll = (LinearLayout) findViewById(R.id.news_headers_content_holder);
+        tape_header = (LinearLayout) findViewById(R.id.tape_header);
         navigation_footter = (LinearLayout) findViewById(R.id.tape_first_nav);
         preferences_worker = new myPreferencesWorker(this);
-        total_news_count = 0;
+        total_news_count = GetTotalNewsCount();
         scroller.setListener(this);
+
+    }
+
+    private void getNewNewsHeaders() {
+        myAsyncTaskWorker worker = new myAsyncTaskWorker();
+        JSONObject sends_data = new JSONObject();
+        try {
+            String send_time = null;
+            if(ll.getChildCount() == 0) {
+                send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            } else {
+                compositeTapePreview c = (compositeTapePreview) ll.getChildAt(0);
+                send_time = c.getDateTime();
+            }
+            sends_data.put("time",send_time);
+            worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.getNewsHeadersUrl));
+            addHeaders(worker.get(),true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("GET_NEWS_HEADERS_Exception", ex.getMessage() + "____________" + ex.toString());
+        }
     }
 
     private void getNewsHeaders() {
-        if(ll.getChildCount() == total_news_count && total_news_count != 0) {
+        if(ll.getChildCount() == total_news_count) {
             return; }
         myAsyncTaskWorker worker = new myAsyncTaskWorker();
         JSONObject sends_data = new JSONObject();
@@ -67,30 +111,25 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
             String send_time = null;
             if(ll.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-                sends_data.put("total_news_count",true);
             } else {
                 compositeTapePreview c = (compositeTapePreview) ll.getChildAt(ll.getChildCount() - 1);
                 send_time = c.getDateTime();
-                sends_data.put("total_news_count",false);
             }
             sends_data.put("time",send_time);
-            worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.getNewsHeadersUrl));
-            JSONObject resivedJObj = worker.get();
-            addHeaders(resivedJObj);
+            worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.getNewsHeadersUrl));
+            addHeaders(worker.get(),false);
         } catch (Exception ex) {
             ex.printStackTrace();
             Log.d("GET_NEWS_HEADERS_Exception", ex.getMessage() + "____________" + ex.toString());
         }
     }
 
-    private void addHeaders(JSONObject jo) {
+    private void addHeaders(JSONObject jo,boolean insert) {
         try{
             if(jo.getString("status").equals("error")){
                 Toast.makeText(this,jo.getString("errormsg"),Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(jo.has("total_news_count")) {
-                total_news_count = Integer.parseInt(jo.getString("total_news_count")); }
             JSONArray arr = jo.getJSONArray("result");
             for (int i = 0; i < arr.length();i++) {
                 JSONObject obj =  arr.getJSONObject(i);
@@ -99,7 +138,10 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
                         s[1],obj.getString("header"));
                 compositeTapePreview.setOnClickListener(this);
                 compositeTapePreview.setTag(obj.getString("id"));
-                ll.addView(compositeTapePreview);
+                if(insert){
+                    ll.addView(compositeTapePreview,0+i);
+                } else {
+                    ll.addView(compositeTapePreview); }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -121,5 +163,14 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
         i.putExtra("header",c.getHeader());
         i.putExtra("id_news",(String) c.getTag());
         startActivity(i);
+    }
+
+    @Override
+    public void UpdateButtonClicks() {
+        int new_count = GetTotalNewsCount();
+        if(new_count > total_news_count) {
+            total_news_count = new_count;
+            getNewNewsHeaders();
+        }
     }
 }

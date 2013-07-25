@@ -5,13 +5,12 @@
     android:background="#ECE8E2"
    >
 
-    <include
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/tape_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        layout="@layout/composite_header" />
+        android:layout_alignParentTop="true" />
 
 
     <ru.news.tagil.utility.myScrollView
@@ -19,8 +18,8 @@
             android:layout_width="match_parent"
             android:paddingBottom="10dp"
             android:id="@+id/news_headers_scroller"
-            android:layout_below="@id/tape_header"
-            android:layout_alignBottom="@id/tape_first_nav">
+            android:layout_below="@+id/tape_header"
+            android:layout_above="@+id/tape_first_nav">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -33,15 +32,11 @@
     </ru.news.tagil.utility.myScrollView>
 
     <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/tape_first_nav"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             />
-
-
-
-
 
 </RelativeLayout>

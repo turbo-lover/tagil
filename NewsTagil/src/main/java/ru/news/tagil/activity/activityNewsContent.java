@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ScrollView;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeTapeContent;
@@ -37,7 +39,7 @@ public class activityNewsContent extends Activity  {
         try {
             sends_data.put("id_news",i.getStringExtra("id_news"));
             sends_data.put("login",preferences_worker.get_login());
-            worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.getNewsUrl));
+            worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.getNewsUrl));
             return worker.get();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -48,7 +50,7 @@ public class activityNewsContent extends Activity  {
 
     private void SetContent(JSONObject obj) {
         try {
-            JSONObject result = obj.getJSONArray("result").getJSONObject(0);
+            JSONObject result = obj.getJSONObject("result");
             byte[] e = result.getString("news_image").getBytes();
             byte[] imgbyte = Base64.decode(e,0);
             Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);

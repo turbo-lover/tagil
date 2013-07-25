@@ -1,4 +1,5 @@
-package ru.news.tagil.composite;/**
+package ru.news.tagil.composite;
+/**
  * Created by turbo_lover on 19.07.13.
  */
 
@@ -33,7 +34,6 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
     private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_header,this);
-
         main = (Button) findViewById(R.id.composite_header_main);
         contact = (Button) findViewById(R.id.composite_header_contact );
         ads = (Button) findViewById(R.id.composite_header_ads );

@@ -6,17 +6,17 @@
    >
 
 
-    <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/composite_header_ads"
-            android:layout_alignParentTop="true"
-            android:id="@+id/include"/>
-    <include
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            layout="@layout/composite_ads_selector"
-            android:layout_below="@+id/include"
+            android:layout_alignParentTop="true"
+            android:id="@+id/activity_ads_include"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_ads_include"
             android:id="@+id/ads_selector"/>
 
     <ru.news.tagil.utility.myScrollView

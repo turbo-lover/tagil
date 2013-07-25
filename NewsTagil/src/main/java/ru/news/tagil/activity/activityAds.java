@@ -51,6 +51,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
         try {
             ads_header = new compositeHeaderAds(this,"0","2");
             ads_header_ll.addView(ads_header);
+
         } catch (Exception e) {
             e.printStackTrace(); }
     }
@@ -62,7 +63,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
     private void Initialize_Component() {
         ads_content = (LinearLayout) findViewById(R.id.ads_content_holder);
         ads_scroller = (myScrollView) findViewById(R.id.ads_scroller);
-        ads_header_ll = (LinearLayout) findViewById(R.id.include);
+        ads_header_ll = (LinearLayout) findViewById(R.id.activity_ads_include);
     }
 
     @Override

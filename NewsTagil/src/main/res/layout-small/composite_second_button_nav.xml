@@ -9,32 +9,38 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#000"
+        android:background="@color/Black"
         android:paddingLeft="0dp" >
 
-        <Button
+        <ImageView
             android:id="@+id/like"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_like" />
+            android:src="@drawable/second_nav_like"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
 
-        <Button
+        <ImageView
             android:id="@+id/comment"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_comment" />
+            android:src="@drawable/second_nav_comment"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
 
-        <Button
+        <ImageView
             android:id="@+id/elect"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_elect" />
+            android:src="@drawable/second_nav_elect"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
     </LinearLayout>
 
 </RelativeLayout>

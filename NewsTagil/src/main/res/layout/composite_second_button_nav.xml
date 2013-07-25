@@ -1,9 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity" >
-
+     >
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -12,29 +10,34 @@
         android:background="#000"
         android:paddingLeft="0dp" >
 
-        <Button
+        <ImageView
             android:id="@+id/like"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/second_button_height"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_like" />
+            android:src="@drawable/second_nav_like"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
 
-        <Button
+        <ImageView
             android:id="@+id/comment"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/second_button_height"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_comment" />
+            android:src="@drawable/second_nav_comment"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
 
-        <Button
+        <ImageView
             android:id="@+id/elect"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/second_button_height"
             android:layout_weight="1"
-            android:background="@drawable/second_nav_elect" />
+            android:src="@drawable/second_nav_elect"
+            android:scaleType="fitXY"
+            android:background="@color/lightGray"/>
     </LinearLayout>
-
 </RelativeLayout>

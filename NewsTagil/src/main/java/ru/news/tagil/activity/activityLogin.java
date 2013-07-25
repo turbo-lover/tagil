@@ -10,12 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-
 import ru.news.tagil.R;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -70,7 +69,7 @@ public class activityLogin extends Activity implements View.OnClickListener {
            try {
                sends_data.put("login", login.getText());
                sends_data.put("pass", password.getText());
-               worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.loginUrl));
+               worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.loginUrl));
                ParsingResponse(worker.get());
            }
            catch (JSONException e) {

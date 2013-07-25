@@ -5,33 +5,6 @@
     android:background="#ECE8E2"
    >
 
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/nav_buttons">
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Создать объявления"
-                android:textColor="#ff474747"
-                android:textSize="13dp"
-                android:layout_weight="1"
-                android:id="@+id/composite_ads_first_tab"
-                android:background="@drawable/border_img"
-                />
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="   Мои объявления     "
-                android:textColor="#ff474747"
-                android:textSize="13dp"
-                android:layout_weight="1"
-                android:id="@+id/composite_ads_second_tab"
-                android:background="@drawable/border_img"
-                />
-
-    </LinearLayout>
 
     <LinearLayout
             android:layout_width="fill_parent"

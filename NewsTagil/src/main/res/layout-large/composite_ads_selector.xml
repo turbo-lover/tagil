@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/nav_buttons">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Создать объявления"
+            android:textColor="#ff474747"
+            android:textSize="16dp"
+            android:layout_weight="1"
+            android:id="@+id/composite_ads_first_tab"
+            android:background="@drawable/border_img"
+            />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="   Мои объявления     "
+            android:textColor="#ff474747"
+            android:textSize="16dp"
+            android:layout_weight="1"
+            android:id="@+id/composite_ads_second_tab"
+            android:background="@drawable/border_img"
+            />
+
+</LinearLayout>

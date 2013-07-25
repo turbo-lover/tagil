@@ -2,15 +2,21 @@
 <resources>
 <!-- -->
     <string name="app_name">TagilNews</string>
-    <string name="action_settings">Settings</string>
-
     <string name="favorite">Избранное</string>
-    <string name="title_activity_hello">Hello</string>
     <string name="serverAddress">http://192.168.1.110/</string>
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
+    <string name="getTotalIdCountUrl">get_total_id_count.php</string>
+    <string name="addAdvertUrl">add_advert.php</string>
+    <string name="addCommentUrl">add_comment.php</string>
+    <string name="addMessageUrl">add_message.php</string>
+    <string name="getAdvertsHeadersUrl">get_adverts_headers.php</string>
+    <string name="getCommentsUrl">get_comments.php</string>
+    <string name="getFavoritesUrl">get_favorites.php</string>
     <string name="getNewsUrl">get_news.php</string>
     <string name="registrationUrl">registration.php</string>
+    <string name="getInterlocutorsUrl">get_interlocutors.php</string>
+    <string name="getMessagesUrl">get_messages.php</string>
     <string name="login_error">Логин или пароль указаны неверно</string>
     <string name="login_fields_empty">Заполните поля</string>
     <string name="wrong_mail">Некоректный e-mail</string>

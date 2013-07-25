@@ -1,5 +1,5 @@
 package ru.news.tagil.activity;
-
+//TODO на обновлении проверять не появились ли новые новости
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,19 +7,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeTapeContent;
-import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 
@@ -29,14 +20,33 @@ import ru.news.tagil.utility.myPreferencesWorker;
 public class activityNewsContent extends Activity  {
     ScrollView main_scroller;
     myPreferencesWorker preferences_worker;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_post);
-        Intent i = getIntent();
+        i = getIntent();
         main_scroller = (ScrollView) findViewById(R.id.read_post_scroller);
         preferences_worker = new myPreferencesWorker(this);
-        JSONObject obj = getTextAndImage(i);
+        SetContent(getTextAndImage());
+    }
+
+    private JSONObject getTextAndImage() {
+        myAsyncTaskWorker worker = new myAsyncTaskWorker();
+        JSONObject sends_data = new JSONObject();
+        try {
+            sends_data.put("id_news",i.getStringExtra("id_news"));
+            sends_data.put("login",preferences_worker.get_login());
+            worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.getNewsUrl));
+            return worker.get();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("GET_TEXT_AND_IMAGE_Exception", ex.getMessage() + "____________" + ex.toString());
+        }
+        return null;
+    }
+
+    private void SetContent(JSONObject obj) {
         try {
             JSONObject result = obj.getJSONArray("result").getJSONObject(0);
             byte[] e = result.getString("news_image").getBytes();
@@ -47,22 +57,7 @@ public class activityNewsContent extends Activity  {
             main_scroller.addView(t);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("ACT_NEWS_CONTENT_ONCREATE_Exception", ex.getMessage() + "____________" + ex.toString());
+            Log.d("SET_CONTENT_NEWS_Exception", ex.getMessage() + "____________" + ex.toString());
         }
-    }
-
-    private JSONObject getTextAndImage(Intent intent) {
-        myAsyncTaskWorker worker = new myAsyncTaskWorker();
-        JSONObject sends_data = new JSONObject();
-        try {
-            sends_data.put("id_news",intent.getStringExtra("id_news"));
-            sends_data.put("login",preferences_worker.get_login());
-            worker.execute(sends_data,getResources().getString(R.string.serverAddress)+getResources().getString(R.string.getNewsUrl));
-            return worker.get();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("GET_TEXT_AND_IMAGE_Exception", ex.getMessage() + "____________" + ex.toString());
-        }
-        return null;
     }
 }

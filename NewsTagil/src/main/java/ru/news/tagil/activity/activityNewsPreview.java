@@ -30,6 +30,7 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
     private LinearLayout ll, navigation_footter;
     private int total_news_count;
     private final int GET_NEWS_COUNT = 10; // Количество новостей подгружаемых за раз.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

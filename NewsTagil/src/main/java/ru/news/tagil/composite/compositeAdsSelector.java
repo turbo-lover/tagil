@@ -18,7 +18,9 @@ public class compositeAdsSelector extends LinearLayout implements View.OnClickLi
     Button createNewAds,personalAds;
     public compositeAdsSelector(Context context) {
         super(context);
-        Initialize_Component();
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.composite_ads_selector,this);
+        Initialize_Component(v);
         SetEventListeners();
     }
 
@@ -27,11 +29,9 @@ public class compositeAdsSelector extends LinearLayout implements View.OnClickLi
         personalAds.setOnClickListener(this);
     }
 
-    private void Initialize_Component() {
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.composite_ads_selector,this);
-        createNewAds = (Button) findViewById(R.id.composite_ads_first_tab);
-        personalAds = (Button) findViewById(R.id.composite_ads_second_tab);
+    private void Initialize_Component(View convertedView) {
+        createNewAds = (Button) convertedView.findViewById(R.id.composite_ads_first_tab);
+        personalAds = (Button) convertedView.findViewById(R.id.composite_ads_second_tab);
     }
 
     @Override

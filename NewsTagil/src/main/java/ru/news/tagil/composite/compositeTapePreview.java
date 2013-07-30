@@ -2,6 +2,7 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ru.news.tagil.R;
@@ -13,18 +14,18 @@ public class compositeTapePreview extends RelativeLayout {
 
     public compositeTapePreview(Context context, String date, String time, String header) {
         super(context);
-        Initialize_Component();
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.composite_tape_preview,this);
+        View v = inflater.inflate(R.layout.composite_tape_preview,this);
+        Initialize_Component(v);
         dateTextView.setText(date);
         timeTextView.setText(time);
         headerTextView.setText(header);
     }
 
-    private void Initialize_Component() {
-        dateTextView = (TextView) findViewById(R.id.composite_tape_preview_date);
-        timeTextView = (TextView) findViewById(R.id.composite_tape_preview_time);
-        headerTextView = (TextView) findViewById(R.id.composite_tape_preview_name_post);
+    private void Initialize_Component(View convertedView) {
+        dateTextView = (TextView) convertedView.findViewById(R.id.composite_tape_preview_date);
+        timeTextView = (TextView) convertedView.findViewById(R.id.composite_tape_preview_time);
+        headerTextView = (TextView) convertedView.findViewById(R.id.composite_tape_preview_name_post);
     }
 
     public String getDateTime() {

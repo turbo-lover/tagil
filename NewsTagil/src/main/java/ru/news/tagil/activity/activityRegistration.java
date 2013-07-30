@@ -62,12 +62,9 @@ public class activityRegistration extends Activity implements View.OnClickListen
             jObj.put("login",login.getText());
             jObj.put("pass",pass.getText());
             jObj.put("email",mail.getText());
-
             worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
             jObj = worker.get();
-
             String status = jObj.getString("status");
-
             if(status.equals("ok")) ToTapeActivity();
 
             if(status.equals("denied")){

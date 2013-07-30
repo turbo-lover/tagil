@@ -20,9 +20,9 @@ import ru.news.tagil.utility.myPreferencesWorker;
  * Created by turbo_lover on 12.07.13.
  */
 public class activityNewsContent extends Activity  {
-    ScrollView main_scroller;
-    myPreferencesWorker preferences_worker;
-    Intent i;
+    private ScrollView main_scroller;
+    private myPreferencesWorker preferences_worker;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,7 @@ public class activityNewsContent extends Activity  {
         try {
             sends_data.put("id_news",i.getStringExtra("id_news"));
             sends_data.put("login",preferences_worker.get_login());
+            sends_data.put("pass",preferences_worker.get_pass());
             worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.getNewsUrl));
             return worker.get();
         } catch (Exception ex) {

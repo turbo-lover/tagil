@@ -26,20 +26,20 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
 
     public compositeHeader(Context context,String weather_now,String weather_tomorrow) {
         super(context);
-        Initialize_Component();
+        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.composite_header,this);
+        Initialize_Component(v);
         SetEventListeners();
         UpdateWeather(weather_now,weather_tomorrow);
     }
 
-    private void Initialize_Component() {
-        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.composite_header,this);
-        main = (Button) findViewById(R.id.composite_header_main);
-        contact = (Button) findViewById(R.id.composite_header_contact );
-        ads = (Button) findViewById(R.id.composite_header_ads );
-        update = (Button) findViewById(R.id.composite_header_update );
-        tomorrow = (TextView) findViewById(R.id.composite_header_tomorrow_content);
-        now = (TextView) findViewById(R.id.composite_header_now_content);
+    private void Initialize_Component(View convertedView) {
+        main = (Button) convertedView.findViewById(R.id.composite_header_main);
+        contact = (Button) convertedView.findViewById(R.id.composite_header_contact );
+        ads = (Button) convertedView.findViewById(R.id.composite_header_ads );
+        update = (Button) convertedView.findViewById(R.id.composite_header_update );
+        tomorrow = (TextView) convertedView.findViewById(R.id.composite_header_tomorrow_content);
+        now = (TextView) convertedView.findViewById(R.id.composite_header_now_content);
     }
 
     private void SetEventListeners() {

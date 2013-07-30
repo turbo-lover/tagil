@@ -17,13 +17,11 @@ public class compositeFirstButton extends LinearLayout
 
     Button tape,dialog,elect,useful,setting;
 
-
     public compositeFirstButton(Context context) {
         super(context);
 
         InitVariable();
         SetListeners();
-
     }
 
     private void SetListeners() {
@@ -45,48 +43,48 @@ public class compositeFirstButton extends LinearLayout
         setting =(Button) findViewById( R.id.first_setting_button);
     }
 
-
     @Override
     public void onClick(View view) {
-
+        Context context = getContext();
         switch (view.getId())
         {
             case R.id.first_tape_button:
                 try {
-                    Intent intent = new Intent(getContext(), activityNewsPreview.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(context, activityNewsPreview.class);
+                    context.startActivity(intent);
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_dialogs_button:
                 try {
-                    Intent intent = new Intent(getContext(), activityMessages.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(context, activityMessages.class);
+                    context.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_elect_button: // избранное
                 try {
-                    Intent intent = new Intent(getContext(), activityFavoriteNews.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(context, activityFavoriteNews.class);
+                    context.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_useful_button:
                 try {
-                    Intent intent = new Intent(getContext(), activityUseful.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(context, activityUseful.class);
+                    context.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_setting_button:
                 try {
-                    Intent intent = new Intent(getContext(), activitySettings.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(context, activitySettings.class);
+                    context.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

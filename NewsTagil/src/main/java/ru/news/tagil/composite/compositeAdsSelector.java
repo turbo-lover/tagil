@@ -32,7 +32,6 @@ public class compositeAdsSelector extends LinearLayout implements View.OnClickLi
         inflater.inflate(R.layout.composite_ads_selector,this);
         createNewAds = (Button) findViewById(R.id.composite_ads_first_tab);
         personalAds = (Button) findViewById(R.id.composite_ads_second_tab);
-
     }
 
     @Override

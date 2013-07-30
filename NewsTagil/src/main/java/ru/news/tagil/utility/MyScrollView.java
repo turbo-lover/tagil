@@ -22,13 +22,12 @@ public class myScrollView extends ScrollView {
     {
         listener = outside_listener;
     }
-
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         View view = getChildAt(getChildCount()-1);
         int diff = (view.getBottom()-(getHeight()+getScrollY())); // Calculate the scroll diff
-        if( diff <= 0 ){  // if diff is zero, then the bottom has been reached
-          if(listener!=null) listener.onScrollHitBottom(this, l, t, oldl, oldt);
+        if( diff <= 0 ){        // if diff is zero, then the bottom has been reached
+            if(listener!=null) listener.onScrollHitBottom(this, l, t, oldl, oldt);
         }
         super.onScrollChanged(l, t, oldl, oldt);
     }

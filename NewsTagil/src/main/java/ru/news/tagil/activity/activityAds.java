@@ -1,6 +1,7 @@
 package ru.news.tagil.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import ru.news.tagil.R;
-import ru.news.tagil.composite.compositeAdsContent;
+import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeAdsSelector;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.myAsyncTaskWorker;
@@ -78,15 +79,17 @@ public class activityAds extends Activity implements onScrollViewChangedListener
 
     @Override
     public void onClick(View view) {
-        /*
-        Intent i = new Intent(this,activityNewsContent.class);
-        compositeTapePreview c = (compositeTapePreview) view;
-        i.putExtra("time",c.getTime());
-        i.putExtra("date",c.getDate());
-        i.putExtra("header",c.getHeader());
-        i.putExtra("id_news",(String) c.getTag());
+        try {
+        Intent i = new Intent(this,activityReadAds.class);
+        compositeAdsPreview c = (compositeAdsPreview) view;
+        i.putExtra("title",c.getTitle());
+        i.putExtra("img",c.getImg());
+        i.putExtra("id_advert",(String) c.getTag());
         startActivity(i);
-        */
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("EXCEPTION",ex.getMessage());
+        }
     }
 
     @Override
@@ -102,7 +105,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
                 byte[] e = obj.getString("advert_image").getBytes();
                 byte[] imgbyte = Base64.decode(e, 0);
                 Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
-                compositeAdsContent compositeAdsPreview = new compositeAdsContent(this,obj.getString("header"),
+                compositeAdsPreview compositeAdsPreview = new ru.news.tagil.composite.compositeAdsPreview(this,obj.getString("header"),
                         obj.getString("login"),obj.getString("pub_date"),bmp);
                 compositeAdsPreview.setOnClickListener(this);
                 compositeAdsPreview.setTag(obj.getString("id"));
@@ -132,7 +135,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
             if(ads_content.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeAdsContent c = (compositeAdsContent) ads_content.getChildAt(ads_content.getChildCount() - 1);
+                compositeAdsPreview c = (compositeAdsPreview) ads_content.getChildAt(ads_content.getChildCount() - 1);
                 send_time = c.getDate();
             }
             jo.put("time",send_time);
@@ -155,7 +158,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
             if(ads_content.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeAdsContent c = (compositeAdsContent) ads_content.getChildAt(0);
+                compositeAdsPreview c = (compositeAdsPreview) ads_content.getChildAt(0);
                 send_time = c.getDate();
             }
             jo.put("time",send_time);

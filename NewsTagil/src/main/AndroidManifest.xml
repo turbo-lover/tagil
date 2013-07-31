@@ -18,6 +18,7 @@
         <activity android:name=".activity.activityNewsContent" />
         <activity android:name=".activity.activityNewsPreview">
         </activity>
+        <activity android:name=".activity.activityReadAds" ></activity>
         <activity android:name=".activity.activityRegistration" />
         <activity android:name=".activity.activityLogin" />
         <activity android:name=".activity.activitySettings" />

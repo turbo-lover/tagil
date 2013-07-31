@@ -15,9 +15,14 @@
     <string name="createAdvertText">Создать объявление</string>
     <string name="myAdvertText">Мои объявления</string>
 
+    <string name="delText">Удалить</string>
+    <string name="editText">Редактировать</string>
+    <string name="startDialogText">Диалог</string>
+
     <string name="serverAddress">http://192.168.1.110/</string>
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
+    <string name="getAdvertText">get_advert_text.php</string>
     <string name="getTotalIdCountUrl">get_total_id_count.php</string>
     <string name="addAdvertUrl">add_advert.php</string>
     <string name="addCommentUrl">add_comment.php</string>
@@ -35,7 +40,6 @@
     <string name="empty_pass">Введите пароль</string>
     <string name="empty_login">Заполните логин</string>
     <string name="DeniedRegistration">Такой логин или e-mail уже существует</string>
-
     <string name="composite_header_now">сейчас:</string>
 
 </resources>

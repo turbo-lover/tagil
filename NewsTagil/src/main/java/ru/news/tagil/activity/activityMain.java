@@ -18,7 +18,7 @@ public class activityMain extends Activity implements View.OnClickListener {
         rl.setOnClickListener(this);
     }
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) { //TODO поменять на постоянный переход к странице авторизации.
         Intent intent;
         String l = preferencesWorker.get_login();
         if(!preferencesWorker.get_login().isEmpty() && !preferencesWorker.get_pass().isEmpty()) {

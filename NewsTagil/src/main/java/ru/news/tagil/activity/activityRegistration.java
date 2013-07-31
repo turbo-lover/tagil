@@ -55,7 +55,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
 
         myAsyncTaskWorker worker = new myAsyncTaskWorker();
 
-
         JSONObject jObj = new JSONObject();
 
         try {

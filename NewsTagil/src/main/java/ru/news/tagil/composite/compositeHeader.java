@@ -20,33 +20,38 @@ import ru.news.tagil.utility.onUpdateClickListener;
 public class compositeHeader extends RelativeLayout implements View.OnClickListener {
     private final String TAG = "compositeHeader";
 
-    private Button main, contact, ads, update;
-    private TextView tomorrow, now;
+    private Button firstButton, secondButton, thirdButton, updateButton, backButton;
+    private TextView weather_tommorow, weather_today;
     private onUpdateClickListener listener = null;
 
-    public compositeHeader(Context context,String weather_now,String weather_tomorrow) {
+    public compositeHeader(Context context,String weather_now,String weather_tomorrow,String firstText,String secondText,String thirdText) {
         super(context);
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.composite_header,this);
         Initialize_Component(v);
+        firstButton.setText(firstText);
+        secondButton.setText(secondText);
+        thirdButton.setText(thirdText);
         SetEventListeners();
         UpdateWeather(weather_now,weather_tomorrow);
     }
 
     private void Initialize_Component(View convertedView) {
-        main = (Button) convertedView.findViewById(R.id.composite_header_main);
-        contact = (Button) convertedView.findViewById(R.id.composite_header_contact );
-        ads = (Button) convertedView.findViewById(R.id.composite_header_ads );
-        update = (Button) convertedView.findViewById(R.id.composite_header_update );
-        tomorrow = (TextView) convertedView.findViewById(R.id.composite_header_tomorrow_content);
-        now = (TextView) convertedView.findViewById(R.id.composite_header_now_content);
+        firstButton = (Button) convertedView.findViewById(R.id.composite_header_first_button);
+        secondButton = (Button) convertedView.findViewById(R.id.composite_header_second_button);
+        thirdButton = (Button) convertedView.findViewById(R.id.composite_header_third_button);
+        updateButton = (Button) convertedView.findViewById(R.id.composite_header_update);
+        backButton = (Button) convertedView.findViewById(R.id.composite_header_back_button);
+        weather_tommorow = (TextView) convertedView.findViewById(R.id.composite_header_weather_tommorow);
+        weather_today = (TextView) convertedView.findViewById(R.id.composite_header_weather_now);
     }
 
     private void SetEventListeners() {
-        main.setOnClickListener(this);
-        contact.setOnClickListener(this);
-        ads.setOnClickListener(this);
-        update.setOnClickListener(this);
+        firstButton.setOnClickListener(this);
+        secondButton.setOnClickListener(this);
+        thirdButton.setOnClickListener(this);
+        updateButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
     }
 
     public void SetUpdateListener(onUpdateClickListener listener) {
@@ -57,7 +62,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.composite_header_main :
+            case R.id.composite_header_first_button:
                try {
                    Intent intent = new Intent(getContext(), activityNewsPreview.class);
                    getContext().startActivity(intent);
@@ -66,7 +71,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
                    e.printStackTrace();
                }
             break;
-            case R.id.composite_header_contact:
+            case R.id.composite_header_second_button:
                 try {
                     Intent intent = new Intent(getContext(), activityContact.class);
                     getContext().startActivity(intent);
@@ -75,7 +80,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
                     e.printStackTrace();
                 }
             break;
-            case R.id.composite_header_ads :
+            case R.id.composite_header_third_button:
                 try {
                     Intent intent = new Intent(getContext(), activityAds.class);
                     getContext().startActivity(intent);
@@ -87,14 +92,14 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
             case R.id.composite_header_update :
                 if(listener!= null) listener.UpdateButtonClicks();
             break;
-
+            case R.id.composite_header_back_button :
+                // create on back action
+                break;
         }
     }
 
     public void UpdateWeather(String now, String tomorrow)
     {
         // alt + 0176 -> значек градуса
-        this.now.setText(now+" C°");
-        this.tomorrow.setText(tomorrow + " C°");
     }
 }

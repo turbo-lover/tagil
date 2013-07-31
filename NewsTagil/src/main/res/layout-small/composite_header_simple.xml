@@ -13,30 +13,32 @@
             android:background="@drawable/setting_header_bg"
             android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal" >
+                android:layout_marginTop="4dp">
 
             <Button
-                    android:id="@+id/header_ads_back_button"
+                    android:id="@+id/composite_header_simple_back_button"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_width="25dp"
                     android:layout_height="20dp"
                     android:background="@drawable/back_header_button"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
                     android:text="" />
 
-
-            <TextView
-                    android:id="@+id/header_ads_link"
+            <Button
+                    android:id="@+id/composite_header_simple_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
-                    android:text="Объявления"
+                    android:layout_toRightOf="@+id/composite_header_simple_back_button"
+                    android:layout_alignBaseline="@+id/composite_header_simple_back_button"
+                    android:background="@color/Transparent"
                     android:textColor="#4D433A" />
 
             <Button
@@ -45,11 +47,13 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/first_header_button"
-                    android:layout_marginLeft="143dp"
-                    android:id="@+id/header_ads_button_update"/>
+                    android:layout_marginRight="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@+id/composite_header_simple_back_button"
+                    android:id="@+id/composite_header_simple_update"/>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
                 android:layout_width="150dp"
@@ -69,31 +73,53 @@
                         android:layout_marginTop="2dp"
                         android:src="@drawable/first_header_cloud" />
 
-                <LinearLayout
+                <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" >
+                        android:layout_height="match_parent" >
 
                     <TextView
-                            android:id="@+id/header_ads_text_today"
+                            android:id="@+id/composite_header_simple_text_today"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="2dp"
                             android:text="сейчас:"
                             android:textColor="#FC8000"
-                            android:textSize="10dp" />
+                            android:textSize="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"/>
 
                     <TextView
-                            android:id="@+id/header_ads_text_tomorrow"
+                            android:id="@+id/composite_header_simple_weather_now"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/composite_header_simple_text_today"
+                            android:layout_alignBottom="@+id/composite_header_simple_text_today"/>
+
+                    <TextView
+                            android:id="@+id/composite_header_simple_text_tomorrow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="0dp"
                             android:textSize="10dp"
                             android:textColor="#fff"
-                            android:text="завтра:" />
-                </LinearLayout>
+                            android:text="завтра:"
+                            android:layout_alignParentLeft="true"
+                            android:layout_below="@+id/composite_header_simple_text_today"/>
+                    <TextView
+                            android:id="@+id/composite_header_simple_weather_tommorow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/composite_header_simple_text_tomorrow"
+                            android:layout_alignBottom="@+id/composite_header_simple_text_tomorrow"/>
+                </RelativeLayout>
 
             </LinearLayout>
 

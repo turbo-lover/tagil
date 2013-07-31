@@ -3,7 +3,18 @@
 <!-- -->
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
-    <string name="favorite">Избранное</string>
+
+    <string name="favoriteText">Избранное</string>
+    <string name="mainText">Главная</string>
+    <string name="contactText">Знакомства</string>
+    <string name="advertText">Объявления</string>
+    <string name="settingsText">Настройки</string>
+    <string name="dialogText">Диалоги</string>
+    <string name="usefulText">Полезное</string>
+    <string name="instructionText">Инструкция</string>
+    <string name="createAdvertText">Создать объявление</string>
+    <string name="myAdvertText">Мои объявления</string>
+
     <string name="serverAddress">http://192.168.1.110/</string>
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
@@ -24,9 +35,7 @@
     <string name="empty_pass">Введите пароль</string>
     <string name="empty_login">Заполните логин</string>
     <string name="DeniedRegistration">Такой логин или e-mail уже существует</string>
-    <string name="header_main_button">Главная</string>
-    <string name="header_main_contact">Знакомства</string>
-    <string name="ads">Объявления</string>
+
     <string name="composite_header_now">сейчас:</string>
 
 </resources>

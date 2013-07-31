@@ -59,7 +59,8 @@ public class activityNewsPreview extends Activity implements onScrollViewChanged
         tape_header = (LinearLayout) findViewById(R.id.tape_header);
         navigation_footter = (LinearLayout) findViewById(R.id.tape_first_nav);
         cfb = new compositeFirstButton(this);
-        compositeHeader = new compositeHeader(this,"0","2");  //TODO допилить получение погоды
+        compositeHeader = new compositeHeader(this,"0","2",getString(R.string.mainText),getString(R.string.contactText)
+                ,getString(R.string.advertText));  //TODO допилить получение погоды
         total_news_count = GetTotalCount();
     }
 

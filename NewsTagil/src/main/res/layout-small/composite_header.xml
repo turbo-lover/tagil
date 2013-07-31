@@ -13,52 +13,69 @@
         android:background="@drawable/first_header_bg"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/composite_header_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/Transparent"
-                android:text="@string/header_main_button"
-                android:textColor="#4D433A" />
+                    android:id="@+id/composite_header_back_button"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/back_header_button"
+                    android:text=""
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true" />
 
             <Button
-                android:id="@+id/composite_header_contact"
+                android:id="@+id/composite_header_first_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/composite_header_back_button"
+                android:layout_alignBaseline="@+id/composite_header_back_button"
                 android:background="@color/Transparent"
-                android:text="@string/header_main_contact"
                 android:textColor="#4D433A" />
 
             <Button
-                android:id="@+id/composite_header_ads"
+                android:id="@+id/composite_header_second_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/composite_header_first_button"
+                android:layout_alignBaseline="@+id/composite_header_first_button"
                 android:background="@color/Transparent"
-                android:text="@string/ads"
+                android:textColor="#4D433A" />
+
+            <Button
+                android:id="@+id/composite_header_third_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/composite_header_second_button"
+                android:layout_alignBaseline="@+id/composite_header_second_button"
+                android:background="@color/Transparent"
                 android:textColor="#4D433A" />
 
             <Button
                 android:id="@+id/composite_header_update"
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="17dp"
-                android:background="@drawable/first_header_button" />
+                android:layout_marginRight="10dp"
+                android:background="@drawable/first_header_button"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/composite_header_back_button"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="150dp"
@@ -81,10 +98,9 @@
 
                 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="vertical" >
+                    android:layout_height="30dp" >
 
                     <TextView
                         android:id="@+id/composite_header_now"
@@ -92,9 +108,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="2dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
                         android:text="сейчас:"
                         android:textColor="#FC8000"
                         android:textSize="10dp" />
+
+
+                    <TextView
+                            android:id="@+id/composite_header_weather_now"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/composite_header_now"
+                            android:layout_alignTop="@+id/composite_header_now"
+                            android:layout_alignBottom="@+id/composite_header_now"/>
 
                    <TextView
                     android:id="@+id/composite_header_tomorrow"
@@ -104,9 +134,21 @@
                     android:layout_marginTop="0dp"
                     android:textSize="10dp"
                     android:textColor="#fff"
-                    android:text="завтра:" /> 
-                    
-                </LinearLayout>
+                    android:text="завтра:"
+                    android:layout_below="@+id/composite_header_now"
+                    android:layout_alignParentLeft="true"/>
+
+                    <TextView
+                            android:id="@+id/composite_header_weather_tommorow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FC8000"
+                            android:textSize="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_alignTop="@+id/composite_header_tomorrow"
+                            android:layout_toRightOf="@+id/composite_header_tomorrow"
+                            android:layout_alignBottom="@+id/composite_header_tomorrow"/>
+                </RelativeLayout>
 
             </LinearLayout>
 

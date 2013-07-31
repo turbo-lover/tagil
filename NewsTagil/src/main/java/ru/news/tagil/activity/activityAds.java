@@ -1,17 +1,13 @@
 package ru.news.tagil.activity;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -23,10 +19,7 @@ import java.util.Calendar;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsContent;
 import ru.news.tagil.composite.compositeAdsSelector;
-import ru.news.tagil.composite.compositeFirstButton;
-import ru.news.tagil.composite.compositeHeader;
-import ru.news.tagil.composite.compositeHeaderAds;
-import ru.news.tagil.composite.compositeTapePreview;
+import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 import ru.news.tagil.utility.myScrollView;
@@ -40,7 +33,7 @@ import ru.news.tagil.utility.updateListActivity;
 public class activityAds extends Activity implements onScrollViewChangedListener, View.OnClickListener,updateListActivity,onUpdateClickListener {
     private LinearLayout ads_content,ads_header_ll,ads_selector_ll;
     private myScrollView ads_scroller;
-    private compositeHeaderAds ads_header;
+    private compositeHeaderSimple ads_header;
     private compositeAdsSelector ads_selector;
     private myPreferencesWorker preferencesWorker;
     private int totalCount;
@@ -69,7 +62,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
 
     private void Initialize_Component() {
         preferencesWorker = new myPreferencesWorker(this);
-        ads_header = new compositeHeaderAds(this,"0","2");
+        ads_header = new compositeHeaderSimple(this,"0","2",getString(R.string.advertText));
         ads_selector = new compositeAdsSelector(this);
         ads_content = (LinearLayout) findViewById(R.id.ads_content_holder);
         ads_scroller = (myScrollView) findViewById(R.id.ads_scroller);
@@ -133,6 +126,7 @@ public class activityAds extends Activity implements onScrollViewChangedListener
         try{
             jo = new JSONObject();
             jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
             jo.put("adverts_count",COUNT);
             String send_time = null;
             if(ads_content.getChildCount() == 0) {

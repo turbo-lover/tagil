@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#fff"
     >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -16,50 +16,58 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal" >
+            android:layout_marginTop="4dp" >
 
             <Button
-                android:id="@+id/composite_header_main"
+                    android:id="@+id/composite_header_back_button"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/back_header_button"
+                    android:text="" />
+
+            <Button
+                android:id="@+id/composite_header_first_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:background="@color/Transparent"
-                android:text="@string/header_main_button"
                 android:textColor="#4D433A"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_toRightOf="@+id/composite_header_back_button"
+                android:layout_alignBaseline="@+id/composite_header_back_button"   />
 
             <Button
-                android:id="@+id/composite_header_contact"
+                android:id="@+id/composite_header_second_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:background="@color/Transparent"
-                android:text="@string/header_main_contact"
                 android:textColor="#4D433A"
-                android:layout_alignTop="@+id/composite_header_main"
-                android:layout_toRightOf="@+id/composite_header_main"/>
+                android:layout_alignBaseline="@+id/composite_header_first_button"
+                android:layout_toRightOf="@+id/composite_header_first_button"/>
 
             <Button
-                android:id="@+id/composite_header_ads"
+                android:id="@+id/composite_header_third_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/Transparent"
-                android:text="@string/ads"
                 android:textColor="#4D433A"
-                android:layout_alignTop="@+id/composite_header_contact"
-                android:layout_toRightOf="@+id/composite_header_contact"
+                android:layout_alignBaseline="@+id/composite_header_second_button"
+                android:layout_toRightOf="@+id/composite_header_second_button"
                 android:layout_marginLeft="12dp"/>
 
             <Button
                 android:id="@+id/composite_header_update"
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/first_header_button"
-                android:layout_alignTop="@+id/composite_header_ads"
+                android:layout_alignBaseline="@+id/composite_header_back_button"
                 android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
@@ -103,7 +111,7 @@
                         android:layout_alignParentTop="true"/>
 
                     <TextView
-                            android:id="@+id/composite_header_now_content"
+                            android:id="@+id/composite_header_weather_now"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
@@ -124,13 +132,13 @@
                     android:layout_alignRight="@+id/composite_header_now"/>
 
                     <TextView
-                            android:id="@+id/composite_header_tomorrow_content"
+                            android:id="@+id/composite_header_weather_tomorrow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
                             android:textSize="10dp"
-                            android:layout_below="@+id/composite_header_now_content"
-                            android:layout_alignLeft="@+id/composite_header_now_content"
+                            android:layout_below="@+id/composite_header_weather_now"
+                            android:layout_alignLeft="@+id/composite_header_weather_now"
                             android:layout_marginLeft="5dp"/>
 
                 </RelativeLayout>

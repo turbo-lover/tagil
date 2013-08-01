@@ -5,6 +5,7 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,26 +25,40 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
     private TextView weather_tommorow, weather_today;
     private onUpdateClickListener listener = null;
 
-    public compositeHeader(Context context,String weather_now,String weather_tomorrow,String firstText,String secondText,String thirdText) {
+    public compositeHeader(Context context) {
         super(context);
-        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.composite_header,this);
-        Initialize_Component(v);
+        Initialize_Component();
+    }
+
+    public compositeHeader(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+
+    }
+
+    public compositeHeader(Context context,AttributeSet attrs,int defStyle) {
+        super(context,attrs,defStyle);
+        Initialize_Component();
+    }
+
+    public void Set(String firstText,String secondText,String thirdText) {
         firstButton.setText(firstText);
         secondButton.setText(secondText);
         thirdButton.setText(thirdText);
-        SetEventListeners();
-        UpdateWeather(weather_now,weather_tomorrow);
     }
 
-    private void Initialize_Component(View convertedView) {
-        firstButton = (Button) convertedView.findViewById(R.id.composite_header_first_button);
-        secondButton = (Button) convertedView.findViewById(R.id.composite_header_second_button);
-        thirdButton = (Button) convertedView.findViewById(R.id.composite_header_third_button);
-        updateButton = (Button) convertedView.findViewById(R.id.composite_header_update);
-        backButton = (Button) convertedView.findViewById(R.id.composite_header_back_button);
-        weather_tommorow = (TextView) convertedView.findViewById(R.id.composite_header_weather_tommorow);
-        weather_today = (TextView) convertedView.findViewById(R.id.composite_header_weather_now);
+
+    private void Initialize_Component() {
+        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.composite_header,this);
+        firstButton = (Button) findViewById(R.id.composite_header_first_button);
+        secondButton = (Button) findViewById(R.id.composite_header_second_button);
+        thirdButton = (Button) findViewById(R.id.composite_header_third_button);
+        updateButton = (Button) findViewById(R.id.composite_header_update);
+        backButton = (Button) findViewById(R.id.composite_header_back_button);
+        weather_tommorow = (TextView) findViewById(R.id.composite_header_weather_tommorow);
+        weather_today = (TextView) findViewById(R.id.composite_header_weather_now);
+        SetEventListeners();
     }
 
     private void SetEventListeners() {

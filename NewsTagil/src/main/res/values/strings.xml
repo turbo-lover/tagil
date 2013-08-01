@@ -28,6 +28,7 @@
     <string name="addCommentUrl">add_comment.php</string>
     <string name="addMessageUrl">add_message.php</string>
     <string name="getAdvertsHeadersUrl">get_adverts_headers.php</string>
+    <string name="getMyAdvertsHeadersUrl">get_my_adverts_headers.php</string>
     <string name="getCommentsUrl">get_comments.php</string>
     <string name="getFavoritesUrl">get_favorites.php</string>
     <string name="getNewsUrl">get_news.php</string>

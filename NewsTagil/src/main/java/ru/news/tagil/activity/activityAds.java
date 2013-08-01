@@ -2,6 +2,7 @@ package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeAdsSelector;
 import ru.news.tagil.composite.compositeHeaderSimple;
+import ru.news.tagil.composite.compositeTapePreview;
+import ru.news.tagil.utility.ScrollUpdateActivity;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 import ru.news.tagil.utility.myScrollView;
@@ -31,52 +34,38 @@ import ru.news.tagil.utility.updateListActivity;
 /**
  * Created by turbo_lover on 19.07.13.
  */
-public class activityAds extends Activity implements onScrollViewChangedListener, View.OnClickListener,updateListActivity,onUpdateClickListener {
-    private LinearLayout ads_content,ads_header_ll,ads_selector_ll;
+public class activityAds extends ScrollUpdateActivity implements View.OnClickListener {
+    private LinearLayout ads_header_ll,ads_selector_ll;
     private myScrollView ads_scroller;
     private compositeHeaderSimple ads_header;
     private compositeAdsSelector ads_selector;
     private myPreferencesWorker preferencesWorker;
-    private int totalCount;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ads);
-        Initialize_Component();
-        SetEventListeners();
-        SetCompositeElements();
-        Get();
+    protected void SetCompositeElements() {
+        ads_header.Set(getString(R.string.advertText));
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        ads_header_ll.addView(ads_header);
+        ads_selector_ll.addView(ads_selector,p);
     }
-
-    private void SetCompositeElements() {
-        try {
-            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            ads_header_ll.addView(ads_header);
-            ads_selector_ll.addView(ads_selector,p);
-        } catch (Exception e) {
-            e.printStackTrace(); }
-    }
-
-    private void SetEventListeners() {
+    @Override
+    protected void SetEventListeners() {
         ads_scroller.setListener(this);
     }
-
-    private void Initialize_Component() {
+    @Override
+    protected void InitializeComponent() {
+        setContentView(R.layout.activity_ads);
         preferencesWorker = new myPreferencesWorker(this);
-        ads_header = new compositeHeaderSimple(this,"0","2",getString(R.string.advertText));
         ads_selector = new compositeAdsSelector(this);
-        ads_content = (LinearLayout) findViewById(R.id.ads_content_holder);
+        ads_header = new compositeHeaderSimple(this);
+        container = (LinearLayout) findViewById(R.id.ads_content_holder);
         ads_scroller = (myScrollView) findViewById(R.id.ads_scroller);
         ads_header_ll = (LinearLayout) findViewById(R.id.activity_ads_include);
         ads_selector_ll = (LinearLayout) findViewById(R.id.ads_selector);
-        totalCount = GetTotalCount();
+        tableName = "adverts";
+        scriptAddress = getString(R.string.getAdvertsHeadersUrl);
+        totalCount = GetTotalCount(tableName,null);
      }
-
-    @Override
-    public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
-        Get();
-    }
-
     @Override
     public void onClick(View view) {
         try {
@@ -91,108 +80,61 @@ public class activityAds extends Activity implements onScrollViewChangedListener
             Log.d("EXCEPTION",ex.getMessage());
         }
     }
-
     @Override
-    public void Set(JSONObject jsonObject, boolean insertAtStart) {
-        try{
-            if(jsonObject.getString("status").equals("error")){
-                Toast.makeText(this, jsonObject.getString("errormsg"), Toast.LENGTH_SHORT).show();
-                return;
-            }
-            JSONArray arr = jsonObject.getJSONArray("result");
-            for (int i = 0; i < arr.length();i++) {
-                JSONObject obj =  arr.getJSONObject(i);
-                byte[] e = obj.getString("advert_image").getBytes();
-                byte[] imgbyte = Base64.decode(e, 0);
-                Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
-                compositeAdsPreview compositeAdsPreview = new ru.news.tagil.composite.compositeAdsPreview(this,obj.getString("header"),
-                        obj.getString("login"),obj.getString("pub_date"),bmp);
-                compositeAdsPreview.setOnClickListener(this);
-                compositeAdsPreview.setTag(obj.getString("id"));
-                if(insertAtStart){
-                    ads_content.addView(compositeAdsPreview,0+i);
-                } else {
-                    ads_content.addView(compositeAdsPreview); }
-            }
+    protected View CreateViewToAdd(JSONObject obj){
+        compositeAdsPreview adsPreview = new compositeAdsPreview(this);
+        try {
+            byte[] e = obj.getString("advert_image").getBytes();
+            byte[] imgbyte = Base64.decode(e, 0);
+            Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
+            adsPreview.Set(obj.getString("header"),obj.getString("login"),obj.getString("pub_date"),bmp);
+            adsPreview.setOnClickListener(this);
+            adsPreview.setTag(obj.getString("id"));
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("ADD_HEADERS_Exception", ex.getMessage() + "____________" + ex.toString());
+            Log.d("CreateViewToAdd_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
+        return adsPreview;
     }
-
     @Override
-    public void Get() {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
-        JSONObject jo;
-        if(ads_content.getChildCount() == totalCount) {
-            return; }
-        try{
-            jo = new JSONObject();
+    protected JSONObject CreateJsonForGet() {
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("adverts_count",GET_COUNT);
             jo.put("login",preferencesWorker.get_login());
             jo.put("pass",preferencesWorker.get_pass());
-            jo.put("adverts_count",COUNT);
             String send_time = null;
-            if(ads_content.getChildCount() == 0) {
+            if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeAdsPreview c = (compositeAdsPreview) ads_content.getChildAt(ads_content.getChildCount() - 1);
+                compositeAdsPreview c = (compositeAdsPreview) container.getChildAt(container.getChildCount() - 1);
                 send_time = c.getDate();
             }
             jo.put("time",send_time);
-            asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getAdvertsHeadersUrl));
-            Set(asyncTaskWorker.get(), false);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("GET_ADS_Exception", ex.getMessage() + "____________" + ex.toString());
+            Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
+        return jo;
     }
-
     @Override
-    public void GetNew() {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
-        JSONObject jo;
+    protected JSONObject CreateJsonForGetNew() {
+        JSONObject jo = new JSONObject();
         try {
-            jo = new JSONObject();
             jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
             String send_time = null;
-            if(ads_content.getChildCount() == 0) {
+            if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeAdsPreview c = (compositeAdsPreview) ads_content.getChildAt(0);
+                compositeAdsPreview c = (compositeAdsPreview) container.getChildAt(0);
                 send_time = c.getDate();
             }
             jo.put("time",send_time);
-            asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getAdvertsHeadersUrl));
-            Set(asyncTaskWorker.get(),true);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("GET_ADS_NEW_Exception", ex.getMessage() + "____________" + ex.toString());
+            Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
-    }
-
-    @Override
-    public int GetTotalCount() {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
-        JSONObject jo;
-        try{
-            jo = new JSONObject();
-            jo.put("table_name","adverts");
-            asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
-            jo = asyncTaskWorker.get();
-            return Integer.parseInt(jo.getString("result"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("GET_TOTAL_ADVERTS_COUNT_Exception", ex.getMessage() + "____________" + ex.toString());
-        }
-        return 0;
-    }
-
-    @Override
-    public void UpdateButtonClicks() {
-        int new_count = GetTotalCount();
-        if(new_count > totalCount) {
-            totalCount = new_count;
-            GetNew();
-        }
+        return jo;
     }
 }

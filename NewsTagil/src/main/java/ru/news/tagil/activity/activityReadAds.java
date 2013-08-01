@@ -46,6 +46,7 @@ public class activityReadAds extends Activity {
             worker.execute(jo,getString(R.string.serverAddress) +getString(R.string.getAdvertText) );
             return  worker.get();
         } catch(Exception e) {
+            e.printStackTrace();
             Log.d("Exception",e.getMessage());
         }
         return null;
@@ -60,12 +61,14 @@ public class activityReadAds extends Activity {
             return jsonObject.getString("result");
         } catch (Exception ex) {
             ex.printStackTrace();
+            ex.printStackTrace();
         }
         return "";
     }
 
     private void SetCompositeElements(String text) {
-        header = new compositeHeaderSimple(this,"2","3",getString(R.string.advertText));
+        header = new compositeHeaderSimple(this);
+        header.Set(getString(R.string.advertText));
         content = new compositeAdsContent(this);
         content.Set(i.getStringExtra("title"),text,(Bitmap)i.getParcelableExtra("img"));
         contentLL.addView(content);

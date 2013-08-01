@@ -1,6 +1,7 @@
 package ru.news.tagil.composite;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,19 +18,36 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
     private Button button,backButton,updateButton;
     private TextView tomorrow, now;
     private onUpdateClickListener listener = null;
-    public compositeHeaderSimple(Context context, String weather_now, String weather_tomorrow,String buttonText) {
+    public compositeHeaderSimple(Context context) {
         super(context);
-        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.composite_header_simple,this);
-        Initialize_Component(v);
-        button.setText(buttonText);
-        SetEventListeners();
+        Initialize_Component();
     }
 
-    private void Initialize_Component(View convertedView) {
-        button = (Button) convertedView.findViewById(R.id.composite_header_simple_button);
-        backButton = (Button) convertedView.findViewById(R.id.composite_header_simple_back_button);
-        updateButton = (Button) convertedView.findViewById(R.id.composite_header_simple_update);
+    public compositeHeaderSimple(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+    }
+
+    public compositeHeaderSimple(Context context,AttributeSet attrs,int defStyle) {
+        super(context,attrs,defStyle);
+        Initialize_Component();
+    }
+
+    public void Set(String buttonText){
+        button.setText(buttonText);
+    }
+
+    public void UpdateWeather(String weather_tomorrow,String buttonText) {
+        //TODO
+    }
+
+    private void Initialize_Component() {
+        LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.composite_header_simple,this);
+        button = (Button) findViewById(R.id.composite_header_simple_button);
+        backButton = (Button) findViewById(R.id.composite_header_simple_back_button);
+        updateButton = (Button) findViewById(R.id.composite_header_simple_update);
+        SetEventListeners();
     }
 
     private void SetEventListeners() {

@@ -11,6 +11,10 @@ public class activityUseful extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        InitializeComponent();
+    }
+
+    private void InitializeComponent() {
         setContentView(R.layout.activity_useful);
     }
 }

@@ -4,6 +4,7 @@ import ru.news.tagil.R;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,11 +16,22 @@ import android.widget.TextView;
 public class compositeAdsPreview extends RelativeLayout {
     private TextView titleTextView,publisherTextView,dateTextView;
     private ImageView img;
-    public compositeAdsPreview(Context context, String title, String publisher, String date, Bitmap bmp) {
+    public compositeAdsPreview(Context context) {
         super(context);
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.composite_ads_content,this);
-        Initialize_Component(v);
+        Initialize_Component();
+    }
+
+    public compositeAdsPreview(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+    }
+
+    public compositeAdsPreview(Context context,AttributeSet attrs,int defStyle) {
+        super(context,attrs,defStyle);
+        Initialize_Component();
+    }
+
+    public void Set(String title, String publisher, String date, Bitmap bmp) {
         titleTextView.setText(title);
         publisherTextView.setText(publisher);
         dateTextView.setText(date);
@@ -28,12 +40,13 @@ public class compositeAdsPreview extends RelativeLayout {
         } else {
             img.setMaxHeight(0); } //TODO либо сделать картинку - заглушку, либо уменьшать размер ImageView до 0.
     }
-
-    private void  Initialize_Component(View convertedView) {
-        titleTextView = (TextView) convertedView.findViewById(R.id.composite_ads_title);
-        publisherTextView = (TextView) convertedView.findViewById(R.id.composite_ads_name);
-        dateTextView = (TextView) convertedView.findViewById(R.id.composite_ads_date);
-        img = (ImageView) convertedView.findViewById(R.id.composite_ads_imageView);
+    private void Initialize_Component() {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.composite_ads_content, this);
+        titleTextView = (TextView) findViewById(R.id.composite_ads_title);
+        publisherTextView = (TextView) findViewById(R.id.composite_ads_name);
+        dateTextView = (TextView) findViewById(R.id.composite_ads_date);
+        img = (ImageView) findViewById(R.id.composite_ads_imageView);
     }
 
     public String getDate() {

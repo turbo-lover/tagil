@@ -11,16 +11,14 @@ public class activityContact extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
         Initialize_Component();
-        SetEventListeners();
     }
 
     private void SetEventListeners() {
-
+        setContentView(R.layout.activity_contact);
     }
 
     private void Initialize_Component() {
-
+        SetEventListeners();
     }
 }

@@ -55,8 +55,9 @@ public class activityNewsContent extends Activity  {
             byte[] e = result.getString("news_image").getBytes();
             byte[] imgbyte = Base64.decode(e,0);
             Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
-            compositeTapeContent t = new compositeTapeContent(this,i.getStringExtra("header"),i.getStringExtra("time")
-                    ,i.getStringExtra("date"),result.getString("news_text"),bmp);
+            compositeTapeContent t = new compositeTapeContent(this);
+            t.Set(i.getStringExtra("header"),i.getStringExtra("time"),i.getStringExtra("date"),
+                    result.getString("news_text"),bmp);
             main_scroller.addView(t);
         } catch (Exception ex) {
             ex.printStackTrace();

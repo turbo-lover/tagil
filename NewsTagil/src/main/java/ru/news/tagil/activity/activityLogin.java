@@ -28,10 +28,7 @@ public class activityLogin extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         Initialize_Component();
-        SetEventListeners();
-
     }
 
     private void SetEventListeners() {
@@ -40,11 +37,13 @@ public class activityLogin extends Activity implements View.OnClickListener {
     }
 
     private void Initialize_Component() {
+        setContentView(R.layout.activity_login);
         sign_in = (Button) findViewById(R.id.enter);
         to_registration = (Button) findViewById(R.id.reg);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.pass);
         preferences_worker = new myPreferencesWorker(this);
+        SetEventListeners();
     }
 
 

@@ -25,8 +25,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reg);
-
         InitializeComponent();
         SetEventListeners();
     }
@@ -36,6 +34,7 @@ public class activityRegistration extends Activity implements View.OnClickListen
     }
 
     private void InitializeComponent() {
+        setContentView(R.layout.activity_reg);
         registration = (Button) findViewById(R.id.button_reg);
         pass = (EditText) findViewById(R.id. reg_pass);
         mail = (EditText) findViewById(R.id. reg_mail);

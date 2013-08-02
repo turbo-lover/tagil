@@ -3,6 +3,7 @@ package ru.news.tagil.composite;/**
  */
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,16 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
     public compositeContactContent(Context context) {
         super(context);
         Initialize_Component();
-        SetEventListeners();
+    }
+
+    public compositeContactContent(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+    }
+
+    public compositeContactContent(Context context,AttributeSet attrs,int defStyle) {
+        super(context,attrs,defStyle);
+        Initialize_Component();
     }
 
     private void SetEventListeners() {
@@ -31,9 +41,7 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
     private void Initialize_Component() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_contact_content, this);
-
         user_images = (LinearLayout) findViewById(R.id.composite_lin_lay_user_images);
-
         seek = (TextView) findViewById(R.id.composite_contact_content_seek_content);
         znakomstva = (TextView) findViewById(R.id.composite_contact_content_for_znakomstv_content);
         polojenie = (TextView) findViewById(R.id.composite_contact_content_polojenie_content);
@@ -41,6 +49,7 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         music = (TextView) findViewById(R.id.composite_contact_content_music_content);
         about = (TextView) findViewById(R.id.composite_contact_content_about_content);
         start_dialog = (Button) findViewById(R.id.composite_contact_content_start_dialog);
+        SetEventListeners();
     }
 
     @Override

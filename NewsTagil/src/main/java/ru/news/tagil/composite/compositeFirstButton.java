@@ -2,6 +2,7 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,18 +13,19 @@ import ru.news.tagil.activity.*;
 /**
  * Created by turbo_lover on 18.07.13.
  */
-public class compositeFirstButton extends LinearLayout
-        implements View.OnClickListener {
-
-    Button tape,dialog,elect,useful,setting;
+public class compositeFirstButton extends LinearLayout implements View.OnClickListener {
+    private Button tape,dialog,elect,useful,setting;
 
     public compositeFirstButton(Context context) {
         super(context);
-
-        InitVariable();
-        SetListeners();
+        Initialize_Component();
     }
 
+    public compositeFirstButton(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+    }
+    // THREE ARGUMENT CONSTRUCTOR FOR LINEAR LAYOUT REQUIRED MIN LVL 11 API
     private void SetListeners() {
         tape.setOnClickListener(this);
         dialog.setOnClickListener(this);
@@ -32,16 +34,17 @@ public class compositeFirstButton extends LinearLayout
         setting.setOnClickListener(this);
     }
 
-    private void InitVariable() {
+    private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.composite_first_button_nav,this);
-
+        inflater.inflate(R.layout.composite_first_button_nav, this);
         tape    =(Button) findViewById( R.id.first_tape_button);
         dialog  =(Button) findViewById( R.id.first_dialogs_button);
         elect   =(Button) findViewById( R.id.first_elect_button);
         useful  =(Button) findViewById( R.id.first_useful_button);
         setting =(Button) findViewById( R.id.first_setting_button);
+        SetListeners();
     }
+
 
     @Override
     public void onClick(View view) {

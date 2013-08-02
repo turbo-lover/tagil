@@ -19,7 +19,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_height="120dp"
                 android:background="@drawable/massage_border_bg"
-                android:id="@+id/read_ads_content_ava"
+                android:id="@+id/read_ads_content_image"
                 android:layout_gravity="center_horizontal|top"/>
 
 
@@ -34,7 +34,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Продам интернет"
                     android:textColor="#ff474747"
                     android:textSize="22dp"
                     android:layout_marginTop="10dp"
@@ -45,17 +44,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="в Альфа-банк требуются кредитные
-специалисты."
                     android:textColor="#ff474747"
                     android:textSize="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/read_ads_content_content"/>
-
-
-
-
+                    android:id="@+id/read_ads_content_text"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -69,14 +62,13 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="Редактировать"
                 android:textColor="#fff"
                 android:textSize="18dp"
                 android:background="@drawable/ads_button_bg"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:id="@+id/read_ads_content_edit"
+                android:id="@+id/read_ads_content_first_button"
                 />
 
         <Button
@@ -87,9 +79,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/ads_button_bg"
-                android:text="      Удалить     "
                 android:layout_weight="1"
-                android:id="@+id/read_ads_content_delete"
+                android:id="@+id/read_ads_content_second_button"
                 />
 
     </LinearLayout>

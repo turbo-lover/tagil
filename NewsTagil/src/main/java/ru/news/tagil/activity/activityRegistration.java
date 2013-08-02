@@ -25,8 +25,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reg);
-
         InitializeComponent();
         SetEventListeners();
     }
@@ -36,6 +34,7 @@ public class activityRegistration extends Activity implements View.OnClickListen
     }
 
     private void InitializeComponent() {
+        setContentView(R.layout.activity_reg);
         registration = (Button) findViewById(R.id.button_reg);
         pass = (EditText) findViewById(R.id. reg_pass);
         mail = (EditText) findViewById(R.id. reg_mail);
@@ -55,19 +54,15 @@ public class activityRegistration extends Activity implements View.OnClickListen
 
         myAsyncTaskWorker worker = new myAsyncTaskWorker();
 
-
         JSONObject jObj = new JSONObject();
 
         try {
             jObj.put("login",login.getText());
             jObj.put("pass",pass.getText());
             jObj.put("email",mail.getText());
-
             worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
             jObj = worker.get();
-
             String status = jObj.getString("status");
-
             if(status.equals("ok")) ToTapeActivity();
 
             if(status.equals("denied")){

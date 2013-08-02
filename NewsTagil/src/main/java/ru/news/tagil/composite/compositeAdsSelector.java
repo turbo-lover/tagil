@@ -2,6 +2,7 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +20,13 @@ public class compositeAdsSelector extends LinearLayout implements View.OnClickLi
     public compositeAdsSelector(Context context) {
         super(context);
         Initialize_Component();
-        SetEventListeners();
     }
 
+    public compositeAdsSelector(Context context,AttributeSet attrs) {
+        super(context,attrs);
+        Initialize_Component();
+    }
+    // THREE ARGUMENT CONSTRUCTOR FOR LINEAR LAYOUT REQUIRED MIN LVL 11 API
     private void SetEventListeners() {
         createNewAds.setOnClickListener(this);
         personalAds.setOnClickListener(this);
@@ -32,7 +37,7 @@ public class compositeAdsSelector extends LinearLayout implements View.OnClickLi
         inflater.inflate(R.layout.composite_ads_selector,this);
         createNewAds = (Button) findViewById(R.id.composite_ads_first_tab);
         personalAds = (Button) findViewById(R.id.composite_ads_second_tab);
-
+        SetEventListeners();
     }
 
     @Override

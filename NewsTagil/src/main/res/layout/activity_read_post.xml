@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        layout="@layout/composite_header_second" />
+        layout="@layout/composite_header" />
     <ScrollView
             android:id="@+id/read_post_scroller"
             android:layout_width="match_parent"

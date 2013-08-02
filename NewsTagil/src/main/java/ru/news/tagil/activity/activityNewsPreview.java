@@ -99,7 +99,6 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         tableName = "news";
         totalCount = GetTotalCount(tableName,null);
     }
-
     @Override
     public void onClick(View view) {
         Intent i = new Intent(this,activityNewsContent.class);

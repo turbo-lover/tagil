@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/Orange"
+            android:id="@+id/relativeLayout">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:text="Шрифты"
+               />
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/font_type_linear"
+            android:minHeight="10dp"
+            >
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+                  </TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Orange"
+            android:id="@+id/relativeLayout2"
+            android:layout_below="@+id/font_type_linear"
+            android:layout_alignParentLeft="true">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Размер шрифта"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/font_size_linear"
+            android:minHeight="10dp"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_alignParentLeft="true">
+
+    </LinearLayout>
+</RelativeLayout>

@@ -82,7 +82,7 @@
                         android:layout_height="20dp"
                         android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
-                        android:background="#fffd8001"
+                        android:background="@color/Orange"
                         android:id="@+id/contact_photo_panel">
 
                     <TextView

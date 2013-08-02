@@ -3,6 +3,7 @@ package ru.news.tagil.utility;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
+
 /**
  * Created by Alexander on 15.07.13.
  */
@@ -11,6 +12,7 @@ public class myPreferencesWorker
     final private  String preference_user_login = "login";
     final private String preference_user_pass = "pass";
     final private String preference_location = "tagil_pref";
+    final private String preference_current_Typeface = "typeface";
     private SharedPreferences sPref;
     private Context context;
     public myPreferencesWorker(Context in) {
@@ -32,6 +34,14 @@ public class myPreferencesWorker
         ed.putString(preference_user_pass ,pass);
         ed.commit();
     }
+
+    public void set_typeface(String tf) {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(preference_current_Typeface,tf);
+        ed.commit();
+    }
     /* функции получения */
     public String get_login() {
         ContextWrapper cw = new ContextWrapper(context);
@@ -43,5 +53,11 @@ public class myPreferencesWorker
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
         return sPref.getString(preference_user_pass,"");
+    }
+
+    public String get_typeface() {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+        return sPref.getString(preference_current_Typeface,"");
     }
 }

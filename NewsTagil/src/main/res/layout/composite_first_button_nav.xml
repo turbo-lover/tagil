@@ -4,38 +4,48 @@
         android:background="#000"
         android:paddingLeft="0dp" >
 
-        <Button
+        <ImageView
             android:id="@+id/first_tape_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/first_test"/>
+            android:src="@drawable/first_test"
+            android:background="@color/lightGray"
+            android:scaleType="fitXY"/>
 
-        <Button
+        <ImageView
             android:id="@+id/first_dialogs_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/first_test_second" />
+            android:src="@drawable/first_test_second"
+            android:background="@color/lightGray"
+            android:scaleType="fitXY"/>
 
-        <Button
+        <ImageView
             android:id="@+id/first_elect_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/first_nav_elect" />
+            android:src="@drawable/first_nav_elect"
+            android:background="@color/lightGray"
+            android:scaleType="fitXY"/>
 
-        <Button
+        <ImageView
             android:id="@+id/first_useful_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/first_nav_useful" />
+            android:src="@drawable/first_nav_useful"
+            android:background="@color/lightGray"
+            android:scaleType="fitXY"/>
 
-        <Button
+        <ImageView
             android:id="@+id/first_setting_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/first_nav_settings" />
+            android:src="@drawable/first_nav_settings"
+            android:background="@color/lightGray"
+            android:scaleType="fitXY"/>
  </LinearLayout>

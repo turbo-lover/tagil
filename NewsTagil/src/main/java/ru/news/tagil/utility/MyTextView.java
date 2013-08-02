@@ -10,25 +10,50 @@ import android.widget.TextView;
  */
 public class myTextView extends TextView {
 
-    public myTextView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init();
-    }
-
-    public myTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
 
     public myTextView(Context context) {
         super(context);
-        init();
+
+        try {
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public myTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        try {
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public myTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        try {
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void init() {
-        if (!isInEditMode()) {
-            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font.ttf");
-            setTypeface(tf);
+        myPreferencesWorker pw = new myPreferencesWorker(getContext());
+
+        String typeface = pw.get_typeface();
+        try {
+
+        } catch (Exception e) {
+            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), typeface);
+            this.setTypeface(tf);
         }
+
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        init();
     }
 }

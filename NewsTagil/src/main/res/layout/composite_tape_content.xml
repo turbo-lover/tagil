@@ -45,7 +45,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-            <TextView
+            <ru.news.tagil.utility.myTextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:text="Реквием по бизнесу"
@@ -58,7 +58,7 @@
                     android:id="@+id/composite_tape_content_img">
 
             </ImageView>
-            <TextView
+            <ru.news.tagil.utility.myTextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="2dp"

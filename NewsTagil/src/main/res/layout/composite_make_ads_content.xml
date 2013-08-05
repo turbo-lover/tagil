@@ -69,7 +69,7 @@
 
             <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/massage_border_bg"
@@ -99,7 +99,6 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/massage_border_bg"
                     android:inputType="textMultiLine"
-                    android:ems="10"
                     android:id="@+id/composite_make_ads_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/ContentTextView"/>

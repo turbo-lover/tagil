@@ -5,8 +5,8 @@ import ru.news.tagil.activity.*;
 /**
  * Created by turbo_lover on 02.08.13.
  */
-public enum firstClasses {
-       NewsPreview(activityNewsPreview.class.toString()),
+public enum firstClassesEnum {
+       NewsPreview (activityNewsPreview.class.toString()),
        Message      (activityMessages.class.toString()),
        Favorite     (activityFavoriteNews.class.toString()),
        Useful       (activityUseful.class.toString()),
@@ -15,12 +15,12 @@ public enum firstClasses {
 
         private String typeValue;
 
-        private firstClasses(String type) {
+        private firstClassesEnum(String type) {
             typeValue = type;
         }
 
-        static public firstClasses getClass (String pType) {
-            for (firstClasses type: firstClasses.values()) {
+        static public firstClassesEnum getClass (String pType) {
+            for (firstClassesEnum type: firstClassesEnum.values()) {
                 if (type.getTypeValue().equals(pType)) {
                     return type;
                 }

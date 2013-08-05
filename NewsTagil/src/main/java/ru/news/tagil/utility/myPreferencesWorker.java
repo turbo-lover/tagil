@@ -9,12 +9,17 @@ import android.content.SharedPreferences;
  */
 public class myPreferencesWorker
 {
+    private SharedPreferences sPref;
+    private Context context;
+
     final private  String preference_user_login = "login";
     final private String preference_user_pass = "pass";
     final private String preference_location = "tagil_pref";
-    final private String preference_current_Typeface = "typeface";
-    private SharedPreferences sPref;
-    private Context context;
+    final private String preference_current_typeface = "typeface";
+    final private String preference_current_typeface_size = "typeface_size";
+
+
+
     public myPreferencesWorker(Context in) {
         context = in;
     }
@@ -39,7 +44,15 @@ public class myPreferencesWorker
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(preference_current_Typeface,tf);
+        ed.putString(preference_current_typeface,tf);
+        ed.commit();
+    }
+
+    public void set_typeface_size(int size) {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putInt(preference_current_typeface_size,size);
         ed.commit();
     }
     /* функции получения */
@@ -55,9 +68,19 @@ public class myPreferencesWorker
         return sPref.getString(preference_user_pass,"");
     }
 
+    /**
+     *
+     * @return current typeface location, or by default param font1.ttf
+     */
     public String get_typeface() {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
-        return sPref.getString(preference_current_Typeface,"");
+        return sPref.getString(preference_current_typeface,"fonts/font1.ttf");
+    }
+
+    public int get_typeface_size() {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+        return sPref.getInt(preference_current_typeface_size,15);
     }
 }

@@ -1,35 +1,22 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.gesture.GestureOverlayView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeAdsSelector;
 import ru.news.tagil.composite.compositeHeaderSimple;
-import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.ScrollUpdateActivity;
-import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 import ru.news.tagil.utility.myScrollView;
-import ru.news.tagil.utility.onScrollViewChangedListener;
-import ru.news.tagil.utility.onUpdateClickListener;
-import ru.news.tagil.utility.updateListActivity;
 
 /**
  * Created by turbo_lover on 19.07.13.
@@ -40,6 +27,7 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     private compositeHeaderSimple ads_header;
     private compositeAdsSelector ads_selector;
     private myPreferencesWorker preferencesWorker;
+
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.advertText));

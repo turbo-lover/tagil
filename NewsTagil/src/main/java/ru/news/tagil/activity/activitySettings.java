@@ -1,23 +1,28 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
-import android.os.Bundle;
-import ru.news.tagil.R;
+import ru.news.tagil.composite.compositeFirstButton;
+import ru.news.tagil.composite.compositeHeaderSimple;
+import ru.news.tagil.utility.mainFrameActivity;
 
 /**
  * Created by turbo_lover on 18.07.13.
  */
-public class activitySettings extends Activity {
+public class activitySettings extends mainFrameActivity {
+
+    compositeFirstButton firstButton;
+    compositeHeaderSimple headerSimple;
+    @Override
+    protected void SetCompositeElements() {
+        super.SetCompositeElements();
+        footer.addView(firstButton);
+        header.addView(headerSimple);
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-        InitializeComponent();
+    protected void InitializeComponent() {
+        super.InitializeComponent();
+        firstButton = new compositeFirstButton(this);
+        headerSimple = new compositeHeaderSimple(this);
     }
-
-    private void InitializeComponent() {
-
-    }
-
 }

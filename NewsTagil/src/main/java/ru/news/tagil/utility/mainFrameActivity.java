@@ -17,8 +17,8 @@ public class mainFrameActivity extends Activity {
     protected myPreferencesWorker preferencesWorker;
 
     // This section MUST be overriden
-    private void SetEventListeners() {}
-    private void SetCompositeElements() {}
+    protected void SetEventListeners() {}
+    protected void SetCompositeElements() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class mainFrameActivity extends Activity {
         SetEventListeners();
     }
 
-    private void InitializeComponent() {
+    protected void InitializeComponent() {
         setContentView(R.layout.main_frame);
         preferencesWorker = new myPreferencesWorker(this);
         header = (RelativeLayout) findViewById(R.id.main_frame_header);

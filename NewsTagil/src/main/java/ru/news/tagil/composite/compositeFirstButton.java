@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import ru.news.tagil.R;
 import ru.news.tagil.activity.*;
-import ru.news.tagil.utility.firstClasses;
+import ru.news.tagil.utility.firstClassesEnum;
 
 /**
  * Created by turbo_lover on 18.07.13.
@@ -18,7 +18,6 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
 
     private ImageView tape,dialog,elect,useful,setting;
     private Class currentClass;
-
 
     public compositeFirstButton(Context context) {
         super(context);
@@ -55,7 +54,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
 
     private void SetCurrentColorOnButton() {
 
-        firstClasses classes = firstClasses.getClass(currentClass.toString());
+        firstClassesEnum classes = firstClassesEnum.getClass(currentClass.toString());
         switch (classes)
         {
             case NewsPreview:

@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.utility.myAsyncTaskWorker;
+import ru.news.tagil.utility.myPreferencesWorker;
 
 import java.util.concurrent.ExecutionException;
 
@@ -41,16 +42,15 @@ public class activityRegistration extends Activity implements View.OnClickListen
         login = (EditText) findViewById(R.id. reg_login);
     }
 
-
     @Override
     public void onClick(View view) {
         Registration();
     }
 
     private void Registration() {
-        if( Validate_Email()) return;
-        if( Validate_Pass()) return;
-        if( Validate_Login()) return;
+        if(!Validate_Email()) return;
+        if(!Validate_Pass()) return;
+        if(!Validate_Login()) return;
 
         myAsyncTaskWorker worker = new myAsyncTaskWorker();
 
@@ -63,7 +63,12 @@ public class activityRegistration extends Activity implements View.OnClickListen
             worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
             jObj = worker.get();
             String status = jObj.getString("status");
-            if(status.equals("ok")) ToTapeActivity();
+            if(status.equals("ok")) {
+                myPreferencesWorker preferences_worker = new myPreferencesWorker(this);
+                preferences_worker.set_login(login.getText().toString());
+                preferences_worker.set_pass(pass.getText().toString());
+                ToTapeActivity();
+            }
 
             if(status.equals("denied")){
                 Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
@@ -96,7 +101,7 @@ public class activityRegistration extends Activity implements View.OnClickListen
         if(android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()) return true;
 
         login.requestFocusFromTouch();
-        Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.wrong_mail), Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -105,21 +110,23 @@ public class activityRegistration extends Activity implements View.OnClickListen
      * @return true if length of login greater or equal 3
      */
     private boolean Validate_Login() {
-        if(login.getText().length()>=3) return true;
+
+        int length = login.getText().toString().length();
+        if(length >=3) return true;
 
         login.requestFocusFromTouch();
         Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
         return false;
     }
 
-
     /**
      *  Make validation and send Toast
-     * @return true if length of password greater then 0
+     * @return true if length of password greater then or equals3
      */
     private boolean Validate_Pass() {
 
-        if(pass.getText().length()!=0) return true;
+        int length = pass.getText().toString().length();
+        if(length >=3) return true;
 
         pass.requestFocusFromTouch();
         Toast.makeText(this, getString(R.string.empty_pass), Toast.LENGTH_SHORT).show();

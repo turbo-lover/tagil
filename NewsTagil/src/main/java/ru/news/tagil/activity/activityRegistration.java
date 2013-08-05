@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.utility.myAsyncTaskWorker;
+import ru.news.tagil.utility.myPreferencesWorker;
 
 import java.util.concurrent.ExecutionException;
 
@@ -41,7 +42,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
         login = (EditText) findViewById(R.id. reg_login);
     }
 
-
     @Override
     public void onClick(View view) {
         Registration();
@@ -63,7 +63,12 @@ public class activityRegistration extends Activity implements View.OnClickListen
             worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
             jObj = worker.get();
             String status = jObj.getString("status");
-            if(status.equals("ok")) ToTapeActivity();
+            if(status.equals("ok")) {
+                myPreferencesWorker preferences_worker = new myPreferencesWorker(this);
+                preferences_worker.set_login(login.getText().toString());
+                preferences_worker.set_pass(pass.getText().toString());
+                ToTapeActivity();
+            }
 
             if(status.equals("denied")){
                 Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
@@ -113,7 +118,6 @@ public class activityRegistration extends Activity implements View.OnClickListen
         Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
         return false;
     }
-
 
     /**
      *  Make validation and send Toast

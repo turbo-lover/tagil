@@ -96,7 +96,7 @@ public class activityLogin extends Activity implements View.OnClickListener {
                 preferences_worker.set_pass(password.getText().toString());
                 toNextActivity();
             }
-            if(status.equals("error")){
+            if(status.equals("denied")){
                 Toast.makeText(this,getResources().getString(R.string.login_error),Toast.LENGTH_SHORT).show();
             }
         }

@@ -4,7 +4,9 @@
     android:layout_height="fill_parent"
     android:background="#ECE8E2"
    >
-
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/massage_border_bg"
                     android:id="@+id/composite_make_ads_img"/>
@@ -64,7 +67,7 @@
 
             <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/massage_border_bg"
@@ -95,7 +98,6 @@
                     android:minHeight="120dp"
                     android:background="@drawable/massage_border_bg"
                     android:inputType="textMultiLine"
-                    android:ems="10"
                     android:id="@+id/composite_make_ads_content"
                     android:layout_gravity="left|center_vertical"
                     android:layout_alignParentLeft="true"
@@ -117,5 +119,5 @@
 
         </RelativeLayout>
     </LinearLayout>
-
+</ScrollView>
 </RelativeLayout>

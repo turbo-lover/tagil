@@ -22,7 +22,7 @@
                     android:id="@+id/composite_header_back_button"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_width="25dp"
@@ -34,7 +34,7 @@
                 android:id="@+id/composite_header_first_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:background="@color/Transparent"
                 android:textColor="#4D433A"
                 android:layout_toRightOf="@+id/composite_header_back_button"
@@ -44,7 +44,7 @@
                 android:id="@+id/composite_header_second_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="10dp"
                 android:background="@color/Transparent"
                 android:textColor="#4D433A"
                 android:layout_alignBaseline="@+id/composite_header_first_button"
@@ -58,14 +58,14 @@
                 android:textColor="#4D433A"
                 android:layout_alignBaseline="@+id/composite_header_second_button"
                 android:layout_toRightOf="@+id/composite_header_second_button"
-                android:layout_marginLeft="12dp"/>
+                android:layout_marginLeft="10dp"/>
 
             <Button
                 android:id="@+id/composite_header_update"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/first_header_button"
                 android:layout_alignBaseline="@+id/composite_header_back_button"
                 android:layout_alignParentRight="true"/>

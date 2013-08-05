@@ -4,7 +4,9 @@
     android:layout_height="fill_parent"
     android:background="#ECE8E2"
    >
-
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -27,6 +29,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/massage_border_bg"
+                    android:scaleType="fitXY"
                     android:id="@+id/composite_make_ads_img"/>
 
             <TextView
@@ -66,7 +69,7 @@
 
             <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/massage_border_bg"
@@ -96,7 +99,6 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/massage_border_bg"
                     android:inputType="textMultiLine"
-                    android:ems="10"
                     android:id="@+id/composite_make_ads_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/ContentTextView"/>
@@ -118,5 +120,5 @@
     </LinearLayout>
 
 
-
+</ScrollView>
 </RelativeLayout>

@@ -16,7 +16,7 @@ public class jsonWorker {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(uri);
         httppost.setEntity(new ByteArrayEntity(jsonToSend.toString().getBytes("UTF8")));
-        httppost.setHeader("json", jsonToSend.toString());
+        httppost.setHeader("Content-Type", "application/json");
         BasicResponseHandler responseHandler = new BasicResponseHandler();
         String responseBody;
         try {

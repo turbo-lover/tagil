@@ -2,23 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ECE8E2"
-   >
+    android:background="#ECE8E2" >
 
-
-    <include
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/composite_header_simple"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/include"/>
+            android:id="@+id/activity_make_ads_header"/>
 
-    <include
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:id="@+id/activity_make_ads_content"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/composite_make_ads_content"
-            android:layout_below="@+id/include"
+            android:layout_below="@+id/activity_make_ads_header"
             android:layout_centerHorizontal="true"/>
 
 

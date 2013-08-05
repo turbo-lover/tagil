@@ -82,14 +82,17 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
         {
             case R.id.first_tape_button:
                 try {
-                    Intent intent = new Intent(context, activityNewsPreview.class); // в этой активити панелька добавлена и работает
-                    context.startActivity(intent);
+                    if(currentClass.equals(activityNewsPreview.class)) return;
+                        Intent intent = new Intent(context, activityNewsPreview.class); // в этой активити панелька добавлена и работает
+                        context.startActivity(intent);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_dialogs_button:
                 try {
+                    if(currentClass.equals(activityMessages.class)) return;
                     Intent intent = new Intent(context, activityMessages.class);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -98,6 +101,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 break;
             case R.id.first_elect_button: // избранное
                 try {
+                    if(currentClass.equals(activityFavoriteNews.class)) return;
                     Intent intent = new Intent(context, activityFavoriteNews.class);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -106,6 +110,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 break;
             case R.id.first_useful_button:
                 try {
+                    if(currentClass.equals(activityUseful.class)) return;
                     Intent intent = new Intent(context, activityUseful.class);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -114,6 +119,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 break;
             case R.id.first_setting_button:
                 try {
+                    if(currentClass.equals(activitySettings.class)) return;
                     Intent intent = new Intent(context, activitySettings.class);
                     context.startActivity(intent);
                 } catch (Exception e) {

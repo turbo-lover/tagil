@@ -20,6 +20,7 @@
     <string name="delText">Удалить</string>
     <string name="editText">Редактировать</string>
     <string name="startDialogText">Диалог</string>
+    <string name="SetFiledsWarning">Заполните поля!</string>    
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
     <string name="getAdvertText">get_advert_text.php</string>

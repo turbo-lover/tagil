@@ -24,6 +24,7 @@
         <activity android:name=".activity.activitySettings" />
         <activity android:name=".activity.activityUseful" />
         <activity android:name=".activity.activityAds" />
+        <activity android:name=".activity.activityMakeAds" />
         <activity android:name=".activity.activityCorrespondence" />
         <activity android:name=".activity.activityContact" />
         <activity android:name=".activity.activityCommentNews" />

@@ -54,6 +54,14 @@ public class compositeMakeAds extends RelativeLayout{
         sentButton.setOnClickListener(listener);
     }
 
+    public int GetWidth() {
+        return img.getWidth();
+    }
+
+    public int GetHeight() {
+        return img.getHeight();
+    }
+
     public String GetHeader() {
         return content.getText().toString();
     }

@@ -101,7 +101,6 @@ public class activityMakeAds extends Activity implements View.OnClickListener {
         }
     }
 
-
     public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;
@@ -120,10 +119,12 @@ public class activityMakeAds extends Activity implements View.OnClickListener {
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 String selectedImagePath = getPath(selectedImageUri);
-
-
-
-                makeAds.SetImg(BitmapFactory.decodeFile(selectedImagePath));
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(selectedImagePath,options);
+                options.inSampleSize = calculateInSampleSize(options, makeAds.GetWidth(), makeAds.GetHeight());
+                options.inJustDecodeBounds = false;
+                makeAds.SetImg(BitmapFactory.decodeFile(selectedImagePath,options));
             }
         }
     }

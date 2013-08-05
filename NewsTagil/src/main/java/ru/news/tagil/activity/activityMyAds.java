@@ -3,6 +3,7 @@ package ru.news.tagil.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,12 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     private LinearLayout ads_header_ll;
     private myScrollView ads_scroller;
     private compositeHeaderSimple ads_header;
-    private myPreferencesWorker preferencesWorker;
+
+    @Override
+    protected void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+        GetNew(CreateJsonForGetNew(),scriptAddress);
+    }
 
     @Override
     public void onClick(View view) {
@@ -93,6 +99,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     @Override
     protected void SetEventListeners() {
         ads_scroller.setListener(this);
+        ads_header.SetUpdateListener(this);
     }
     @Override
     protected void SetCompositeElements() {

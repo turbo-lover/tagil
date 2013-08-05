@@ -83,10 +83,13 @@ public class activityMakeAds extends Activity implements View.OnClickListener {
             sends_data.put("advert_header",makeAds.GetHeader());
             sends_data.put("advert_text",makeAds.GetContentText());
             Bitmap bmp = makeAds.GetImg();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] b = Base64.encode(stream.toByteArray(),0);
-            sends_data.put("advert_image",new String(b,"UTF-8"));
+            byte[] b = null;
+            if(bmp != null) {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                b = Base64.encode(stream.toByteArray(),0);
+            }
+            sends_data.put("advert_image",(bmp == null)?"NULL":new String(b,"UTF-8"));
             worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.addAdvertUrl));
             JSONObject jo =  worker.get();
             if(jo.getString("status").equals("ok")){

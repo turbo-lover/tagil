@@ -62,10 +62,10 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.composite_header_update :
+            case R.id.composite_header_simple_update :
                 if(listener!= null) listener.UpdateButtonClicks();
                 break;
-            case R.id.composite_header_back_button :
+            case R.id.composite_header_simple_back_button :
                 // create on back action
                 break;
         }

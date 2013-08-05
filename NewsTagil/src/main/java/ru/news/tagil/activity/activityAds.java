@@ -39,6 +39,7 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     @Override
     protected void SetEventListeners() {
         ads_scroller.setListener(this);
+        ads_header.SetUpdateListener(this);
     }
     @Override
     protected void InitializeComponent() {

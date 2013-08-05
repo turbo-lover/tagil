@@ -17,6 +17,7 @@ public class ScrollUpdateActivity extends Activity implements updateListActivity
     protected int totalCount;
     protected String scriptAddress,tableName;
     protected LinearLayout container;
+    protected myPreferencesWorker preferencesWorker;
 
     // This section MUST be ovveriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
@@ -109,7 +110,7 @@ public class ScrollUpdateActivity extends Activity implements updateListActivity
 
     @Override
     public void UpdateButtonClicks() {
-        int new_count = GetTotalCount(tableName,null);
+        int new_count = GetTotalCount(tableName,(tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login());
         if(new_count > totalCount) {
             totalCount = new_count;
             GetNew(CreateJsonForGetNew(),scriptAddress);

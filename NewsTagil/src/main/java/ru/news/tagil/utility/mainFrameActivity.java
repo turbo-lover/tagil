@@ -38,4 +38,8 @@ public class mainFrameActivity extends Activity {
         selector = (RelativeLayout) findViewById(R.id.main_frame_selector);
         container = (LinearLayout) findViewById(R.id.main_frame_content_holder);
     }
+
+    protected void ClearContainer() {
+        container.removeAllViews();
+    }
 }

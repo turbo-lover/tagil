@@ -12,6 +12,7 @@ import android.provider.MediaStore;
  * Created by Alexander on 06.08.13.
  */
 public class imageGetter {
+
     Context context;
     public imageGetter(Context context){
         this.context = context;

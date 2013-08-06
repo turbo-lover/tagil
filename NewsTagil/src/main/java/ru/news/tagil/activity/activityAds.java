@@ -3,23 +3,19 @@ package ru.news.tagil.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
 import org.json.JSONObject;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeAdsSelector;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.ScrollUpdateActivity;
-import ru.news.tagil.utility.myPreferencesWorker;
-import ru.news.tagil.utility.myScrollView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by turbo_lover on 19.07.13.
@@ -39,7 +35,7 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     @Override
     protected void SetEventListeners() {
         super.SetEventListeners();
-        ads_header.SetUpdateListener(this);
+        ads_header.SetHeaderButtonsListener(this);
     }
     @Override
     protected void InitializeComponent() {

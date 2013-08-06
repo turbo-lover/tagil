@@ -1,11 +1,8 @@
 package ru.news.tagil.utility;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,7 +11,7 @@ import ru.news.tagil.R;
 /**
  * Created by Alexander on 01.08.13.
  */
-public class ScrollUpdateActivity extends Activity implements updateListActivity,onScrollViewChangedListener,onClickInHeaderListener {
+public class ScrollUpdateActivity extends mainFrameJsonActivity implements updateListActivity,onScrollViewChangedListener,onClickInHeaderListener {
     protected int totalCount;
     protected String tableName; //Must be set in Initialize method
 

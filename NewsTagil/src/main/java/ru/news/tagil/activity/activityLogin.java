@@ -21,14 +21,15 @@ import java.util.concurrent.ExecutionException;
  */
 public class activityLogin extends Activity implements View.OnClickListener {
 
-    EditText login,password;
-    Button sign_in,to_registration;
-    myPreferencesWorker preferences_worker;
+    private EditText login,password;
+    private Button sign_in,to_registration;
+    private myPreferencesWorker preferences_worker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Initialize_Component();
+        InitializeComponent();
+        SetEventListeners();
     }
 
     private void SetEventListeners() {
@@ -36,14 +37,13 @@ public class activityLogin extends Activity implements View.OnClickListener {
         to_registration.setOnClickListener(this);
     }
 
-    private void Initialize_Component() {
+    private void InitializeComponent() {
         setContentView(R.layout.activity_login);
         sign_in = (Button) findViewById(R.id.enter);
         to_registration = (Button) findViewById(R.id.reg);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.pass);
         preferences_worker = new myPreferencesWorker(this);
-        SetEventListeners();
     }
 
 
@@ -116,7 +116,7 @@ public class activityLogin extends Activity implements View.OnClickListener {
     }
 
     private boolean isValidateFieldsOk() {
-        if(login.getText().length()==0 || password.getText().length()==0) {
+        if(login.getText().length() == 0 || password.getText().length() == 0) {
             return false;
         }
         return true;

@@ -10,7 +10,7 @@ import org.json.JSONObject;
  * Created by Alexander on 15.07.13.
  */
 public class jsonWorker {
-
+    //TODO add timeout for connection
     //private static final int TIMEOUT_MILLISEC = 5000;
     public static JSONObject SendRecieveJson(JSONObject jsonToSend,String uri) throws Exception {
         HttpClient httpclient = new DefaultHttpClient();

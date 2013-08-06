@@ -51,11 +51,8 @@ public class activityRegistration extends Activity implements View.OnClickListen
         if(!Validate_Email()) return;
         if(!Validate_Pass()) return;
         if(!Validate_Login()) return;
-
         myAsyncTaskWorker worker = new myAsyncTaskWorker();
-
         JSONObject jObj = new JSONObject();
-
         try {
             jObj.put("login",login.getText());
             jObj.put("pass",pass.getText());
@@ -69,22 +66,17 @@ public class activityRegistration extends Activity implements View.OnClickListen
                 preferences_worker.set_pass(pass.getText().toString());
                 ToTapeActivity();
             }
-
             if(status.equals("denied")){
                 Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
             }
-
         }
         catch (JSONException e) {
             e.printStackTrace();
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        catch (ExecutionException e) {
+        } catch (ExecutionException e) {
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -96,10 +88,8 @@ public class activityRegistration extends Activity implements View.OnClickListen
     }
 
     private boolean Validate_Email() {
-        //TODO проверить
         CharSequence target= mail.getText() ;
         if(android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()) return true;
-
         login.requestFocusFromTouch();
         Toast.makeText(this, getString(R.string.wrong_mail), Toast.LENGTH_SHORT).show();
         return false;

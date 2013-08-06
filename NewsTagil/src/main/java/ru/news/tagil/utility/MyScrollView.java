@@ -18,8 +18,7 @@ public class myScrollView extends ScrollView {
         super(context,attrs);
     }
 
-    public void setListener(onScrollViewChangedListener outside_listener)
-    {
+    public void setListener(onScrollViewChangedListener outside_listener) {
         listener = outside_listener;
     }
     @Override

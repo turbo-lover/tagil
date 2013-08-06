@@ -69,7 +69,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         backButton.setOnClickListener(this);
     }
 
-    public void SetUpdateListener(onClickInHeaderListener listener) {
+    public void SetHeaderButtonsListener(onClickInHeaderListener listener) {
         this.listener = listener;
     }
 

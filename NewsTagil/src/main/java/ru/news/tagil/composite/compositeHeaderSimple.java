@@ -18,6 +18,7 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
     private Button button,backButton,updateButton;
     private TextView tomorrow, now;
     private onClickInHeaderListener listener = null;
+    
     public compositeHeaderSimple(Context context) {
         super(context);
         Initialize_Component();
@@ -55,7 +56,7 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
         updateButton.setOnClickListener(this);
     }
 
-    public void SetUpdateListener(onClickInHeaderListener listener) {
+    public void SetHeaderButtonsListener(onClickInHeaderListener listener) {
         this.listener = listener;
     }
     @Override

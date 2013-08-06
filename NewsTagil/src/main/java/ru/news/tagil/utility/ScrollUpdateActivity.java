@@ -13,7 +13,7 @@ import ru.news.tagil.R;
 /**
  * Created by Alexander on 01.08.13.
  */
-public class ScrollUpdateActivity extends Activity implements updateListActivity,onScrollViewChangedListener,onUpdateClickListener {
+public class ScrollUpdateActivity extends Activity implements updateListActivity,onScrollViewChangedListener,onClickInHeaderListener {
     protected int totalCount;
     protected String scriptAddress,tableName;
     protected LinearLayout container;
@@ -115,5 +115,10 @@ public class ScrollUpdateActivity extends Activity implements updateListActivity
             totalCount = new_count;
             GetNew(CreateJsonForGetNew(),scriptAddress);
         }
+    }
+
+    @Override
+    public void BackButtonClicks() {
+
     }
 }

@@ -8,10 +8,6 @@ import ru.news.tagil.R;
 /**
  * Created by turbo_lover on 12.07.13.
  */
-public class activityCommentNews extends Activity {
+public class activityCommentNews  extends Activity{
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 }

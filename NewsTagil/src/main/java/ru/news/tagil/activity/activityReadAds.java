@@ -14,74 +14,59 @@ import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsContent;
 import ru.news.tagil.composite.compositeHeaderSimple;
+import ru.news.tagil.utility.mainFrameJsonActivity;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 
 /**
  * Created by Alexander on 30.07.13.
  */
-public class activityReadAds extends Activity {
-    private LinearLayout headerLL,contentLL;
-    private myPreferencesWorker preferencesWorker;
-    private compositeHeaderSimple header;
+public class activityReadAds extends mainFrameJsonActivity {
+    private compositeHeaderSimple h_simple;
     private compositeAdsContent content;
     private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read_ads);
-        i = getIntent();
-        Initialize_Component();
-        SetEventListeners();
-        SetCompositeElements(castText(getText(i.getStringExtra("id_advert"))));
+        Set(Get(CreateJsonForGet()));
     }
-
-    private JSONObject getText(String id_advert) {
-        myAsyncTaskWorker worker = new myAsyncTaskWorker();
+    @Override
+    protected void InitializeComponent() {
+        super.InitializeComponent();
+        scriptAddress = getString(R.string.getAdvertTextUrl);
+        i = getIntent();
+        h_simple = new compositeHeaderSimple(this);
+        content = new compositeAdsContent(this);
+    }
+    @Override
+    protected void SetCompositeElements() {
+        h_simple.Set(getString(R.string.advertText));
+        header.addView(h_simple);
+        container.addView(content);
+    }
+    @Override
+    protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
         try {
+            jo.put("id_advert",i.getStringExtra("id_advert"));
             jo.put("login",preferencesWorker.get_login());
             jo.put("pass",preferencesWorker.get_pass());
-            jo.put("id_advert",id_advert);
-            worker.execute(jo,getString(R.string.serverAddress) +getString(R.string.getAdvertText) );
-            return  worker.get();
-        } catch(Exception e) {
-            e.printStackTrace();
-            Log.d("Exception",e.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
-        return null;
+        return jo;
     }
-
-    private String castText(JSONObject jsonObject) {
+    @Override
+    public void Set(JSONObject jsonObject) {
         try {
             if(jsonObject.getString("status").equals("error")){
                 Toast.makeText(this, jsonObject.getString("errormsg"), Toast.LENGTH_SHORT).show();
-                return "";
+                return ;
             }
-            return jsonObject.getString("result");
+            content.Set(i.getStringExtra("title"),jsonObject.getString("result"),(Bitmap)i.getParcelableExtra("img"));
         } catch (Exception ex) {
             ex.printStackTrace();
-            ex.printStackTrace();
         }
-        return "";
-    }
-
-    private void SetCompositeElements(String text) {
-        header = new compositeHeaderSimple(this);
-        header.Set(getString(R.string.advertText));
-        content = new compositeAdsContent(this);
-        content.Set(i.getStringExtra("title"),text,(Bitmap)i.getParcelableExtra("img"));
-        contentLL.addView(content);
-        headerLL.addView(header);
-    }
-
-    private void SetEventListeners() {
-
-    }
-
-    private void Initialize_Component() {
-        headerLL = (LinearLayout) findViewById(R.id.activity_read_ads_header);
-        contentLL = (LinearLayout) findViewById(R.id.activity_read_ads_content);
-        preferencesWorker = new myPreferencesWorker(this);
     }
 }

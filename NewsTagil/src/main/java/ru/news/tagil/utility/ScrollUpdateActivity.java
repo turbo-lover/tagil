@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,27 +14,22 @@ import ru.news.tagil.R;
 /**
  * Created by Alexander on 01.08.13.
  */
-public class ScrollUpdateActivity extends Activity implements updateListActivity,onScrollViewChangedListener,onUpdateClickListener {
+public class ScrollUpdateActivity extends mainFrameJsonActivity implements updateListActivity,onScrollViewChangedListener,onUpdateClickListener {
     protected int totalCount;
-    protected String scriptAddress,tableName;
-    protected LinearLayout container;
-    protected myPreferencesWorker preferencesWorker;
+    protected String tableName; //Must be set in Initialize method
 
-    // This section MUST be ovveriden
+    // This method MUST be overriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
-    protected JSONObject CreateJsonForGet() { return null; }
     protected JSONObject CreateJsonForGetNew() { return null; }
-    protected void InitializeComponent() {}
-    protected void SetEventListeners() {}
-    protected void SetCompositeElements() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InitializeComponent();
-        SetCompositeElements();
-        SetEventListeners();
-        Get(CreateJsonForGet(),scriptAddress);
+        Set(Get(CreateJsonForGet()), false);
+    }
+
+    protected void SetEventListeners() {
+        scrollView.setListener(this);
     }
 
     @Override
@@ -59,33 +55,14 @@ public class ScrollUpdateActivity extends Activity implements updateListActivity
     }
 
     @Override
-    public void Get(JSONObject jsonObject,String scriptAddress) {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
+    public JSONObject Get(JSONObject jsonObject) {
         if(container.getChildCount() == totalCount) {
-            return; }
-        try{
-            asyncTaskWorker.execute(jsonObject,getString(R.string.serverAddress)+scriptAddress);
-            Set(asyncTaskWorker.get(), false);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("GET_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        }
+            return null; }
+        return super.Get(jsonObject);
     }
 
     @Override
-    public void GetNew(JSONObject jsonObject, String scriptAddress) {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
-        try {
-            asyncTaskWorker.execute(jsonObject,getString(R.string.serverAddress)+scriptAddress);
-            Set(asyncTaskWorker.get(),true);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("GET_NEW_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        }
-    }
-
-    @Override
-    public int GetTotalCount(String tableName,String login) {
+    public int GetTotalCount(String login) {
         myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
         JSONObject jo;
         try{
@@ -105,15 +82,15 @@ public class ScrollUpdateActivity extends Activity implements updateListActivity
 
     @Override
     public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
-        Get(CreateJsonForGet(),scriptAddress);
+        Set(Get(CreateJsonForGet()),false);
     }
 
     @Override
     public void UpdateButtonClicks() {
-        int new_count = GetTotalCount(tableName,(tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login());
+        int new_count = GetTotalCount((tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login());
         if(new_count > totalCount) {
             totalCount = new_count;
-            GetNew(CreateJsonForGetNew(),scriptAddress);
+            Set(Get(CreateJsonForGetNew()),true);
         }
     }
 }

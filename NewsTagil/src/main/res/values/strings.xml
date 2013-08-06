@@ -17,12 +17,13 @@
     <string name="myAdvertText">Мои объявления</string>
     <string name="AddPhoto">"Добавить \n    фото"</string>
     <string name="delText">Удалить</string>
+    <string name="News">Новости</string>
     <string name="editText">Редактировать</string>
     <string name="startDialogText">Диалог</string>
     <string name="SetFiledsWarning">Заполните поля!</string>    
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
-    <string name="getAdvertText">get_advert_text.php</string>
+    <string name="getAdvertTextUrl">get_advert_text.php</string>
     <string name="getTotalIdCountUrl">get_total_id_count.php</string>
     <string name="addAdvertUrl">add_advert.php</string>
     <string name="addCommentUrl">add_comment.php</string>

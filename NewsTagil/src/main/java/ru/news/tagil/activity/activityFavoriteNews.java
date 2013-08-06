@@ -10,9 +10,5 @@ import ru.news.tagil.R;
  */
 public class activityFavoriteNews extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+
 }

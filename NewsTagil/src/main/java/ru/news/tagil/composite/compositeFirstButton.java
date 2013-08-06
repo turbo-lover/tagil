@@ -36,7 +36,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
         elect.setOnClickListener(this);
         useful.setOnClickListener(this);
         setting.setOnClickListener(this);
-    }//this is left brace on 38 line
+    }
 
     private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

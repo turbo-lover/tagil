@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,8 +14,6 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.ScrollUpdateActivity;
-import ru.news.tagil.utility.myPreferencesWorker;
-import ru.news.tagil.utility.myScrollView;
 
 
 /**
@@ -24,16 +21,13 @@ import ru.news.tagil.utility.myScrollView;
  */
 public class activityMyAds extends ScrollUpdateActivity implements View.OnClickListener
 {
-    private LinearLayout ads_header_ll;
-    private myScrollView ads_scroller;
     private compositeHeaderSimple ads_header;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        GetNew(CreateJsonForGetNew(),scriptAddress);
+        Set(Get(CreateJsonForGetNew()),true);
     }
-
     @Override
     public void onClick(View view) {
         Intent i = new Intent(this,activityReadAds.class);
@@ -86,25 +80,20 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     }
     @Override
     protected void InitializeComponent() {
-        setContentView(R.layout.activity_ads);
-        preferencesWorker = new myPreferencesWorker(this);
+        super.InitializeComponent();
         ads_header = new compositeHeaderSimple(this);
-        container = (LinearLayout) findViewById(R.id.ads_content_holder);
-        ads_scroller = (myScrollView) findViewById(R.id.ads_scroller);
-        ads_header_ll = (LinearLayout) findViewById(R.id.activity_ads_include);
         tableName = "my_adverts";
         scriptAddress = getString(R.string.getMyAdvertsHeadersUrl);
-        totalCount = GetTotalCount(tableName,preferencesWorker.get_login());
+        totalCount = GetTotalCount(preferencesWorker.get_login());
     }
     @Override
     protected void SetEventListeners() {
-        ads_scroller.setListener(this);
         ads_header.SetUpdateListener(this);
     }
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.myAdvertText));
-        ads_header_ll.addView(ads_header);
+        header.addView(ads_header);
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj){

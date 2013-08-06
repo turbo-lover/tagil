@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_frame_holder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/AppBackground">
@@ -9,21 +10,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:id="@+id/main_frame_header" />
+            android:id="@+id/main_frame_header" >
+
+            </RelativeLayout>
 
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/main_frame_header"
-            android:id="@+id/main_frame_selector"/>
+            android:id="@+id/main_frame_selector">
+            </RelativeLayout>
 
     <ru.news.tagil.utility.myScrollView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/main_frame_scroll"
-            android:layout_below="@+id/main_frame_header">
+            android:layout_above="@+id/main_frame_footer"
+            android:layout_below="@+id/main_frame_selector">
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/main_frame_content_holder"
@@ -36,5 +41,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            />
+            ></RelativeLayout>
 </RelativeLayout>

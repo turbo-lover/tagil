@@ -13,8 +13,8 @@ import ru.news.tagil.R;
 public class mainFrameActivity extends Activity {
     protected LinearLayout container;
     protected myScrollView scrollView;
-    protected RelativeLayout header,footer,selector;
     protected myPreferencesWorker preferencesWorker;
+    protected RelativeLayout header,holder,footer,selector;
 
     // This section MUST be overriden
     protected void SetEventListeners() {}
@@ -32,6 +32,7 @@ public class mainFrameActivity extends Activity {
         setContentView(R.layout.main_frame);
         preferencesWorker = new myPreferencesWorker(this);
         header = (RelativeLayout) findViewById(R.id.main_frame_header);
+        holder = (RelativeLayout) findViewById(R.id.main_frame_holder);
         scrollView = (myScrollView) findViewById(R.id.main_frame_scroll);
         footer = (RelativeLayout) findViewById(R.id.main_frame_footer);
         selector = (RelativeLayout) findViewById(R.id.main_frame_selector);

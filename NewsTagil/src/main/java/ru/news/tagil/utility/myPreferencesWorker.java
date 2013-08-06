@@ -70,12 +70,12 @@ public class myPreferencesWorker
 
     /**
      *
-     * @return current typeface location, or by default param font1.ttf
+     * @return current typeface location, or by default param font7.ttf
      */
     public String get_typeface() {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
-        return sPref.getString(preference_current_typeface,"fonts/font1.ttf");
+        return sPref.getString(preference_current_typeface,"fonts/font7.ttf");
     }
 
     public int get_typeface_size() {

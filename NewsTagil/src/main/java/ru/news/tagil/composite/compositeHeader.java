@@ -16,14 +16,14 @@ import ru.news.tagil.R;
 import ru.news.tagil.activity.activityAds;
 import ru.news.tagil.activity.activityContact;
 import ru.news.tagil.activity.activityNewsPreview;
-import ru.news.tagil.utility.onUpdateClickListener;
+import ru.news.tagil.utility.onClickInHeaderListener;
 
 public class compositeHeader extends RelativeLayout implements View.OnClickListener {
     private final String TAG = "compositeHeader";
 
     private Button firstButton, secondButton, thirdButton, updateButton, backButton;
     private TextView weather_tommorow, weather_today;
-    private onUpdateClickListener listener = null;
+    private onClickInHeaderListener listener = null;
 
     public compositeHeader(Context context) {
         super(context);
@@ -69,7 +69,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         backButton.setOnClickListener(this);
     }
 
-    public void SetUpdateListener(onUpdateClickListener listener) {
+    public void SetUpdateListener(onClickInHeaderListener listener) {
         this.listener = listener;
     }
 
@@ -108,7 +108,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
                 if(listener!= null) listener.UpdateButtonClicks();
             break;
             case R.id.composite_header_back_button :
-                // create on back action
+                if(listener!= null) listener.BackButtonClicks();
                 break;
         }
     }

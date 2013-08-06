@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ru.news.tagil.R;
-import ru.news.tagil.utility.onUpdateClickListener;
+import ru.news.tagil.utility.onClickInHeaderListener;
 
 /**
  * Created by Alexander on 23.07.13.
@@ -17,7 +17,7 @@ import ru.news.tagil.utility.onUpdateClickListener;
 public class compositeHeaderSimple extends RelativeLayout implements View.OnClickListener {
     private Button button,backButton,updateButton;
     private TextView tomorrow, now;
-    private onUpdateClickListener listener = null;
+    private onClickInHeaderListener listener = null;
     public compositeHeaderSimple(Context context) {
         super(context);
         Initialize_Component();
@@ -55,7 +55,7 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
         updateButton.setOnClickListener(this);
     }
 
-    public void SetUpdateListener(onUpdateClickListener listener) {
+    public void SetUpdateListener(onClickInHeaderListener listener) {
         this.listener = listener;
     }
     @Override
@@ -66,7 +66,7 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
                 if(listener!= null) listener.UpdateButtonClicks();
                 break;
             case R.id.composite_header_simple_back_button :
-                // create on back action
+                if(listener!= null) listener.BackButtonClicks();
                 break;
         }
     }

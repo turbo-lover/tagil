@@ -99,6 +99,9 @@ public class activityLogin extends Activity implements View.OnClickListener {
             if(status.equals("denied")){
                 Toast.makeText(this,getResources().getString(R.string.login_error),Toast.LENGTH_SHORT).show();
             }
+            if(status.equals("errormsg")){
+                Toast.makeText(this,getResources().getString(R.string.login_error),Toast.LENGTH_SHORT).show();
+            }
         }
         catch (JSONException e) {
             e.printStackTrace();

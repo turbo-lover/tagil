@@ -23,6 +23,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     private compositeFirstButton cfb;
     private compositeHeader compositeHeader;
     private LinearLayout navigation_footter,tape_header;
+
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
@@ -76,8 +77,8 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     }
     @Override
     protected void SetEventListeners() {
+        super.SetEventListeners();
         compositeHeader.SetHeaderButtonsListener(this);
-        scroller.setListener(this);
     }
     @Override
     protected void SetCompositeElements() {

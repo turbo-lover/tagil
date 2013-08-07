@@ -26,6 +26,7 @@ public class mainFrameActivity extends Activity {
         InitializeComponent();
         SetCompositeElements();
         SetEventListeners();
+
     }
 
     protected void InitializeComponent() {

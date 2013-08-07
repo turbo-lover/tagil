@@ -9,23 +9,31 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-
             android:layout_centerHorizontal="true">
 
-        <LinearLayout
+        <RelativeLayout
+                android:orientation="horizontal"
                 android:id="@+id/message_item_image"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.3"
                 android:layout_height="100dp"
                 android:background="@drawable/border_img">
-        </LinearLayout>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
 
-        <LinearLayout
+            </ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
                 android:id="@+id/message_item_last"
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="0.7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/border_img"
                 >
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

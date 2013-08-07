@@ -19,10 +19,8 @@ import java.util.Calendar;
  * Created by Alexander on 15.07.13.
  */
 public class activityNewsPreview extends ScrollUpdateActivity implements View.OnClickListener{
-    private myScrollView scroller;
     private compositeFirstButton cfb;
     private compositeHeader compositeHeader;
-    private LinearLayout navigation_footter,tape_header;
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
@@ -76,8 +74,8 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     }
     @Override
     protected void SetEventListeners() {
+        super.SetEventListeners();
         compositeHeader.SetHeaderButtonsListener(this);
-        scroller.setListener(this);
     }
     @Override
     protected void SetCompositeElements() {

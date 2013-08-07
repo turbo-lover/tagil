@@ -1,6 +1,7 @@
 package ru.news.tagil.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,12 +17,14 @@ import ru.news.tagil.utility.ScrollUpdateActivity;
  */
 public class activityCorrespondence extends ScrollUpdateActivity implements View.OnClickListener {
     private compositeHeaderSimple headerSimple;
-    private compositeFirstButton compositeFirstButton;
+    private compositeFirstButton cfb;
 
 
     @Override
     public void onClick(View view) {
-
+        Intent i = new Intent(this,activityMessages.class);
+       // i.putExtra("interluctor",)
+        startActivity(i);
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) { return null; }
@@ -30,7 +33,12 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     @Override
     protected JSONObject CreateJsonForGetNew() { return null; }
     @Override
-    protected void InitializeComponent() {}
+    protected void InitializeComponent() {
+        super.InitializeComponent();
+        headerSimple = new compositeHeaderSimple(this);
+        cfb = new compositeFirstButton(this);
+        scriptAddress = getString(R.string.getInterlocutorsUrl);
+    }
     @Override
     protected void SetEventListeners() {}
     @Override

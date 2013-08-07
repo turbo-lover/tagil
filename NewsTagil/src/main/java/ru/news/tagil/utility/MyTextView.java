@@ -3,6 +3,7 @@ package ru.news.tagil.utility;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 /**
@@ -31,9 +32,11 @@ public class myTextView extends TextView {
         myPreferencesWorker pw = new myPreferencesWorker(getContext());
 
         String typeface = pw.get_typeface();
+        float typeSize = pw.get_typeface_size();
         try {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), typeface);
             this.setTypeface(tf);
+            this.setTextSize(TypedValue.COMPLEX_UNIT_PX,typeSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,6 +3,7 @@ package ru.news.tagil.utility;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
+import ru.news.tagil.R;
 
 /**
  * Created by Alexander on 15.07.13.
@@ -48,11 +49,11 @@ public class myPreferencesWorker
         ed.commit();
     }
 
-    public void set_typeface_size(int size) {
+    public void set_typeface_size(float size) {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-        ed.putInt(preference_current_typeface_size,size);
+        ed.putFloat(preference_current_typeface_size, size);
         ed.commit();
     }
     /* функции получения */
@@ -78,9 +79,9 @@ public class myPreferencesWorker
         return sPref.getString(preference_current_typeface,"fonts/font7.ttf");
     }
 
-    public int get_typeface_size() {
+    public float get_typeface_size() {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
-        return sPref.getInt(preference_current_typeface_size,15);
+        return sPref.getFloat(preference_current_typeface_size, context.getResources().getDimension(R.dimen.devault_size));
     }
 }

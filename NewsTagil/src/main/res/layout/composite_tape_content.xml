@@ -4,68 +4,78 @@
     android:layout_height="fill_parent"
     android:background="#ECE8E2"
     >
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout"
+            android:layout_alignBottom="@id/tape_prev_layout_content"
+            android:layout_alignTop="@id/tape_prev_layout_content"
+            >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/time_text_size"
+                android:textColor="#ff474747"
+                android:text="3.07.13"
+                android:id="@+id/composite_tape_content_date"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"/>
 
-
-    <LinearLayout
-            android:orientation="horizontal"
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/time_text_size"
+                android:textColor="#ff474747"
+                android:text="00:16"
+                android:id="@+id/composite_tape_content_time"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_below="@+id/composite_tape_content_date"
+                android:layout_alignLeft="@+id/composite_tape_content_date"/>
+    </RelativeLayout>
+    <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_width="60dp"
-                android:layout_height="50dp">
-
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#ff474747"
-                    android:text="3.07.13"
-                    android:id="@+id/composite_tape_content_date"/>
-
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="#ff474747"
-                    android:text="    00:16"
-                    android:id="@+id/composite_tape_content_time"/>
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-                android:orientation="vertical"
+            android:layout_toRightOf="@+id/relativeLayout"
+            android:id="@id/tape_prev_layout_content"
+            >
+        <ru.news.tagil.utility.myTextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="ЗАГОЛОВОК НОВОСТИ111111"
+                android:textSize="27sp"
+                android:minLines="2"
+                android:textColor="@color/Black"
+                android:id="@+id/composite_tape_content_name_post"
+                android:textAlignment="gravity"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentTop="true"/>
+        <ImageView
+                android:layout_width="220dp"
+                android:layout_height="80dp"
+                android:id="@+id/composite_tape_content_img"
+                android:layout_below="@+id/composite_tape_content_name_post">
 
-            <ru.news.tagil.utility.myTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:text="Реквием по бизнесу"
-                    android:textSize="18dp"
-                    android:textColor="#ff181818"
-                    android:id="@+id/composite_tape_content_name_post"/>
-            <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/composite_tape_content_img">
+        </ImageView>
+        <ru.news.tagil.utility.myTextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="2dp"
+                android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
+                android:textSize="12dp"
+                android:textColor="#ff474747"
+                android:id="@+id/composite_tape_content_post_content"
+                android:layout_below="@+id/composite_tape_content_img"/>
+    </RelativeLayout>
 
-            </ImageView>
-            <ru.news.tagil.utility.myTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginTop="2dp"
-                    android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
-                    android:textSize="12dp"
-                    android:textColor="#ff474747"
-                    android:id="@+id/composite_tape_content_post_content"/>
-        </LinearLayout>
-    </LinearLayout>
+
+
+
+
 </RelativeLayout>

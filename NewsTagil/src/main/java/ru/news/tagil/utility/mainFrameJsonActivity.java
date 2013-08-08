@@ -1,18 +1,22 @@
 package ru.news.tagil.utility;
 
 import android.util.Log;
-import android.view.View;
 import org.json.JSONObject;
-
 import ru.news.tagil.R;
 
 /**
  * Created by Alexander on 05.08.13.
  */
 public class mainFrameJsonActivity extends mainFrameActivity implements jsonActivity {
-    protected String scriptAddress; //Must be set in Initialize method
+    /**
+     * Must be set in Initialize method
+     */
+    protected String scriptAddress;
 
-    // This section MUST be overriden
+    /**
+     *  This section MUST be overriden
+     * @return
+     */
     protected JSONObject CreateJsonForGet() { return null; }
     @Override
     public void Set(JSONObject jsonObject) { }

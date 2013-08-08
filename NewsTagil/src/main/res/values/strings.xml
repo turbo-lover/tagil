@@ -44,5 +44,7 @@
     <string name="empty_login">Заполните логин</string>
     <string name="DeniedRegistration">Такой логин или e-mail уже существует</string>
     <string name="composite_header_now">сейчас:</string>
+    <string name="message_font_size_changed">Размер шрифта успешно изменен</string>
+    <string name="message_font_type_changed">Тип шрифта успешно изменен!</string>
 
 </resources>

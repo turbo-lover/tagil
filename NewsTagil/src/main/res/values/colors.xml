@@ -5,4 +5,5 @@
     <color name="Black">#000000</color>
     <color name="Orange">#fffd8001</color>
     <color name="AppBackground">#ECE8E2</color>
+    <color name="borderColor">#d5cec6</color>
 </resources>

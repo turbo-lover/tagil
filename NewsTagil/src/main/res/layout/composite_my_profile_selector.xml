@@ -3,13 +3,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+                    >
     <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text="Моя страница"
             android:textColor="#ff474747"
             android:textSize="13dp"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
             android:id="@+id/composite_my_profile_selector_button"
             android:background="@drawable/border_img"
             />

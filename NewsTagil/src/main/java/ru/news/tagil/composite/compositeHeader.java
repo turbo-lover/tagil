@@ -7,9 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ru.news.tagil.R;
@@ -18,13 +22,13 @@ import ru.news.tagil.activity.activityContact;
 import ru.news.tagil.activity.activityNewsPreview;
 import ru.news.tagil.utility.onClickInHeaderListener;
 
-public class compositeHeader extends RelativeLayout implements View.OnClickListener {
+public class compositeHeader extends RelativeLayout implements View.OnClickListener,EditText.OnEditorActionListener{
     private final String TAG = "compositeHeader";
 
     private Button firstButton, secondButton, thirdButton, updateButton, backButton;
     private TextView weather_tommorow, weather_today;
+    private EditText searchTxt;
     private onClickInHeaderListener listener = null;
-
     public compositeHeader(Context context) {
         super(context);
         Initialize_Component();
@@ -47,6 +51,9 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         thirdButton.setText(thirdText);
     }
 
+    public String GetSearchString(){
+        return searchTxt.getText().toString();
+    }
 
     private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,6 +65,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         backButton = (Button) findViewById(R.id.composite_header_back_button);
         weather_tommorow = (TextView) findViewById(R.id.composite_header_weather_tommorow);
         weather_today = (TextView) findViewById(R.id.composite_header_weather_now);
+        searchTxt = (EditText) findViewById(R.id.composite_header_search);
         SetEventListeners();
     }
 
@@ -67,6 +75,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         thirdButton.setOnClickListener(this);
         updateButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
+        searchTxt.setOnEditorActionListener(this);
     }
 
     public void SetHeaderButtonsListener(onClickInHeaderListener listener) {
@@ -116,5 +125,19 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
     public void UpdateWeather(String now, String tomorrow)
     {
         // alt + 0176 -> значек градуса
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        if(i == EditorInfo.IME_ACTION_SEARCH) {
+            if(listener != null ) {
+                InputMethodManager imm = (InputMethodManager)getContext().getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+                listener.SearchButtonClicks(textView.getText().toString());
+                return true;
+            }
+        }
+        return false;
     }
 }

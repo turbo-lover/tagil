@@ -10,8 +10,8 @@ public enum firstClassesEnum {
        Message      (activityMessages.class.toString()),
        Favorite     (activityFavoriteNews.class.toString()),
        Useful       (activityUseful.class.toString()),
-       Setting      (activitySettings.class.toString());
-
+       Setting      (activitySettings.class.toString()),
+       Contact      (activityContact.class.toString());
 
         private String typeValue;
 

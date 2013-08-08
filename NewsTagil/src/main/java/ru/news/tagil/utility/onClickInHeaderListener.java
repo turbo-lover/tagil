@@ -5,5 +5,6 @@ package ru.news.tagil.utility;
  */
 public interface onClickInHeaderListener {
    abstract void UpdateButtonClicks();
-    abstract void BackButtonClicks();
+   abstract void BackButtonClicks();
+   abstract void SearchButtonClicks(String txt);
 }

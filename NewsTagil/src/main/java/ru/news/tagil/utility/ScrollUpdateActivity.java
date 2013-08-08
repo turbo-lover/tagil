@@ -11,9 +11,10 @@ import ru.news.tagil.R;
 /**
  * Created by Alexander on 01.08.13.
  */
-public class ScrollUpdateActivity extends mainFrameJsonActivity implements updateListActivity,onScrollViewChangedListener,onClickInHeaderListener {
+public class ScrollUpdateActivity extends mainFrameJsonActivity implements updateListActivity,onScrollViewChangedListener {
     protected int totalCount;
     protected String tableName; //Must be set in Initialize method
+    protected String searchStr;
 
     // This method MUST be overriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
@@ -89,10 +90,5 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
             totalCount = new_count;
             Set(Get(CreateJsonForGetNew()),true);
         }
-    }
-
-    @Override
-    public void BackButtonClicks() {
-
     }
 }

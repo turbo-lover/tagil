@@ -10,7 +10,7 @@ import ru.news.tagil.R;
 /**
  * Created by Alexander on 05.08.13.
  */
-public class mainFrameActivity extends Activity {
+public class mainFrameActivity extends Activity implements onClickInHeaderListener {
     protected LinearLayout container;
     protected myScrollView scrollView;
     protected myPreferencesWorker preferencesWorker;
@@ -19,6 +19,12 @@ public class mainFrameActivity extends Activity {
     // This section MUST be overriden
     protected void SetEventListeners() {}
     protected void SetCompositeElements() {}
+    @Override
+    public void UpdateButtonClicks() {}
+    @Override
+    public void BackButtonClicks() {}
+    @Override
+    public void SearchButtonClicks(String txt) {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

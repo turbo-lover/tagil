@@ -1,23 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ECE8E2"
-   >
+    android:layout_height="wrap_content"
 
+    android:background="@drawable/bottom_border"
+    tools:context=".activity.activityNewsPreview">
 
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-
-        <LinearLayout
+        <RelativeLayout
                 android:orientation="vertical"
-                android:layout_marginLeft="15dp"
                 android:layout_width="70dp"
-                android:layout_height="50dp">
+                android:layout_height="fill_parent"
+                android:id="@+id/relativeLayout">
 
             <TextView
                     android:layout_width="fill_parent"
@@ -26,7 +19,10 @@
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
                     android:text="3.07.13"
-                    android:id="@+id/composite_tape_preview_date"/>
+                    android:id="@+id/composite_tape_preview_date"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    />
 
             <TextView
                     android:layout_width="fill_parent"
@@ -34,24 +30,31 @@
                     android:textSize="12dp"
                     android:textColor="#ff474747"
                     android:text="00:16"
-                    android:id="@+id/composite_tape_preview_time"/>
+                    android:id="@+id/composite_tape_preview_time"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:layout_below="@+id/composite_tape_preview_date"
+                    android:layout_alignParentLeft="true"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignBottom="@+id/relativeLayout"
+            android:layout_toRightOf="@+id/relativeLayout">
 
-        <LinearLayout
-                android:orientation="vertical"
+        <ru.news.tagil.utility.myTextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="fill_parent"
+                android:text="Реквием по бизнесу"
+                android:textSize="18sp"
+                android:textColor="@color/Black"
+                android:id="@+id/composite_tape_preview_name_post"
+                android:layout_alignParentTop="true"
 
-            <ru.news.tagil.utility.myTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:text="Реквием по бизнесу"
-                    android:textSize="18dp"
-                    android:textColor="#ff181818"
-                    android:id="@+id/composite_tape_preview_name_post"/>
-        </LinearLayout>
-    </LinearLayout>
+                />
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -10,8 +10,6 @@ import android.widget.TextView;
  * Created by turbo_lover on 12.07.13.
  */
 public class myTextView extends TextView {
-
-    private Context context;
     public myTextView(Context context) {
         super(context);
 

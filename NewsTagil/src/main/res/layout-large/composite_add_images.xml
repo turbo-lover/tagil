@@ -1,45 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="32dp"
-    android:layout_below="@+id/linearLayout22"
-    android:layout_centerHorizontal="true"
-    android:id="@+id/composite_add_images_ll">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+        >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="32dp"
+        android:layout_below="@+id/linearLayout22"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/composite_add_images_ll">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fffd8001"
-        android:layout_weight="1">
-        <TextView
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Все фотографии"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textColor="#ff474747"
-            android:id="@+id/composite_contact_search_all_photo"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_weight="1"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/Black">
-        <TextView
+            android:background="#fffd8001"
+            android:layout_weight="1">
+            <TextView
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="  Добавить фотограффии"
+                android:text="Все фотографии"
+                android:textAlignment="center"
                 android:textSize="18dp"
-                android:textColor="#fffd8001"
-                android:id="@+id/composite_contact_search_add_photo" />
-    </RelativeLayout>
-</LinearLayout>
+                android:textColor="#ff474747"
+                android:id="@+id/composite_contact_search_all_photo"/>
+        </RelativeLayout>
 
+        <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/Black">
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="  Добавить фотограффии"
+                    android:textSize="18dp"
+                    android:textColor="#fffd8001"
+                    android:id="@+id/composite_contact_search_add_photo" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="130dp"
+            android:id="@+id/horizontalScrollView"
+            android:layout_below="@+id/composite_add_images_ll"
+            android:background="@color/Black">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="120dp"
+                      android:orientation="horizontal"
+                      android:id="@+id/composite_lin_lay_user_images"
+                />
+    </HorizontalScrollView>
+
+</RelativeLayout>

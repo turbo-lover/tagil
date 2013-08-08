@@ -32,6 +32,9 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void Set(JSONObject jsonObject, boolean insertAtStart) {
+        if(jsonObject == null) {
+            return;
+        }
         try{
             if(jsonObject.getString("status").equals("error")){
                 Toast.makeText(this, jsonObject.getString("errormsg"), Toast.LENGTH_SHORT).show();
@@ -60,14 +63,14 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     }
 
     @Override
-    public int GetTotalCount(String login) {
+    public int GetTotalCount(String extra) {
         myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
         JSONObject jo;
         try{
             jo = new JSONObject();
             jo.put("table_name",tableName);
-            if(login != null) {
-                jo.put("login",login); }
+            if(extra != null) {
+                jo.put("extra",extra); }
             asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
             jo = asyncTaskWorker.get();
             return Integer.parseInt(jo.getString("result"));

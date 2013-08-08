@@ -20,12 +20,15 @@ import java.util.Calendar;
  */
 public class activityNewsPreview extends ScrollUpdateActivity implements View.OnClickListener{
     private compositeFirstButton cfb;
-    private compositeHeader compositeHeader;
+    protected compositeHeader h;
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
         try {
             jo.put("news_count",GET_COUNT);
+            if(!h.GetSearchString().isEmpty()) {
+                jo.put("search_pattern",h.GetSearchString());
+            }
             String send_time = null;
             if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -45,6 +48,9 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         JSONObject jo = new JSONObject();
         try {
             String send_time = null;
+            if(!h.GetSearchString().isEmpty()) {
+                jo.put("search_pattern",h.GetSearchString());
+            }
             if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
@@ -75,20 +81,20 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     @Override
     protected void SetEventListeners() {
         super.SetEventListeners();
-        compositeHeader.SetHeaderButtonsListener(this);
+        h.SetHeaderButtonsListener(this);
     }
     @Override
     protected void SetCompositeElements() {
-        compositeHeader.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
-        compositeHeader.UpdateWeather("0","2");//TODO допилить получение погоды
+        h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
+        h.UpdateWeather("0","2");//TODO допилить получение погоды
         footer.addView(cfb);
-        header.addView(compositeHeader);
+        header.addView(h);
     }
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
         cfb = new compositeFirstButton(this);
-        compositeHeader = new compositeHeader(this);
+        h = new compositeHeader(this);
         scriptAddress = getString(R.string.getNewsHeadersUrl);
         tableName = "news";
         totalCount = GetTotalCount(null);
@@ -104,4 +110,11 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         startActivity(i);
     }
 
+    @Override
+    public void SearchButtonClicks(String txt) {
+        this.ClearContainer();
+        searchStr = txt;
+        totalCount = GetTotalCount(txt);
+        Set(Get(CreateJsonForGet()),false);
+    }
 }

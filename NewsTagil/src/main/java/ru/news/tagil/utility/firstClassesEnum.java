@@ -31,6 +31,4 @@ public enum firstClassesEnum {
         public String getTypeValue() {
             return typeValue;
         }
-
-
 }

@@ -23,7 +23,8 @@
         <activity android:name=".activity.activityRegistration" />
         <activity android:name=".activity.activityLogin" />
         <activity android:name=".activity.activitySettings" />
-        <activity android:name=".activity.activityUseful" />
+        <activity android:name=".activity.activityUseful"
+                  android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activity.activityAds"/>
         <activity android:name=".activity.activityMakeAds" />
         <activity android:name=".activity.activityCorrespondence" />

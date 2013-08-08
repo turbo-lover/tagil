@@ -15,29 +15,37 @@
                 android:orientation="horizontal"
                 android:id="@+id/message_item_image"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.3"
-                android:layout_height="100dp"
+                android:layout_weight="0.15"
+                android:layout_height="wrap_content"
                 android:background="@drawable/border_img">
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
+                    android:id="@+id/composite_interlocutor_img"
                     >
-
             </ImageView>
+            <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/composite_interlocutor_img"
+                    android:id="@+id/composite_interlocutor_login"
+                    android:layout_alignLeft="@+id/composite_interlocutor_img"></TextView>
         </RelativeLayout>
 
         <RelativeLayout
                 android:id="@+id/message_item_last"
                 android:orientation="vertical"
-                android:layout_weight="0.7"
+                android:layout_weight="0.85"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_img"
                 >
+
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -29,9 +29,8 @@ public class myTextView extends TextView {
     }
     private void init() {
         myPreferencesWorker pw = new myPreferencesWorker(getContext());
-
-        String typeface = pw.get_typeface();
         try {
+            String typeface = pw.get_typeface();
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), typeface);
             this.setTypeface(tf);
         } catch (Exception e) {

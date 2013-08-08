@@ -39,6 +39,5 @@ public class myTextView extends TextView {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

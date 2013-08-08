@@ -30,10 +30,11 @@ public class myTextView extends TextView {
     }
     private void init() {
         myPreferencesWorker pw = new myPreferencesWorker(getContext());
-
-        String typeface = pw.get_typeface();
-        float typeSize = pw.get_typeface_size();
         try {
+
+            String typeface = pw.get_typeface();
+            float typeSize = pw.get_typeface_size();
+
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), typeface);
             this.setTypeface(tf);
             this.setTextSize(TypedValue.COMPLEX_UNIT_PX,typeSize);

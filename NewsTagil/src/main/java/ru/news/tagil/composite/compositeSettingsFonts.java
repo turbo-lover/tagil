@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import ru.news.tagil.R;
 import ru.news.tagil.utility.myPreferencesWorker;
 
@@ -54,6 +55,7 @@ public class compositeSettingsFonts extends RelativeLayout {
                     @Override
                     public void onClick(View view) {
                         pw.set_typeface_size(child.getTextSize());
+                        Toast.makeText(cnt,cnt.getString(R.string.message_font_size_changed),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -73,6 +75,7 @@ public class compositeSettingsFonts extends RelativeLayout {
                     @Override
                     public void onClick(View view) {
                         pw.set_typeface("fonts/font" + number + ".ttf");
+                        Toast.makeText(cnt,cnt.getString(R.string.message_font_type_changed),Toast.LENGTH_SHORT).show();
                     }
                 });
             }

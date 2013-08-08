@@ -8,4 +8,5 @@
     <dimen name="margin_left">10dp</dimen>
     <dimen name="devault_size">15sp</dimen>
     <dimen name="margin_right">10dp</dimen>
+    <dimen name="time_text_size">10sp</dimen>
 </resources>

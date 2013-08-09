@@ -9,15 +9,17 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border_img">
 
         <RelativeLayout
+                android:background="@drawable/border_img"
                 android:orientation="horizontal"
                 android:id="@+id/message_item_image"
                 android:layout_width="wrap_content"
                 android:layout_weight="0.15"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_img">
+                >
             <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -43,9 +45,22 @@
                 android:layout_weight="0.85"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_img"
                 >
-
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                    android:id="@+id/composite_interlocutor_last_login"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp">
+            </TextView>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                    android:layout_below="@+id/composite_interlocutor_last_login"
+                    android:layout_alignLeft="@+id/composite_interlocutor_last_login"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/composite_interlocutor_last_msg"></TextView>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

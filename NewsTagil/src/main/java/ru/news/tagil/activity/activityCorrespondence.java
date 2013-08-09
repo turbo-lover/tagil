@@ -2,7 +2,11 @@ package ru.news.tagil.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 
 import org.json.JSONObject;
@@ -10,6 +14,7 @@ import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeaderSimple;
+import ru.news.tagil.composite.compositeInterlocutor;
 import ru.news.tagil.utility.ScrollUpdateActivity;
 
 /**
@@ -19,28 +24,60 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     private compositeHeaderSimple headerSimple;
     private compositeFirstButton cfb;
 
-
     @Override
     public void onClick(View view) {
         Intent i = new Intent(this,activityMessages.class);
-       // i.putExtra("interluctor",)
+        compositeInterlocutor interlocutor = (compositeInterlocutor) view;
+        i.putExtra("interluctor",interlocutor.GetInterlocutor());
         startActivity(i);
     }
     @Override
-    protected View CreateViewToAdd(JSONObject obj) { return null; }
+    protected View CreateViewToAdd(JSONObject obj) {
+        compositeInterlocutor interlocutor = new compositeInterlocutor(this);
+        try{
+            byte[] e = obj.getString("img").getBytes();
+            byte[] imgbyte = Base64.decode(e, 0);
+            Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
+            interlocutor.Set(obj.getString("login"),obj.getString("last_msg_login"),obj.getString("last_msg_text"),bmp);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("CreateViewToAdd_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+        return interlocutor;
+    }
     @Override
-    protected JSONObject CreateJsonForGet() { return null; }
+    protected JSONObject CreateJsonForGet() {
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+        return jo;
+    }
+
     @Override
-    protected JSONObject CreateJsonForGetNew() { return null; }
+    protected JSONObject CreateJsonForGetNew() { return null; } //Still not implemented
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
         headerSimple = new compositeHeaderSimple(this);
         cfb = new compositeFirstButton(this);
         scriptAddress = getString(R.string.getInterlocutorsUrl);
+        tableName = "interlocutors";
+        totalCount = GetTotalCount(preferencesWorker.get_login());
     }
     @Override
-    protected void SetEventListeners() {}
+    protected void SetEventListeners() {
+        super.SetEventListeners();
+        headerSimple.SetHeaderButtonsListener(this);
+    }
     @Override
-    protected void SetCompositeElements() {}
+    protected void SetCompositeElements() {
+        headerSimple.Set(getString(R.string.dialogText));
+        header.addView(headerSimple);
+        footer.addView(cfb);
+    }
 }

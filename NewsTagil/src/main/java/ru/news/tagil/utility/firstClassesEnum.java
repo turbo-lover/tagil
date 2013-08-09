@@ -11,6 +11,7 @@ public enum firstClassesEnum {
        Favorite     (activityFavoriteNews.class.toString()),
        Useful       (activityUseful.class.toString()),
        Setting      (activitySettings.class.toString()),
+       Correspondence  (activityCorrespondence.class.toString()),
        Contact      (activityContact.class.toString());
 
         private String typeValue;

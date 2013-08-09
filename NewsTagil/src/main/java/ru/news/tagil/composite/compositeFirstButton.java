@@ -60,7 +60,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
             case NewsPreview:
                 tape.setBackgroundColor(getResources().getColor(R.color.Orange));
                 break;
-            case Message:
+            case Correspondence:
                 dialog.setBackgroundColor(getResources().getColor(R.color.Orange));
                 break;
             case Favorite:
@@ -92,8 +92,8 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 break;
             case R.id.first_dialogs_button:
                 try {
-                    if(currentClass.equals(activityMessages.class)) return;
-                    Intent intent = new Intent(context, activityMessages.class);
+                    if(currentClass.equals(activityCorrespondence.class)) return;
+                    Intent intent = new Intent(context, activityCorrespondence.class);
                     context.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

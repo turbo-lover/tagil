@@ -15,6 +15,7 @@
     <string name="instructionText">Инструкция</string>
     <string name="createAdvertText">Создать объявление</string>
     <string name="myAdvertText">Мои объявления</string>
+    <string name="SendText">Отправить</string>
     <string name="AddPhoto">"Добавить \n    фото"</string>
     <string name="delText">Удалить</string>
     <string name="News">Новости</string>

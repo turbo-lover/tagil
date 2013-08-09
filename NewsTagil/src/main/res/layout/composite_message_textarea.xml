@@ -1,43 +1,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ece8e2"
+    android:layout_height="wrap_content"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:background="@color/AppBackground"
     >
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:inputType="textMultiLine"
+            android:id="@+id/composite_message_textarea_txt"
+            android:textAlignment="gravity"
+            android:gravity="top"
+            android:background="@drawable/massage_border_bg" />
 
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="115dp"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/massage_img"
-            android:layout_alignParentLeft="true">
-
-        <EditText
-                android:layout_width="250dp"
-                android:layout_height="80dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/composite_correspondence_massage_text"
-                android:layout_marginTop="2dp"
-                android:textColor="#ff181818"
-                android:textSize="12dp"
-                android:paddingTop="2px"
-                android:background="@drawable/massage_border_bg"
-                android:layout_gravity="center"/>
-
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="95dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dp"
-                android:text="Отправить"
-                android:textSize="13dp"
-                android:textColor="#fffd8001"
-                android:background="@drawable/empty_bg"
-                android:id="@+id/composite_correspondence_massage_sent_massage_but"
-                android:layout_gravity="right"/>
-
-    </LinearLayout>
+    <Button
+            android:layout_below="@+id/composite_message_textarea_txt"
+            android:layout_alignRight="@+id/composite_message_textarea_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SendText"
+            android:padding="5dp"
+            android:textColor="@color/Orange"
+            android:background="@drawable/empty_bg"
+            android:id="@+id/composite_message_textarea_send" />
 </RelativeLayout>

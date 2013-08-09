@@ -26,7 +26,11 @@
         <activity android:name=".activity.activityAds" />
         <activity android:name=".activity.activityMakeAds" />
         <activity android:name=".activity.activityCorrespondence" />
-        <activity android:name=".activity.activityContact" />
+        <activity android:name=".activity.activityContact" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.activityCommentNews" />
         <activity android:name=".activity.activityFavoriteNews" />
         <activity android:name=".activity.activityMessages" />

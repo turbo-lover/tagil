@@ -18,6 +18,7 @@ public class mainFrameJsonActivity extends mainFrameActivity implements jsonActi
      * @return
      */
     protected JSONObject CreateJsonForGet() { return null; }
+
     @Override
     public void Set(JSONObject jsonObject) { }
 

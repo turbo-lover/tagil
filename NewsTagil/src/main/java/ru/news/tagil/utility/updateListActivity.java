@@ -8,5 +8,5 @@ import org.json.JSONObject;
 public interface updateListActivity  {
     public final int GET_COUNT = 10;    //Number of elements that will be downloaded per instance (messages,news,adverts,etc.)
     public abstract void Set(JSONObject jsonObject,boolean insertAtStart);
-    public abstract int GetTotalCount(String login);
+    public abstract int GetTotalCount(String extra1,String extra2);
 }

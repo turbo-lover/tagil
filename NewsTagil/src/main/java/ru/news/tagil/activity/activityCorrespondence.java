@@ -28,7 +28,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     public void onClick(View view) {
         Intent i = new Intent(this,activityMessages.class);
         compositeInterlocutor interlocutor = (compositeInterlocutor) view;
-        i.putExtra("interluctor",interlocutor.GetInterlocutor());
+        i.putExtra("interlocutor",interlocutor.GetInterlocutor());
         startActivity(i);
     }
     @Override
@@ -39,6 +39,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
             byte[] imgbyte = Base64.decode(e, 0);
             Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
             interlocutor.Set(obj.getString("login"),obj.getString("last_msg_login"),obj.getString("last_msg_text"),bmp);
+            interlocutor.setOnClickListener(this);
         } catch (Exception ex) {
             ex.printStackTrace();
             Log.d("CreateViewToAdd_Exception", ex.getMessage() + "\n\n" + ex.toString());
@@ -67,7 +68,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
         cfb = new compositeFirstButton(this);
         scriptAddress = getString(R.string.getInterlocutorsUrl);
         tableName = "interlocutors";
-        totalCount = GetTotalCount(preferencesWorker.get_login());
+        totalCount = GetTotalCount(preferencesWorker.get_login(),null);
     }
     @Override
     protected void SetEventListeners() {

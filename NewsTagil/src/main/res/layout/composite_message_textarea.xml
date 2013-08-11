@@ -9,7 +9,7 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="5"
+            android:lines="3"
             android:inputType="textMultiLine"
             android:id="@+id/composite_message_textarea_txt"
             android:textAlignment="gravity"

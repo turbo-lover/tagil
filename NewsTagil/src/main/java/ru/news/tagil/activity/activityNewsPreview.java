@@ -97,7 +97,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         h = new compositeHeader(this);
         scriptAddress = getString(R.string.getNewsHeadersUrl);
         tableName = "news";
-        totalCount = GetTotalCount(null);
+        totalCount = GetTotalCount(null,null);
     }
     @Override
     public void onClick(View view) {
@@ -114,7 +114,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     public void SearchButtonClicks(String txt) {
         this.ClearContainer();
         searchStr = txt;
-        totalCount = GetTotalCount(txt);
+        totalCount = GetTotalCount(txt,null);
         Set(Get(CreateJsonForGet()),false);
     }
 }

@@ -31,6 +31,13 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     }
 
     @Override
+    public JSONObject Get(JSONObject jsonObject) {
+        if(container.getChildCount() == totalCount) {
+            return null; }
+        return super.Get(jsonObject);
+    }
+
+    @Override
     public void Set(JSONObject jsonObject, boolean insertAtStart) {
         if(jsonObject == null) {
             return;
@@ -56,21 +63,18 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     }
 
     @Override
-    public JSONObject Get(JSONObject jsonObject) {
-        if(container.getChildCount() == totalCount) {
-            return null; }
-        return super.Get(jsonObject);
-    }
-
-    @Override
-    public int GetTotalCount(String extra) {
+    public int GetTotalCount(String extra1,String extra2) {
         myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
         JSONObject jo;
         try{
             jo = new JSONObject();
             jo.put("table_name",tableName);
-            if(extra != null) {
-                jo.put("extra",extra); }
+            if(extra1 != null) {
+                jo.put("extra",extra1);
+                if(tableName == "messages") {
+                    jo.put("extra2",extra2);
+                }
+            }
             asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
             jo = asyncTaskWorker.get();
             return Integer.parseInt(jo.getString("result"));
@@ -88,7 +92,8 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void UpdateButtonClicks() {
-        int new_count = GetTotalCount((tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login());
+        int new_count = GetTotalCount((tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login(),
+                (tableName == "messages")?searchStr:null);
         if(new_count > totalCount) {
             totalCount = new_count;
             Set(Get(CreateJsonForGetNew()),true);

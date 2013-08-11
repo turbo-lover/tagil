@@ -87,7 +87,7 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
         cfb = new compositeFirstButton(this);
         scriptAddress = getString(R.string.getUsersUrl);
         tableName = "users";
-        totalCount = GetTotalCount(null);
+        totalCount = GetTotalCount(null,null);
     }
     @Override
     public void onClick(View view) {
@@ -101,7 +101,7 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
         this.ClearContainer();
         tableName = "users_search";
         searchStr = txt;
-        totalCount = GetTotalCount(txt);
+        totalCount = GetTotalCount(txt,null);
         Set(Get(CreateJsonForGet()),false);
     }
 }

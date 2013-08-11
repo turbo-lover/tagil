@@ -21,7 +21,7 @@ public class activityUseful extends activityNewsPreview {
     protected void InitializeComponent(){
         super.InitializeComponent();
         tableName = "useful_news";
-        totalCount = GetTotalCount(null);
+        totalCount = GetTotalCount(null,null);
     }
     @Override
     protected JSONObject CreateJsonForGet() {

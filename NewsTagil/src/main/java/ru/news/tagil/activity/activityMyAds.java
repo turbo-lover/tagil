@@ -84,7 +84,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
         ads_header = new compositeHeaderSimple(this);
         tableName = "my_adverts";
         scriptAddress = getString(R.string.getMyAdvertsHeadersUrl);
-        totalCount = GetTotalCount(preferencesWorker.get_login());
+        totalCount = GetTotalCount(preferencesWorker.get_login(),null);
     }
     @Override
     protected void SetEventListeners() {

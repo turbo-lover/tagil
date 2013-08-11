@@ -44,7 +44,7 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
         ads_selector = new compositeAdsSelector(this);
         tableName = "adverts";
         scriptAddress = getString(R.string.getAdvertsHeadersUrl);
-        totalCount = GetTotalCount(null);
+        totalCount = GetTotalCount(null,null);
      }
     @Override
     public void onClick(View view) {

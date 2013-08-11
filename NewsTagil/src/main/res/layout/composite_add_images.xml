@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/composite_add_images_ll">
+        <TextView
+            android:background="@color/Orange"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Все фотографии"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:textSize="@dimen/font_size"
+            />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Добавить фотографии"
+            android:textSize="@dimen/font_size"
+            android:textColor="#fffd8001"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:background="@color/Black"
+            />
+    </LinearLayout>
+    <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:id="@+id/horizontalScrollView"
+            android:layout_below="@+id/composite_add_images_ll"
+            android:background="@color/Black"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/user_images_horizontal_layout"
+            />
+    </HorizontalScrollView>
+</RelativeLayout>

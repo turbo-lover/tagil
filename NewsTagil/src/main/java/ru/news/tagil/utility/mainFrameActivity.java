@@ -32,7 +32,6 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
         InitializeComponent();
         SetCompositeElements();
         SetEventListeners();
-
     }
 
     protected void InitializeComponent() {

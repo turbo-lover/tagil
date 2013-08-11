@@ -80,7 +80,7 @@
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="32dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
                         android:background="#fffd8001"
@@ -92,41 +92,15 @@
                             layout="@layout/composite_add_images"
                             android:layout_gravity="left|center_vertical"/>
 
-                </LinearLayout>
 
 
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="130dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/contact_photo_panel"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/linearLayout3">
-
-        <HorizontalScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="130dp"
-                android:id="@+id/horizontalScrollView"
-                android:layout_alignLeft="@+id/imageView3">
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="120dp"
-                          android:orientation="horizontal"
-                          android:id="@+id/composite_lin_lay_user_images"
-            >
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-                </LinearLayout>
-
+        </LinearLayout>
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
                         android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout3"
+                        android:layout_below="@+id/contact_photo_panel"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/linearLayout4">
 
@@ -151,7 +125,6 @@
                             android:id="@+id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
-
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -182,7 +155,6 @@
                             android:id="@+id/composite_contact_content_for_znakomstv_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
-
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -191,7 +163,6 @@
                         android:layout_below="@+id/linearLayout5"
                         android:layout_alignParentLeft="true"
                         android:id="@+id/linearLayout6">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -213,7 +184,6 @@
                             android:id="@+id/composite_contact_content_polojenie_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
-
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -244,7 +214,6 @@
                             android:id="@+id/composite_contact_content_hobby_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
-
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -275,7 +244,6 @@
                         android:id="@+id/composite_contact_content_music_content"
                         android:layout_gravity="left"/>
                 </LinearLayout>
-
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -306,10 +274,6 @@
                             android:id="@+id/composite_contact_content_about_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
-
             </RelativeLayout>
-
     </ScrollView>
-
-
 </RelativeLayout>

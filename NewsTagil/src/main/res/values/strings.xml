@@ -49,5 +49,18 @@
     <string name="composite_header_now">сейчас:</string>
     <string name="message_font_size_changed">Размер шрифта успешно изменен</string>
     <string name="message_font_type_changed">Тип шрифта успешно изменен!</string>
+    <string name="addPersonalInfo">add_personal_info.php</string>
+    <string name="seek">Ищу</string>
+    <string name="save">Сохранить</string>
+    <string name="man">Парня</string>
+    <string name="woman">Девушку</string>
+    <string name="not_insatalled">Не установленно</string>
+    <string name="purpose_for_seek">Цели знакомства</string>
+    <string name="family">Семья</string>
+    <string name="communication">Общение</string>
+    <string name="sex">Секс</string>
+    <string name="dosug">Совместный досуг</string>
+    <string name="in_marriage">В браке</string>
+    <string name="not_in_marriage">Свободен(-a)</string>
 
 </resources>

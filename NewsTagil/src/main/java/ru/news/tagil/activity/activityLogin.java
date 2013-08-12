@@ -11,6 +11,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.news.tagil.R;
+import ru.news.tagil.utility.mainFrameActivity;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 
@@ -114,8 +115,16 @@ public class activityLogin extends Activity implements View.OnClickListener {
     }
 
     private void toNextActivity() {
-       Intent intent = new Intent(this,activityNewsPreview.class);
-       startActivity(intent);
+       setResult(RESULT_OK);
+       finish();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+                toNextActivity();
+            }
+        }
     }
 
     private boolean isValidateFieldsOk() {
@@ -127,6 +136,6 @@ public class activityLogin extends Activity implements View.OnClickListener {
 
     private void Registration() {
         Intent intent = new Intent(this,activityRegistration.class);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
 }

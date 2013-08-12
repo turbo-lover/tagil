@@ -19,7 +19,7 @@ public class activityMain extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent;
-        intent = new Intent(this,activityLogin.class);//todo запилить преход
+        intent = new Intent(this,activityNewsPreview.class);
         startActivity(intent);
     }
 }

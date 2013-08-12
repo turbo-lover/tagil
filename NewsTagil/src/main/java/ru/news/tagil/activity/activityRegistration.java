@@ -82,9 +82,8 @@ public class activityRegistration extends Activity implements View.OnClickListen
     }
 
     private void ToTapeActivity() {
-        Intent intent = new Intent(this,activityNewsPreview.class);
-        startActivity(intent);
-        this.finish();
+        setResult(RESULT_OK);
+        finish();
     }
 
     private boolean Validate_Email() {

@@ -42,8 +42,10 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
         h_simple = new compositeHeaderSimple(this);
         t = new compositeTapeContent(this);
         csb = new compositeSecondButton(this);
-        liked = IsMarked(getString(R.string.isLikedUrl));
-        favorite = IsMarked(getString(R.string.isFavoriteUrl));
+        if(is_authorized) {
+            liked = IsMarked(getString(R.string.isLikedUrl));
+            favorite = IsMarked(getString(R.string.isFavoriteUrl));
+        }
         scriptAddress = getString(R.string.getNewsUrl);
     }
 
@@ -123,23 +125,36 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.like:
-                if(ToggleMarked(getString(R.string.toggleLikeUrl))) {
-                    liked = !liked;
-                    SetBgColor();
+                if(is_authorized) {
+                    if(ToggleMarked(getString(R.string.toggleLikeUrl))) {
+                        liked = !liked;
+                        SetBgColor();
+                    }
+                } else {
+                   LogIn();
                 }
                 break;
             case R.id.elect:
-                if(ToggleMarked(getString(R.string.toggleFavoriteUrl))) {
-                    favorite = !favorite;
-                    SetBgColor();
+                if(is_authorized) {
+                    if(ToggleMarked(getString(R.string.toggleFavoriteUrl))) {
+                        favorite = !favorite;
+                        SetBgColor();
+                    }
+                } else {
+                    LogIn();
                 }
                 break;
             case R.id.comment: {
-                Intent i = new Intent(this,activityCommentNews.class);
-                i.putExtra("id_news",id);
-                startActivity(i);
+                if(is_authorized) {
+                    Intent i = new Intent(this,activityCommentNews.class);
+                    i.putExtra("id_news",id);
+                    startActivity(i);
+
+                } else {
+                    LogIn();
                 }
                 break;
+            }
         }
     }
 

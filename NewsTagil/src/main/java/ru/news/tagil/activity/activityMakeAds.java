@@ -103,7 +103,7 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
             Log.d("Send_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
     }
-
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == SELECT_PICTURE) {

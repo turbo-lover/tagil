@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import ru.news.tagil.R;
 import ru.news.tagil.activity.*;
 import ru.news.tagil.utility.firstClassesEnum;
+import ru.news.tagil.utility.mainFrameActivity;
 
 /**
  * Created by turbo_lover on 18.07.13.
@@ -77,14 +78,14 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
     }
     @Override
     public void onClick(View view) {
-        Context context = getContext();
+        mainFrameActivity act = (mainFrameActivity) getContext();
         switch (view.getId())
         {
             case R.id.first_tape_button:
                 try {
                     if(currentClass.equals(activityNewsPreview.class)) return;
-                        Intent intent = new Intent(context, activityNewsPreview.class); // в этой активити панелька добавлена и работает
-                        context.startActivity(intent);
+                        Intent intent = new Intent(act, activityNewsPreview.class); // в этой активити панелька добавлена и работает
+                        act.startActivity(intent);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -93,17 +94,25 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
             case R.id.first_dialogs_button:
                 try {
                     if(currentClass.equals(activityCorrespondence.class)) return;
-                    Intent intent = new Intent(context, activityCorrespondence.class);
-                    context.startActivity(intent);
+                    if(act.is_authorized) {
+                        Intent intent = new Intent(act, activityCorrespondence.class);
+                        act.startActivity(intent);
+                    } else {
+                        act.LogIn();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case R.id.first_elect_button: // избранное
                 try {
-                    if(currentClass.equals(activityFavoriteNews.class)) return;
-                    Intent intent = new Intent(context, activityFavoriteNews.class);
-                    context.startActivity(intent);
+                    if(act.is_authorized) {
+                        if(currentClass.equals(activityFavoriteNews.class)) return;
+                        Intent intent = new Intent(act, activityFavoriteNews.class);
+                        act.startActivity(intent);
+                    } else {
+                        act.LogIn();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -111,8 +120,8 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
             case R.id.first_useful_button:
                 try {
                     if(currentClass.equals(activityUseful.class)) return;
-                    Intent intent = new Intent(context, activityUseful.class);
-                    context.startActivity(intent);
+                    Intent intent = new Intent(act, activityUseful.class);
+                    act.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -120,8 +129,8 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
             case R.id.first_setting_button:
                 try {
                     if(currentClass.equals(activitySettings.class)) return;
-                    Intent intent = new Intent(context, activitySettings.class);
-                    context.startActivity(intent);
+                    Intent intent = new Intent(act, activitySettings.class);
+                    act.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -20,6 +20,7 @@ import ru.news.tagil.R;
 import ru.news.tagil.activity.activityAds;
 import ru.news.tagil.activity.activityContact;
 import ru.news.tagil.activity.activityNewsPreview;
+import ru.news.tagil.utility.mainFrameActivity;
 import ru.news.tagil.utility.onClickInHeaderListener;
 
 public class compositeHeader extends RelativeLayout implements View.OnClickListener,EditText.OnEditorActionListener{
@@ -92,12 +93,13 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        mainFrameActivity act = (mainFrameActivity) getContext();
         switch (view.getId())
         {
             case R.id.composite_header_first_button:
                try {
-                   Intent intent = new Intent(getContext(), activityNewsPreview.class);
-                   getContext().startActivity(intent);
+                   Intent intent = new Intent(act, activityNewsPreview.class);
+                   act.startActivity(intent);
                } catch (Exception e) {
                    Log.e(TAG, "Exception");
                    e.printStackTrace();
@@ -105,8 +107,10 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
             break;
             case R.id.composite_header_second_button:
                 try {
+
                     Intent intent = new Intent(getContext(), activityContact.class);
                     getContext().startActivity(intent);
+
                 } catch (Exception e) {
                     Log.e(TAG, "Exception");
                     e.printStackTrace();
@@ -114,8 +118,12 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
             break;
             case R.id.composite_header_third_button:
                 try {
-                    Intent intent = new Intent(getContext(), activityAds.class);
-                    getContext().startActivity(intent);
+                    if(act.is_authorized) {
+                        Intent intent = new Intent(getContext(), activityAds.class);
+                        getContext().startActivity(intent);
+                    } else {
+                        act.LogIn();
+                    }
                 } catch (Exception e) {
                     Log.e(TAG, "Exception");
                     e.printStackTrace();

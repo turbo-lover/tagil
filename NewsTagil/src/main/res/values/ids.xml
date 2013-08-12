@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<item name="tape_prev_layout_content" type="id"/>
-<item name="contact_seek" type="id"/>
-<item name="contact_purpose_for_seeking" type="id"/>
-    <!-- mariage -->
-<item name="contact_marriage" type="id"/>
-<item name="contact_hobby" type="id"/>
-<item name="contact_music" type="id"/>
-<item name="contact_about" type="id"/>
-<item name="contact_avatar_layout" type="id"/>
+    <item name="tape_prev_layout_content" type="id"/>
+    <item name="contact_seek" type="id"/>
+    <item name="contact_purpose_for_seeking" type="id"/>
+        <!-- mariage -->
+    <item name="contact_marriage" type="id"/>
+    <item name="contact_hobby" type="id"/>
+    <item name="contact_music" type="id"/>
+    <item name="contact_about" type="id"/>
+    <item name="contact_avatar_layout" type="id"/>
+    <item name="dialog_header" type="id"/>
 </resources>

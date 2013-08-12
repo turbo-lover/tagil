@@ -37,6 +37,7 @@
         <activity android:name=".activity.activityFavoriteNews" />
         <activity android:name=".activity.activityMessages" />
         <activity android:name=".activity.activityMyAds" />
+        <activity android:name=".activity.activityProfile"/>
 
 
 

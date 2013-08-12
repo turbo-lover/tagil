@@ -12,6 +12,7 @@ public class mainFrameJsonActivity extends mainFrameActivity implements jsonActi
      * Must be set in Initialize method
      */
     protected String scriptAddress;
+    private final String TAG = "mainFRAMEJSON_ACTIVITY";
 
     /**
      *  This section MUST be overriden
@@ -30,7 +31,7 @@ public class mainFrameJsonActivity extends mainFrameActivity implements jsonActi
             return asyncTaskWorker.get();
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("GET_Exception", ex.getMessage() + "\n\n" + ex.toString());
+            Log.d(TAG, ex.getMessage() + "\n\n" + ex.toString());
         }
         return null;
     }

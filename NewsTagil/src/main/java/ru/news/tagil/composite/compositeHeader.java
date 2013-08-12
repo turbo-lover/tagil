@@ -51,6 +51,14 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         thirdButton.setText(thirdText);
     }
 
+    public void SetUpdateButtonVisibility(boolean b) {
+        if(b) {
+            updateButton.setVisibility(View.VISIBLE);
+        } else {
+            updateButton.setVisibility(View.GONE);
+        }
+    }
+
     public String GetSearchString(){
         return searchTxt.getText().toString();
     }

@@ -42,6 +42,14 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
         //TODO
     }
 
+    public void SetUpdateButtonVisibility(boolean b) {
+        if(b) {
+            updateButton.setVisibility(View.VISIBLE);
+        } else {
+            updateButton.setVisibility(View.GONE);
+        }
+    }
+
     private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_header_simple,this);

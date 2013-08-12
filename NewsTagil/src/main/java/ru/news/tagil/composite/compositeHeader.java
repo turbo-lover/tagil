@@ -107,10 +107,12 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
             break;
             case R.id.composite_header_second_button:
                 try {
-
-                    Intent intent = new Intent(getContext(), activityContact.class);
-                    getContext().startActivity(intent);
-
+                    if(act.is_authorized) {
+                        Intent intent = new Intent(getContext(), activityContact.class);
+                        getContext().startActivity(intent);
+                    } else {
+                        act.LogIn();
+                    }
                 } catch (Exception e) {
                     Log.e(TAG, "Exception");
                     e.printStackTrace();

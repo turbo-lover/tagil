@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import ru.news.tagil.R;
-import ru.news.tagil.activity.activityMakeAds;
 import ru.news.tagil.activity.activityProfile;
 
 /**
@@ -38,10 +36,13 @@ public class compositeMyProfileSelector extends LinearLayout implements View.OnC
         Initialize_Component();
     }
 
+    // для того что бы знать что профиль мой передаем в интенте поле isMy = true
+    // а в другом месте ничего не передаем и он по умолчанию равен false
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.composite_my_profile_selector_button) {
             Intent i = new Intent(getContext(),activityProfile.class);
+            i.putExtra("isMy",true);
             getContext().startActivity(i);
         }
     }

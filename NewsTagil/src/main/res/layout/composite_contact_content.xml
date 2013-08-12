@@ -26,7 +26,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/ads_button_bg"
-                        android:id="@+id/composite_contact_content_avatar"
+                        android:id="@+id/contact_avatar"
                         android:layout_gravity="center_horizontal|top"/>
                 <LinearLayout
                         android:orientation="vertical"

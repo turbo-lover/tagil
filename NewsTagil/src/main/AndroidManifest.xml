@@ -20,13 +20,16 @@
                   android:windowSoftInputMode="stateHidden">
         </activity>
         <activity android:name=".activity.activityReadAds" ></activity>
-        <activity android:name=".activity.activityRegistration" />
-        <activity android:name=".activity.activityLogin" />
+        <activity android:name=".activity.activityRegistration"
+                  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activity.activityLogin"
+                  android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activity.activitySettings" />
         <activity android:name=".activity.activityUseful"
                   android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activity.activityAds"/>
-        <activity android:name=".activity.activityMakeAds" />
+        <activity android:name=".activity.activityMakeAds"
+                  android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activity.activityCorrespondence" />
         <activity android:name=".activity.activityContact"
                   android:windowSoftInputMode="stateHidden"/>

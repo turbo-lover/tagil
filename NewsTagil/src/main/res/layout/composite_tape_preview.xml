@@ -12,6 +12,7 @@
            android:layout_alignBottom="@+id/tape_prev_content_layout"
            android:layout_alignTop="@+id/tape_prev_content_layout">
         <TextView
+                android:layout_alignParentTop="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/time_text_size"
@@ -33,11 +34,25 @@
                 android:id="@+id/composite_tape_preview_time"
                 android:textAlignment="gravity"
                 android:gravity="center"
-
                 android:layout_alignParentBottom="false"
                 android:layout_below="@+id/composite_tape_preview_date"
                 android:layout_alignLeft="@+id/composite_tape_preview_date"
                 />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/time_text_size"
+                  android:text="12"
+                 android:layout_below="@+id/composite_tape_preview_time"
+                 android:layout_alignLeft="@+id/composite_tape_preview_time"
+                 android:id="@+id/composite_tape_preview_like_count"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                android:src="@drawable/like_button"
+                android:scaleType="centerInside"
+                android:layout_toRightOf="@+id/composite_tape_preview_like_count"
+                android:layout_below="@+id/composite_tape_preview_time"
+                android:layout_alignBottom="@+id/composite_tape_preview_like_count"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"

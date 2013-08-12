@@ -65,13 +65,11 @@
                     android:id="@+id/composite_ads_date"
                     android:layout_gravity="left|center_vertical"/>
 
-            <Button
-                    style="?android:attr/buttonStyleSmall"
+            <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="170dp"
-                    android:text=""
-                    android:background="@drawable/star_button"
+                    android:src="@drawable/star_button"
                     android:id="@+id/composite_ads_favorite"
                     android:layout_gravity="left|center_vertical"/>
 

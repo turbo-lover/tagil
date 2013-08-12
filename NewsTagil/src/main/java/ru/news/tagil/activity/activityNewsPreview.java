@@ -69,7 +69,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         compositeTapePreview tapePreview = new compositeTapePreview(this);
         try {
             String[] s = obj.getString("pub_time").split(" ");
-            tapePreview.Set(s[0],s[1],obj.getString("header"));
+            tapePreview.Set(s[0],s[1],obj.getString("header"),obj.getString("like_count"));
             tapePreview.setOnClickListener(this);
             tapePreview.setTag(obj.getString("id"));
         } catch (Exception ex) {

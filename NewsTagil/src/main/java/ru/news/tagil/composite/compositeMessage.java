@@ -13,8 +13,8 @@ import ru.news.tagil.utility.myTextView;
  * Created by Alexander on 09.08.13.
  */
 public class compositeMessage extends RelativeLayout {
-    private TextView login,date,time;
-    private myTextView msg;
+    protected TextView login,date,time;
+    protected myTextView msg;
     public compositeMessage(Context context) {
         super(context);
     }

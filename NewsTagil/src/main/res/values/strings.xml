@@ -2,6 +2,7 @@
 <resources>
 <!-- -->
     <string name="addMsgError">При добавлении сообщения возникла ошибка.</string>
+    <string name="addCommentError">При добавлении комментария возникла ошибка.</string>
     <string name="emptyMsg">Нельзя отправить пустое сообщение!</string>
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
@@ -14,6 +15,8 @@
     <string name="settingsText">Настройки</string>
     <string name="dialogText">Диалоги</string>
     <string name="usefulText">Полезное</string>
+    <string name="advertAddedToFavorite">Объявление было успешно добавлено в избранное.</string>
+    <string name="advertDeletedFromFavorite">Объявление было успешно удалено из избранного.</string>
     <string name="instructionText">Инструкция</string>
     <string name="createAdvertText">Создать объявление</string>
     <string name="myAdvertText">Мои объявления</string>
@@ -23,6 +26,7 @@
     <string name="News">Новости</string>
     <string name="editText">Редактировать</string>
     <string name="startDialogText">Диалог</string>
+    <string name="commentText">Комментарии</string>
     <string name="SetFiledsWarning">Заполните поля!</string>    
     <string name="loginUrl">login.php</string>
     <string name="getNewsHeadersUrl">get_news_headers.php</string>
@@ -36,6 +40,10 @@
     <string name="getCommentsUrl">get_comments.php</string>
     <string name="getFavoritesUrl">get_favorites.php</string>
     <string name="getUsersUrl">get_users.php</string>
+    <string name="isLikedUrl">is_liked.php</string>
+    <string name="isFavoriteUrl">is_favorite.php</string>
+    <string name="toggleFavoriteUrl">toggle_favorite.php</string>
+    <string name="toggleLikeUrl">toggle_like.php</string>
     <string name="getNewsUrl">get_news.php</string>
     <string name="registrationUrl">registration.php</string>
     <string name="getInterlocutorsUrl">get_interlocutors.php</string>
@@ -62,5 +70,7 @@
     <string name="dosug">Совместный досуг</string>
     <string name="in_marriage">В браке</string>
     <string name="not_in_marriage">Свободен(-a)</string>
+    <string name="delAdvertUrl">del_advert.php</string>
+    <string name="updateAdvertUrl">update_advert.php</string>
 
 </resources>

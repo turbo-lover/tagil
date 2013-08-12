@@ -95,15 +95,12 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     }
     private void AddNew() {
         try{
-            totalCount++;
             scriptAddress = getString(R.string.addMessageUrl);
             JSONObject jo = Get(CreateJsonForAdd());
             if(jo.getString("status").equals("ok")) {
-                totalCount--;
                 scriptAddress = getString(R.string.getMessagesUrl);
                 UpdateButtonClicks();
             } else {
-                totalCount--;
                 Toast.makeText(this,getString(R.string.addMsgError),Toast.LENGTH_SHORT).show();
             }
         } catch (Exception ex) {

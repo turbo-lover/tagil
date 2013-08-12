@@ -35,6 +35,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
         i.putExtra("title",c.getTitle());
         i.putExtra("img",c.getImg());
         i.putExtra("id_advert",(String) c.getTag());
+        i.putExtra("login",preferencesWorker.get_login());
         startActivity(i);
     }
     @Override
@@ -102,7 +103,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
             byte[] e = obj.getString("advert_image").getBytes();
             byte[] imgbyte = Base64.decode(e, 0);
             Bitmap bmp = BitmapFactory.decodeByteArray(imgbyte, 0, imgbyte.length);
-            adsPreview.Set(obj.getString("header"),"",obj.getString("pub_date"),bmp);
+            adsPreview.Set(obj.getString("header"),"",obj.getString("pub_date"),bmp,null);
             adsPreview.setOnClickListener(this);
             adsPreview.setTag(obj.getString("id"));
         } catch (Exception ex) {

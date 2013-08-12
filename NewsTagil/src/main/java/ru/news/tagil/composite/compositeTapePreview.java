@@ -11,7 +11,7 @@ import ru.news.tagil.R;
  * Created by Alexander on 15.07.13.
  */
 public class compositeTapePreview extends RelativeLayout {
-    private TextView dateTextView,timeTextView,headerTextView;
+    private TextView dateTextView,timeTextView,headerTextView,like_count;
 
     public compositeTapePreview(Context context) {
         super(context);
@@ -28,10 +28,11 @@ public class compositeTapePreview extends RelativeLayout {
         Initialize_Component();
     }
 
-    public void Set( String date, String time, String header) {
+    public void Set( String date, String time, String header,String like_count) {
         dateTextView.setText(date);
         timeTextView.setText(time);
         headerTextView.setText(header);
+        this.like_count.setText(like_count);
     }
 
     private void Initialize_Component() {
@@ -40,6 +41,7 @@ public class compositeTapePreview extends RelativeLayout {
         dateTextView = (TextView) findViewById(R.id.composite_tape_preview_date);
         timeTextView = (TextView) findViewById(R.id.composite_tape_preview_time);
         headerTextView = (TextView) findViewById(R.id.composite_tape_preview_name_post);
+        like_count = (TextView) findViewById(R.id.composite_tape_preview_like_count);
     }
 
     public String getDateTime() {

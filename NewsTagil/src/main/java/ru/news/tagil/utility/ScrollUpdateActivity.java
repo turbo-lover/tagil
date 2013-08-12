@@ -31,13 +31,6 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     }
 
     @Override
-    public JSONObject Get(JSONObject jsonObject) {
-        if(container.getChildCount() == totalCount) {
-            return null; }
-        return super.Get(jsonObject);
-    }
-
-    @Override
     public void Set(JSONObject jsonObject, boolean insertAtStart) {
         if(jsonObject == null) {
             return;
@@ -87,13 +80,18 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
+        if(container.getChildCount() == totalCount) {
+            return; }
         Set(Get(CreateJsonForGet()),false);
     }
 
     @Override
     public void UpdateButtonClicks() {
-        int new_count = GetTotalCount((tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login(),
-                (tableName == "messages")?searchStr:null);
+        String extra1 = (tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login();
+        if(tableName == "comments") {
+            extra1 = searchStr; }
+        String extra2 =  (tableName == "messages")?searchStr:null;
+        int new_count = GetTotalCount(extra1,extra2);
         if(new_count > totalCount) {
             totalCount = new_count;
             Set(Get(CreateJsonForGetNew()),true);

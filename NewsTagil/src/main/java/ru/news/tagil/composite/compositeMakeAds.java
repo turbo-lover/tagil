@@ -49,6 +49,12 @@ public class compositeMakeAds extends RelativeLayout{
         sentButton = (Button) findViewById(R.id.composite_make_ads_sent);
     }
 
+    public void Set(String header,String text) {
+        this.header.setText(header);
+        content.setText(text);
+        sentButton.setText(getContext().getString(R.string.editText));
+    }
+
     public void SetEventListeners(OnClickListener listener) {
         img.setOnClickListener(listener);
         sentButton.setOnClickListener(listener);
@@ -63,11 +69,11 @@ public class compositeMakeAds extends RelativeLayout{
     }
 
     public String GetHeader() {
-        return content.getText().toString();
+        return header.getText().toString();
     }
 
     public String GetContentText() {
-        return header.getText().toString();
+        return content.getText().toString();
     }
 
     public Bitmap GetImg() {

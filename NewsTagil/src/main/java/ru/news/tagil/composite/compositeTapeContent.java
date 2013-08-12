@@ -40,7 +40,8 @@ public class compositeTapeContent extends RelativeLayout {
         if(bmp != null) {
             img.setImageBitmap(bmp);
         } else {
-            img.setMaxHeight(0); } //TODO либо сделать картинку - заглушку, либо уменьшать размер ImageView до 0.
+            img.setVisibility(View.GONE);
+        }
     }
 
     private void Initialize_Component() {

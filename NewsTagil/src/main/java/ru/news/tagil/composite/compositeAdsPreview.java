@@ -15,7 +15,8 @@ import android.widget.TextView;
  */
 public class compositeAdsPreview extends RelativeLayout {
     private TextView titleTextView,publisherTextView,dateTextView;
-    private ImageView img;
+    private ImageView img,favorite;
+    private boolean isFavorite;
     public compositeAdsPreview(Context context) {
         super(context);
         Initialize_Component();
@@ -31,14 +32,19 @@ public class compositeAdsPreview extends RelativeLayout {
         Initialize_Component();
     }
 
-    public void Set(String title, String publisher, String date, Bitmap bmp) {
+    public void Set(String title, String publisher, String date, Bitmap bmp,String favorite) {
         titleTextView.setText(title);
         publisherTextView.setText(publisher);
         dateTextView.setText(date);
+        if(favorite == null) {
+            this.favorite.setVisibility(View.GONE);
+        } else {
+            isFavorite = favorite.equals("1");
+            this.favorite.setBackgroundColor( getResources().getColor((isFavorite)?R.color.Orange:R.color.lightGray));
+        }
         if(bmp != null) {
             img.setImageBitmap(bmp);
-        } else {
-            img.setMaxHeight(0); } //TODO либо сделать картинку - заглушку, либо уменьшать размер ImageView до 0.
+        }
     }
     private void Initialize_Component() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,6 +53,7 @@ public class compositeAdsPreview extends RelativeLayout {
         publisherTextView = (TextView) findViewById(R.id.composite_ads_name);
         dateTextView = (TextView) findViewById(R.id.composite_ads_date);
         img = (ImageView) findViewById(R.id.composite_ads_imageView);
+        favorite = (ImageView) findViewById(R.id.composite_ads_favorite);
     }
 
     public String getDate() {
@@ -63,5 +70,9 @@ public class compositeAdsPreview extends RelativeLayout {
 
     public Bitmap getImg() {
         return (img.getDrawable() == null)? null : ((BitmapDrawable)img.getDrawable()).getBitmap();
+    }
+
+    public boolean IsFavorite() {
+        return isFavorite;
     }
 }

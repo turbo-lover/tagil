@@ -23,17 +23,23 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
     private compositeHeaderSimple h_simple;
     private compositeMakeAds makeAds;
     private imageGetter imgGetter;
+    private Intent i;
     @Override
     protected void InitializeComponent(){
         super.InitializeComponent();
         h_simple = new compositeHeaderSimple(this);
         makeAds = new compositeMakeAds(this);
         imgGetter = new imageGetter(this);
-        scriptAddress = getString(R.string.addAdvertUrl);
+        i = getIntent();
+        scriptAddress = getString((i.getExtras().isEmpty())?R.string.addAdvertUrl:R.string.updateAdvertUrl);
     }
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.createAdvertText));
+        if(!i.getExtras().isEmpty()) {
+            makeAds.Set(i.getStringExtra("advert_header"),i.getStringExtra("advert_text"));
+            makeAds.SetImg((Bitmap)i.getParcelableExtra("advert_image"));
+        }
         header.addView(h_simple);
         container.addView(makeAds);
     }
@@ -61,6 +67,9 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
             jo.put("pass",preferencesWorker.get_pass());
             jo.put("advert_header",makeAds.GetHeader());
             jo.put("advert_text",makeAds.GetContentText());
+            if(!i.getExtras().isEmpty()) {
+                jo.put("id_advert",i.getStringExtra("id_advert"));
+            }
             Bitmap bmp = makeAds.GetImg();
             byte[] b = null;
             if(bmp != null) {

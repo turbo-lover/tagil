@@ -94,6 +94,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.myAdvertText));
+        ads_header.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(ads_header);
     }
     @Override

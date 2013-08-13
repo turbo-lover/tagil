@@ -26,7 +26,8 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.advertText));
-       LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+        ads_header.UpdateWeather(weatherToday, weatherTomorow);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                LinearLayout.LayoutParams.WRAP_CONTENT);
         selector.addView(ads_selector,p);
         header.addView(ads_header);

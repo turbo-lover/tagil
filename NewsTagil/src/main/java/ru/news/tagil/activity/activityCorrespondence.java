@@ -1,10 +1,8 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -78,6 +76,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     @Override
     protected void SetCompositeElements() {
         headerSimple.Set(getString(R.string.dialogText));
+        headerSimple.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(headerSimple);
         footer.addView(cfb);
     }

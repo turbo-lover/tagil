@@ -1,13 +1,10 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -15,10 +12,7 @@ import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsContent;
 import ru.news.tagil.composite.compositeHeaderSimple;
-import ru.news.tagil.composite.compositeInterlocutor;
 import ru.news.tagil.utility.mainFrameJsonActivity;
-import ru.news.tagil.utility.myAsyncTaskWorker;
-import ru.news.tagil.utility.myPreferencesWorker;
 
 /**
  * Created by Alexander on 30.07.13.
@@ -50,6 +44,7 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.advertText));
+        h_simple.UpdateWeather(weatherToday, weatherTomorow);
         content.SetButtonsTxt(getString((isMine)?R.string.editText:R.string.startDialogText),
                 getString((isMine)?R.string.delText:R.string.favoriteText));
         header.addView(h_simple);

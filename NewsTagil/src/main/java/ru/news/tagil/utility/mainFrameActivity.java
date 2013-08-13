@@ -1,7 +1,6 @@
 package ru.news.tagil.utility;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
@@ -20,6 +19,8 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
     protected myPreferencesWorker preferencesWorker;
     protected RelativeLayout header,holder,footer,selector;
     public static boolean is_authorized = false;
+    protected static String weatherToday = "";
+    protected static String weatherTomorow = "";
 
     // This section MUST be overriden
     protected void SetEventListeners() {}
@@ -46,6 +47,13 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        if(i.getExtras() != null) {
+            if(i.hasExtra("weather_today")){
+                weatherToday = i.getStringExtra("weather_today");
+                weatherTomorow = i.getStringExtra("weather_tomorrow");
+            }
+        }
         InitializeComponent();
         SetCompositeElements();
         SetEventListeners();
@@ -65,6 +73,4 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
     protected void ClearContainer() {
         container.removeAllViews();
     }
-
-
 }

@@ -2,25 +2,17 @@ package ru.news.tagil.activity;/**
  * Created by turbo_lover on 23.07.13.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import ru.news.tagil.R;
-import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeContactPreview;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeader;
@@ -68,6 +60,7 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
     @Override
     protected  void SetCompositeElements() {
         h.Set(getString(R.string.contactText),"","");
+        h.UpdateWeather(weatherToday, weatherTomorow);
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         header.addView(h);

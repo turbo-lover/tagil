@@ -1,6 +1,5 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import java.util.Calendar;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeComment;
 import ru.news.tagil.composite.compositeHeaderSimple;
-import ru.news.tagil.composite.compositeMessage;
 import ru.news.tagil.composite.compositeMessageTextArea;
 import ru.news.tagil.utility.ScrollUpdateActivity;
 
@@ -144,6 +142,7 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.commentText));
+        h_simple.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(h_simple);
         footer.addView(msgArea);
     }

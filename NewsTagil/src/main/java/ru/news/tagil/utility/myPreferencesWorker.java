@@ -18,6 +18,7 @@ public class myPreferencesWorker
     final private String preference_location = "tagil_pref";
     final private String preference_current_typeface = "typeface";
     final private String preference_current_typeface_size = "typeface_size";
+    final private String preference_autoupdate_mode = "autoupdate_mode";
 
 
 
@@ -38,6 +39,14 @@ public class myPreferencesWorker
         sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(preference_user_pass ,pass);
+        ed.commit();
+    }
+
+    public void set_autoupdate_mode(String pass) {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(preference_autoupdate_mode ,pass);
         ed.commit();
     }
 
@@ -84,4 +93,11 @@ public class myPreferencesWorker
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
         return sPref.getFloat(preference_current_typeface_size, context.getResources().getDimension(R.dimen.devault_size));
     }
+
+    public String get_autoupdate_mode() {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+        return sPref.getString(preference_autoupdate_mode,"Wi-Fi");
+    }
+
 }

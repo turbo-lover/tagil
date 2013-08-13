@@ -1,7 +1,6 @@
 package ru.news.tagil.composite;/**
  * Created by turbo_lover on 23.07.13.
  */
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -9,10 +8,11 @@ import android.view.View;
 import android.widget.*;
 import ru.news.tagil.R;
 
+import static java.lang.Integer.*;
 
 public class compositeContactContent extends RelativeLayout implements View.OnClickListener {
 
-    TextView seek_content, purpose_content, marriage_content, hobby_content, music_content, about_content;
+    TextView seek_content, purpose_content, marriage_content, hobby_content, music_content, about_content, name;
     ImageView avatar;
     View seek,purpose,marriage,hobby,music,about;
     LinearLayout user_images;
@@ -30,6 +30,7 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         start_dialog.setOnClickListener(this);
 
     }
+
     public void SetEventListeners(OnClickListener listener) {
         addImagesContact.SetEventListeners(listener);
         seek.setOnClickListener(listener);
@@ -53,7 +54,12 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         hobby_content = (TextView) findViewById(R.id.composite_contact_content_hobby_content);
         music_content = (TextView) findViewById(R.id.composite_contact_content_music_content);
         about_content = (TextView) findViewById(R.id.composite_contact_content_about_content);
+        name = (TextView) findViewById(R.id.composite_contact_content_name);
         start_dialog = (Button) findViewById(R.id.composite_contact_content_start_dialog);
+
+        if(isMyProfile) {
+            start_dialog.setVisibility(INVISIBLE);
+        }
 
         seek = findViewById(R.id.contact_seek);
         purpose= findViewById(R.id.contact_purpose_for_seeking);
@@ -68,45 +74,79 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         SetEventListeners();
     }
 
+    public void SetName(String name) {
+        this.name.setText(name);
+    }
+
     private void AddCompositeElement() {
         user_images.addView(addImagesContact);
     }
     /* setters */
+    private int myParseInt(String value) {
+        try {
+            return parseInt(value);
+        } catch (NumberFormatException numbFormExcept) {
+            return -1;
+        }
+    }
 
     public void _setSeek(String seek_content) {
-        this.seek_content.setText(seek_content);
+        CharSequence[] array = getResources().getTextArray(R.array.seek);
+        int i = myParseInt(seek_content);
+        if(i==-1) {
+           this.seek_content.setText(array[array.length-1]);
+           return;
+       }
+       this.seek_content.setText(array[i]);
     }
 
     public void _setPurpose(String purpose_content) {
-        this.purpose_content.setText(purpose_content);
+        CharSequence[] array = getResources().getTextArray(R.array.purpose);
+        int i = myParseInt(purpose_content);
+        if(i==-1) {
+            this.purpose_content.setText(array[array.length-1]);
+            return;
+        }
+        this.purpose_content.setText(array[i]);
+
     }
 
     public void _setMarriage(String marriage_content) {
-        this.marriage_content.setText(marriage_content);
+        CharSequence[] array = getResources().getTextArray(R.array.marriage);
+        int i = myParseInt(marriage_content);
+        if(i==-1) {
+            this.marriage_content.setText(array[array.length-1]);
+            return;
+        }
+        this.marriage_content.setText(array[i]);
+
     }
 
-    public void _setMusic(String music_content) {
-        this.music_content.setText(music_content);
+    public void _setMusic(String content) {
+        if(content.equals("null")) content = getResources().getString(R.string.not_installed);
+        this.music_content.setText(content);
     }
 
-    public void _setHobby(String hobby_content) {
-        this.hobby_content.setText(hobby_content);
+    public void _setHobby(String content) {
+        if(content.equals("null")) content = getResources().getString(R.string.not_installed);
+        this.hobby_content.setText(content);
     }
 
-    public void _setAbout(String about_content) {
-        this.about_content.setText(about_content);
+    public void _setAbout(String content) {
+        if(content.equals("null")) content = getResources().getString(R.string.not_installed);
+        this.about_content.setText(content);
     }
 
     public void _setAvatar(Bitmap avatar_bitmap) {
         avatar.setImageBitmap(avatar_bitmap);
     }
+
     public void _putImageInHorizontalTape(Bitmap image) {
-        addImagesContact.addImage(image);
+        addImagesContact.addImageToTape(image);
     }
 
     @Override
     public void onClick(View view) {
 
     }
-
 }

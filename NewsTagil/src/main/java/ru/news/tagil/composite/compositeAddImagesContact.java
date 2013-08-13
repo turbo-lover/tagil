@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import ru.news.tagil.R;
+import ru.news.tagil.utility.transformUtil;
 
 public class compositeAddImagesContact extends RelativeLayout {
     LinearLayout header,images_layout;
@@ -37,10 +38,15 @@ public class compositeAddImagesContact extends RelativeLayout {
             }
         }
     }
-    public void addImage(Bitmap bitmap) {
+    public void addImageToTape(Bitmap bitmap) {
         ImageView image = new ImageView(getContext());
         image.setImageBitmap(bitmap);
         image.setBackgroundResource(R.drawable.ads_button_bg);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(transformUtil.PxtDIP(100,getContext()), transformUtil.PxtDIP(100,getContext()));
+        lp.rightMargin = transformUtil.PxtDIP(2,getContext());
+        lp.weight =1;
+        image.setLayoutParams(lp);
+        image.setScaleType(ImageView.ScaleType.FIT_XY);
         images_layout.addView(image);
     }
 

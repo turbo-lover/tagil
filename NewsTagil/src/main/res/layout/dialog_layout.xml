@@ -19,6 +19,7 @@
             android:layout_marginBottom="4dp"
             />
     <EditText
+            android:id="@id/dialog_text"
             android:layout_marginTop="4dp"
             android:layout_below="@id/dialog_header"
             android:layout_width="match_parent"

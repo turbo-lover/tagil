@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import ru.news.tagil.R;
 import ru.news.tagil.activity.activityProfile;
+import ru.news.tagil.utility.myPreferencesWorker;
 
 /**
  * Created by Alexander on 08.08.13.
@@ -36,13 +37,13 @@ public class compositeMyProfileSelector extends LinearLayout implements View.OnC
         Initialize_Component();
     }
 
-    // для того что бы знать что профиль мой передаем в интенте поле isMy = true
-    // а в другом месте ничего не передаем и он по умолчанию равен false
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.composite_my_profile_selector_button) {
+            myPreferencesWorker pw = new myPreferencesWorker(getContext());
+
             Intent i = new Intent(getContext(),activityProfile.class);
-            i.putExtra("isMy",true);
+            i.putExtra("login",pw.get_login());
             getContext().startActivity(i);
         }
     }

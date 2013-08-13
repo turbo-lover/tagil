@@ -7,7 +7,7 @@
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
     <string name="favorite">Избранное</string>
-    <string name="serverAddress">http://192.168.1.110/ </string><!-- etd-host.ru.xsph.ru/ -->
+    <string name="serverAddress">http://192.168.1.110/</string><!-- 192.168.1.110/etd-host.ru.xsph.ru -->
     <string name="favoriteText">Избранное</string>
     <string name="mainText">Главная</string>
     <string name="contactText">Знакомства</string>
@@ -17,7 +17,7 @@
     <string name="settingsText">Настройки</string>
     <string name="dialogText">Диалоги</string>
     <string name="usefulText">Полезное</string>
-    <string name="degree">C°</string>
+    <string name="degree"> C°</string>
     <string name="advertAddedToFavorite">Объявление было успешно добавлено в избранное.</string>
     <string name="advertDeletedFromFavorite">Объявление было успешно удалено из избранного.</string>
     <string name="instructionText">Инструкция</string>
@@ -62,8 +62,10 @@
     <string name="message_font_size_changed">Размер шрифта успешно изменен</string>
     <string name="message_font_type_changed">Тип шрифта успешно изменен!</string>
     <string name="addPersonalInfo">add_personal_info.php</string>
+    <string name="addUserPic">add_user_pic.php</string>
 
     <string name="save">Сохранить</string>
+    <string name="not_installed">Не установленно</string>
 
     <string name="seek">Ищу</string>
     <string-array name="seek">
@@ -88,8 +90,13 @@
         <item>Не установленно</item>
     </string-array>
 
+    <string name="hobby">Хобби</string>
+    <string name="favorite_music">Любимая музыка</string>
+    <string name="about_me">О себе</string>
+
     <string name="delAdvertUrl">del_advert.php</string>
     <string name="updateAdvertUrl">update_advert.php</string>
     <string name="getProfile">get_profile.php</string>
-    <string name="personalInfoChanged">Изменения успешно внесенны</string>
+    <string name="personalInfoChanged">Изменения успешно внесены</string>
+    <string name="imageAddedSuccess">Изображение загруженно успешно</string>
 </resources>

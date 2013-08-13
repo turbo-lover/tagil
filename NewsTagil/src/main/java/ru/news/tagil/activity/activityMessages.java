@@ -27,6 +27,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     protected void onCreate(Bundle s){
         super.onCreate(s);
         Set(Get(CreateJsonForGetNew()),true);
+        needAutoUpdate = headerSimple.GetUpdateButtonVisibility();
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) {

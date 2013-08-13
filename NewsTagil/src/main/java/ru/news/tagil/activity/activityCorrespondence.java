@@ -3,6 +3,7 @@ package ru.news.tagil.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,11 @@ import ru.news.tagil.utility.ScrollUpdateActivity;
 public class activityCorrespondence extends ScrollUpdateActivity implements View.OnClickListener {
     private compositeHeaderSimple headerSimple;
     private compositeFirstButton cfb;
-
+    @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = headerSimple.GetUpdateButtonVisibility();
+    }
     @Override
     public void onClick(View view) {
         Intent i = new Intent(this,activityMessages.class);
@@ -58,7 +63,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     }
 
     @Override
-    protected JSONObject CreateJsonForGetNew() { return null; } //Still not implemented
+    protected JSONObject CreateJsonForGetNew() { return null; } //Not implemented
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
@@ -76,6 +81,7 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
     @Override
     protected void SetCompositeElements() {
         headerSimple.Set(getString(R.string.dialogText));
+        headerSimple.SetUpdateButtonVisibility(false);
         headerSimple.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(headerSimple);
         footer.addView(cfb);

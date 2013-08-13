@@ -3,6 +3,7 @@ package ru.news.tagil.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,11 @@ import java.util.Calendar;
 public class activityAds extends ScrollUpdateActivity implements View.OnClickListener {
     private compositeHeaderSimple ads_header;
     private compositeAdsSelector ads_selector;
+    @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = ads_header.GetUpdateButtonVisibility();
+    }
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.advertText));

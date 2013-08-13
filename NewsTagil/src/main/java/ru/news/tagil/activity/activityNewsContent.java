@@ -71,6 +71,7 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.News));
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
+        h_simple.SetUpdateButtonVisibility(false);
         SetBgColor();
         container.addView(t);
         header.addView(h_simple);

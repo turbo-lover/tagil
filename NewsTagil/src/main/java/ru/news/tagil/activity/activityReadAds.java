@@ -45,6 +45,7 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.advertText));
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
+        h_simple.SetUpdateButtonVisibility(false);
         content.SetButtonsTxt(getString((isMine)?R.string.editText:R.string.startDialogText),
                 getString((isMine)?R.string.delText:R.string.favoriteText));
         header.addView(h_simple);

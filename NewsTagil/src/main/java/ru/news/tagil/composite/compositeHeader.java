@@ -60,6 +60,10 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         }
     }
 
+    public boolean GetUpdateButtonVisibility() {
+        return (updateButton.getVisibility() == View.GONE)?false:true;
+    }
+
     public String GetSearchString(){
         return searchTxt.getText().toString();
     }

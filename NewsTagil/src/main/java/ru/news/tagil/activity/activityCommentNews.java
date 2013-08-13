@@ -30,6 +30,7 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
     protected void onCreate(Bundle s){
         super.onCreate(s);
         Set(Get(CreateJsonForGetNew()),true);
+        needAutoUpdate = h_simple.GetUpdateButtonVisibility();
     }
 
     @Override

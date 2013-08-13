@@ -27,6 +27,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         Set(Get(CreateJsonForGetNew()),true);
+        needAutoUpdate = ads_header.GetUpdateButtonVisibility();
     }
     @Override
     public void onClick(View view) {
@@ -94,6 +95,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.myAdvertText));
+        ads_header.SetUpdateButtonVisibility(false);
         ads_header.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(ads_header);
     }

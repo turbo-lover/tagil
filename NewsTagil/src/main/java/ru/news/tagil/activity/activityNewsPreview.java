@@ -1,6 +1,7 @@
 package ru.news.tagil.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -20,6 +21,11 @@ import java.util.Calendar;
 public class activityNewsPreview extends ScrollUpdateActivity implements View.OnClickListener{
     private compositeFirstButton cfb;
     protected compositeHeader h;
+    @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = h.GetUpdateButtonVisibility();
+    }
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();

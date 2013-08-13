@@ -36,6 +36,7 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.createAdvertText));
+        h_simple.SetUpdateButtonVisibility(false);
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
         if(!i.getExtras().isEmpty()) {
             makeAds.Set(i.getStringExtra("advert_header"),i.getStringExtra("advert_text"));

@@ -27,6 +27,7 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
         super.SetCompositeElements();
         headerSimple.Set(getString(R.string.settingsText));
         headerSimple.UpdateWeather(weatherToday, weatherTomorow);
+        headerSimple.SetUpdateButtonVisibility(false);
         footer.addView(firstButton);
         header.addView(headerSimple);
         container.addView(settingsContent);

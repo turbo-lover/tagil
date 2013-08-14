@@ -53,5 +53,7 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityMyAds"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityProfile"
+                  android:screenOrientation="portrait"/>
     </application>
 </manifest>

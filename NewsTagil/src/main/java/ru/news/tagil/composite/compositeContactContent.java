@@ -1,6 +1,7 @@
 package ru.news.tagil.composite;/**
  * Created by turbo_lover on 23.07.13.
  */
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;

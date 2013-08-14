@@ -7,7 +7,7 @@
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
     <string name="favorite">Избранное</string>
-    <string name="serverAddress">http://192.168.1.110/</string><!-- 192.168.1.110/etd-host.ru.xsph.ru -->
+    <string name="serverAddress">http://192.168.1.110/ </string><!-- etd-host.ru.xsph.ru/ -->
     <string name="favoriteText">Избранное</string>
     <string name="mainText">Главная</string>
     <string name="contactText">Знакомства</string>

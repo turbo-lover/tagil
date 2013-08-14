@@ -41,7 +41,7 @@
         android:textSize="18dp"
         android:textColor="#ff474747"
         android:text="Зарегистрироваться"
-        android:layout_below="@+id/pass"
+        android:layout_above="@+id/enter"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"/>
 
@@ -54,7 +54,7 @@
         android:textColor="#ff474747"
         android:background="@drawable/empty_bg"
         android:textSize="30dp"
-        android:layout_below="@+id/reg"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"/>
 

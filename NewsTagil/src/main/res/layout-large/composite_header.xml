@@ -120,10 +120,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
-                            android:textSize="10dp"
+                            android:textSize="16dp"
                             android:layout_marginLeft="5dp"
                             android:layout_toRightOf="@+id/composite_header_now"
-                            android:layout_alignTop="@+id/composite_header_now"
                             android:layout_alignBottom="@+id/composite_header_now"/>
                    <TextView
                         android:id="@+id/composite_header_tomorrow"
@@ -140,9 +139,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
-                            android:textSize="10dp"
+                            android:textSize="16dp"
+
                             android:layout_marginLeft="5dp"
-                            android:layout_alignTop="@+id/composite_header_tomorrow"
                             android:layout_toRightOf="@+id/composite_header_tomorrow"
                             android:layout_alignBottom="@+id/composite_header_tomorrow"/>
                     
@@ -158,7 +157,8 @@
                 <EditText
                     android:id="@+id/composite_header_search"
                     android:layout_width="220dp"
-                    android:layout_height="30dp"
+                    android:textSize="16dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/first_header_search" >
 

@@ -4,6 +4,7 @@ package ru.news.tagil.composite;/**
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -54,6 +55,15 @@ public class compositeAddImagesContact extends RelativeLayout {
         if(isMyProfile) image.setOnClickListener(listener);//переменная в классе, инициализируется в SetEventListener и только если
         images_layout.addView(image);
 
+    }
+
+    public Bitmap getImageByTag(String tag) {
+        for( int i =0; i<images_layout.getChildCount();i++) {
+            ImageView child = (ImageView) images_layout.getChildAt(i);
+            if(child.getTag().equals(tag))
+                return ((BitmapDrawable) child.getDrawable()).getBitmap();
+        }
+        return null;
     }
 
     private void Initialize_Component() {

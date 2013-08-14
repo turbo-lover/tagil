@@ -12,10 +12,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,7 +69,7 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
             obj.put("login",login);
             obj = Get(obj);
 
-/*status:,result:{looking_for,purpose_of_seeking,hobby,about_me,marriage,favorite_music,selected_pic_id,images:[{id,image}*/
+    /*status:,result:{looking_for,purpose_of_seeking,hobby,about_me,marriage,favorite_music,selected_pic_id,images:[{id,image}*/
             if(obj.getString("status").equals("ok")) {
                 JSONObject result = obj.getJSONObject("result");
 
@@ -277,6 +274,7 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
 
             if(jo.getString("status").equals("ok")) {
                 Toast.makeText(this,getString(R.string.imageAddedSuccess),Toast.LENGTH_SHORT).show();
+                contactContent._putImageInHorizontalTape(bmp,jo.getString("result"));
             }
         }
         catch (JSONException e) {
@@ -303,7 +301,11 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        Toast.makeText(this,view.getClass().toString(),Toast.LENGTH_LONG ).show() ;
+        if(view.getClass().equals(ImageView.class)) {
+            setAvatarOnServer(view.getTag().toString());
+            return;
+        }
+
         if(isMy) {
             Dialog d  = new Dialog(this);
             switch (id) {
@@ -340,5 +342,26 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
             d.show();
         }
     }
+
+    private void setAvatarOnServer(String tag) {
+
+        scriptAddress = getString(R.string.setUserPic);
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("id_image",tag);
+            jo.put("login",pw.get_login());
+            jo.put("pass",pw.get_pass());
+
+            jo = Get(jo);
+
+            if(jo.getString("status").equals("ok")) {
+                contactContent.setAvatarByTAg(tag);
+                Toast.makeText(this,getString(R.string.userImageSetsSuccess),Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 
 }

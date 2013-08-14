@@ -91,6 +91,10 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         }
     }
 
+    public void setAvatarByTAg(String tag) {
+        avatar.setImageBitmap( addImagesContact.getImageByTag(tag));
+    }
+
     public void _setSeek(String seek_content) {
         CharSequence[] array = getResources().getTextArray(R.array.seek);
         int i = myParseInt(seek_content);

@@ -99,4 +99,6 @@
     <string name="getProfile">get_profile.php</string>
     <string name="personalInfoChanged">Изменения успешно внесены</string>
     <string name="imageAddedSuccess">Изображение загруженно успешно</string>
+    <string name="setUserPic">select_user_pic.php</string>
+    <string name="userImageSetsSuccess">Аватар установлен успешно</string>
 </resources>

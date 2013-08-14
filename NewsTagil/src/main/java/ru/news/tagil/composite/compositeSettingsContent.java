@@ -5,6 +5,7 @@ package ru.news.tagil.composite;/**
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class compositeSettingsContent extends RelativeLayout implements View.OnC
     TextView toFontsSettings,toFaq;
     RadioGroup group;
     myPreferencesWorker preferencesWorker;
+    RadioButton btn1,btn2;
     public compositeSettingsContent(Context context) {
         super(context);
         Initialize_Component();
@@ -32,9 +34,16 @@ public class compositeSettingsContent extends RelativeLayout implements View.OnC
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_setting_content, this);
         preferencesWorker = new myPreferencesWorker(getContext());
+        btn1 = (RadioButton) findViewById(R.id.setting_content_3G);
+        btn2 = (RadioButton) findViewById(R.id.setting_content_wifi);
         group = (RadioGroup) findViewById(R.id.autoupdate_mode_selector);
         toFontsSettings = (TextView) findViewById(R.id.setting_content_font_setting);
         toFaq = (TextView) findViewById(R.id.setting_content_FAQ);
+        if(preferencesWorker.get_autoupdate_mode().equals(getContext().getString(R.string.autoapdateWiFi))) {
+            btn2.setChecked(true);
+        } else {
+            btn1.setChecked(true);
+        }
     }
 
     @Override
@@ -55,6 +64,7 @@ public class compositeSettingsContent extends RelativeLayout implements View.OnC
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        preferencesWorker.set_autoupdate_mode(getContext().getString((i == 0)?R.string.autoapdate3G:R.string.autoapdateWiFi));
+        String s = getContext().getString((i == R.id.setting_content_3G) ? R.string.autoapdate3G : R.string.autoapdateWiFi);
+        preferencesWorker.set_autoupdate_mode(s);
     }
 }

@@ -91,11 +91,11 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
                          JSONObject image = arr.getJSONObject(i);
                           byte[] b_image = Base64.decode( image.getString("image"),0);
                          Bitmap bmp_image = BitmapFactory.decodeByteArray(b_image,0,b_image.length);
-
-                         if(image.getString("id").equals(avatar_id)) {
+                        String id = image.getString("id");
+                         if(id.equals(avatar_id)) {
                              contactContent._setAvatar(bmp_image);
                          }
-                         contactContent._putImageInHorizontalTape(bmp_image);
+                         contactContent._putImageInHorizontalTape(bmp_image,id);
                      }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -257,45 +257,7 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
         return null;
     }
 
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        if(isMy) {
-            Dialog d  = new Dialog(this);
-            switch (id) {
-                // обработка нажатий изменений профиля
-                case R.id.contact_seek :
-                    d = CreateDialog(
-                           getResources().getStringArray(R.array.seek),
-                           getString(R.string.seek),R.id.contact_seek);
-                    break;
-                case R.id.contact_purpose_for_seeking:
-                    d = CreateDialog(
-                            getResources().getStringArray(R.array.purpose),
-                            getString(R.string.purpose_for_seek), R.id.contact_purpose_for_seeking );
-                    break;
-                case R.id.contact_marriage:
-                    d = CreateDialog(
-                            getResources().getStringArray(R.array.marriage),
-                            getString(R.string.marriage),R.id.contact_marriage);
-                    break;
-                case R.id.contact_hobby:
-                    d = CreateDialog(getString(R.string.hobby),R.id.contact_hobby);
-                    break;
-                case R.id.contact_music:
-                    d = CreateDialog(getString(R.string.favorite_music),R.id.contact_music);
-                    break;
-                case R.id.contact_about:
-                    d = CreateDialog(getString(R.string.about_me),R.id.contact_about);
-                    break;
-                //обработка нажатия добавления фотографии
-                case R.id.add_photo_button:
-                    FindImage();
-                    return;
-            }
-            d.show();
-        }
-    }
+
 
     public void sendImage(Bitmap bmp) {
         scriptAddress = getString(R.string.addUserPic);
@@ -328,7 +290,7 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == SELECT_PICTURE) {
-                sendImage(imgGetter.getImg(data,200,200));
+                sendImage(imgGetter.getImg(data,150,150));
             }
         }
     }
@@ -338,4 +300,45 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Select Picture"), SELECT_PICTURE);
     }
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        Toast.makeText(this,view.getClass().toString(),Toast.LENGTH_LONG ).show() ;
+        if(isMy) {
+            Dialog d  = new Dialog(this);
+            switch (id) {
+                // обработка нажатий изменений профиля
+                case R.id.contact_seek :
+                    d = CreateDialog(
+                            getResources().getStringArray(R.array.seek),
+                            getString(R.string.seek),R.id.contact_seek);
+                    break;
+                case R.id.contact_purpose_for_seeking:
+                    d = CreateDialog(
+                            getResources().getStringArray(R.array.purpose),
+                            getString(R.string.purpose_for_seek), R.id.contact_purpose_for_seeking );
+                    break;
+                case R.id.contact_marriage:
+                    d = CreateDialog(
+                            getResources().getStringArray(R.array.marriage),
+                            getString(R.string.marriage),R.id.contact_marriage);
+                    break;
+                case R.id.contact_hobby:
+                    d = CreateDialog(getString(R.string.hobby),R.id.contact_hobby);
+                    break;
+                case R.id.contact_music:
+                    d = CreateDialog(getString(R.string.favorite_music),R.id.contact_music);
+                    break;
+                case R.id.contact_about:
+                    d = CreateDialog(getString(R.string.about_me),R.id.contact_about);
+                    break;
+                //обработка нажатия добавления фотографии
+                case R.id.add_photo_button:
+                    FindImage();
+                    return;
+            }
+            d.show();
+        }
+    }
+
 }

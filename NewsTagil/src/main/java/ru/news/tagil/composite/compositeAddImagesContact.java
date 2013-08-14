@@ -15,6 +15,7 @@ import ru.news.tagil.utility.transformUtil;
 public class compositeAddImagesContact extends RelativeLayout {
     LinearLayout header,images_layout;
     Boolean isMyProfile;
+    OnClickListener listener;
 
     public compositeAddImagesContact(Context context,Boolean isMyProfile) {
         super(context);
@@ -35,19 +36,24 @@ public class compositeAddImagesContact extends RelativeLayout {
             View add_photo = header.getChildAt(1);
             if (add_photo != null) {
                 add_photo.setOnClickListener(listener);
+                this.listener = listener;
             }
         }
     }
-    public void addImageToTape(Bitmap bitmap) {
+    public void addImageToTape(Bitmap bitmap, String id) {
         ImageView image = new ImageView(getContext());
         image.setImageBitmap(bitmap);
         image.setBackgroundResource(R.drawable.ads_button_bg);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(transformUtil.PxtDIP(100,getContext()), transformUtil.PxtDIP(100,getContext()));
-        lp.rightMargin = transformUtil.PxtDIP(2,getContext());
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(transformUtil.PxtDIP(80,getContext()), transformUtil.PxtDIP(80, getContext()));
+        int margin = transformUtil.PxtDIP(2,getContext());
+        lp.setMargins(margin,margin,margin,margin);
         lp.weight =1;
         image.setLayoutParams(lp);
         image.setScaleType(ImageView.ScaleType.FIT_XY);
+        image.setTag(id);
+        if(isMyProfile) image.setOnClickListener(listener);//переменная в классе, инициализируется в SetEventListener и только если
         images_layout.addView(image);
+
     }
 
     private void Initialize_Component() {

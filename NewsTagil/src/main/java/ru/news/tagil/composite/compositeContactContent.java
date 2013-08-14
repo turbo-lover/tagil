@@ -141,8 +141,8 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         avatar.setImageBitmap(avatar_bitmap);
     }
 
-    public void _putImageInHorizontalTape(Bitmap image) {
-        addImagesContact.addImageToTape(image);
+    public void _putImageInHorizontalTape(Bitmap image, String id) {
+        addImagesContact.addImageToTape(image,id);
     }
 
     @Override

@@ -10,4 +10,6 @@
     <item name="contact_about" type="id"/>
     <item name="contact_avatar_layout" type="id"/>
     <item name="dialog_header" type="id"/>
+    <item name="dialog_text" type="id"/>
+    <item name="add_photo_button" type="id"/>
 </resources>

@@ -1,6 +1,11 @@
 package ru.news.tagil.utility;
 
+import android.net.NetworkInfo;
+import android.net.wifi.SupplicantState;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -15,15 +20,33 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     protected int totalCount;
     protected String tableName; //Must be set in Initialize method
     protected String searchStr;
+    protected boolean needAutoUpdate = false;  //Must be set in onCreate method
 
     // This method MUST be overriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
     protected JSONObject CreateJsonForGetNew() { return null; }
 
+    protected boolean IsConnectedToWiFI() {
+        WifiManager m = (WifiManager) getSystemService(WIFI_SERVICE);
+        SupplicantState s = m.getConnectionInfo().getSupplicantState();
+        NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(s);
+        return state == NetworkInfo.DetailedState.CONNECTED;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Set(Get(CreateJsonForGet()), false);
+        new CountDownTimer(1000*60*10, 1000*10) {
+            @Override
+            public void onTick(long l) {
+                UpdateButtonClicks();
+            }
+            @Override
+            public void onFinish() {
+                start();
+            }
+        }.start();
     }
 
     protected void SetEventListeners() {
@@ -87,6 +110,8 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void UpdateButtonClicks() {
+        if(!needAutoUpdate) return;
+        if(preferencesWorker.get_autoupdate_mode().equals(getString(R.string.autoapdateWiFi)) && !IsConnectedToWiFI()) return;
         String extra1 = (tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login();
         if(tableName == "comments") {
             extra1 = searchStr; }

@@ -1,16 +1,16 @@
 package ru.news.tagil.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
+
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeader;
 import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.ScrollUpdateActivity;
-import ru.news.tagil.utility.myScrollView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +21,11 @@ import java.util.Calendar;
 public class activityNewsPreview extends ScrollUpdateActivity implements View.OnClickListener{
     private compositeFirstButton cfb;
     protected compositeHeader h;
+    @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = h.GetUpdateButtonVisibility();
+    }
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
@@ -86,7 +91,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     @Override
     protected void SetCompositeElements() {
         h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
-        h.UpdateWeather("0","2");//TODO допилить получение погоды
+        h.UpdateWeather(weatherToday, weatherTomorow);
         footer.addView(cfb);
         header.addView(h);
     }

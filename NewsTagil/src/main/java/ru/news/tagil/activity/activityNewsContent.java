@@ -1,6 +1,5 @@
 package ru.news.tagil.activity;
 //TODO на обновлении проверять не появились ли новые новости
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,18 +7,13 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.ScrollView;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeSecondButton;
 import ru.news.tagil.composite.compositeTapeContent;
-import ru.news.tagil.utility.jsonActivity;
 import ru.news.tagil.utility.mainFrameJsonActivity;
-import ru.news.tagil.utility.myAsyncTaskWorker;
-import ru.news.tagil.utility.myPreferencesWorker;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -76,6 +70,8 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.News));
+        h_simple.UpdateWeather(weatherToday, weatherTomorow);
+        h_simple.SetUpdateButtonVisibility(false);
         SetBgColor();
         container.addView(t);
         header.addView(h_simple);

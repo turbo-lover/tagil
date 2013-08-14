@@ -1,6 +1,5 @@
 package ru.news.tagil.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +12,8 @@ import java.util.Calendar;
 
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeHeaderSimple;
-import ru.news.tagil.composite.compositeInterlocutor;
 import ru.news.tagil.composite.compositeMessage;
 import ru.news.tagil.composite.compositeMessageTextArea;
-import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.ScrollUpdateActivity;
 
 /**
@@ -30,6 +27,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     protected void onCreate(Bundle s){
         super.onCreate(s);
         Set(Get(CreateJsonForGetNew()),true);
+        needAutoUpdate = headerSimple.GetUpdateButtonVisibility();
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) {
@@ -76,6 +74,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     @Override
     protected void SetCompositeElements() {
         headerSimple.Set(getString(R.string.dialogText));
+        headerSimple.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(headerSimple);
         footer.addView(msgArea);
     }

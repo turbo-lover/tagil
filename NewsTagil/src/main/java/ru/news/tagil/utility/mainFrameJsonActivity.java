@@ -1,5 +1,7 @@
 package ru.news.tagil.utility;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import org.json.JSONObject;
 import ru.news.tagil.R;
@@ -8,6 +10,7 @@ import ru.news.tagil.R;
  * Created by Alexander on 05.08.13.
  */
 public class mainFrameJsonActivity extends mainFrameActivity implements jsonActivity {
+
     /**
      * Must be set in Initialize method
      */
@@ -18,6 +21,7 @@ public class mainFrameJsonActivity extends mainFrameActivity implements jsonActi
      *  This section MUST be overriden
      * @return
      */
+
     protected JSONObject CreateJsonForGet() { return null; }
 
     @Override

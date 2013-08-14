@@ -2,6 +2,8 @@ package ru.news.tagil.activity;
 
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeSettingsContent;
@@ -23,7 +25,9 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
     @Override
     protected void SetCompositeElements() {
         super.SetCompositeElements();
-
+        headerSimple.Set(getString(R.string.settingsText));
+        headerSimple.UpdateWeather(weatherToday, weatherTomorow);
+        headerSimple.SetUpdateButtonVisibility(false);
         footer.addView(firstButton);
         header.addView(headerSimple);
         container.addView(settingsContent);

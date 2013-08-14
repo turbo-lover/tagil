@@ -7,14 +7,17 @@
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
     <string name="favorite">Избранное</string>
-    <string name="serverAddress">http://192.168.1.110/</string><!-- etd-host.ru.xsph.ru/ -->
+    <string name="serverAddress">http://192.168.1.110/ </string><!-- etd-host.ru.xsph.ru/ -->
     <string name="favoriteText">Избранное</string>
     <string name="mainText">Главная</string>
     <string name="contactText">Знакомства</string>
     <string name="advertText">Объявления</string>
+    <string name="autoapdateWiFi">WIFI</string>
+    <string name="autoapdate3G">EDGE/3G</string>
     <string name="settingsText">Настройки</string>
     <string name="dialogText">Диалоги</string>
     <string name="usefulText">Полезное</string>
+    <string name="degree">C°</string>
     <string name="advertAddedToFavorite">Объявление было успешно добавлено в избранное.</string>
     <string name="advertDeletedFromFavorite">Объявление было успешно удалено из избранного.</string>
     <string name="instructionText">Инструкция</string>
@@ -45,6 +48,7 @@
     <string name="toggleFavoriteUrl">toggle_favorite.php</string>
     <string name="toggleLikeUrl">toggle_like.php</string>
     <string name="getNewsUrl">get_news.php</string>
+    <string name="getWeatherUrl">get_weather.php</string>
     <string name="registrationUrl">registration.php</string>
     <string name="getInterlocutorsUrl">get_interlocutors.php</string>
     <string name="getMessagesUrl">get_messages.php</string>

@@ -38,8 +38,10 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
         button.setText(buttonText);
     }
 
-    public void UpdateWeather(String weather_tomorrow,String buttonText) {
-        //TODO
+    public void UpdateWeather(String now, String tomorrow)
+    {
+        this.now.setText(now+getContext().getString(R.string.degree));
+        this.tomorrow.setText(tomorrow+getContext().getString(R.string.degree));
     }
 
     public void SetUpdateButtonVisibility(boolean b) {
@@ -50,12 +52,18 @@ public class compositeHeaderSimple extends RelativeLayout implements View.OnClic
         }
     }
 
+    public boolean GetUpdateButtonVisibility() {
+        return (updateButton.getVisibility() == View.GONE)?false:true;
+    }
+
     private void Initialize_Component() {
         LayoutInflater inflater =(LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_header_simple,this);
         button = (Button) findViewById(R.id.composite_header_simple_button);
         backButton = (Button) findViewById(R.id.composite_header_simple_back_button);
         updateButton = (Button) findViewById(R.id.composite_header_simple_update);
+        now = (TextView) findViewById(R.id.composite_header_simple_weather_now);
+        tomorrow = (TextView) findViewById(R.id.composite_header_simple_weather_tomorrow);
         SetEventListeners();
     }
 

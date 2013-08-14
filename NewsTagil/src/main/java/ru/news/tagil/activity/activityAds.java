@@ -3,6 +3,7 @@ package ru.news.tagil.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -24,9 +25,15 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     private compositeHeaderSimple ads_header;
     private compositeAdsSelector ads_selector;
     @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = ads_header.GetUpdateButtonVisibility();
+    }
+    @Override
     protected void SetCompositeElements() {
         ads_header.Set(getString(R.string.advertText));
-       LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+        ads_header.UpdateWeather(weatherToday, weatherTomorow);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                LinearLayout.LayoutParams.WRAP_CONTENT);
         selector.addView(ads_selector,p);
         header.addView(ads_header);

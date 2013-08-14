@@ -1,6 +1,5 @@
 package ru.news.tagil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import org.json.JSONObject;
 
@@ -28,7 +26,11 @@ import ru.news.tagil.utility.ScrollUpdateActivity;
 public class activityFavoriteNews extends ScrollUpdateActivity implements View.OnClickListener {
     private compositeHeaderSimple h_simple;
     private compositeFirstButton cfb;
-
+    @Override
+    protected void onCreate(Bundle s) {
+        super.onCreate(s);
+        needAutoUpdate = h_simple.GetUpdateButtonVisibility();
+    }
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
@@ -46,6 +48,7 @@ public class activityFavoriteNews extends ScrollUpdateActivity implements View.O
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.favoriteText));
+        h_simple.UpdateWeather(weatherToday, weatherTomorow);
         h_simple.SetUpdateButtonVisibility(false);
         header.addView(h_simple);
         footer.addView(cfb);

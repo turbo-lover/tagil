@@ -25,50 +25,38 @@
                 android:id="@+id/textView"
                 android:layout_gravity="center"/>
     </LinearLayout>
+    <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout"
+                android:id="@+id/autoupdate_mode_selector"
+            >
+        <RadioButton
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/linearLayout"
-            android:background="@drawable/bottom_border"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/edge">
-
-        <CheckBox
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bottom_border"
+                android:paddingLeft="@dimen/margin_left"
                 android:text="EDGE/3G"
+                style="@android:style/Widget.CompoundButton.CheckBox"
                 android:textColor="#ff474747"
                 android:id="@+id/setting_content_edge"
                 android:layout_gravity="left|center_vertical"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/bottom_border"
-            android:layout_below="@+id/edge"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/wifi">
-
-        <CheckBox
+        <RadioButton
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_height="50dp"
+                android:background="@drawable/bottom_border"
+                android:paddingLeft="@dimen/margin_left"
                 android:text="WIFI"
+                style="@android:style/Widget.CompoundButton.CheckBox"
                 android:textColor="#ff474747"
                 android:id="@+id/setting_content_wifi"
                 android:layout_gravity="left|center_vertical"/>
-    </LinearLayout>
-
+</RadioGroup>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:layout_below="@+id/wifi"
+            android:layout_below="@+id/autoupdate_mode_selector"
             android:background="#fffd8001"
             android:layout_centerHorizontal="true"
             android:id="@+id/linearLayout2">

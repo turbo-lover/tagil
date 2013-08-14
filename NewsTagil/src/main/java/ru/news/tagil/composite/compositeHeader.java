@@ -60,6 +60,10 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         }
     }
 
+    public boolean GetUpdateButtonVisibility() {
+        return (updateButton.getVisibility() == View.GONE)?false:true;
+    }
+
     public String GetSearchString(){
         return searchTxt.getText().toString();
     }
@@ -72,7 +76,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         thirdButton = (Button) findViewById(R.id.composite_header_third_button);
         updateButton = (Button) findViewById(R.id.composite_header_update);
         backButton = (Button) findViewById(R.id.composite_header_back_button);
-        weather_tommorow = (TextView) findViewById(R.id.composite_header_weather_tommorow);
+        weather_tommorow = (TextView) findViewById(R.id.composite_header_weather_tomorrow);
         weather_today = (TextView) findViewById(R.id.composite_header_weather_now);
         searchTxt = (EditText) findViewById(R.id.composite_header_search);
         SetEventListeners();
@@ -142,7 +146,12 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
 
     public void UpdateWeather(String now, String tomorrow)
     {
-        // alt + 0176 -> значек градуса
+        try{
+        weather_today.setText(now+getContext().getString(R.string.degree));
+        weather_tommorow.setText(tomorrow+getContext().getString(R.string.degree));
+        } catch (Exception ex){
+            Log.d("asd",ex.toString());
+        }
     }
 
     @Override

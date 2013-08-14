@@ -8,38 +8,52 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.activityMain" >
+        <activity android:name=".activity.activityMain"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.activityNewsContent" />
+        <activity android:name=".activity.activityNewsContent"
+                android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityNewsPreview"
-                  android:windowSoftInputMode="stateHidden">
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activity.activityReadAds" ></activity>
+        <activity android:name=".activity.activityReadAds"
+                  android:screenOrientation="portrait"
+                ></activity>
         <activity android:name=".activity.activityRegistration"
-                  android:windowSoftInputMode="stateHidden"/>
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityLogin"
-                  android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activity.activitySettings" />
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activitySettings"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityUseful"
-                  android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activity.activityAds"/>
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityAds"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityMakeAds"
-                  android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activity.activityCorrespondence" />
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityCorrespondence"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityContact"
-                  android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activity.activityCommentNews" />
-        <activity android:name=".activity.activityFavoriteNews" />
-        <activity android:name=".activity.activityMessages" />
-        <activity android:name=".activity.activityMyAds" />
-        <activity android:name=".activity.activityProfile"/>
-
-
-
+                  android:windowSoftInputMode="stateHidden"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityCommentNews"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityFavoriteNews"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityMessages"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityMyAds"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.activityProfile"
+                  android:screenOrientation="portrait"/>
     </application>
 </manifest>

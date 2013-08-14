@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/AppBackground"
+        >
+    <TextView
+            android:id="@id/dialog_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:background="@color/Orange"
+            android:text="Хобби"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"
+            />
+    <EditText
+            android:id="@id/dialog_text"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/dialog_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    </EditText>
+</RelativeLayout>

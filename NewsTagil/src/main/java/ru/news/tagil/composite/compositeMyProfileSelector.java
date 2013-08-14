@@ -7,10 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import ru.news.tagil.R;
-import ru.news.tagil.activity.activityMakeAds;
 import ru.news.tagil.activity.activityProfile;
+import ru.news.tagil.utility.myPreferencesWorker;
 
 /**
  * Created by Alexander on 08.08.13.
@@ -41,7 +40,10 @@ public class compositeMyProfileSelector extends LinearLayout implements View.OnC
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.composite_my_profile_selector_button) {
+            myPreferencesWorker pw = new myPreferencesWorker(getContext());
+
             Intent i = new Intent(getContext(),activityProfile.class);
+            i.putExtra("login",pw.get_login());
             getContext().startActivity(i);
         }
     }

@@ -67,9 +67,9 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
         if(v.equals(settingsFonts)) {
             SetSettingContentView();
         }
-        if(v.equals(settingsFonts)) { // todo запилить faq
+        /*if(v.equals(settingsFonts)) { // todo запилить faq
             SetSettingContentView();
-        }
+        }*/
     }
 
     private void SetSettingFontView() {

@@ -19,6 +19,7 @@
             android:textSize="@dimen/font_size"
             />
         <TextView
+                android:id="@id/add_photo_button"
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -38,7 +39,7 @@
             android:background="@color/Black"
             >
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
             android:id="@+id/user_images_horizontal_layout"

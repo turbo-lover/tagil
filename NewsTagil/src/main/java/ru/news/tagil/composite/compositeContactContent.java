@@ -40,6 +40,7 @@ public class compositeContactContent extends RelativeLayout implements View.OnCl
         hobby.setOnClickListener(listener);
         music.setOnClickListener(listener);
         about.setOnClickListener(listener);
+        start_dialog.setOnClickListener(listener);
     }
 
     private void Initialize_Component() {

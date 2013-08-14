@@ -300,7 +300,15 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     }
     @Override
     public void onClick(View view) {
-        int id = view.getId();
+
+
+        Integer id = view.getId();
+
+        if(id.equals(R.id.composite_contact_content_start_dialog))  {
+            StartDialog();
+            return;
+        }
+
         if(view.getClass().equals(ImageView.class)) {
             setAvatarOnServer(view.getTag().toString());
             return;
@@ -341,6 +349,13 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
             }
             d.show();
         }
+    }
+
+    private void StartDialog() {
+        Intent i  = new Intent(this,activityMessages.class) ;
+        i.putExtra("interlocutor",current_login);
+
+        startActivity(i);
     }
 
     private void setAvatarOnServer(String tag) {

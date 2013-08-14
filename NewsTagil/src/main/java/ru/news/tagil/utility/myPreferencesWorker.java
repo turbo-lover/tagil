@@ -97,7 +97,7 @@ public class myPreferencesWorker
     public String get_autoupdate_mode() {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
-        return sPref.getString(preference_autoupdate_mode,"Wi-Fi");
+        return sPref.getString(preference_autoupdate_mode,"WIFI");
     }
 
 }

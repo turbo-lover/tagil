@@ -1,5 +1,9 @@
 package ru.news.tagil.utility;
 
+import android.net.NetworkInfo;
+import android.net.wifi.SupplicantState;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -21,6 +25,13 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     // This method MUST be overriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
     protected JSONObject CreateJsonForGetNew() { return null; }
+
+    protected boolean IsConnectedToWiFI() {
+        WifiManager m = (WifiManager) getSystemService(WIFI_SERVICE);
+        SupplicantState s = m.getConnectionInfo().getSupplicantState();
+        NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(s);
+        return state == NetworkInfo.DetailedState.CONNECTED;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +110,8 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void UpdateButtonClicks() {
-        if(!needAutoUpdate) return;;
+        if(!needAutoUpdate) return;
+        if(preferencesWorker.get_autoupdate_mode().equals(getString(R.string.autoapdateWiFi)) && !IsConnectedToWiFI()) return;
         String extra1 = (tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login();
         if(tableName == "comments") {
             extra1 = searchStr; }

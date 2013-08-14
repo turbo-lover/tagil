@@ -12,6 +12,8 @@
     <string name="mainText">Главная</string>
     <string name="contactText">Знакомства</string>
     <string name="advertText">Объявления</string>
+    <string name="autoapdateWiFi">WIFI</string>
+    <string name="autoapdate3G">EDGE/3G</string>
     <string name="settingsText">Настройки</string>
     <string name="dialogText">Диалоги</string>
     <string name="usefulText">Полезное</string>

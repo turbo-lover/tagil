@@ -41,7 +41,7 @@
                     style="@android:style/Widget.CompoundButton.CheckBox"
                     android:text="EDGE/3G"
                     android:textColor="#ff474747"
-                    android:id="@+id/setting_content_edge"
+                    android:id="@+id/setting_content_3G"
                     android:layout_gravity="left|center_vertical"/>
 
             <RadioButton

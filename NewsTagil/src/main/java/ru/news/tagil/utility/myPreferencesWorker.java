@@ -3,6 +3,8 @@ package ru.news.tagil.utility;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+
 import ru.news.tagil.R;
 
 /**
@@ -97,7 +99,7 @@ public class myPreferencesWorker
     public String get_autoupdate_mode() {
         ContextWrapper cw = new ContextWrapper(context);
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
-        return sPref.getString(preference_autoupdate_mode,"WIFI");
+        return sPref.getString(preference_autoupdate_mode, context.getString(R.string.autoapdateWiFi));
     }
 
 }

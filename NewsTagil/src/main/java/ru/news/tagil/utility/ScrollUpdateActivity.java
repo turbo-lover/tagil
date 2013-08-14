@@ -1,5 +1,6 @@
 package ru.news.tagil.utility;
 
+import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
@@ -27,17 +28,16 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     protected JSONObject CreateJsonForGetNew() { return null; }
 
     protected boolean IsConnectedToWiFI() {
-        WifiManager m = (WifiManager) getSystemService(WIFI_SERVICE);
-        SupplicantState s = m.getConnectionInfo().getSupplicantState();
-        NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(s);
-        return state == NetworkInfo.DetailedState.CONNECTED;
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        return mWifi.isConnected();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Set(Get(CreateJsonForGet()), false);
-        new CountDownTimer(1000*60*10, 1000*10) {
+        new CountDownTimer(1000*60*10, 1000*10*2) {
             @Override
             public void onTick(long l) {
                 UpdateButtonClicks();
@@ -111,7 +111,7 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     @Override
     public void UpdateButtonClicks() {
         if(!needAutoUpdate) return;
-        if(preferencesWorker.get_autoupdate_mode().equals(getString(R.string.autoapdateWiFi)) && !IsConnectedToWiFI()) return;
+        if(!(preferencesWorker.get_autoupdate_mode().equals(getString(R.string.autoapdateWiFi)) && IsConnectedToWiFI())) return;
         String extra1 = (tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login();
         if(tableName == "comments") {
             extra1 = searchStr; }

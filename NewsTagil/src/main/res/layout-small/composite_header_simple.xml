@@ -91,7 +91,7 @@
 
                     <TextView
                             android:id="@+id/composite_header_simple_weather_now"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
                             android:textSize="10dp"
@@ -112,7 +112,7 @@
                             android:layout_below="@+id/composite_header_simple_text_today"/>
                     <TextView
                             android:id="@+id/composite_header_simple_weather_tomorrow"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FC8000"
                             android:textSize="10dp"

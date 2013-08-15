@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
+import android.widget.LinearLayout;
 import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
@@ -101,7 +101,9 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     protected void SetCompositeElements() {
         h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
         h.UpdateWeather(weatherToday, weatherTomorow);
-        footer.addView(cfb);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        footer.addView(cfb,p);
         header.addView(h);
     }
     @Override

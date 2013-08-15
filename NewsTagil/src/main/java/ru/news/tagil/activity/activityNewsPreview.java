@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import org.json.JSONObject;
 import ru.news.tagil.R;
@@ -101,8 +102,10 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     protected void SetCompositeElements() {
         h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
         h.UpdateWeather(weatherToday, weatherTomorow);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         footer.addView(cfb);
-        header.addView(h);
+        header.addView(h,p);
     }
     @Override
     protected void InitializeComponent() {

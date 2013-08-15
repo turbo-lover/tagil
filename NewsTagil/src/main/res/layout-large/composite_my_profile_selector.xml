@@ -11,7 +11,7 @@
             android:textColor="#ff474747"
             android:textSize="16dp"
             android:id="@+id/composite_my_profile_selector_button"
-            android:background="@drawable/border_img"
+            android:background="@drawable/bottom_border"
             />
 
 </LinearLayout>

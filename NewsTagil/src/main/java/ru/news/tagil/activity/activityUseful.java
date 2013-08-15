@@ -7,6 +7,7 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import ru.news.tagil.R;
+import ru.news.tagil.composite.compositeTapePreview;
 
 /**
  * Created by turbo_lover on 19.07.13.
@@ -16,6 +17,14 @@ public class activityUseful extends activityNewsPreview {
     protected void SetCompositeElements() {
         super.SetCompositeElements();
         h.Set(getString(R.string.usefulText),"","");
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        for (int i=0;i< container.getChildCount(); i++) {
+            compositeTapePreview cp = (compositeTapePreview) container.getChildAt(i);
+            cp.SetFont();
+        }
     }
     @Override
     protected void InitializeComponent(){

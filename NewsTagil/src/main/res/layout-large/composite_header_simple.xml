@@ -117,8 +117,9 @@
                         android:textColor="#FC8000"
                         android:textSize="16dp"
                         android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/composite_header_simple_text_tomorrow"
-                        android:layout_alignBottom="@+id/composite_header_simple_text_tomorrow"/>
+                        android:layout_alignTop="@+id/composite_header_simple_text_tomorrow"
+                        android:layout_alignBottom="@+id/composite_header_simple_text_tomorrow"
+                        android:layout_toRightOf="@+id/composite_header_simple_text_tomorrow"/>
 
             </RelativeLayout>
 

@@ -25,6 +25,15 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = h.GetUpdateButtonVisibility();
+        Set(Get(CreateJsonForGetNew()),true);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        for (int i=0;i< container.getChildCount(); i++) {
+            compositeTapePreview cp = (compositeTapePreview) container.getChildAt(i);
+            cp.SetFont();
+        }
     }
     @Override
     protected JSONObject CreateJsonForGet() {

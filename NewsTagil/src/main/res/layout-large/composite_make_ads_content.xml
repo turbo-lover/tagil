@@ -67,7 +67,7 @@
 
             <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="45dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/massage_border_bg"
@@ -99,13 +99,14 @@
                     android:background="@drawable/massage_border_bg"
                     android:inputType="textMultiLine"
                     android:id="@+id/composite_make_ads_content"
-                    android:layout_gravity="left|center_vertical"
+                    android:textAlignment="gravity"
+                    android:gravity="top"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/ContentTextView"/>
 
             <Button
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:textColor="#fffd8001"
                     android:textSize="22dp"

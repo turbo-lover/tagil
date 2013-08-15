@@ -4,12 +4,12 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bottom_border"
     tools:context=".activity.activityNewsPreview"
+    android:paddingBottom="5dp"
     >
     <RelativeLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/relativeLayout"
-           android:layout_alignBottom="@+id/tape_prev_content_layout"
            android:layout_alignTop="@+id/tape_prev_content_layout">
         <TextView
                 android:layout_alignParentTop="true"
@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/time_text_size"
                 android:textColor="#ff474747"
-                android:text="3.07.13"
+
                 android:id="@+id/composite_tape_preview_date"
                 android:textAlignment="gravity"
                 android:gravity="center"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/time_text_size"
                 android:textColor="#ff474747"
-                android:text="00:16"
+
                 android:id="@+id/composite_tape_preview_time"
                 android:textAlignment="gravity"
                 android:gravity="center"
@@ -41,7 +41,6 @@
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:textSize="@dimen/time_text_size"
-                  android:text="12"
                  android:layout_below="@+id/composite_tape_preview_time"
                  android:layout_alignLeft="@+id/composite_tape_preview_time"
                  android:id="@+id/composite_tape_preview_like_count"
@@ -63,13 +62,11 @@
         <ru.news.tagil.utility.myTextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="ЗАГОЛОВОК НОВОСТИ111111"
+                android:text=""
                 android:textSize="27sp"
                 android:minLines="2"
                 android:textColor="@color/Black"
                 android:id="@+id/composite_tape_preview_name_post"
-                android:textAlignment="gravity"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="4dp"
                 />
     </RelativeLayout>

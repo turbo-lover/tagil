@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ru.news.tagil.R;
+import ru.news.tagil.utility.myTextView;
+
 /**
  * Created by Alexander on 15.07.13.
  */
 public class compositeTapePreview extends RelativeLayout {
-    private TextView dateTextView,timeTextView,headerTextView,like_count;
+    private TextView dateTextView,timeTextView,like_count;
+    private myTextView headerTextView;
 
     public compositeTapePreview(Context context) {
         super(context);
@@ -35,12 +38,16 @@ public class compositeTapePreview extends RelativeLayout {
         this.like_count.setText(like_count);
     }
 
+    public void SetFont(){
+        headerTextView.init();
+    }
+
     private void Initialize_Component() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_tape_preview,this);
         dateTextView = (TextView) findViewById(R.id.composite_tape_preview_date);
         timeTextView = (TextView) findViewById(R.id.composite_tape_preview_time);
-        headerTextView = (TextView) findViewById(R.id.composite_tape_preview_name_post);
+        headerTextView = (myTextView) findViewById(R.id.composite_tape_preview_name_post);
         like_count = (TextView) findViewById(R.id.composite_tape_preview_like_count);
     }
 

@@ -91,6 +91,7 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     @Override
     protected void SetEventListeners() {
         ads_header.SetHeaderButtonsListener(this);
+
     }
     @Override
     protected void SetCompositeElements() {

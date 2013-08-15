@@ -3,6 +3,7 @@ package ru.news.tagil.composite;
 import ru.news.tagil.R;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -40,9 +41,11 @@ public class compositeAdsPreview extends RelativeLayout {
             this.favorite.setVisibility(View.GONE);
         } else {
             isFavorite = favorite.equals("1");
-            this.favorite.setBackgroundColor( getResources().getColor((isFavorite)?R.color.Orange:R.color.lightGray));
+            this.favorite.setVisibility((isFavorite)?View.VISIBLE:View.GONE);
         }
-        if(bmp != null) {
+        if(bmp == null){
+            img.setBackgroundColor(Color.BLACK);
+        } else {
             img.setImageBitmap(bmp);
         }
     }

@@ -14,7 +14,7 @@
             android:paddingBottom="3dp"
             android:paddingTop="3dp"
             android:id="@+id/composite_my_profile_selector_button"
-            android:background="@drawable/border_img"
+            android:background="@drawable/bottom_border"
             />
 
 </LinearLayout>

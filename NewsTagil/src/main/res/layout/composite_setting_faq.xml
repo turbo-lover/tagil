@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        android:background="@color/AppBackground"
+        android:padding="10dp">
+<TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/composite_settting_faq_q_text"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentTop="true"
+       ></TextView>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:id="@+id/composite_settting_faq_q"
+            android:layout_toRightOf="@+id/composite_settting_faq_q_text" ></TextView>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/composite_settting_faq_a_text"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@+id/composite_settting_faq_q"
+              android:layout_marginTop="5dp"
+           ></TextView>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:id="@+id/composite_settting_faq_a"
+              android:layout_toRightOf="@+id/composite_settting_faq_a_text"
+            android:layout_alignTop="@+id/composite_settting_faq_a_text"></TextView>
+
+</RelativeLayout>

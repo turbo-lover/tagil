@@ -4,20 +4,21 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.widget.TextView;
+import android.widget.EditText;
 
 /**
- * Created by turbo_lover on 12.07.13.
+ * Created by Alexander on 15.08.13.
  */
-public class myTextView extends TextView {
-    public myTextView(Context context) {
+public class myEditText extends EditText {
+    public myEditText(Context context) {
         super(context);
-
     }
-    public myTextView(Context context, AttributeSet attrs) {
+
+    public myEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    public myTextView(Context context, AttributeSet attrs, int defStyle) {
+
+    public myEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

@@ -8,13 +8,14 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import ru.news.tagil.R;
+import ru.news.tagil.utility.myEditText;
 
 /**
  * Created by Alexander on 10.08.13.
  */
 public class compositeMessageTextArea extends RelativeLayout {
     private Button send;
-    private EditText text;
+    private myEditText text;
     public compositeMessageTextArea(Context context) {
         super(context);
         Initialize_Component();
@@ -30,11 +31,15 @@ public class compositeMessageTextArea extends RelativeLayout {
         Initialize_Component();
     }
 
+    public void SetFont(){
+        text.init();
+    }
+
     private void Initialize_Component() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.composite_message_textarea,this);
         send = (Button) findViewById(R.id.composite_message_textarea_send);
-        text = (EditText) findViewById(R.id.composite_message_textarea_txt);
+        text = (myEditText) findViewById(R.id.composite_message_textarea_txt);
     }
 
     public String GetText() {

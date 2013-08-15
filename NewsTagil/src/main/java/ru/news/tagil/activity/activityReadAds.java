@@ -30,6 +30,7 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
     @Override
     protected void SetEventListeners() {
         content.SetEventListeners(this);
+        h_simple.SetHeaderButtonsListener(this);
     }
     @Override
     protected void InitializeComponent() {

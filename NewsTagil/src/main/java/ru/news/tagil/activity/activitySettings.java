@@ -1,7 +1,11 @@
 package ru.news.tagil.activity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
@@ -9,13 +13,15 @@ import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeSettingsContent;
 import ru.news.tagil.composite.compositeSettingsFonts;
 import ru.news.tagil.utility.mainFrameActivity;
+import ru.news.tagil.composite.compositeSettingFaq;
+import ru.news.tagil.utility.mainFrameJsonActivity;
 import ru.news.tagil.utility.onClickInHeaderListener;
 import ru.news.tagil.utility.simpleListenerInterface;
 
 /**
  * Created by turbo_lover on 18.07.13.
  */
-public class activitySettings extends mainFrameActivity implements onClickInHeaderListener, simpleListenerInterface {
+public class activitySettings extends mainFrameJsonActivity implements onClickInHeaderListener, simpleListenerInterface {
 
     compositeFirstButton firstButton;
     compositeHeaderSimple headerSimple;
@@ -46,15 +52,10 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         firstButton = new compositeFirstButton(this);
         firstButton.setLayoutParams(lp);
-
+        scriptAddress = getString(R.string.getFaqUrl);
         headerSimple = new compositeHeaderSimple(this);
         settingsFonts = new compositeSettingsFonts(this);
         settingsContent= new compositeSettingsContent(this);
-    }
-
-    @Override
-    public void UpdateButtonClicks() {
-
     }
 
     @Override
@@ -67,9 +68,9 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
         if(v.equals(settingsFonts)) {
             SetSettingContentView();
         }
-        /*if(v.equals(settingsFonts)) { // todo запилить faq
+        if(v.getClass().equals(compositeSettingFaq.class)) {
             SetSettingContentView();
-        }*/
+        }
     }
 
     private void SetSettingFontView() {
@@ -82,7 +83,21 @@ public class activitySettings extends mainFrameActivity implements onClickInHead
     }
     private void SetSettingFAQ() {
         ClearContainer();
-        container.addView(settingsContent);// todo запилить faq
+        try{
+            JSONObject jo = Get(new JSONObject());
+            if(jo.getString("status").equals("ok")) {
+                JSONArray arr = jo.getJSONArray("result");
+                for (int i=0; i< arr.length(); i++) {
+                    JSONObject j = arr.getJSONObject(i);
+                    compositeSettingFaq settingsFaq = new compositeSettingFaq(this);
+                    settingsFaq.Set(j.getString("q"),j.getString("a"),(i+1)+". "+getString(R.string.questionText),
+                            (i+1)+". "+getString(R.string.answerText) );
+                    container.addView(settingsFaq);
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("SetSettingFAQ_Exception",ex.toString());
+        }
     }
 
     @Override

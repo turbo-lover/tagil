@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 
@@ -83,7 +85,9 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
         headerSimple.Set(getString(R.string.dialogText));
         headerSimple.SetUpdateButtonVisibility(false);
         headerSimple.UpdateWeather(weatherToday, weatherTomorow);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         header.addView(headerSimple);
-        footer.addView(cfb);
+        footer.addView(cfb,p);
     }
 }

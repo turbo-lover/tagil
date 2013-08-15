@@ -6,7 +6,7 @@
 
         <ImageView
             android:id="@+id/first_tape_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/first_test"
@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/first_dialogs_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/first_test_second"
@@ -24,7 +24,7 @@
 
         <ImageView
             android:id="@+id/first_elect_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/first_nav_elect"
@@ -33,7 +33,7 @@
 
         <ImageView
             android:id="@+id/first_useful_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/first_nav_useful"
@@ -42,7 +42,7 @@
 
         <ImageView
             android:id="@+id/first_setting_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/first_nav_settings"

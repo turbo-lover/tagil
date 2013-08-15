@@ -7,7 +7,7 @@
     <string name="app_name">TagilNews</string>
     <string name="action_settings">Settings</string>
     <string name="favorite">Избранное</string>
-    <string name="serverAddress">http://etd-host.ru/ </string><!--  -->
+    <string name="serverAddress">http://etd-host.ru/</string><!--  -->
     <string name="favoriteText">Избранное</string>
     <string name="mainText">Главная</string>
     <string name="contactText">Знакомства</string>

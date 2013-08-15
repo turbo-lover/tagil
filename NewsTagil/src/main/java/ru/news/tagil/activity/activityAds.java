@@ -28,6 +28,7 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = ads_header.GetUpdateButtonVisibility();
+        Set(Get(CreateJsonForGetNew()),true);
     }
     @Override
     protected void SetCompositeElements() {

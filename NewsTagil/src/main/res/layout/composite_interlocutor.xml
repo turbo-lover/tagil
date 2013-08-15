@@ -57,13 +57,13 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp">
             </TextView>
-            <TextView android:layout_width="match_parent"
+            <ru.news.tagil.utility.myTextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                     android:layout_below="@+id/composite_interlocutor_last_login"
                     android:layout_alignLeft="@+id/composite_interlocutor_last_login"
                     android:layout_marginTop="5dp"
                     android:maxLines="2"
-                    android:id="@+id/composite_interlocutor_last_msg"></TextView>
+                    android:id="@+id/composite_interlocutor_last_msg"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

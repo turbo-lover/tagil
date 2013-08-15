@@ -27,6 +27,10 @@ public class compositeMessage extends RelativeLayout {
         super(context, attrs, defStyle);
     }
 
+    public void SetFont() {
+        msg.init();
+    }
+
     public void Initialize_Component(int layoutId) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(layoutId,this);

@@ -13,7 +13,7 @@
             android:textSize="16dp"
             android:layout_weight="1"
             android:id="@+id/composite_ads_first_tab"
-            android:background="@drawable/border_img"
+            android:background="@drawable/right_border"
             />
 
     <Button
@@ -24,7 +24,7 @@
             android:textSize="16dp"
             android:layout_weight="1"
             android:id="@+id/composite_ads_second_tab"
-            android:background="@drawable/border_img"
+            android:background="@drawable/right_border"
             />
 
 </LinearLayout>

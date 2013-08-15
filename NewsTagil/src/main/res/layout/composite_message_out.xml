@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/Orange"
                 android:layout_marginLeft="3dp"
+                android:textSize="10dp"
                 android:id="@+id/composite_message_date"
                 />
         <TextView
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/Orange"
                 android:layout_marginLeft="3dp"
+                android:textSize="10dp"
                 android:id="@+id/composite_message_time"
                 android:layout_below="@+id/composite_message_date"
                 />

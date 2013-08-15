@@ -2,6 +2,7 @@ package ru.news.tagil.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -31,16 +32,19 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
         makeAds = new compositeMakeAds(this);
         imgGetter = new imageGetter(this);
         i = getIntent();
-        scriptAddress = getString((i.getExtras().isEmpty())?R.string.addAdvertUrl:R.string.updateAdvertUrl);
+        scriptAddress = getString((i.getExtras() == null || i.getExtras().isEmpty())?R.string.addAdvertUrl:R.string.updateAdvertUrl);
     }
     @Override
     protected void SetCompositeElements() {
         h_simple.Set(getString(R.string.createAdvertText));
         h_simple.SetUpdateButtonVisibility(false);
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
-        if(!i.getExtras().isEmpty()) {
-            makeAds.Set(i.getStringExtra("advert_header"),i.getStringExtra("advert_text"));
-            makeAds.SetImg((Bitmap)i.getParcelableExtra("advert_image"));
+        Bundle b =i.getExtras();
+        if(b != null ) {
+            if(!i.getExtras().isEmpty()) {
+                makeAds.Set(i.getStringExtra("advert_header"),i.getStringExtra("advert_text"));
+                makeAds.SetImg((Bitmap)i.getParcelableExtra("advert_image"));
+            }
         }
         header.addView(h_simple);
         container.addView(makeAds);
@@ -48,6 +52,7 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
     @Override
     protected void SetEventListeners() {
         makeAds.SetEventListeners(this);
+        h_simple.SetHeaderButtonsListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -69,8 +74,11 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
             jo.put("pass",preferencesWorker.get_pass());
             jo.put("advert_header",makeAds.GetHeader());
             jo.put("advert_text",makeAds.GetContentText());
-            if(!i.getExtras().isEmpty()) {
-                jo.put("id_advert",i.getStringExtra("id_advert"));
+            Bundle bundle = i.getExtras();
+            if(bundle != null) {
+                if(!i.getExtras().isEmpty()) {
+                    jo.put("id_advert",i.getStringExtra("id_advert"));
+                }
             }
             Bitmap bmp = makeAds.GetImg();
             byte[] b = null;
@@ -97,6 +105,7 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
             if(jo.getString("status").equals("ok")){
                 Intent i = new Intent(this,activityMyAds.class);
                 startActivity(i);
+                finish();
             } else {
                 Toast.makeText(this,jo.getString("errormsg"),Toast.LENGTH_SHORT).show();
             }

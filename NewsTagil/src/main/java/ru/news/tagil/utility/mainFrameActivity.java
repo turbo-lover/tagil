@@ -28,7 +28,9 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
     @Override
     public void UpdateButtonClicks() {}
     @Override
-    public void BackButtonClicks() {}
+    public void BackButtonClicks() {
+        this.finish();
+    }
     @Override
     public void SearchButtonClicks(String txt) {}
 
@@ -48,7 +50,7 @@ public class mainFrameActivity extends Activity implements onClickInHeaderListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        if(i.getExtras() != null) {
+        if(i.getExtras() != null && !i.getExtras().isEmpty()) {
             if(i.hasExtra("weather_today")){
                 weatherToday = i.getStringExtra("weather_today");
                 weatherTomorow = i.getStringExtra("weather_tomorrow");

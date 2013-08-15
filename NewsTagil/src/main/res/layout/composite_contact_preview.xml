@@ -10,6 +10,7 @@
                android:layout_alignParentTop="true"
                android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
+                android:scaleType="fitXY"
                 android:background="@drawable/massage_border_bg"
                 android:id="@+id/composite_contact_preview_img">
                </ImageView>

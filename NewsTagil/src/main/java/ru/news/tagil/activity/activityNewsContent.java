@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 import ru.news.tagil.R;
@@ -66,6 +68,7 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     @Override
     protected void SetEventListeners() {
         csb.SetEventListeners(this);
+        h_simple.SetHeaderButtonsListener(this);
     }
     @Override
     protected void SetCompositeElements() {
@@ -75,7 +78,9 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
         SetBgColor();
         container.addView(t);
         header.addView(h_simple);
-        footer.addView(csb);
+        RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        footer.addView(csb,p);
     }
     @Override
     protected JSONObject CreateJsonForGet() {

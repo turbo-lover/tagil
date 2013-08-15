@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/login"
         android:layout_width="150dp"
-        android:layout_height="27dp"
+        android:layout_height="30dp"
         android:background="@drawable/login_input_bg"
         android:ems="10"
         android:textColor="#fff"
@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/pass"
         android:layout_width="150dp"
-        android:layout_height="27dp"
+        android:layout_height="30dp"
         android:background="@drawable/login_pass_bg"
         android:ems="10"
         android:textColor="#fff"

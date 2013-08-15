@@ -107,11 +107,15 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     protected void SetEventListeners() {
         super.SetEventListeners();
         contactContent.SetEventListeners(this);
+        headerSimple.SetHeaderButtonsListener(this);
     }
 
     @Override
     protected void SetCompositeElements() {
         super.SetCompositeElements();
+        headerSimple.Set(getString(R.string.settingsText));
+        headerSimple.UpdateWeather(weatherToday,weatherTomorow);
+        headerSimple.SetUpdateButtonVisibility(false);
         container.addView(contactContent);
         header.addView(headerSimple);
     }

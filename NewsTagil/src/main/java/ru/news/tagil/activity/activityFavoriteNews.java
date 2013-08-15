@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 
@@ -30,6 +32,17 @@ public class activityFavoriteNews extends ScrollUpdateActivity implements View.O
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = h_simple.GetUpdateButtonVisibility();
+        Set(Get(CreateJsonForGetNew()),true);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        for (int i=0;i< container.getChildCount(); i++) {
+            if(container.getChildAt(i).getClass().equals(compositeTapePreview.class)) {
+                compositeTapePreview cp = (compositeTapePreview) container.getChildAt(i);
+                cp.SetFont();
+            }
+        }
     }
     @Override
     protected void InitializeComponent() {
@@ -51,7 +64,9 @@ public class activityFavoriteNews extends ScrollUpdateActivity implements View.O
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
         h_simple.SetUpdateButtonVisibility(false);
         header.addView(h_simple);
-        footer.addView(cfb);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        footer.addView(cfb,p);
 
     }
     @Override

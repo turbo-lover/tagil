@@ -84,7 +84,8 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
             case R.id.first_tape_button:
                 try {
                     if(currentClass.equals(activityNewsPreview.class)) return;
-                        Intent intent = new Intent(act, activityNewsPreview.class); // в этой активити панелька добавлена и работает
+                        Intent intent = new Intent(act, activityNewsPreview.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         act.startActivity(intent);
 
                 } catch (Exception e) {
@@ -96,6 +97,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                     if(currentClass.equals(activityCorrespondence.class)) return;
                     if(act.is_authorized) {
                         Intent intent = new Intent(act, activityCorrespondence.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         act.startActivity(intent);
                     } else {
                         act.LogIn();
@@ -109,6 +111,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                     if(act.is_authorized) {
                         if(currentClass.equals(activityFavoriteNews.class)) return;
                         Intent intent = new Intent(act, activityFavoriteNews.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         act.startActivity(intent);
                     } else {
                         act.LogIn();
@@ -121,6 +124,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 try {
                     if(currentClass.equals(activityUseful.class)) return;
                     Intent intent = new Intent(act, activityUseful.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     act.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -130,6 +134,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
                 try {
                     if(currentClass.equals(activitySettings.class)) return;
                     Intent intent = new Intent(act, activitySettings.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     act.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

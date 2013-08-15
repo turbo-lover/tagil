@@ -48,10 +48,13 @@
                   android:windowSoftInputMode="stateHidden"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityCommentNews"
+                  android:windowSoftInputMode="stateHidden"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityFavoriteNews"
+                  android:windowSoftInputMode="stateHidden"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityMessages"
+                  android:windowSoftInputMode="stateHidden"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.activityMyAds"
                   android:screenOrientation="portrait"/>

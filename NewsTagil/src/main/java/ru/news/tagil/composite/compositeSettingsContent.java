@@ -27,6 +27,7 @@ public class compositeSettingsContent extends RelativeLayout implements View.OnC
 
     private void SetEventListeners() {
         toFontsSettings.setOnClickListener(this);
+        toFaq.setOnClickListener(this);
         group.setOnCheckedChangeListener(this);
     }
 

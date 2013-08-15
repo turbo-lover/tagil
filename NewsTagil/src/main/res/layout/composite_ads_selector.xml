@@ -13,7 +13,7 @@
             android:textSize="13dp"
             android:layout_weight="1"
             android:id="@+id/composite_ads_first_tab"
-            android:background="@drawable/border_img"/>
+            android:background="@drawable/right_border"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -22,5 +22,5 @@
             android:textSize="13dp"
             android:layout_weight="1"
             android:id="@+id/composite_ads_second_tab"
-            android:background="@drawable/border_img" />
+            android:background="@drawable/right_border" />
 </LinearLayout>

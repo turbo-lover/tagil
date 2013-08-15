@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -32,6 +34,8 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
         Set(Get(CreateJsonForGetNew()),true);
         needAutoUpdate = h_simple.GetUpdateButtonVisibility();
     }
+
+
 
     @Override
     protected void InitializeComponent(){
@@ -145,7 +149,9 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
         h_simple.Set(getString(R.string.commentText));
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
         header.addView(h_simple);
-        footer.addView(msgArea);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        footer.addView(msgArea,p);
     }
     @Override
     public void onClick(View view) {

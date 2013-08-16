@@ -32,7 +32,6 @@ public class activityFavoriteNews extends ScrollUpdateActivity implements View.O
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = h_simple.GetUpdateButtonVisibility();
-        Set(Get(CreateJsonForGetNew()),true);
     }
     @Override
     protected void onResume(){

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.news.tagil.R;
+import ru.news.tagil.activity.activityMessages;
 
 /**
  * Created by Alexander on 01.08.13.
@@ -22,6 +23,7 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     protected String tableName; //Must be set in Initialize method
     protected String searchStr;
     protected boolean needAutoUpdate = false;  //Must be set in onCreate method
+    protected boolean isMessages;
 
     // This method MUST be overriden
     protected View CreateViewToAdd(JSONObject obj) { return null; }
@@ -36,6 +38,7 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(isMessages) scrollView.setEventEnable(false);
         Set(Get(CreateJsonForGet()), false);
         new CountDownTimer(1000*60*10, 1000*10*2) {
             @Override
@@ -47,6 +50,11 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
                 start();
             }
         }.start();
+    }
+    @Override
+    protected void InitializeComponent() {
+        super.InitializeComponent();
+        isMessages = this.getClass().equals(activityMessages.class);
     }
 
     protected void SetEventListeners() {
@@ -65,12 +73,13 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
             }
             JSONArray arr = jsonObject.getJSONArray("result");
             for (int i = 0; i < arr.length();i++) {
-                JSONObject obj =  arr.getJSONObject(i);
+                JSONObject obj =  arr.getJSONObject((isMessages)?arr.length() -i  -1 :i);
                 View v = CreateViewToAdd(obj);
                 if(insertAtStart){
                     container.addView(v,0+i);
                 } else {
-                    container.addView(v); }
+                    container.addView(v);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -103,10 +112,13 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
-        if(container.getChildCount() == totalCount) {
+        if( container.getChildCount() == totalCount ) {
             return; }
         Set(Get(CreateJsonForGet()),false);
     }
+
+    @Override
+    public void onScrollHitTop(myScrollView myScrollView, int l, int t, int oldl, int oldt) { }
 
     @Override
     public void UpdateButtonClicks() {
@@ -119,7 +131,7 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
         int new_count = GetTotalCount(extra1,extra2);
         if(new_count > totalCount) {
             totalCount = new_count;
-            Set(Get(CreateJsonForGetNew()),true);
+            Set(Get(CreateJsonForGetNew()),!isMessages);
         }
     }
 }

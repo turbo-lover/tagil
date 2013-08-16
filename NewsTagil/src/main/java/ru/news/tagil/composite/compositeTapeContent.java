@@ -2,6 +2,8 @@ package ru.news.tagil.composite;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,9 @@ public class compositeTapeContent extends RelativeLayout {
     }
 
     public void Set(String header,String time,String date,String text,Bitmap bmp ) {
-        headerTextView.setText(header);
+        SpannableString content = new SpannableString(header);
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        headerTextView.setText(content);
         timeTextView.setText(time);
         dateTextView.setText(date);
         contentTextView.setText(text);

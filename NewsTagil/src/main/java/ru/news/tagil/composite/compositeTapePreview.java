@@ -1,6 +1,8 @@
 package ru.news.tagil.composite;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,7 @@ import ru.news.tagil.utility.myTextView;
  */
 public class compositeTapePreview extends RelativeLayout {
     private TextView dateTextView,timeTextView,like_count;
-    private myTextView headerTextView;
+    private myTextView headerTextView,textTextView;
 
     public compositeTapePreview(Context context) {
         super(context);
@@ -31,15 +33,19 @@ public class compositeTapePreview extends RelativeLayout {
         Initialize_Component();
     }
 
-    public void Set( String date, String time, String header,String like_count) {
+    public void Set( String date, String time, String header,String like_count,String text) {
         dateTextView.setText(date);
         timeTextView.setText(time);
-        headerTextView.setText(header);
+        SpannableString content = new SpannableString(header);
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        headerTextView.setText(content);
         this.like_count.setText(like_count);
+        textTextView.setText(text);
     }
 
     public void SetFont(){
         headerTextView.init();
+        textTextView.init();
     }
 
     private void Initialize_Component() {
@@ -49,6 +55,7 @@ public class compositeTapePreview extends RelativeLayout {
         timeTextView = (TextView) findViewById(R.id.composite_tape_preview_time);
         headerTextView = (myTextView) findViewById(R.id.composite_tape_preview_name_post);
         like_count = (TextView) findViewById(R.id.composite_tape_preview_like_count);
+        textTextView = (myTextView) findViewById(R.id.composite_tape_preview_text_post);
     }
 
     public String getDateTime() {

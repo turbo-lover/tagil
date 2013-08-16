@@ -6,4 +6,5 @@ package ru.news.tagil.utility;
 public interface onScrollViewChangedListener
 {
     void onScrollHitBottom(myScrollView scrollView,int x, int y, int oldx, int oldy);
+    void onScrollHitTop(myScrollView myScrollView, int l, int t, int oldl, int oldt);
 }

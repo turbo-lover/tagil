@@ -84,7 +84,7 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         compositeTapePreview tapePreview = new compositeTapePreview(this);
         try {
             String[] s = obj.getString("pub_time").split(" ");
-            tapePreview.Set(s[0],s[1],obj.getString("header"),obj.getString("like_count"));
+            tapePreview.Set(s[0],s[1],obj.getString("header"),obj.getString("like_count"),obj.getString("text")+"...");
             tapePreview.setOnClickListener(this);
             tapePreview.setTag(obj.getString("id"));
         } catch (Exception ex) {
@@ -104,8 +104,8 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         h.UpdateWeather(weatherToday, weatherTomorow);
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        footer.addView(cfb);
-        header.addView(h,p);
+        footer.addView(cfb,p);
+        header.addView(h);
     }
     @Override
     protected void InitializeComponent() {

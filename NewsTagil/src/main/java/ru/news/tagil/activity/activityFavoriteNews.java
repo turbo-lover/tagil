@@ -85,7 +85,7 @@ public class activityFavoriteNews extends ScrollUpdateActivity implements View.O
             } else {
                 compositeTapePreview tapePreview = new compositeTapePreview(this);
                 String[] s = obj.getString("pub_time").split(" ");
-                tapePreview.Set(s[0],s[1],obj.getString("header"),obj.getString("like_count"));
+                tapePreview.Set(s[0],s[1],obj.getString("header"),obj.getString("like_count"),obj.getString("text"));
                 tapePreview.setOnClickListener(this);
                 tapePreview.setTag(obj.getString("id"));
                 v = tapePreview;

@@ -15,6 +15,7 @@ import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeMessage;
 import ru.news.tagil.composite.compositeMessageTextArea;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.myScrollView;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -26,8 +27,15 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle s){
         super.onCreate(s);
-        Set(Get(CreateJsonForGetNew()),true);
+        Set(Get(CreateJsonForGetNew()),false);
         needAutoUpdate = headerSimple.GetUpdateButtonVisibility();
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(scrollView.FOCUS_DOWN);
+                scrollView.setEventEnable(true);
+            }
+        });
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) {
@@ -52,7 +60,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
             if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeMessage c = (compositeMessage) container.getChildAt(0);
+                compositeMessage c = (compositeMessage) container.getChildAt(container.getChildCount() - 1);
                 send_time = c.getDateTime();
             }
             jo.put("time",send_time);
@@ -99,6 +107,12 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
             if(jo.getString("status").equals("ok")) {
                 scriptAddress = getString(R.string.getMessagesUrl);
                 UpdateButtonClicks();
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.fullScroll(scrollView.FOCUS_DOWN);
+                    }
+                });
             } else {
                 Toast.makeText(this,getString(R.string.addMsgError),Toast.LENGTH_SHORT).show();
             }
@@ -123,7 +137,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
             if(container.getChildCount() == 0) {
                 send_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             } else {
-                compositeMessage c = (compositeMessage) container.getChildAt(container.getChildCount() - 1);
+                compositeMessage c = (compositeMessage) container.getChildAt(0);
                 send_time = c.getDateTime();
             }
             jo.put("time",send_time);
@@ -135,11 +149,28 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     }
 
     @Override
+    public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) { }
+    @Override
+    public void onScrollHitTop(myScrollView myScrollView, int l, int t, int oldl, int oldt) {
+        if( container.getChildCount() == totalCount) {
+            return; }
+        Set(Get(CreateJsonForGet()),true);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                View v = container.getChildAt(GET_COUNT);
+                int t = v.getTop();
+                scrollView.scrollTo(0,t);
+            }
+        });
+    }
+
+    @Override
     protected void InitializeComponent(){
         super.InitializeComponent();
         headerSimple = new compositeHeaderSimple(this);
         msgArea = new compositeMessageTextArea(this);
-        scriptAddress =getString(R.string.getMessagesUrl);
+        scriptAddress = getString(R.string.getMessagesUrl);
         tableName = "messages";
         searchStr = getIntent().getStringExtra("interlocutor");
         totalCount = GetTotalCount(preferencesWorker.get_login(),searchStr);

@@ -15,7 +15,9 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeSecondButton;
 import ru.news.tagil.composite.compositeTapeContent;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.mainFrameJsonActivity;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -29,7 +31,8 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Set(Get(CreateJsonForGet()));
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJsonForGet(),
+                getString(R.string.serverAddress) + getString(R.string.getNewsUrl));
     }
     @Override
     protected void InitializeComponent() {
@@ -38,30 +41,33 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
         h_simple = new compositeHeaderSimple(this);
         t = new compositeTapeContent(this);
         csb = new compositeSecondButton(this);
-        if(is_authorized) {
-            liked = IsMarked(getString(R.string.isLikedUrl));
-            favorite = IsMarked(getString(R.string.isFavoriteUrl));
-        }
+        CheckMarks();
         scriptAddress = getString(R.string.getNewsUrl);
     }
 
+    private void CheckMarks() {
+        if(is_authorized) {
+            new myAsyncTaskWorker(this,jsonActivityMode.IS_LIKED).execute(CreateJsonForMarks(),
+                    getString(R.string.serverAddress) + getString(R.string.isLikedUrl));
+            new myAsyncTaskWorker(this,jsonActivityMode.IS_FAVORITE).execute(CreateJsonForMarks(),
+                    getString(R.string.serverAddress) + getString(R.string.isFavoriteUrl));
+        }
+    }
     private void SetBgColor() {
         csb.SetFavoriteBg((favorite) ? getResources().getColor(R.color.Orange) : getResources().getColor(R.color.lightGray));
         csb.SetLikeBg((liked)?getResources().getColor(R.color.Orange):getResources().getColor(R.color.lightGray));
     }
-    private boolean IsMarked(String scriptAddress){
+    private boolean IsMarked(JSONObject jsonObject){
         boolean b = false;
         try{
-            this.scriptAddress = scriptAddress;
-            JSONObject jo = Get(CreateJsonForMarks());
-            if(jo.getString("status").equals("ok")){
-                if(jo.getString("result").equals("1")) {
+            if(jsonObject.getString("status").equals("ok")){
+                if(jsonObject.getString("result").equals("1")) {
                     b = true;
                 }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("IsLiked_Exception", ex.getMessage() + "\n\n" + ex.toString());
+            Log.d("IsMarked_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
         return b;
     }
@@ -75,7 +81,6 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
         h_simple.Set(getString(R.string.News));
         h_simple.UpdateWeather(weatherToday, weatherTomorow);
         h_simple.SetUpdateButtonVisibility(false);
-        SetBgColor();
         container.addView(t);
         header.addView(h_simple);
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -92,6 +97,11 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
             Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
         return sends_data;
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CheckMarks();
     }
 
     private JSONObject CreateJsonForMarks() {
@@ -123,24 +133,54 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
     }
 
     @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        try{
+            switch (mode) {
+                case GET:
+                    Set(returned);
+                    break;
+                case IS_LIKED:
+                    liked = IsMarked(returned);
+                    SetBgColor();
+                    break;
+                case IS_FAVORITE:
+                    favorite = IsMarked(returned);
+                    SetBgColor();
+                    break;
+                case TOGGLE_LIKE:
+                    if(OkResponse(returned)) {
+                        liked = !liked;
+                        SetBgColor();
+                    }
+                    break;
+                case TOGGLE_FAVORITE:
+                    if(OkResponse(returned)) {
+                        favorite = !favorite;
+                        SetBgColor();
+                    }
+                    break;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.like:
                 if(is_authorized) {
-                    if(ToggleMarked(getString(R.string.toggleLikeUrl))) {
-                        liked = !liked;
-                        SetBgColor();
-                    }
+                    new myAsyncTaskWorker(this,jsonActivityMode.TOGGLE_LIKE).execute(CreateJsonForMarks(),
+                            getString(R.string.serverAddress) + getString(R.string.toggleLikeUrl));
                 } else {
                    LogIn();
                 }
                 break;
             case R.id.elect:
                 if(is_authorized) {
-                    if(ToggleMarked(getString(R.string.toggleFavoriteUrl))) {
-                        favorite = !favorite;
-                        SetBgColor();
-                    }
+                    new myAsyncTaskWorker(this,jsonActivityMode.TOGGLE_FAVORITE).execute(CreateJsonForMarks(),
+                            getString(R.string.serverAddress) + getString(R.string.toggleFavoriteUrl));
                 } else {
                     LogIn();
                 }
@@ -159,11 +199,9 @@ public class activityNewsContent extends mainFrameJsonActivity implements View.O
         }
     }
 
-    private boolean ToggleMarked(String scriptAddress) {
+    private boolean OkResponse(JSONObject jsonObject) {
         try{
-            this.scriptAddress = scriptAddress;
-            JSONObject jo = Get(CreateJsonForMarks());
-            if(jo.getString("status").equals("ok")) {
+            if(jsonObject.getString("status").equals("ok")) {
                  return true;
             }
         } catch (Exception ex) {

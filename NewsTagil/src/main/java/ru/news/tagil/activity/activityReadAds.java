@@ -12,7 +12,9 @@ import org.json.JSONObject;
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsContent;
 import ru.news.tagil.composite.compositeHeaderSimple;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.mainFrameJsonActivity;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by Alexander on 30.07.13.
@@ -25,7 +27,8 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Set(Get(CreateJsonForGet()));
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJsonForGet(),
+                getString(R.string.serverAddress) + getString(R.string.getAdvertTextUrl));
     }
     @Override
     protected void SetEventListeners() {
@@ -79,6 +82,45 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
     }
 
     @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        try{
+            switch (mode) {
+                case GET:
+                    Set(returned);
+                    break;
+                case TOGGLE_FAVORITE:
+                    if(OkResponse(returned)) {
+                        isFavorite = !isFavorite;
+                        Toast.makeText(this,getString((isFavorite)?R.string.advertAddedToFavorite:R.string.advertDeletedFromFavorite),
+                                Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case DELETE:
+                    if(OkResponse(returned)) {
+                        Intent i = new Intent(this,activityAds.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    break;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+    }
+
+    private boolean OkResponse(JSONObject jsonObject) {
+        try{
+            if(jsonObject.getString("status").equals("ok")) {
+                return true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("ToggleMarked_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+        return false;
+    }
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.read_ads_content_first_button:
@@ -90,40 +132,13 @@ public class activityReadAds extends mainFrameJsonActivity implements View.OnCli
                 break;
             case R.id.read_ads_content_second_button:
                 if(isMine) {
-                    DeleteAds();
+                    new myAsyncTaskWorker(this,jsonActivityMode.DELETE).execute(CreateJsonForGet(),
+                            getString(R.string.serverAddress) + getString(R.string.delAdvertUrl));
                 } else {
-                    ToggleFavorite();
+                    new myAsyncTaskWorker(this,jsonActivityMode.TOGGLE_FAVORITE).execute(CreateJsonForGet(),
+                            getString(R.string.serverAddress) + getString(R.string.toggleFavoriteUrl));
                 }
                 break;
-        }
-    }
-
-    private void ToggleFavorite() {
-        try{
-            scriptAddress = getString(R.string.toggleFavoriteUrl);
-            JSONObject jo = Get(CreateJsonForGet());
-            if(jo.getString("status").equals("ok")) {
-                isFavorite = !isFavorite;
-                Toast.makeText(this,getString((isFavorite)?R.string.advertAddedToFavorite:R.string.advertDeletedFromFavorite),
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("ToggleFavorite_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        }
-    }
-
-    private void DeleteAds() {
-        try{
-            scriptAddress = getString(R.string.delAdvertUrl);
-            JSONObject jo = Get(CreateJsonForGet());
-            if (jo.getString("status").equals("ok")) {
-                Intent i = new Intent(this,activityAds.class);
-                startActivity(i);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("ToggleFavorite_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
     }
 

@@ -26,7 +26,7 @@
                     android:textSize="20dp"
                     android:layout_marginTop="4dp"
                     android:textColor="#ff474747"
-                    android:text="3.07.13"
+
                     android:id="@+id/composite_tape_content_date"/>
 
             <TextView
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textColor="#ff474747"
-                    android:text="    00:16"
+
                     android:id="@+id/composite_tape_content_time"/>
 
         </LinearLayout>
@@ -49,7 +49,6 @@
             <ru.news.tagil.utility.myTextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:text="Реквием по бизнесу"
                     android:textSize="22dp"
                     android:textColor="#ff181818"
                     android:id="@+id/composite_tape_content_name_post"/>
@@ -63,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="2dp"
-                    android:text=" В минувшем году в Нижнем Тагиле«умерло»более 90 тысяч юридических лиц.«Смертность» бизнеса Северной столицыболее чем в два раза превысили показателипрошлого года ..."
+
                     android:textSize="16dp"
                     android:textColor="#ff474747"
                     android:id="@+id/composite_tape_content_post_content"/>

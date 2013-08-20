@@ -8,30 +8,13 @@ import org.json.JSONObject;
 
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeTapePreview;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by turbo_lover on 19.07.13.
  */
 public class activityUseful extends activityNewsPreview {
-    @Override
-    protected void SetCompositeElements() {
-        super.SetCompositeElements();
-        h.Set(getString(R.string.usefulText),"","");
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        for (int i=0;i< container.getChildCount(); i++) {
-            compositeTapePreview cp = (compositeTapePreview) container.getChildAt(i);
-            cp.SetFont();
-        }
-    }
-    @Override
-    protected void InitializeComponent(){
-        super.InitializeComponent();
-        tableName = "useful_news";
-        totalCount = GetTotalCount(null,null);
-    }
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
@@ -55,10 +38,5 @@ public class activityUseful extends activityNewsPreview {
             Log.d("CreateJsonForGet_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
         return jo;
-    }
-    @Override
-    public void SearchButtonClicks(String txt) {
-        tableName = "useful_news";
-        super.SearchButtonClicks(txt);
     }
 }

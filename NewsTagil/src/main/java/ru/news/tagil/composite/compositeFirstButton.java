@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import ru.news.tagil.R;
 import ru.news.tagil.activity.*;
 import ru.news.tagil.utility.firstClassesEnum;
-import ru.news.tagil.utility.mainFrameActivity;
+import ru.news.tagil.utility.mainFrameJsonActivity;
 
 /**
  * Created by turbo_lover on 18.07.13.
@@ -78,7 +78,7 @@ public class compositeFirstButton extends LinearLayout implements View.OnClickLi
     }
     @Override
     public void onClick(View view) {
-        mainFrameActivity act = (mainFrameActivity) getContext();
+        mainFrameJsonActivity act = (mainFrameJsonActivity) getContext();
         switch (view.getId())
         {
             case R.id.first_tape_button:

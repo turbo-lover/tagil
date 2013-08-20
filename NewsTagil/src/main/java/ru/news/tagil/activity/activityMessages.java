@@ -15,6 +15,8 @@ import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeMessage;
 import ru.news.tagil.composite.compositeMessageTextArea;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myScrollView;
 
 /**
@@ -27,15 +29,26 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle s){
         super.onCreate(s);
-        Set(Get(CreateJsonForGetNew()),false);
         needAutoUpdate = headerSimple.GetUpdateButtonVisibility();
-        scrollView.post(new Runnable() {
-            @Override
-            public void run() {
-                scrollView.fullScroll(scrollView.FOCUS_DOWN);
-                scrollView.setEventEnable(true);
+    }
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        super.FinishedRequest(returned, mode);
+        try{
+            switch (mode) {
+                case ADD:
+                    if(returned.getString("status").equals("ok")) {
+                        UpdateButtonClicks();
+                    } else {
+                        Toast.makeText(this,getString(R.string.addCommentError),Toast.LENGTH_SHORT).show();
+                    }
+                    msgArea.eraseInput();
+                    msgArea.BlockInput(true);
+                    break;
             }
-        });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) {
@@ -100,31 +113,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
         }
         return jo;
     }
-    private void AddNew() {
-        try{
-            scriptAddress = getString(R.string.addMessageUrl);
-            JSONObject jo = Get(CreateJsonForAdd());
-            if(jo.getString("status").equals("ok")) {
-                scriptAddress = getString(R.string.getMessagesUrl);
-                UpdateButtonClicks();
-                scrollView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        scrollView.fullScroll(scrollView.FOCUS_DOWN);
-                    }
-                });
-            } else {
-                Toast.makeText(this,getString(R.string.addMsgError),Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("AddNew_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        } finally {
-            scriptAddress = getString(R.string.getMessagesUrl);
-            msgArea.eraseInput();
-            msgArea.BlockInput(true);
-        }
-    }
+
     @Override
     protected JSONObject CreateJsonForGet() {
         JSONObject jo = new JSONObject();
@@ -154,15 +143,8 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
     public void onScrollHitTop(myScrollView myScrollView, int l, int t, int oldl, int oldt) {
         if( container.getChildCount() == totalCount) {
             return; }
-        Set(Get(CreateJsonForGet()),true);
-        scrollView.post(new Runnable() {
-            @Override
-            public void run() {
-                View v = container.getChildAt(GET_COUNT);
-                int t = v.getTop();
-                scrollView.scrollTo(0,t);
-            }
-        });
+        new myAsyncTaskWorker(this, jsonActivityMode.GET).execute(CreateJsonForGet(),
+                getString(R.string.serverAddress)+scriptAddress);
     }
 
     @Override
@@ -173,7 +155,8 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
         scriptAddress = getString(R.string.getMessagesUrl);
         tableName = "messages";
         searchStr = getIntent().getStringExtra("interlocutor");
-        totalCount = GetTotalCount(preferencesWorker.get_login(),searchStr);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(preferencesWorker.get_login(), searchStr),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     public void onClick(View view) {
@@ -182,6 +165,7 @@ public class activityMessages extends ScrollUpdateActivity implements View.OnCli
             return;
         }
         msgArea.BlockInput(false);
-        AddNew();
+        new myAsyncTaskWorker(this, jsonActivityMode.ADD).execute(CreateJsonForAdd(),
+                getString(R.string.serverAddress)+getString(R.string.addMessageUrl));
     }
 }

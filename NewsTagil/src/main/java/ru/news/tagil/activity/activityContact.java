@@ -2,30 +2,24 @@ package ru.news.tagil.activity;/**
  * Created by turbo_lover on 23.07.13.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import ru.news.tagil.R;
-import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeContactPreview;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeader;
 import ru.news.tagil.composite.compositeMyProfileSelector;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 public class activityContact extends ScrollUpdateActivity implements View.OnClickListener{
     private compositeHeader h;
@@ -93,15 +87,14 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
         cfb = new compositeFirstButton(this);
         scriptAddress = getString(R.string.getUsersUrl);
         tableName = "users";
-        totalCount = GetTotalCount(null,null);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(null, null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     public void onClick(View view) {
         try {
-
         compositeContactPreview preview = (compositeContactPreview) view;
         Intent i = new Intent(this,activityProfile.class);
-        // передавать isMy  не нужно, если не установлен он равен false )
         i.putExtra("login",preview.GetLogin());
         startActivity(i);
         } catch (Exception e) {
@@ -111,9 +104,8 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
     @Override
     public void SearchButtonClicks(String txt) {
         this.ClearContainer();
-        tableName = "users_search";
         searchStr = txt;
-        totalCount = GetTotalCount(txt,null);
-        Set(Get(CreateJsonForGet()),false);
+        new myAsyncTaskWorker(this,jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(txt,null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
 }

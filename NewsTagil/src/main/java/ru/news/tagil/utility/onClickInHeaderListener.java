@@ -7,4 +7,5 @@ public interface onClickInHeaderListener {
    abstract void UpdateButtonClicks();
    abstract void BackButtonClicks();
    abstract void SearchButtonClicks(String txt);
+   abstract void UpdateWeather();
 }

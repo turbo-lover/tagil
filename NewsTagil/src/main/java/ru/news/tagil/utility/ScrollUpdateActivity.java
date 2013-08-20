@@ -2,9 +2,6 @@ package ru.news.tagil.utility;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.SupplicantState;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -19,7 +16,7 @@ import ru.news.tagil.activity.activityMessages;
  * Created by Alexander on 01.08.13.
  */
 public class ScrollUpdateActivity extends mainFrameJsonActivity implements updateListActivity,onScrollViewChangedListener {
-    protected int totalCount;
+    protected int totalCount = -1;
     protected String tableName; //Must be set in Initialize method
     protected String searchStr;
     protected boolean needAutoUpdate = false;  //Must be set in onCreate method
@@ -39,7 +36,8 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(isMessages) scrollView.setEventEnable(false);
-        Set(Get(CreateJsonForGet()), false);
+        new myAsyncTaskWorker(this,jsonActivityMode.GET_NEW).execute(CreateJsonForGetNew(),
+                getString(R.string.serverAddress)+scriptAddress);
         new CountDownTimer(1000*60*10, 1000*10*2) {
             @Override
             public void onTick(long l) {
@@ -52,11 +50,65 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
         }.start();
     }
     @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        try{
+            switch (mode) {
+                case GET:
+                    Set(returned,isMessages);
+                    if(isMessages) {
+                        scrollView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(container.getChildCount() > GET_COUNT) {
+                                    View v = container.getChildAt(GET_COUNT);
+                                    int t = v.getTop();
+                                    scrollView.scrollTo(0,t);
+                                } else {
+                                    scrollView.fullScroll(scrollView.FOCUS_DOWN);
+                                    scrollView.setEventEnable(true);
+                                }
+                            }
+                        });
+                    }
+                    break;
+                case GET_NEW:
+                    Set(returned,!isMessages);
+                    if(isMessages) {
+                        scrollView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                scrollView.fullScroll(scrollView.FOCUS_DOWN);
+                            }
+                        });
+                    }
+                    break;
+                case COUNT:
+                    totalCount = Integer.parseInt(returned.getString("result"));
+                    new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJsonForGet(),
+                            getString(R.string.serverAddress)+scriptAddress);
+                    break;
+                case COUNT_NEW:
+                    if(Integer.parseInt(returned.getString("result")) > totalCount && totalCount != -1) {
+                        totalCount = Integer.parseInt(returned.getString("result"));
+                        new myAsyncTaskWorker(this,jsonActivityMode.GET_NEW).execute(CreateJsonForGetNew(),
+                                getString(R.string.serverAddress)+scriptAddress);
+                    }
+                    break;
+                case WEATHER:
+                    SetWeather(returned);
+                    break;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+    }
+    @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
         isMessages = this.getClass().equals(activityMessages.class);
     }
-
+    @Override
     protected void SetEventListeners() {
         scrollView.setListener(this);
     }
@@ -88,8 +140,7 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
     }
 
     @Override
-    public int GetTotalCount(String extra1,String extra2) {
-        myAsyncTaskWorker asyncTaskWorker = new myAsyncTaskWorker();
+    public JSONObject CreateJsonForGetTotalCount(String extra1,String extra2) {
         JSONObject jo;
         try{
             jo = new JSONObject();
@@ -100,21 +151,20 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
                     jo.put("extra2",extra2);
                 }
             }
-            asyncTaskWorker.execute(jo,getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
-            jo = asyncTaskWorker.get();
-            return Integer.parseInt(jo.getString("result"));
+            return jo;
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("GET_TOTAL_COUNT_Exception", ex.getMessage() + "\n\n" + ex.toString());
+            Log.d("CreateJsonForGetTotalCount_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
-        return 0;
+        return null;
     }
 
     @Override
     public void onScrollHitBottom(myScrollView scrollView, int x, int y, int oldx, int oldy) {
         if( container.getChildCount() == totalCount ) {
             return; }
-        Set(Get(CreateJsonForGet()),false);
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJsonForGet(),
+                getString(R.string.serverAddress)+scriptAddress);
     }
 
     @Override
@@ -122,16 +172,13 @@ public class ScrollUpdateActivity extends mainFrameJsonActivity implements updat
 
     @Override
     public void UpdateButtonClicks() {
+        if(totalCount == -1) return;
         if(!needAutoUpdate) return;
         if(!(preferencesWorker.get_autoupdate_mode().equals(getString(R.string.autoapdateWiFi)) && IsConnectedToWiFI())) return;
-        String extra1 = (tableName == "news"|| tableName == "adverts")?null:preferencesWorker.get_login();
-        if(tableName == "comments") {
-            extra1 = searchStr; }
+        String extra1 = (tableName == "news"|| tableName == "adverts"|| tableName == "gavorite_news"|| tableName == "users" || tableName == "comments")?
+                searchStr:preferencesWorker.get_login();
         String extra2 =  (tableName == "messages")?searchStr:null;
-        int new_count = GetTotalCount(extra1,extra2);
-        if(new_count > totalCount) {
-            totalCount = new_count;
-            Set(Get(CreateJsonForGetNew()),!isMessages);
-        }
+        new myAsyncTaskWorker(this,jsonActivityMode.COUNT_NEW).execute(CreateJsonForGetTotalCount(extra1,extra2),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
 }

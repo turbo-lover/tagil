@@ -20,7 +20,7 @@ import ru.news.tagil.R;
 import ru.news.tagil.activity.activityAds;
 import ru.news.tagil.activity.activityContact;
 import ru.news.tagil.activity.activityNewsPreview;
-import ru.news.tagil.utility.mainFrameActivity;
+import ru.news.tagil.utility.mainFrameJsonActivity;
 import ru.news.tagil.utility.onClickInHeaderListener;
 
 public class compositeHeader extends RelativeLayout implements View.OnClickListener,EditText.OnEditorActionListener{
@@ -97,7 +97,7 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        mainFrameActivity act = (mainFrameActivity) getContext();
+        mainFrameJsonActivity act = (mainFrameJsonActivity) getContext();
         switch (view.getId())
         {
             case R.id.composite_header_first_button:

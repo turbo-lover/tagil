@@ -11,16 +11,15 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.news.tagil.R;
-import ru.news.tagil.utility.mainFrameActivity;
+import ru.news.tagil.utility.jsonActivity;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by turbo_lover on 12.07.13.
  */
-public class activityLogin extends Activity implements View.OnClickListener {
+public class activityLogin extends Activity implements View.OnClickListener,jsonActivity {
 
     private EditText login,password;
     private Button sign_in,to_registration;
@@ -52,41 +51,29 @@ public class activityLogin extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.reg://registration
+            case R.id.reg:
                 Registration();
                 break;
-            case R.id.enter://sign in
-                SignIn();
+            case R.id.enter:
+                new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJson(),
+                        getString(R.string.serverAddress) + getString(R.string.loginUrl));
                 break;
         }
-
     }
 
-    private void SignIn() {
-       if( isValidateFieldsOk()) {
-           myAsyncTaskWorker worker = new myAsyncTaskWorker();
-           JSONObject sends_data = new JSONObject();
-           try {
-               sends_data.put("login", login.getText());
-               sends_data.put("pass", password.getText());
-               worker.execute(sends_data,getString(R.string.serverAddress)+getString(R.string.loginUrl));
-               ParsingResponse(worker.get());
-           }
-           catch (JSONException e) {
-               e.printStackTrace();
-               Log.d("SIGN_IN_METHOD_JSONException",e.getMessage() + "____________" + e.toString());
-           }
-           catch (InterruptedException e) {
-               e.printStackTrace();
-               Log.d("SIGN_IN_METHOD_Interrupted",e.getMessage() + "____________" + e.toString());
-           }
-           catch (ExecutionException e) {
-               e.printStackTrace();
-               Log.d("SIGN_IN_METHOD_Execution",e.getMessage() + "____________" + e.toString());
-           }
-       } else {
-           Toast.makeText(this,getResources().getString(R.string.login_fields_empty),Toast.LENGTH_SHORT).show();
-       }
+    private JSONObject CreateJson() {
+        if( isValidateFieldsOk()) {
+            JSONObject sends_data = new JSONObject();
+            try {
+                sends_data.put("login", login.getText());
+                sends_data.put("pass", password.getText());
+                return sends_data;
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("CreateJson_Exception",e.getMessage() + "\n\n" + e.toString());
+            }
+        }
+        return null;
     }
 
     private void ParsingResponse(JSONObject response) {
@@ -137,5 +124,15 @@ public class activityLogin extends Activity implements View.OnClickListener {
     private void Registration() {
         Intent intent = new Intent(this,activityRegistration.class);
         startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void Set(JSONObject jsonObject) {
+        ParsingResponse(jsonObject);
+    }
+
+    @Override
+    public void FinishedRequest(JSONObject returned, jsonActivityMode mode) {
+        Set(returned);
     }
 }

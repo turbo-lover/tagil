@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -20,7 +21,9 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeContactContent;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.imageGetter;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.mainFrameJsonActivity;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 
 import java.io.ByteArrayOutputStream;
@@ -32,52 +35,50 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     compositeContactContent contactContent;
     compositeHeaderSimple headerSimple;
     Boolean isMy;
-    myPreferencesWorker pw;
-    String current_login;
+    String current_login,img_tag;
+    Bitmap bmp;
     private final int SELECT_PICTURE = 666;
     private imageGetter imgGetter;
-
+    String categoty;
+    int id;
+    String content;
+    List selection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         scriptAddress = getString(R.string.getProfile);
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("login",current_login);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(jo,
+                getString(R.string.serverAddress) + getString(R.string.getProfile));
 
-        GetProfile(current_login);
     }
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
-
         Intent intent = getIntent();
-
-        pw = new myPreferencesWorker(this);
-
         current_login = intent.getStringExtra("login");
-        // задается в compositeMyProfileSelector
-        isMy = current_login.equals(pw.get_login()) ;
-
+        isMy = current_login.equals(preferencesWorker.get_login()) ;
         contactContent = new compositeContactContent(this,isMy);
         contactContent.SetName(current_login);
         headerSimple = new compositeHeaderSimple(this);
         imgGetter = new imageGetter(this);
     }
 
-    private void GetProfile(String login) {
-        JSONObject obj  = new JSONObject();
+
+    private void GetProfile(JSONObject object) {
         try {
-            obj.put("login",login);
-            obj = Get(obj);
-
     /*status:,result:{looking_for,purpose_of_seeking,hobby,about_me,marriage,favorite_music,selected_pic_id,images:[{id,image}*/
-            if(obj.getString("status").equals("ok")) {
-                JSONObject result = obj.getJSONObject("result");
-
+            if(object.getString("status").equals("ok")) {
+                JSONObject result = object.getJSONObject("result");
                 String seek = result.getString("looking_for");
                 contactContent._setSeek(seek);
                 contactContent._setPurpose(result.getString("purpose_of_seeking"));
                 contactContent._setMarriage(result.getString("marriage"));
-
                 contactContent._setHobby(result.getString("hobby"));
                 contactContent._setMusic(result.getString("favorite_music"));
                 contactContent._setAbout(result.getString("about_me"));
@@ -123,25 +124,13 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
 
 
     private void sendResult(String content, String category, int id) {
-
         JSONObject jo = new JSONObject();
         try {
             jo.put(category, content);
-            jo = changePersonalInfo(jo);
-
-            if(jo.getString("status").equals("ok")) {
-                Toast.makeText(this, getString(R.string.personalInfoChanged), Toast.LENGTH_LONG).show();
-                switch(id) {
-                    case R.id.contact_hobby:
-                        contactContent._setHobby(content);
-                        break;
-                    case R.id.contact_music:
-                        contactContent._setMusic(content);
-                        break;
-                    case R.id.contact_about:
-                        contactContent._setAbout(content);
-                }
-            }
+            this.content = content;
+            this.categoty = category;
+            this.id = id;
+            changePersonalInfo(jo);
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -153,21 +142,10 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
         JSONObject jo = new JSONObject();
         try {
             jo.put(category, selection.get(0));
-            jo = changePersonalInfo(jo);
-
-            if(jo.getString("status").equals("ok")) {
-                Toast.makeText(this, getString(R.string.personalInfoChanged), Toast.LENGTH_LONG).show();
-                switch(id) {
-                    case R.id.contact_seek:
-                        contactContent._setSeek(selection.get(0).toString());
-                        break;
-                    case R.id.contact_purpose_for_seeking:
-                        contactContent._setPurpose(selection.get(0).toString());
-                        break;
-                    case R.id.contact_marriage:
-                        contactContent._setMarriage(selection.get(0).toString());
-                }
-            }
+            changePersonalInfo(jo);
+            this.selection = selection;
+            this.categoty = category;
+            this.id = id;
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -178,18 +156,14 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     private Dialog CreateDialog(String title, int income_id) {
         final int id = income_id;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         LayoutInflater li = getLayoutInflater();
         RelativeLayout  rl = (RelativeLayout) li.inflate(R.layout.dialog_layout, null);
-
         RelativeLayout.LayoutParams lp =
                 new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-
         TextView tv = (TextView) rl.findViewById(R.id.dialog_header);
         final EditText text = (EditText) rl.findViewById(R.id.dialog_text);
-
         tv.setText(title);
         builder.setView(rl);
         builder.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
@@ -217,7 +191,6 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         final int id = income_id;
-
         builder.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -244,21 +217,17 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
         return builder.create();
     }
 
-    private JSONObject changePersonalInfo(JSONObject jo) {
-        scriptAddress = getString(R.string.addPersonalInfo);
+    private void changePersonalInfo(JSONObject jo) {
         try {
-            jo.put("login",pw.get_login());
-            jo.put("pass",pw.get_pass());
-
-            return Get(jo);
+            jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
+            new myAsyncTaskWorker(this,jsonActivityMode.GET_NEW).execute(jo,
+                    getString(R.string.serverAddress) + getString(R.string.addPersonalInfo));
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
     }
-
-
 
     public void sendImage(Bitmap bmp) {
         scriptAddress = getString(R.string.addUserPic);
@@ -270,16 +239,12 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
                 bmp.compress(Bitmap.CompressFormat.PNG, 99, stream);
                 b = Base64.encode(stream.toByteArray(),0);
             }
+            this.bmp = bmp;
             jo.put("image",(bmp == null)?"NULL":new String(b,"UTF-8"));
-            jo.put("login",pw.get_login());
-            jo.put("pass",pw.get_pass());
-
-            jo = Get(jo);
-
-            if(jo.getString("status").equals("ok")) {
-                Toast.makeText(this,getString(R.string.imageAddedSuccess),Toast.LENGTH_SHORT).show();
-                contactContent._putImageInHorizontalTape(bmp,jo.getString("result"));
-            }
+            jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
+            new myAsyncTaskWorker(this,jsonActivityMode.ADD).execute(jo,
+                    getString(R.string.serverAddress) + getString(R.string.addUserPic));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -304,24 +269,20 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     }
     @Override
     public void onClick(View view) {
-
-
         Integer id = view.getId();
-
         if(id.equals(R.id.composite_contact_content_start_dialog))  {
             StartDialog();
             return;
         }
-
         if(view.getClass().equals(ImageView.class)) {
-            setAvatarOnServer(view.getTag().toString());
+            img_tag = view.getTag().toString();
+            setAvatarOnServer();
             return;
         }
 
         if(isMy) {
             Dialog d  = new Dialog(this);
             switch (id) {
-                // обработка нажатий изменений профиля
                 case R.id.contact_seek :
                     d = CreateDialog(
                             getResources().getStringArray(R.array.seek),
@@ -346,7 +307,6 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
                 case R.id.contact_about:
                     d = CreateDialog(getString(R.string.about_me),R.id.contact_about);
                     break;
-                //обработка нажатия добавления фотографии
                 case R.id.add_photo_button:
                     FindImage();
                     return;
@@ -358,29 +318,67 @@ public class activityProfile extends mainFrameJsonActivity implements View.OnCli
     private void StartDialog() {
         Intent i  = new Intent(this,activityMessages.class) ;
         i.putExtra("interlocutor",current_login);
-
         startActivity(i);
     }
-
-    private void setAvatarOnServer(String tag) {
-
-        scriptAddress = getString(R.string.setUserPic);
-        JSONObject jo = new JSONObject();
-        try {
-            jo.put("id_image",tag);
-            jo.put("login",pw.get_login());
-            jo.put("pass",pw.get_pass());
-
-            jo = Get(jo);
-
-            if(jo.getString("status").equals("ok")) {
-                contactContent.setAvatarByTAg(tag);
-                Toast.makeText(this,getString(R.string.userImageSetsSuccess),Toast.LENGTH_SHORT).show();
+    @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        try{
+            switch (mode) {
+                case GET:
+                    GetProfile(returned);
+                    break;
+                case ADD:
+                    if(returned.getString("status").equals("ok")) {
+                        Toast.makeText(this,getString(R.string.imageAddedSuccess),Toast.LENGTH_SHORT).show();
+                        contactContent._putImageInHorizontalTape(bmp,returned.getString("result"));
+                    }
+                    break;
+                case GET_NEW:
+                    if(returned.getString("status").equals("ok")) {
+                        Toast.makeText(this, getString(R.string.personalInfoChanged), Toast.LENGTH_LONG).show();
+                        switch(id) {
+                            case R.id.contact_hobby:
+                                contactContent._setHobby(content);
+                                break;
+                            case R.id.contact_music:
+                                contactContent._setMusic(content);
+                                break;
+                            case R.id.contact_about:
+                                contactContent._setAbout(content);
+                            case R.id.contact_seek:
+                                contactContent._setSeek(selection.get(0).toString());
+                                break;
+                            case R.id.contact_purpose_for_seeking:
+                                contactContent._setPurpose(selection.get(0).toString());
+                                break;
+                            case R.id.contact_marriage:
+                                contactContent._setMarriage(selection.get(0).toString());
+                        }
+                    }
+                    break;
+                case SET_SELECTED_PIC:
+                    if(returned.getString("status").equals("ok")) {
+                        contactContent.setAvatarByTAg(img_tag);
+                        Toast.makeText(this,getString(R.string.userImageSetsSuccess),Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
     }
 
-
+    private void setAvatarOnServer() {
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("id_image",img_tag);
+            jo.put("login",preferencesWorker.get_login());
+            jo.put("pass",preferencesWorker.get_pass());
+            new myAsyncTaskWorker(this,jsonActivityMode.SET_SELECTED_PIC).execute(jo,
+                    getString(R.string.serverAddress) + getString(R.string.setUserPic));
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

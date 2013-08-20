@@ -153,7 +153,7 @@
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
-                            android:text="Ищу:"
+
                             android:id="@+id/composite_contact_content_seek"
                             android:layout_gravity="left"/>
                 </LinearLayout>
@@ -184,7 +184,7 @@
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
-                            android:text="Ищу:"
+
                             android:id="@+id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
@@ -215,7 +215,7 @@
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
-                            android:text="Ищу:"
+
                             android:id="@+id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
@@ -246,7 +246,7 @@
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
-                            android:text="Ищу:"
+
                             android:id="@+id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
@@ -277,7 +277,7 @@
                             android:layout_marginLeft="10dp"
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
-                            android:text="Ищу:"
+
                             android:id="@+id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>

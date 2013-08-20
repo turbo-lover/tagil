@@ -14,6 +14,8 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 
 /**
@@ -26,7 +28,6 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        Set(Get(CreateJsonForGetNew()),true);
         needAutoUpdate = ads_header.GetUpdateButtonVisibility();
     }
     @Override
@@ -86,7 +87,8 @@ public class activityMyAds extends ScrollUpdateActivity implements View.OnClickL
         ads_header = new compositeHeaderSimple(this);
         tableName = "my_adverts";
         scriptAddress = getString(R.string.getMyAdvertsHeadersUrl);
-        totalCount = GetTotalCount(preferencesWorker.get_login(),null);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(preferencesWorker.get_login(), null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     protected void SetEventListeners() {

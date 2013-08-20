@@ -14,7 +14,9 @@ import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeMakeAds;
 import ru.news.tagil.utility.imageGetter;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.mainFrameJsonActivity;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by Alexander on 23.07.13.
@@ -94,25 +96,42 @@ public class activityMakeAds extends mainFrameJsonActivity implements View.OnCli
         }
         return jo;
     }
+    @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        try{
+            switch (mode) {
+                case GET:
+                    if(OkResponse(returned)) {
+                        Intent i = new Intent(this,activityMyAds.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    break;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+    }
+    private boolean OkResponse(JSONObject jsonObject) {
+        try{
+            if(jsonObject.getString("status").equals("ok")) {
+                return true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.d("ToggleMarked_Exception", ex.getMessage() + "\n\n" + ex.toString());
+        }
+        return false;
+    }
 
     private void Send() {
         if(makeAds.GetContentText().isEmpty() || makeAds.GetHeader().isEmpty()) {
             Toast.makeText(this,getString(R.string.SetFiledsWarning),Toast.LENGTH_SHORT).show();
             return;
         }
-        try{
-            JSONObject jo =  Get(CreateJsonForGet());
-            if(jo.getString("status").equals("ok")){
-                Intent i = new Intent(this,activityMyAds.class);
-                startActivity(i);
-                finish();
-            } else {
-                Toast.makeText(this,jo.getString("errormsg"),Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Log.d("Send_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        }
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJsonForGet(),
+                getString(R.string.serverAddress) + scriptAddress);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

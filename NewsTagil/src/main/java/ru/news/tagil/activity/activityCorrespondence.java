@@ -17,6 +17,8 @@ import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeInterlocutor;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -73,7 +75,8 @@ public class activityCorrespondence extends ScrollUpdateActivity implements View
         cfb = new compositeFirstButton(this);
         scriptAddress = getString(R.string.getInterlocutorsUrl);
         tableName = "interlocutors";
-        totalCount = GetTotalCount(preferencesWorker.get_login(),null);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(preferencesWorker.get_login(), null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     protected void SetEventListeners() {

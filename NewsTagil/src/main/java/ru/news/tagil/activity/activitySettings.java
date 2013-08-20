@@ -7,14 +7,18 @@ import android.widget.RelativeLayout;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.nio.channels.ScatteringByteChannel;
+
 import ru.news.tagil.R;
 import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeSettingsContent;
 import ru.news.tagil.composite.compositeSettingsFonts;
-import ru.news.tagil.utility.mainFrameActivity;
+import ru.news.tagil.utility.jsonActivity;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.composite.compositeSettingFaq;
 import ru.news.tagil.utility.mainFrameJsonActivity;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.onClickInHeaderListener;
 import ru.news.tagil.utility.simpleListenerInterface;
 
@@ -83,10 +87,15 @@ public class activitySettings extends mainFrameJsonActivity implements onClickIn
     }
     private void SetSettingFAQ() {
         ClearContainer();
-        try{
-            JSONObject jo = Get(new JSONObject());
-            if(jo.getString("status").equals("ok")) {
-                JSONArray arr = jo.getJSONArray("result");
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(new JSONObject(),
+                getString(R.string.serverAddress)+getString(R.string.getFaqUrl));
+    }
+
+    @Override
+    public void Set(JSONObject object) {
+        try {
+            if(object.getString("status").equals("ok")) {
+                JSONArray arr = object.getJSONArray("result");
                 for (int i=0; i< arr.length(); i++) {
                     JSONObject j = arr.getJSONObject(i);
                     compositeSettingFaq settingsFaq = new compositeSettingFaq(this);
@@ -96,7 +105,7 @@ public class activitySettings extends mainFrameJsonActivity implements onClickIn
                 }
             }
         } catch (Exception ex) {
-            Log.d("SetSettingFAQ_Exception",ex.toString());
+            ex.printStackTrace();
         }
     }
 
@@ -108,5 +117,10 @@ public class activitySettings extends mainFrameJsonActivity implements onClickIn
     @Override
     public void toFAQ() {
         SetSettingFAQ();
+    }
+
+    @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        Set(returned);
     }
 }

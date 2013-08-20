@@ -6,7 +6,12 @@ import org.json.JSONObject;
  * Created by Alexander on 15.07.13.
  */
 public class myAsyncTaskWorker extends AsyncTask<Object, Void, JSONObject> {
-    public myAsyncTaskWorker() {}
+    private jsonActivity listenerActivity;
+    private jsonActivityMode mode;
+    public myAsyncTaskWorker(jsonActivity listenerActivity,jsonActivityMode mode) {
+        this.listenerActivity = listenerActivity;
+        this.mode = mode;
+    }
     @Override
     protected JSONObject doInBackground(Object... params) {
         JSONObject response = null;
@@ -15,5 +20,9 @@ public class myAsyncTaskWorker extends AsyncTask<Object, Void, JSONObject> {
         } catch (Exception e) {
             e.printStackTrace(); }
         return response;
+    }
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
+        listenerActivity.FinishedRequest(jsonObject,mode);
     }
 }

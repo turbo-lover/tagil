@@ -20,6 +20,8 @@ import ru.news.tagil.composite.compositeComment;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.composite.compositeMessageTextArea;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 /**
  * Created by turbo_lover on 12.07.13.
@@ -31,12 +33,8 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
     @Override
     protected void onCreate(Bundle s){
         super.onCreate(s);
-        Set(Get(CreateJsonForGetNew()),true);
         needAutoUpdate = h_simple.GetUpdateButtonVisibility();
     }
-
-
-
     @Override
     protected void InitializeComponent(){
         super.InitializeComponent();
@@ -45,7 +43,8 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
         scriptAddress = getString(R.string.getCommentsUrl);
         tableName = "comments";
         searchStr = getIntent().getStringExtra("id_news");
-        totalCount = GetTotalCount(searchStr,null);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(searchStr, null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     protected View CreateViewToAdd(JSONObject obj) {
@@ -119,23 +118,24 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
         }
         return jo;
     }
-    private void AddNew() {
+    @Override
+    public void FinishedRequest(JSONObject returned,jsonActivityMode mode) {
+        super.FinishedRequest(returned, mode);
         try{
-            scriptAddress = getString(R.string.addCommentUrl);
-            JSONObject jo = Get(CreateJsonForAdd());
-            if(jo.getString("status").equals("ok")) {
-                scriptAddress = getString(R.string.getCommentsUrl);
-                UpdateButtonClicks();
-            } else {
-                Toast.makeText(this,getString(R.string.addCommentError),Toast.LENGTH_SHORT).show();
+            switch (mode) {
+                case ADD:
+                    if(returned.getString("status").equals("ok")) {
+                        UpdateButtonClicks();
+                    } else {
+                        Toast.makeText(this,getString(R.string.addCommentError),Toast.LENGTH_SHORT).show();
+                    }
+                    msgArea.eraseInput();
+                    msgArea.BlockInput(true);
+                    break;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.d("AddNew_Exception", ex.getMessage() + "\n\n" + ex.toString());
-        } finally {
-            scriptAddress = getString(R.string.getCommentsUrl);
-            msgArea.eraseInput();
-            msgArea.BlockInput(true);
+            Log.d("FinishedRequest_Exception", ex.getMessage() + "\n\n" + ex.toString());
         }
     }
     @Override
@@ -160,6 +160,7 @@ public class activityCommentNews  extends ScrollUpdateActivity implements View.O
             return;
         }
         msgArea.BlockInput(false);
-        AddNew();
+        new myAsyncTaskWorker(this, jsonActivityMode.ADD).execute(CreateJsonForAdd(),
+                getString(R.string.serverAddress)+getString(R.string.addCommentUrl));
     }
 }

@@ -11,6 +11,8 @@ import ru.news.tagil.composite.compositeFirstButton;
 import ru.news.tagil.composite.compositeHeader;
 import ru.news.tagil.composite.compositeTapePreview;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,8 +27,8 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = h.GetUpdateButtonVisibility();
-        Set(Get(CreateJsonForGetNew()),true);
     }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -99,7 +101,11 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
     }
     @Override
     protected void SetCompositeElements() {
-        h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
+        if(getClass().equals(activityUseful.class)) {
+            h.Set(getString(R.string.usefulText),"","");
+        } else {
+            h.Set(getString(R.string.mainText),getString(R.string.contactText),getString(R.string.advertText));
+        }
         h.UpdateWeather(weatherToday, weatherTomorow);
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -112,8 +118,9 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         cfb = new compositeFirstButton(this);
         h = new compositeHeader(this);
         scriptAddress = getString(R.string.getNewsHeadersUrl);
-        tableName = "news";
-        totalCount = GetTotalCount(null,null);
+        tableName =(getClass().equals(activityUseful.class))?"useful_news": "news";
+        new myAsyncTaskWorker(this,jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(null, null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
     @Override
     public void onClick(View view) {
@@ -125,12 +132,16 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         i.putExtra("id_news",(String) c.getTag());
         startActivity(i);
     }
+    @Override
+    public void UpdateWeather(){
+        h.UpdateWeather(weatherToday, weatherTomorow);
+    }
 
     @Override
     public void SearchButtonClicks(String txt) {
         this.ClearContainer();
         searchStr = txt;
-        totalCount = GetTotalCount(txt,null);
-        Set(Get(CreateJsonForGet()),false);
+        new myAsyncTaskWorker(this,jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(txt,null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
     }
 }

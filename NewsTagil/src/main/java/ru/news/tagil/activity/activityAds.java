@@ -14,6 +14,8 @@ import ru.news.tagil.composite.compositeAdsPreview;
 import ru.news.tagil.composite.compositeAdsSelector;
 import ru.news.tagil.composite.compositeHeaderSimple;
 import ru.news.tagil.utility.ScrollUpdateActivity;
+import ru.news.tagil.utility.jsonActivityMode;
+import ru.news.tagil.utility.myAsyncTaskWorker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,7 +30,6 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
     protected void onCreate(Bundle s) {
         super.onCreate(s);
         needAutoUpdate = ads_header.GetUpdateButtonVisibility();
-        Set(Get(CreateJsonForGetNew()),true);
     }
     @Override
     protected void SetCompositeElements() {
@@ -52,7 +53,8 @@ public class activityAds extends ScrollUpdateActivity implements View.OnClickLis
         ads_selector = new compositeAdsSelector(this);
         tableName = "adverts";
         scriptAddress = getString(R.string.getAdvertsHeadersUrl);
-        totalCount = GetTotalCount(null,null);
+        new myAsyncTaskWorker(this, jsonActivityMode.COUNT).execute(CreateJsonForGetTotalCount(null, null),
+                getString(R.string.serverAddress)+getString(R.string.getTotalIdCountUrl));
      }
     @Override
     public void onClick(View view) {

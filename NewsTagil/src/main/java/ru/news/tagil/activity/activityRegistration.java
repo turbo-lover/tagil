@@ -10,6 +10,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.news.tagil.R;
+import ru.news.tagil.utility.jsonActivity;
+import ru.news.tagil.utility.jsonActivityMode;
 import ru.news.tagil.utility.myAsyncTaskWorker;
 import ru.news.tagil.utility.myPreferencesWorker;
 
@@ -18,7 +20,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by Alexander on 16.07.13.
  */
-public class activityRegistration extends Activity implements View.OnClickListener {
+public class activityRegistration extends Activity implements View.OnClickListener,jsonActivity {
 
     Button registration;
     EditText pass,mail,login;
@@ -44,41 +46,24 @@ public class activityRegistration extends Activity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        Registration();
-    }
-
-    private void Registration() {
         if(!Validate_Email()) return;
         if(!Validate_Pass()) return;
         if(!Validate_Login()) return;
-        myAsyncTaskWorker worker = new myAsyncTaskWorker();
+        new myAsyncTaskWorker(this,jsonActivityMode.GET).execute(CreateJson(),
+                getString(R.string.serverAddress) + getString(R.string.registrationUrl));
+    }
+
+    private JSONObject CreateJson() {
         JSONObject jObj = new JSONObject();
         try {
             jObj.put("login",login.getText());
             jObj.put("pass",pass.getText());
             jObj.put("email",mail.getText());
-            worker.execute(jObj, getString(R.string.serverAddress)+getString(R.string.registrationUrl));
-            jObj = worker.get();
-            String status = jObj.getString("status");
-            if(status.equals("ok")) {
-                myPreferencesWorker preferences_worker = new myPreferencesWorker(this);
-                preferences_worker.set_login(login.getText().toString());
-                preferences_worker.set_pass(pass.getText().toString());
-                ToTapeActivity();
-            }
-            if(status.equals("denied")){
-                Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
-            }
+            return jObj;
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return null;
     }
 
     private void ToTapeActivity() {
@@ -94,32 +79,43 @@ public class activityRegistration extends Activity implements View.OnClickListen
         return false;
     }
 
-    /**
-     *  Make validation and send Toast
-     * @return true if length of login greater or equal 3
-     */
     private boolean Validate_Login() {
-
         int length = login.getText().toString().length();
         if(length >=3) return true;
-
         login.requestFocusFromTouch();
         Toast.makeText(this, getString(R.string.empty_login), Toast.LENGTH_SHORT).show();
         return false;
     }
 
-    /**
-     *  Make validation and send Toast
-     * @return true if length of password greater then or equals3
-     */
     private boolean Validate_Pass() {
-
         int length = pass.getText().toString().length();
         if(length >=3) return true;
-
         pass.requestFocusFromTouch();
         Toast.makeText(this, getString(R.string.empty_pass), Toast.LENGTH_SHORT).show();
         return false;
+    }
+
+    @Override
+    public void Set(JSONObject jsonObject) {
+        try {
+            String status = jsonObject.getString("status");
+            if(status.equals("ok")) {
+                myPreferencesWorker preferences_worker = new myPreferencesWorker(this);
+                preferences_worker.set_login(login.getText().toString());
+                preferences_worker.set_pass(pass.getText().toString());
+                ToTapeActivity();
+            }
+            if(status.equals("denied")){
+                Toast.makeText(this, getString(R.string.DeniedRegistration),Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void FinishedRequest(JSONObject returned, jsonActivityMode mode) {
+        Set(returned);
     }
 }
 

@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 import ru.news.tagil.R;
@@ -70,9 +71,11 @@ public class activityContact extends ScrollUpdateActivity implements View.OnClic
         h.UpdateWeather(weatherToday, weatherTomorow);
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
         header.addView(h);
         selector.addView(s,p);
-        footer.addView(cfb);
+        footer.addView(cfb,rlp);
     }
     @Override
     protected void SetEventListeners() {

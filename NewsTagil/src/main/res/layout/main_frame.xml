@@ -28,7 +28,6 @@
             android:layout_above="@+id/main_frame_footer"
             android:layout_below="@+id/main_frame_selector">
         <LinearLayout
-                android:background="@color/AppBackground"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

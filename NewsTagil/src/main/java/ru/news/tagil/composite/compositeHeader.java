@@ -100,15 +100,6 @@ public class compositeHeader extends RelativeLayout implements View.OnClickListe
         mainFrameJsonActivity act = (mainFrameJsonActivity) getContext();
         switch (view.getId())
         {
-            case R.id.composite_header_first_button:
-               try {
-                   Intent intent = new Intent(act, activityNewsPreview.class);
-                   act.startActivity(intent);
-               } catch (Exception e) {
-                   Log.e(TAG, "Exception");
-                   e.printStackTrace();
-               }
-            break;
             case R.id.composite_header_second_button:
                 try {
                     if(act.is_authorized) {

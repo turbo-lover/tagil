@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import ru.news.tagil.R;
 import ru.news.tagil.activity.activityLogin;
+import ru.news.tagil.activity.activityNewsPreview;
 
 /**
  * Created by Alexander on 05.08.13.
@@ -45,6 +46,9 @@ public class mainFrameJsonActivity extends Activity implements onClickInHeaderLi
 
     @Override
     public void BackButtonClicks() {
+        Intent i = new Intent(this, activityNewsPreview.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
         this.finish();
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

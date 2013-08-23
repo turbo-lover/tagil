@@ -133,6 +133,10 @@ public class activityNewsPreview extends ScrollUpdateActivity implements View.On
         startActivity(i);
     }
     @Override
+    public void BackButtonClicks() {
+        moveTaskToBack(true);
+    }
+    @Override
     public void UpdateWeather(){
         h.UpdateWeather(weatherToday, weatherTomorow);
     }

@@ -61,7 +61,7 @@ public class activitySettings extends mainFrameJsonActivity implements onClickIn
         settingsFonts = new compositeSettingsFonts(this);
         settingsContent= new compositeSettingsContent(this);
     }
-
+/*
     @Override
     public void BackButtonClicks() {
         View v = container.getChildAt(0);
@@ -76,7 +76,7 @@ public class activitySettings extends mainFrameJsonActivity implements onClickIn
             SetSettingContentView();
         }
     }
-
+*/
     private void SetSettingFontView() {
         ClearContainer();
         container.addView(settingsFonts);

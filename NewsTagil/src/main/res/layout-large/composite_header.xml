@@ -160,6 +160,8 @@
                     android:textSize="16dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="6dp"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
                     android:background="@drawable/first_header_search" >
 
                 </EditText>

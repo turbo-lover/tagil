@@ -33,7 +33,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/ads_button_bg"
-                            android:id="@+id/composite_contact_content_avatar"
+                            android:id="@+id/contact_avatar"
                             android:layout_gravity="center_horizontal|top"/>
 
                     <LinearLayout
@@ -48,7 +48,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="#ff474747"
                                 android:textSize="16dp"
-                                android:text="Иван Бубуйло"
+
                                 android:id="@+id/composite_contact_content_name"/>
 
                         <TextView
@@ -59,12 +59,12 @@
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="#ff474747"
                                 android:textSize="14dp"
-                                android:text="32 года. Нижний Тагил"
+
                                 android:id="@+id/composite_contact_content_info"/>
 
                         <Button
                                 android:layout_width="200dp"
-                                android:layout_height="26dp"
+                                android:layout_height="36dp"
                                 android:textColor="@color/lightGray"
                                 android:textSize="14dp"
                                 android:text="Начать диалог"
@@ -99,32 +99,13 @@
 
 
                 <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="80dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/contact_photo_panel"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linearLayout22"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/linearLayout3">
-
-        <HorizontalScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/horizontalScrollView"
-                android:layout_centerVertical="true"
-                android:layout_alignLeft="@+id/imageView3">
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="80dp"
-                          android:orientation="horizontal"
-                          android:id="@+id/composite_lin_lay_user_images"
-                    >
-
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
+                        android:background="@color/Orange"
+                        android:id="@id/contact_photo_panel">
                 </LinearLayout>
 
                 <LinearLayout
@@ -132,7 +113,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout3"
+                        android:layout_below="@id/contact_photo_panel"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/linearLayout4">
 
@@ -154,7 +135,7 @@
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
 
-                            android:id="@+id/composite_contact_content_seek"
+                            android:id="@id/composite_contact_content_seek"
                             android:layout_gravity="left"/>
                 </LinearLayout>
 
@@ -216,7 +197,7 @@
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
 
-                            android:id="@+id/composite_contact_content_seek_content"
+                            android:id="@id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
 
@@ -247,7 +228,7 @@
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
 
-                            android:id="@+id/composite_contact_content_seek_content"
+                            android:id="@id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
 
@@ -278,7 +259,7 @@
                             android:textSize="16dp"
                             android:textColor="#fffd8001"
 
-                            android:id="@+id/composite_contact_content_seek_content"
+                            android:id="@id/composite_contact_content_seek_content"
                             android:layout_gravity="left"/>
                 </LinearLayout>
 

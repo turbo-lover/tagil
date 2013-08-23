@@ -32,7 +32,7 @@
         android:layout_marginTop="14dp"/>
 
     <EditText
-        style="@style/darkEditText"
+        android:textColor="@color/lightGray"
         android:id="@+id/reg_mail"
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -43,7 +43,7 @@
         android:layout_centerHorizontal="true"/>
 
     <EditText
-        style="@style/darkEditText"
+        android:textColor="@color/lightGray"
         android:id="@+id/reg_login"
         android:layout_width="350dp"
         android:layout_height="45dp"

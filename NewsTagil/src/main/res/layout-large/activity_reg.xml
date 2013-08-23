@@ -25,10 +25,9 @@
         android:id="@+id/reg_pass"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:ems="10"
         android:background="@drawable/login_pass_bg"
         android:inputType="textPassword"
-
+        android:textColor="@color/lightGray"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:layout_above="@+id/button_reg"/>
@@ -39,7 +38,7 @@
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/reg_mail_bg"
-        android:ems="10"
+        android:textColor="@color/lightGray"
         android:inputType="textEmailAddress"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
@@ -49,7 +48,7 @@
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:background="@drawable/login_input_bg"
-        android:ems="10"
+        android:textColor="@color/lightGray"
         android:inputType="textPersonName"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/reg_mail"/>

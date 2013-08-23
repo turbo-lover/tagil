@@ -1,169 +1,146 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ECE8E2"
-   >
-
-
-
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/lightGray"
+        >
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#000">
-
-            <RelativeLayout
+        <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+            <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content">
-
-
-                <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:paddingBottom="10dp"
-                        android:background="#ECE8E2"
-                        android:id="@+id/linearLayout22">
-
-                    <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/ads_button_bg"
-                            android:id="@+id/composite_contact_content_avatar"
-                            android:layout_gravity="center_horizontal|top"/>
-
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|top">
-
-                        <TextView
-                                android:layout_marginTop="20dp"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ff474747"
-                                android:textSize="26dp"
-                                android:text="Иван Бубуйло"
-                                android:id="@+id/composite_contact_content_name"/>
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="8dp"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ff474747"
-                                android:textSize="22dp"
-                                android:text="32 года. Нижний Тагил"
-                                android:id="@+id/composite_contact_content_info"/>
-
-                        <Button
-                                android:layout_width="300dp"
-                                android:layout_height="40dp"
-                                android:textSize="22dp"
-                                android:layout_marginTop="12dp"
-                                android:text="Начать диалог"
-                                android:textColor="@color/lightGray"
-                                android:background="@drawable/ads_button_bg"
-                                android:id="@+id/composite_contact_content_start_dialog"
-                                android:layout_gravity="left|center_vertical"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-
-
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="10dp"
+                    android:background="@color/lightGray"
+                    android:id="@+id/linearLayout22">
+                <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/ads_button_bg"
+                        android:id="@+id/contact_avatar"
+                        android:layout_gravity="center_horizontal|top"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/linearLayout22"
-                        android:layout_centerHorizontal="true"
-                        android:background="#fffd8001"
-                        
-                        android:id="@+id/contact_photo_panel">
-                    <include
+                        android:layout_gravity="center_horizontal|top">
+                    <TextView
+                            android:layout_marginTop="20dp"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            layout="@layout/composite_add_images"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ff474747"
+                            android:textSize="26dp"
+
+                            android:id="@+id/composite_contact_content_name"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="8dp"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="#ff474747"
+                            android:textSize="22dp"
+
+                            android:id="@+id/composite_contact_content_info"/>
+                    <Button
+                                android:layout_width="300dp"
+                                android:layout_height="40dp"
+                            android:textSize="22dp"
+                            android:layout_marginTop="12dp"
+                            android:text="Начать диалог"
+                            android:textColor="@color/lightGray"
+                            android:background="@drawable/ads_button_bg"
+                            android:id="@+id/composite_contact_content_start_dialog"
                             android:layout_gravity="left|center_vertical"/>
-
-
-
-        </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/contact_photo_panel"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/linearLayout4">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="20dp"
-                            android:textColor="#fffd8001"
-                            android:text="Ищу:"
-                            android:id="@+id/composite_contact_content_seek"
-                            android:layout_gravity="left"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="20dp"
-                            android:textColor="#fffd8001"
-                         
-                            android:id="@+id/composite_contact_content_seek_content"
-                            android:layout_gravity="left"/>
                 </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout4"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/linearLayout5">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linearLayout22"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/Orange"
+                    android:id="@+id/contact_photo_panel">
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@+id/contact_photo_panel"
+                    android:layout_centerHorizontal="true"
+                    android:id="@id/contact_seek">
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Цели знакомства:"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_for_znakomstv"
-                            android:layout_gravity="left|"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                       
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_for_znakomstv_content"
-                            android:layout_gravity="left"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout5"
-                        android:layout_alignParentLeft="true"
-                        android:id="@+id/linearLayout6">
-                    <TextView
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:textColor="#fffd8001"
+                        android:text="Ищу:"
+                        android:id="@+id/composite_contact_content_seek"
+                        android:layout_gravity="left"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:textColor="#fffd8001"
+
+                        android:id="@+id/composite_contact_content_seek_content"
+                        android:layout_gravity="left"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@id/contact_seek"
+                    android:layout_centerHorizontal="true"
+                    android:id="@id/contact_purpose_for_seeking">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Цели знакомства:"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_for_znakomstv"
+                        android:layout_gravity="left|"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_for_znakomstv_content"
+                        android:layout_gravity="left"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@id/contact_purpose_for_seeking"
+                    android:layout_alignParentLeft="true"
+                    android:id="@id/contact_marriage">
+                <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -173,107 +150,107 @@
                         android:textColor="#fffd8001"
                         android:id="@+id/composite_contact_content_polojenie"
                         android:layout_gravity="left"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                           
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_polojenie_content"
-                            android:layout_gravity="left"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout6"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/linearLayout7">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Хобби:"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_hobby"
-                            android:layout_gravity="left"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                           
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_hobby_content"
-                            android:layout_gravity="left"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout7"
-                        android:id="@+id/linearLayout8"
-                        android:layout_centerHorizontal="true">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Любимая музыка:"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_music"
-                            android:layout_gravity="left"/>
-                    <TextView
+                <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                       
+
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_polojenie_content"
+                        android:layout_gravity="left"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@id/contact_marriage"
+                    android:layout_centerHorizontal="true"
+                    android:id="@id/contact_hobby">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Хобби:"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_hobby"
+                        android:layout_gravity="left"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_hobby_content"
+                        android:layout_gravity="left"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@id/contact_hobby"
+                    android:id="@id/contact_music"
+                    android:layout_centerHorizontal="true">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Любимая музыка:"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_music"
+                        android:layout_gravity="left"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+
                         android:textSize="20dp"
                         android:layout_marginLeft="10dp"
                         android:textColor="#fffd8001"
                         android:id="@+id/composite_contact_content_music_content"
                         android:layout_gravity="left"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="100dp"
-                        android:background="@drawable/contact_ley_bg"
-                        android:layout_below="@+id/linearLayout8"
-                        android:layout_centerHorizontal="true">
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@id/contact_about"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:background="@drawable/contact_ley_bg"
+                    android:layout_below="@id/contact_music"
+                    android:layout_centerHorizontal="true">
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="О себе:"
-                            android:textSize="22dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_about"
-                            android:layout_gravity="left"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                           
-                            android:textSize="22dp"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#fffd8001"
-                            android:id="@+id/composite_contact_content_about_content"
-                            android:layout_gravity="left"/>
-                </LinearLayout>
-            </RelativeLayout>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="О себе:"
+                        android:textSize="22dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_about"
+                        android:layout_gravity="left"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="22dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#fffd8001"
+                        android:id="@+id/composite_contact_content_about_content"
+                        android:layout_gravity="left"/>
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

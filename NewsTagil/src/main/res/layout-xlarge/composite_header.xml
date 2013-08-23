@@ -165,7 +165,8 @@
                     android:textSize="25dp"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/first_header_search" >
-
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
                     <requestFocus />
                 </EditText>
 

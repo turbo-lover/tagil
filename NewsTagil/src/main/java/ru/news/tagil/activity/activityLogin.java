@@ -44,6 +44,10 @@ public class activityLogin extends Activity implements View.OnClickListener,json
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.pass);
         preferences_worker = new myPreferencesWorker(this);
+        if(!preferences_worker.get_login().isEmpty() && !preferences_worker.get_pass().isEmpty()) {
+            login.setText(preferences_worker.get_login());
+            password.setText(preferences_worker.get_pass());
+        }
     }
 
 
